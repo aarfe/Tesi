@@ -1,0 +1,38 @@
+\begin{thebibliography}{1}
+
+\bibitem{Pernici04}
+{\sc P.~P. {Barbara Pernici}}, {\em Un’introduzione ragionata al mondo dei
+  web service}, Mondo Digitale - Upgrade,  (2004).
+
+\bibitem{Uddi}
+{\sc O.~Consortium}, {\em Uddi xml.org}.
+\newblock [Online; accessed April-2010].
+
+\bibitem{Marrone}
+{\sc G.~D. Lorenzo}, {\em Un Approccio all’Ingegneria dei Modelli per Sistemi
+  di Elaborazione Critici e Complessi}, PhD thesis, Universit{\`a} Federico II,
+  Napoli, Italy.
+
+\bibitem{DiLorenzo08}
+\leavevmode\vrule height 2pt depth -1.6pt width 23pt, {\em Methodologies,
+  architectures and tools for automated service composition in SOA}, PhD
+  thesis, Universit{\`a} Federico II, Napoli, Italy, November 2008.
+
+\bibitem{Papazoglou03}
+{\sc M.~P. Papazoglou}, {\em Service-oriented computing: Concepts,
+  characteristics and directions}, in WISE, 2003, pp.~3--12.
+
+\bibitem{Peltz03}
+{\sc C.~Peltz}, {\em Web services orchestration and choreography}, IEEE
+  Computer, 36 (2003), pp.~46--52.
+
+\bibitem{Aalst98}
+{\sc W.~M.~P. {van der Aalst}}, {\em The application of petri nets to workflow
+  management}, Journal of Circuits, Systems, and Computers, 8 (1998),
+  pp.~21--66.
+
+\bibitem{MDE}
+{\sc Wikipedia}, {\em Model driven engineering}.
+\newblock [Online; accessed April-2010].
+
+\end{thebibliography}

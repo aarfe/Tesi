@@ -1,0 +1,219 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{supertabular}
+\usepackage{url}
+\usepackage[draft]{fixme}
+% \fxnote
+% \fxwarning
+% \fxerror 
+% \fxfatal
+
+
+%Commands for showing the most used acronyms
+\newcommand{\jet}{\textsc{Jet}}
+\newcommand{\nl}{\newline} 
+\newcommand{\javarmi}{\textsc{Java RMI}}
+\newcommand{\bpel}{\textsc{BPEL}}
+
+% Basic settings of the listings package to "better" show the code 
+\usepackage{listings}
+\lstset{ %
+language=Java,            % choose the language of the code
+basicstyle=\scriptsize,  % the size of the fonts that are used for the code
+basewidth={0.57em,0.57em},
+frame=trBL,			        % adds a frame around the code
+breaklines=true,		      % sets automatic line breaking
+showstringspaces=false,         % underline spaces within strings
+}
+
+% \hypersetup{
+% pdfauthor = {Antonio Arfè},
+% pdftitle = {document},
+% pdfcreator = {LaTeX},
+% pdfproducer = {latex + ps2pdf}}
+
+%Last package to be imported
+\usepackage[pdftex,linkbordercolor={0 0 1},bookmarks=true,hypertexnames=false,breaklinks=true]{hyperref}
+
+% Title Page
+\title{BPEL to Java fixme}
+\author{Antonio Arf\`{e}}
+
+%\usepackage[pdftex,linkbordercolor={0 0 1},bookmarks=true,hypertexnames=false,breaklinks=true]{hyperref}
+%\hypersetup{
+%pdfauthor = {Antonio Arfè, Arnaud Germis, František Kobzík, and Pierre Stephan},
+%pdftitle = {Java RMI Implementation of a BPEL Process},
+%pdfcreator = {LaTeX},
+%pdfproducer = {latex + ps2pdf}}
+\begin{document}
+
+% Basic settings to "better" show the code
+\lstset{ %
+language=Java,            % choose the language of the code
+basicstyle=\scriptsize,  % the size of the fonts that are used for the code
+basewidth={0.57em,0.57em},
+frame=trBL,			        % adds a frame around the code
+breaklines=true,		      % sets automatic line breaking
+showstringspaces=false,         % underline spaces within strings
+}
+%FIXMEEEEEE these settings are reported twice!!!
+
+\thispagestyle{empty}
+ \begin{titlepage}
+ % - Begin of frontpage -
+ \fxnote{DRAFT version 1.0}
+ \begin{nopagebreak}
+
+\begin{raggedleft}\advance\rightskip by-1cm
+\null\vskip 2.5cm
+     {\LARGE Antonio Arfè}
+\vskip 2cm
+{\fontsize{28}{32}\bfseries
+BPEL to Java fixme
+
+ \par}
+\vskip 3cm
+{\Large Bachelor Thesis Project \ Oct 2009 - fixmeApr 2010 \par}
+\vskip 3pt
+To be evaluated on fixme 99$^{th}$ 2010
+\end{raggedleft}
+\vfill
+\hbox{\vrule\vbox{\hrule
+                \prevdepth0pt
+                \vskip2pt
+                \hbox{ Department of Computer Science }
+                \hbox{ Federico II University}
+                \hbox{ Via Claudio,}
+                \hbox{ 80100 Naples }
+                \hbox{ ITALY }
+                \vskip2pt
+                \vskip.5ex
+                \vskip2pt
+                \hrule}\vrule}
+
+ \end{nopagebreak}
+
+ \cleardoublepage
+ 
+% - End of frontpage - begin of titlepage -
+\begin{nopagebreak}
+{\samepage
+\begin{tabular}{lr}
+        \parbox{14.5cm}{
+          {\LARGE Faculty of Engineering}
+
+          {\small Federico II University}
+          \vspace{-0.3cm}\\
+        \hrule
+        \vspace{0.2cm}
+          {\bf Department of Computer Science}
+         }   & \hspace{-2.0cm} %\includegraphics[width=1.1cm]{picLogo.jpg} %fixme
+\end{tabular}
+%------------------------ with parbox at 7 cm
+\begin{tabular}{cc}
+\parbox{7cm}{
+\hspace{2cm}
+\begin{description}
+
+\item {\bf TITLE:}
+
+BPEL to Java fixme
+
+\end{description}
+
+% ---------------------- Description with parbox at 8 cm
+\parbox{8cm}{
+
+\begin{description}
+         \item {\bf PROJECT PERIOD:}\\
+           Bachelor Thesis, \\
+           fixme Oct 1$^{st}$ 2009 -\\fixme 99$^{th}$ 2010\\
+           \hspace{4cm}
+         \item {\bf GROUP MEMBERS:}\\
+           Antonio Arfè\\
+           \hspace{2cm}
+         \item {\bf SUPERVISORS:}\\
+           fixme Vittorini, Marrone
+\end{description}
+}
+
+%--------------------------------------------------------
+\begin{description}
+        \item {\bf NUMBER OF COPIES:} 7
+        \item {\bf REPORT PAGES:} \pageref{report_end}
+        \item {\bf APPENDIX PAGES:} 5
+        \item {\bf TOTAL PAGES:} \pageref{LastPage}
+\end{description}
+%--------------------------------------------------------
+\vfill } &
+\parbox{7cm}{
+  \vspace{.15cm}
+  \flushright
+  \fbox{
+    \parbox{6.5cm}{{\bf SYNOPSIS:}\vspace{0.5cm}
+     {\vfill{\small \input{Synopsis.tex}
+     }}\vspace{0.3cm}
+     }
+  }
+}
+\end{tabular}
+}
+
+%----------------------
+
+\end{nopagebreak}
+\end{titlepage}
+
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "report"
+%%% End:
+ 
+% Table of contents
+\pagebreak
+\setcounter{page}{3}
+\tableofcontents
+
+\pagebreak
+
+\include{skeleton}
+%
+%\input{Introduction}
+% 
+% \input{LiteratureReview}
+% 
+% \input{Comparison}
+% 
+% \input{Requirements}
+% 
+% \input{Design}
+% 
+% \input{Implementation}
+% 
+% \input{DiscussionAndConclusion}
+
+% Bibliography
+\pagebreak
+
+\bibliographystyle{siam}
+\bibliography{references}
+\addcontentsline{toc}{section}{References}
+\listoftables
+\addcontentsline{toc}{section}{List of Tables}
+\listoffigures
+\addcontentsline{toc}{section}{List of Figures}
+
+\label{report_end}
+\pagebreak
+
+\section*{}
+\addcontentsline{toc}{section}{Appendix}
+%\input{Appendix}
+
+\label{LastPage}
+
+
+\end{document}

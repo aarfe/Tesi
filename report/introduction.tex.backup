@@ -1,0 +1,5 @@
+\section{Introduction}
+%---Web Services Composition Contest
+Today, the web is quickly expanding and new functionalities and applications, appearing day by day, are heavily increasing its potentialities and ease of use. Actually, one of the reason why this growth is taking place is the possibility to connect or let communicate different existent applications or better, \textit{services}.
+
+We should make it clear that we intend the word service as the one used by the UDDI Oasis consortium \cite{Uddi}, where services are self-contained, modular, business applications that have Internet-oriented and standard-based interfaces. The given definition of services tightly relates to some of the well known web standards used to implement Web Services (WSs) \cite{DiLorenzo08}.

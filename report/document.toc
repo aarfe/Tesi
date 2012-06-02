@@ -1,0 +1,21 @@
+\contentsline {section}{\numberline {1}Introduction}{4}{section.3}
+\contentsline {subsection}{\numberline {1.1}Overview of the thesis}{4}{subsection.4}
+\contentsline {section}{\numberline {2}MDE: Model Driven Engineering}{4}{section.5}
+\contentsline {subsection}{\numberline {2.1}Services and composition, SOC and SOA}{4}{subsection.6}
+\contentsline {subsection}{\numberline {2.2}BPEL, its drawbacks and the use of WSs in a lightweight scenario}{5}{subsection.7}
+\contentsline {subsection}{\numberline {2.3}Other works and proposed approach}{5}{subsection.8}
+\contentsline {section}{\numberline {3}The methodological approach}{6}{section.9}
+\contentsline {section}{\numberline {4}Tools and Techniques}{6}{section.10}
+\contentsline {subsection}{\numberline {4.1}The Model Driven Architecture (MDA)}{6}{subsection.11}
+\contentsline {subsection}{\numberline {4.2}Java RMI}{6}{subsection.12}
+\contentsline {subsection}{\numberline {4.3}Jet}{6}{subsection.13}
+\contentsline {subsection}{\numberline {4.4}EMF and Open Architecture Ware (Eclipse)}{6}{subsection.14}
+\contentsline {subsection}{\numberline {4.5}other...}{6}{subsection.15}
+\contentsline {section}{\numberline {5}Detailed Architecture}{6}{section.16}
+\contentsline {section}{\numberline {6}Implementation}{6}{section.17}
+\contentsline {section}{\numberline {7}Discussion}{6}{section.18}
+\contentsline {section}{\numberline {8}Conclusion}{6}{section.19}
+\contentsline {section}{References}{7}{section*.20}
+\contentsline {section}{List of Tables}{7}{section*.21}
+\contentsline {section}{List of Figures}{7}{section*.22}
+\contentsline {section}{Appendix}{8}{section*.23}
