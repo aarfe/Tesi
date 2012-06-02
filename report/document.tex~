@@ -57,6 +57,7 @@ frame=trBL,			        % adds a frame around the code
 breaklines=true,		      % sets automatic line breaking
 showstringspaces=false,         % underline spaces within strings
 }
+%FIXMEEEEEE these settings are reported twice!!!
 
 \thispagestyle{empty}
  \begin{titlepage}
@@ -180,7 +181,7 @@ BPEL to Java fixme
 
 \include{skeleton}
 %
-%\input{Introduction}
+\input{introduction}
 % 
 % \input{LiteratureReview}
 % 

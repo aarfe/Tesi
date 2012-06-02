@@ -1,5 +1,3 @@
-\input{introduction}
-
 \section{MDE: Model Driven Engineering}
 Model-driven engineering (MDE) is a software development methodology which focuses on creating models rather than computing and algorithmic concepts usually addressed in the classical programming approaches.
 This discipline attempts an abstraction of the benefits and the features provided by the Software Engineering \cite{Marrone}, usually creating a domain specific framework for implementing new systems, based on well known and tested concepts, obtained through a careful and detailled analysis of the domain and its actors.

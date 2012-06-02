@@ -1,5 +1,3 @@
-\input{introduction}
-
 \section{MDE: Model Driven Engineering}
 Model-driven engineering (MDE) is a software development methodology which focuses on creating models rather than computing and algorithmic concepts usually addressed in the classical programming approaches.
 This discipline attempts an abstraction of the benefits and the features provided by the Software Engineering \cite{Marrone}, usually creating a domain specific framework for implementing new systems, based on well known and tested concepts, obtained through a careful and detailled analysis of the domain and its actors.
@@ -14,7 +12,9 @@ For example, it might be useful to integrate a service (already available on a n
 
 
 The \textit{Service Oriented Computing} (SOC) is the paradigm that attempts to wrap and adapt exisisting applications into new services \cite{DiLorenzo08,Papazoglou03}, keeping security and ease of data sharing.
-The architectural infrastructure to the SOC is called \textit{Service Oriented Architecture} (SOA). The idea behind the SOA is to describe, publish and make available web services (generally speaking, a combination of services) to the possible requestors.
+The architectural infrastructure to the SOC is called \textit{Service Oriented Architecture} (SOA). The idea behind the SOA is to describe, publish and make available web services (generally speaking, a combination of services) to requestors from multiple business domains.
+
+%HERE
 
 it is split up into provider, broker and requestor \cite{Pernici04} \nl
 
