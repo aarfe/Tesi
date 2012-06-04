@@ -1,8 +1,10 @@
 %LiteratureReview
 \section{Literature Review}
-
+\label{LiteratureReview}
 %--- Brief overview on SOC and SOA
+
 \subsection{Services and composition, SOC and SOA}
+\label{SOC&SOA}
 During the years preceding the large spread of the Internet, companies used to create their own software systems, in order to obtain highly customized and specific services, rarely focused on the accessibility by external partners.
 Today, with the necessity of exchanging information among different companies and businesses, and the push made by the large growth of the Internet, the focus has moved to the integration and the coordination of the existing softwares, namely, the integration of these systems over larger networks.
 Defining a \textit{service} as a distributed application that exports a view of its functionalities  \cite{DiLorenzo08}, what is needed is the possibility to compose different services together.
@@ -21,14 +23,23 @@ To apply the SOC paradigm, there is a need of an architecture infrastructure sty
 The architectural infrastructure of the SOC is called \textit{Service Oriented Architecture} (SOA). 
 The idea behind the SOA is to describe, publish and make available services (generally speaking, a combination of services) obtained from a preexistent set of applications. 
 To achieve the results of making non-homogeneous applications, using different technologies and running on different platforms, work together, SOA makes use of standard interfaces and messaging protocols. This way each of the applications become an atomic, well defined and ready to be connected component. 
-The SOA presents an architecture devised in three main components as shown in Fig. \ref{The Service Oriented Architecture (SOA)}:
-a \textit{service provider}, which makes the service available. The service provider register its service to the \textit{service registry}, which contains the list of available services and their descriptions. The \textit{service client} contacts the service registry to find a service, it gets a contract and the address of the service, making a so called \textit{binding}, between service provider and client.\\
+The SOA presents an architecture devised in three main components \cite{Pernici04} as shown in Fig. \ref{The Service Oriented Architecture (SOA)}:
+a \textit{service provider}, which makes the service available. The service provider registers its service to the \textit{service registry}, which contains the list of available services and their descriptions. After the registration, the service provider waits for a client to request a service. The service registry can also apply custom access control policies or be entirely public. 
+The \textit{service client} contacts the service registry to \textit{find} a service, it gets a contract and the address of the service, making a so called \textit{bind} with the provider. Then it \textit{uses} the service.\\
 
 Being the realization of services usually based on the reuse of previously existent software, there are many ways to realize it and they can also be combined. For a company, the realization can go from the complete in-house realization to the outsourcing, to buy/leasing just parts of the needed services or to using wrappers/adapters to reuse the legacy software.
-To conclude, from the SOA point of view, services are like black boxes, they can be invoked by service clients independently, without the need of knowing internal details. This makes clients and providers logically decoupled, the client only needs to know the name, the interface and the version of the service it needs. 
+To conclude, from the SOA point of view, services are like black boxes, they can be invoked by service clients independently, without the need of knowing internal details. This makes clients and providers logically decoupled, the client only needs to know the name, the interface and the version of the service. Of course, provider, client and register must be able to use a common communication channel. 
 
 \subsection{Web Services}
-% - Who is going to deal with the logic and flow of the composition? \nl
+\label{WebServices}
+We have seen that SOA is an architecture style aimed at the creation of services but it does not address the communication medium. \textit{Web Services} (WS) are an instance of a SOA where the communication channel is the web \cite{Pernici04}.
+Web services implement the SOA through the application of three main technologies: \textit{SOAP}(Simple Object Access Protocol), \textit{WSDL}(Web Services Description Language) and \textit{UDDI}(Universal Description, Discovery and Integration).
+On the picture of the SOA showed above, we can add these three components, as shown in Fig: \ref{SOA with webServ implement.}. The SOAP is the web protocol used to exchange messages among the parties. WSDL is the language used by the service provider to fully describe the offered service. At last, UDDI is used by the service registry to make a service easy to find, abstract its technology and make it accessible to the clients.
+In the next paragraphs we have a brief look into these three technologies.
+
+\subsubsection{WSDL (Web Services Description Language) }
+WSDL is a language based \textit{XML}(eXtensible Markup Language) permits to unambiguously describe a service
+% - Who is going to deal with the logic and flow of the composition? \nl 
 % - Two main approaches: Orchestration and Choreography, where is the difference \cite{Peltz03} \nl
 % - The concept of Workflow management \cite{Aalst98} (picture) and why BPEL is good at it.  \nl
 % 
