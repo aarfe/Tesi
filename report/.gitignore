@@ -7,3 +7,5 @@
 /*.out
 /*.toc
 /*.tex~
+/*.tex.backup
+/*.bib.backup
