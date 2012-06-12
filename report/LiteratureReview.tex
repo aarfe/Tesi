@@ -23,7 +23,7 @@ To apply the SOC paradigm, there is a need of an architecture infrastructure sty
 The architectural infrastructure of the SOC is called \textit{Service Oriented Architecture} (SOA). 
 The idea behind the SOA is to describe, publish and make available services (generally speaking, a combination of services) obtained from a preexistent set of applications. 
 To achieve the results of making non-homogeneous applications, using different technologies and running on different platforms, work together, SOA makes use of standard interfaces and messaging protocols. This way each of the applications become an atomic, well defined and ready to be connected component. 
-The SOA presents an architecture devised in three main components \cite{Pernici04} as shown in Fig. \ref{The Service Oriented Architecture (SOA)}:
+The SOA presents an architecture devised in three main components \cite{Pernici04} as shown in Fig. \ref{fig:The Service Oriented Architecture (SOA)}:
 a \textit{service provider}, which makes the service available. The service provider registers its service to the \textit{service registry}, which contains the list of available services and their descriptions. After the registration, the service provider waits for a client to request a service. The service registry can also apply custom access control policies or be entirely public. 
 The \textit{service client} contacts the service registry to \textit{find} a service, it gets a contract and the address of the service, making a so called \textit{bind} with the provider. Then it \textit{uses} the service.\\
 
@@ -34,18 +34,18 @@ To conclude, from the SOA point of view, services are like black boxes, they can
 \label{WebServices}
 We have seen that SOA is an architecture style aimed at the creation of services but it does not address the communication medium. \textit{Web Services} (WS) are an instance of a SOA where the communication channel is the web \cite{Pernici04}.
 Web services implement the SOA through the application of three main technologies: \textit{SOAP}(Simple Object Access Protocol), \textit{WSDL}(Web Services Description Language) and \textit{UDDI}(Universal Description, Discovery and Integration).
-On the picture of the SOA showed above, we can add these three components, as shown in Fig: \ref{SOA with webServ implement.}. The SOAP is the web protocol used to exchange messages among the parties. WSDL is the language used by the service provider to fully describe the offered service. At last, UDDI is used by the service registry to make a service easy to find, abstract its technology and make it accessible to the clients.
+On the picture of the SOA showed above, we can add these three components, as shown in Fig: \ref{fig:SOA with webServ implement.}. The SOAP is the web protocol used to exchange messages among the parties. WSDL is the language used by the service provider to fully describe the offered service. At last, UDDI is used by the service registry to make a service easy to find, abstract its technology and make it accessible to the clients.
 In the next paragraphs we have a brief look into these three technologies.
 
 \subsubsection{WSDL (Web Services Description Language) }
 WSDL is a language based on \textit{XML}(eXtensible Markup Language) and it permits to unambiguously describe a web service. For example, it can describe the input parameters a client must provide to use the service and the type of the result the client should expect. 
 A WSDL description starts with a \textit{service} tag that identifies a group of related services. Each of the services is then described as following.\\
 
-The first element is the \verb|port| which identifies the address and the protocol to access the service (e.g. from the IBM online examples,\ref{IBMWSDL} \verb|<soap:address location="http://www.snowboard-info.co.uk/EndorsementSearch"/>|). With \verb|portType|, there are given the specifics of any \verb|operation| that can be used by the client, for example, the input/output parameters or the error messages. The \verb|operation|s comply to one of 4 main patterns: the \verb|One_way| (client sending a message to the provider), the \verb|Request_response| (client sending a message and waiting for an answer form the provider), the \verb|Solicit_response| (Provider sending a message to the client and waiting for a response) and the \verb|Notification| (provider sending a message to the client).
+The first element is the \verb|port| which identifies the address and the protocol to access the service (e.g. from the IBM online examples,\cite{IBMWSDL} \verb|<soap:address location="http://www.snowboard-info.co.uk/EndorsementSearch"/>|). With \verb|portType|, there are given the specifics of any \verb|operation| that can be used by the client, for example, the input/output parameters or the error messages. The \verb|operation|s comply to one of 4 main patterns: the \verb|One_way| (client sending a message to the provider), the \verb|Request_response| (client sending a message and waiting for an answer form the provider), the \verb|Solicit_response| (Provider sending a message to the client and waiting for a response) and the \verb|Notification| (provider sending a message to the client).
 The elements to define the messages and the types used by the service are \verb|message| and \verb|types|. The first specifies the structure of a message to be exchanged. The second, is used to define the atomic types (integer, string, etc.) or new custom types. 
 The most important elements in a WSDL service description are summarized in Table \ref{tab:WSDLElements}.\\
 
-Eventually, we can see that WSDL proposes a static picture of the service. It defines the address and the way to access it, the operations and the input/output elements to be provided, but it has no notion of the order 
+Eventually, we can see that WSDL proposes a static picture of the service. It defines the address and the way to access the service, the operations and, for each of them, the input/output elements to be provided, but it has no notion of the order in which the operations should be called. For example, to access an online shop service, there might be the need to first perform a login operation, check the item availability and last, buy the item. Such an order, though, it is not addressed in a WSDL static description.
 
  
 % - Who is going to deal with the logic and flow of the composition? \nl 
@@ -60,13 +60,13 @@ Eventually, we can see that WSDL proposes a static picture of the service. It de
 						\toprule
 						\addlinespace[0.2cm]
 \textbf{WSDL element} 	& \textbf{Description}	\\ 
-								\cmidrule(l){1-2}
-port 		& It identifies the address where the service is found and the protocol to access it 				\\[0,1cm]
-portType 	& It provides the description of the service, using the \textit{operation} element 				\\[0,1cm]
-operation 	& It is a basic functionality provided by the service. It lists the input and output messages that are exchanged, in one of the four communication patterns 														\\[0,1cm]
-message 	& It specifies the format of messages to be exchanged, e.g. the name and type of the variables they contain 	\\[0,1cm]
-types		& The atomic or user-defined data types in use  								\\[0,1cm]
-binding		& Given a portType, it describes how this is implemented in the specific protocol 				\\[0,1cm]
+						\cmidrule(l){1-2}
+\verb|port| 		& It identifies the address where the service is found and the protocol to access it 				\\[0,1cm]
+\verb|portType| 	& It provides the description of the service, using the \textit{operation} element 				\\[0,1cm]
+\verb|operation| 	& It is a basic functionality provided by the service. It lists the input and output messages that are exchanged, in one of the four communication patterns 														\\[0,1cm]
+\verb|message| 		& It specifies the format of messages to be exchanged, e.g. the name and type of the variables they contain 	\\[0,1cm]
+\verb|types|		& The atomic or user-defined data types in use  								\\[0,1cm]
+\verb|binding|		& Given a portType, it describes how this is implemented in the specific protocol 				\\[0,1cm]
 	 
 						\addlinespace[0.2cm]
 						\bottomrule
