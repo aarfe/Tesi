@@ -1,6 +1,6 @@
 %LiteratureReview
-\section{Literature Review}
-\label{LiteratureReview}
+\section{Service Oriented Computing}
+\label{ServiceOrientedComputing}
 %--- Brief overview on SOC and SOA
 
 \subsection{Services and composition, SOC and SOA}
@@ -87,8 +87,11 @@ Two approaches for the workflow management exist: Orchestration and Choreography
 Orchestration describes the realization of an executable business where the overall control is given to one party. For example, we can show how a travel planner web service works (see Fig. \ref{fig:orchestration}). Once a client sets the dates and destination of his travel, the travel planner service (coordinator) contacts other three services to book a flight, a hotel and a car. The requests and responses to and from the orchestrated services, are dealt by the coordinator, which takes care of reporting the found travel information back to the client.
 These three services can be separated modules, belonging to different companies and implemented with different technologies.
 \paragraph{Choreography}
-Choreography also describes the realization of an executable business process, but there is no party having overall control. Here each party collaborates and provides its part and role for the final result. Using the previous example (see Fig. \ref{fig:choreography}), we can notice that the stand alone services have no coordinator. They collaborate exchanging messages among each other, and usu 
-The 
+Choreography also describes the realization of an executable business process, but there is no party having overall control. Here each party collaborates and provides its part and role for the final result. Using the previous example (see Fig. \ref{fig:choreography}), we can notice that the stand alone services have no coordinator. They collaborate exchanging messages among each other. Eventually, choreography, takes care of the interactions among the services more than executing a process from one party's perspective.
+
+\subsubsection{Workflow Management for Web Services}
+Among the workflow management systems, some 
+
 %%%%%%%%%%%%%%%%%FIGURE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55 
  \begin{figure}
 \centering
@@ -105,11 +108,14 @@ The
 \label{fig:OrchAndChor}
 \end{figure} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{MDE: Model Driven Engineering}
-% Model-driven engineering (MDE) is a software development methodology which focuses on creating models rather than computing and algorithmic concepts usually addressed in the classical programming approaches.
-% This discipline attempts an abstraction of the benefits and the features provided by the Software Engineering \cite{Marrone}, usually creating a domain specific framework for implementing new systems, based on well known and tested concepts, obtained through a careful and detailled analysis of the domain and its actors.
-% The best known MDE initiative is the Object Management Group (OMG) initiative Model-Driven Architecture (MDA), which is a registered trademark of OMG \cite{MDE}.
- 
+
+\subsection{BPEL}
+\subsection{Java RMI}
+- Overview, features.
+- Why? it can run everywhere, lightweight scenarios  \nl
+%\subsection{Jet}
+%\subsection{EMF and Open Architecture Ware (Eclipse)}
+%\subsection{other...} 
 
 
 % %---Where the problem is---
@@ -127,10 +133,4 @@ The
 % - But we don't want to create a new application from scratch neither...(change hardware?).  \nl
 
 
-%SCALETTA
-%  \item Web Services
-%  \item Orchestration and Choreography
-%  \item BPEL (and its drawbacks)
-%  \item Web Services in a lightweight scenario
-%  \item Proposed approach, MDE, MDA
-% \end{itemize}
+
