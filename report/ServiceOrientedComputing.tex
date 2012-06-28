@@ -25,7 +25,8 @@ The idea behind the SOA is to describe, publish and make available services (gen
 To achieve the results of making non-homogeneous applications, using different technologies and running on different platforms, work together, SOA makes use of standard interfaces and messaging protocols. This way each of the applications become an atomic, well defined and ready to be connected component. 
 The SOA presents an architecture devised in three main components \cite{Pernici04} as shown in Fig. \ref{fig:The Service Oriented Architecture (SOA)}:
 a \textit{service provider}, which makes the service available. The service provider registers its service to the \textit{service registry}, which contains the list of available services and their descriptions. After the registration, the service provider waits for a client to request a service. The service registry can also apply custom access control policies or be entirely public. 
-The \textit{service client} contacts the service registry to \textit{find} a service, it gets a contract and the address of the service, making a so called \textit{bind} with the provider. Then it \textit{uses} the service.\\
+The \textit{service client} contacts the service registry to \textit{find} a service, it gets a contract and the address of the service, making a so called \textit{bind} with the provider. Then it \textit{uses} the service.
+
 
 Being the realization of services usually based on the reuse of previously existent software, there are many ways to realize it and they can also be combined. For a company, the realization can go from the complete in-house realization to the outsourcing, to buy/leasing just parts of the needed services or to using wrappers/adapters to reuse the legacy software.
 To conclude, from the SOA point of view, services are like black boxes, they can be invoked by service clients independently, without the need of knowing internal details. This makes clients and providers logically decoupled, the client only needs to know the name, the interface and the version of the service. Of course, provider, client and register must be able to use a common communication channel. 
@@ -39,11 +40,12 @@ In the next paragraphs we have a brief look into these three technologies.
 
 \subsubsection{WSDL (Web Services Description Language) }
 WSDL is a language based on \textit{XML}(eXtensible Markup Language) and it permits to unambiguously describe a web service. For example, it can describe the input parameters a client must provide to use the service and the type of the result the client should expect. 
-A WSDL description starts with a \textit{service} tag that identifies a group of related services. Each of the services is then described as following.\\
-
-The first element is the \verb|port| which identifies the address and the protocol to access the service (e.g. from the IBM online examples,\cite{IBMWSDL} \verb|<soap:address location="http://www.snowboard-info.co.uk/EndorsementSearch"/>|). With \verb|portType|, there are given the specifics of any \verb|operation| that can be used by the client, for example, the input/output parameters or the error messages. The \verb|operation|s comply to one of 4 main patterns: the \verb|One_way| (client sending a message to the provider), the \verb|Request_response| (client sending a message and waiting for an answer form the provider), the \verb|Solicit_response| (Provider sending a message to the client and waiting for a response) and the \verb|Notification| (provider sending a message to the client).
+A WSDL description starts with a \textit{service} tag that identifies a group of related services. Each of the services is then described as following.
+The first element is the \verb|port| which identifies the address and the protocol to access the service (e.g. from the IBM online examples,\cite{IBMWSDL} \\
+\verb|<soap:address location="http://www.snowbo.../EndorsementSearch"/>|). \\
+With \verb|portType|, there are given the specifics of any \verb|operation| that can be used by the client, for example, the input/output parameters or the error messages. The \verb|operation|s comply to one of 4 main patterns: the \verb|One_way| (client sending a message to the provider), the \verb|Request_response| (client sending a message and waiting for an answer form the provider), the \verb|Solicit_response| (Provider sending a message to the client and waiting for a response) and the \verb|Notification| (provider sending a message to the client).
 The elements to define the messages and the types used by the service are \verb|message| and \verb|types|. The first specifies the structure of a message to be exchanged. The second, is used to define the atomic types (integer, string, etc.) or new custom types. 
-The most important elements in a WSDL service description are summarized in Table \ref{tab:WSDLElements}.\\
+The most important elements in a WSDL service description are summarized in Table \ref{tab:WSDLElements}.
 
 Eventually, we can see that WSDL proposes a static picture of the service. It defines the address and the way to access the service, the operations and, for each of them, the input/output elements to be provided, but it has no notion of the order in which the operations should be called. For example, to access an online shop service, there might be the need to first perform a login operation, check the item availability and last, buy the item. Such a order or workflow, though, it is not addressed in a WSDL description. This workflow represents the dynamic behavior of a service and it is addressed by the \textit{WorkFlow Management Systems} (WfMS), discussed in the following section.
 
@@ -55,7 +57,7 @@ Eventually, we can see that WSDL proposes a static picture of the service. It de
 %%%%%%%%%%%%% WSDL TABLE of characteristics %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table}
 \begin{center}
-\begin{tabular}{l p{12cm}}
+\begin{tabular}{l p{11cm}}
 
 						\toprule
 						\addlinespace[0.2cm]
@@ -111,8 +113,7 @@ Among the workflow management systems, some
 
 \subsection{BPEL}
 \subsection{Java RMI}
-- Overview, features.
-- Why? it can run everywhere, lightweight scenarios  \nl
+- Overview, features. - Why? it can run everywhere, lightweight scenarios.
 %\subsection{Jet}
 %\subsection{EMF and Open Architecture Ware (Eclipse)}
 %\subsection{other...} 

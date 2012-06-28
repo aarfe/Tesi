@@ -18,16 +18,18 @@
 %\usepackage[head=30pt,foot=10pt]{geometry}
 %\fancypagestyle{plain}
 \pagestyle{fancy}
+\setlength{\headheight}{15pt} %Set the height of the header
 \topmargin=-20pt
-\headsep = 40pt
+\headsep = 35pt
 \hoffset=+0.335in
 \textwidth = 445pt
 %\footheight = 10pt
-\textheight = 700pt %715
+\textheight = 680pt %715
 
 \fancyheadoffset[L]{35pt} % gap between the header and the left side 
-%\fancyfootoffset[R]{25pt}
-\footskip = 20pt
+\fancyheadoffset[R]{10pt} % gap between the header and the left side 
+%\fancyfootoffset[R]{10pt}
+\footskip = 30pt
 %\voffset=-3.5in
 
 \fancyhead{} %Clear all headers
@@ -41,7 +43,7 @@
 \end{picture}}
 
 \fancyfoot{} %Clear the footer
-\fancyfoot[R]{\slshape \thepage}
+\fancyfoot[C]{\slshape \thepage}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%LST listings settings %%%%%%%%%%%%%%%%%%%%%%%%%%

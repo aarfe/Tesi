@@ -1,23 +1,31 @@
 \section{Introduction}
 %---Web Services Composition Contest
-Today the web is quickly expanding and new functionalities and applications, appearing day by day, are heavily increasing its potentialities and ease of use. Actually, one of the reasons why this growth is taking place is the possibility to connect and let communicate different existent applications, or better, \textit{services}.
 
-This can be done through ad-hoc solutions, connecting, for example, some preexistent legacy applications to create a new application (perhaps available online or over a company's intranet) or using paradigms to abstract the existent applications and show them as services in a standard way. %SOC 
+Today the web is quickly expanding and new functionalities and applications, appearing day by day, are heavily increasing its potentialities and ease of use. Actually, one of the reasons why this growth is taking place is the possibility to connect and let communicate different existent applications, or better, \textit{services}. Now more than ever, with the wide expansion of portable and web-capable devices, based on different technologies, platforms or hardware, this interconnection among services is not only required, but necessary to create a common ground to build software upon.
+
+The interconnection among services can be done through ad-hoc solutions, connecting, for example, some preexistent legacy applications to create a new application (perhaps available online or over a company's intranet) or using paradigms to abstract the existent applications and show them as services in a standard way. %SOC 
 In the case where the standard paradigm is favored, the implementation of such services also needs an architectural infrastructure style, where there are well defined the roles of which part of the application is offering to the outside world the service (Service Provider), who is the user of it (Service Client) and where the service should be published for a public usage (Service Registry). %SOA
-A service implemented following such an architecture and guidelines, where its communication channel is the web, is called \textit{Web Service}.\\ %(cite intoduzione ragionata al mondo dei web serv)
+A service implemented following such an architecture and guidelines, where its communication channel is the web, is called \textit{Web Service}. %(cite intoduzione ragionata al mondo dei web serv)
 
 Once, starting from simple applications, several services are put in place, to reach the goal of creating a new application (which can be, recursively, used as basic service to create another application) reusing the existing ones, many challenges arise. Some of them are: how to discover the services that are publicly available, how the providers can advertise them, how the services should integrate the usage of resources like files or databases, how they provide secure and private access to authorized users and, eventually, how to define the rules to compose and make collaborate the services together. 
-The final result of the interactions among the different services is called \textit{Business Process}, which is widely used in the literature and compares in the acronym of some of the main languages used in the service-oriented applications area.\\
+The final result of the interactions among the different services is called \textit{Business Process}, which is widely used in the literature and compares in the acronym of some of the main languages used in the service-oriented applications area.
 
 Focusing on the latter aspect, the composition of services, it can be achieved using workflow management applications, that simultaneously coordinate different processes, making them execute actions in sequence or in parallel, and joining or forking their results at the right time. %(Intro Ragionata WS)
 The two main approaches to workflow management are: Orchestration and Choreography.
 Orchestration refers to the %(cite introduzione ragionata al mondo dei web serv, pag 20) 
-business process realized by the interaction of several services supervised by a main actor. Choreography, instead, is a more collaborative approach, where each of the services has a specific role in the accomplishment of the business process. Eventually, orchestration produces an executable process, which can be run by an orchestration engine, while choreography produces an abstract business protocol that cannot be executed, but only contains the specification of the publicly available messages exchanged between the services.\\
+business process realized by the interaction of several services supervised by a main actor. Choreography, instead, is a more collaborative approach, where each of the services has a specific role in the accomplishment of the business process. Eventually, orchestration produces an executable process, which can be run by an orchestration engine, while choreography produces an abstract business protocol that cannot be executed, but only contains the specification of the publicly available messages exchanged between the services.
+
+\paragraph{Problem and Objective}
+Today, many of these services, which can be later interconnected, need to run on portable devices, for which calculation power, available memory and consumption are well known issues. In fact, the composition and orchestration (or choreography) of a business process is heavy, and the majority of workflow engines are made to be run on powerful machines both in terms of computation and memory footprint. Moreover the deployment of a business process usually requires to know a priori the number of participant devices, and, above all, it requires them to have installed network protocols and tools that are not always included in the typical software package of a mobile device. 
+
+Among the other approaches used to compose and coordinate services over a network, to create a business process, there are RPC and JAVA RMI.
+
+Our objective is to show the feasibility of an automated translation from a service orchestration language (BPEL) to a well known and wide spread over mobile devices, Java language. 
 
 \paragraph{FIXME, continue of the introduction}
 %--- Narrowing down our attention on the orchestration, and specifically to one the most used specifications  
---- Narrow down to orchestration and introduce BPEL \\
---- The proposed approach \\
+--- Narrow down to orchestration and introduce BPEL 
+--- The proposed approach 
 
 %---Other works, our approach and what we achieve
 %\subsection{Other works}
