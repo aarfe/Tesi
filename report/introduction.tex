@@ -15,12 +15,17 @@ The two main approaches to workflow management are: Orchestration and Choreograp
 Orchestration refers to the %(cite introduzione ragionata al mondo dei web serv, pag 20) 
 business process realized by the interaction of several services supervised by a main actor. Choreography, instead, is a more collaborative approach, where each of the services has a specific role in the accomplishment of the business process. Eventually, orchestration produces an executable process, which can be run by an orchestration engine, while choreography produces an abstract business protocol that cannot be executed, but only contains the specification of the publicly available messages exchanged between the services.
 
-\paragraph{Problem and Objective}
+\paragraph{The problem}
 Today, many of these services, which can be later interconnected, need to run on portable devices, for which calculation power, available memory and consumption are well known issues. In fact, the composition and orchestration (or choreography) of a business process is heavy, and the majority of workflow engines are made to be run on powerful machines both in terms of computation and memory footprint. Moreover the deployment of a business process usually requires to know a priori the number of participant devices, and, above all, it requires them to have installed network protocols and tools that are not always included in the typical software package of a mobile device. 
+Nonetheless, many business processes are already available written in the de facto standard language for web services orchestration: BPEL (Business Process Execution Language). Although there have been attempts to create light and with low memory footprint engines (\cite{dddd}), the execution of a BPEL process on a small, portable device, is yet to be convenient.
+In opposition, in the last years, other technologies have widespread and have been optimized for the mobile devices world. One as such is surely Java, which has gained ground thanks to its portability (abstracted from the hardware) and relatively easiness of use
+%There are other approaches used to compose and coordinate services (namely, to create a business process), there are RPC and JAVA RMI.
 
-Among the other approaches used to compose and coordinate services over a network, to create a business process, there are RPC and JAVA RMI.
+\paragraph{Objective}
+ 
 
-Our objective is to show the feasibility of an automated translation from a service orchestration language (BPEL) to a well known and wide spread over mobile devices, Java language. 
+Given the widespread presence over the web of BPEL, we think it would be helpful to have a way to semi-automatically transform a BPEL written process in a Java executable routine, with minimum ad-hoc developer's intervention.
+Our objective is to show the feasibility of a semi-automated transformation from a small business process orchestrated with BPEL to a well known and wide spread over mobile devices, Java language. 
 
 \paragraph{FIXME, continue of the introduction}
 %--- Narrowing down our attention on the orchestration, and specifically to one the most used specifications  
