@@ -1,8 +1,9 @@
 \section{Introduction}
 %---Web Services Composition Contest
-Today the web is quickly expanding and new functionalities and applications, appearing day by day, are heavily increasing its potentialities and ease of use. Actually, one of the reasons why this growth is taking place is the possibility to connect and let communicate different existent applications, or better, \textit{services}.
 
-This can be done through ad-hoc solutions, connecting, for example, some preexistent legacy applications to create a new application (perhaps available online or over a company's intranet) or using paradigms to abstract the existent applications and show them as services in a standard way. %SOC 
+Today the web is quickly expanding and new functionalities and applications, appearing day by day, are heavily increasing its potentialities and ease of use. Actually, one of the reasons why this growth is taking place is the possibility to connect and let communicate different existent applications, or better, \textit{services}. Now more than ever, with the wide expansion of portable and web-capable devices, based on different technologies, platforms or hardware, this interconnection among services is not only required, but necessary to create a common ground to build software upon.\\
+
+The interconnection among services can be done through ad-hoc solutions, connecting, for example, some preexistent legacy applications to create a new application (perhaps available online or over a company's intranet) or using paradigms to abstract the existent applications and show them as services in a standard way. %SOC 
 In the case where the standard paradigm is favored, the implementation of such services also needs an architectural infrastructure style, where there are well defined the roles of which part of the application is offering to the outside world the service (Service Provider), who is the user of it (Service Client) and where the service should be published for a public usage (Service Registry). %SOA
 A service implemented following such an architecture and guidelines, where its communication channel is the web, is called \textit{Web Service}.\\ %(cite intoduzione ragionata al mondo dei web serv)
 
@@ -12,15 +13,22 @@ The final result of the interactions among the different services is called \tex
 Focusing on the latter aspect, the composition of services, it can be achieved using workflow management applications, that simultaneously coordinate different processes, making them execute actions in sequence or in parallel, and joining or forking their results at the right time. %(Intro Ragionata WS)
 The two main approaches to workflow management are: Orchestration and Choreography.
 Orchestration refers to the %(cite introduzione ragionata al mondo dei web serv, pag 20) 
-business process realized by the interaction of several services supervised by a main actor. Choreography, instead, is a more collaborative approach, where each of the services has a specific role in the accomplishment of the business process. Eventually, orchestration produces an executable process, which can be run by an orchestration engine, while choreography produces an abstract business protocol that cannot be executed, but only contains the specification of the publicly available messages exchanged between the services.\\
+business process realized by the interaction of several services supervised by a main actor. Choreography, instead, is a more collaborative approach, where each of the services has a specific role in the accomplishment of the business process. Eventually, orchestration produces an executable process, which can be run by an orchestration engine, while choreography produces an abstract business protocol that cannot be executed, but only contains the specification of the publicly available messages exchanged between the services.
 
-\paragraph{FIXME, continue of the introduction}
-%--- Narrowing down our attention on the orchestration, and specifically to one the most used specifications  
---- Narrow down to orchestration and introduce BPEL \\
---- The proposed approach \\
+\paragraph{The problem}
+Today, many of these services, which can be later interconnected, need to run on portable devices, for which calculation power, available memory and consumption are well known issues. In fact, the composition and orchestration (or choreography) of a business process is heavy, and the majority of workflow engines are made to be run on powerful machines both in terms of computation and memory footprint. Moreover the deployment of a business process usually requires to know a priori the number of participant devices, and, above all, it requires them to have installed network protocols and tools that are not always included in the typical software package of a mobile device. 
+Nonetheless, many business processes are already available written in the de facto standard language for web services orchestration: BPEL (Business Process Execution Language). Although there have been attempts to create light and with low memory footprint engines (\cite{dddd}), the execution of a BPEL process on a small, portable device, is yet to be convenient.
+
+In opposition, in the last years, other technologies have widely spread and have been optimized for the mobile devices world. One as such is surely Java, which has gained ground thanks to its portability, which completely abstracts the software from the hardware. This makes it easy for software companies to produce reusable software, independently of the device's architecture. Moreover,the Java relatively ease of use, the large amount of available libraries and the large user community, surely also play in its favour. 
+%There are other approaches used to compose and coordinate services (namely, to create a business process), there are RPC and JAVA RMI.
+
+\paragraph{Objective}
+Given the widespread presence over the web of BPEL for service-oriented applications implementation, we analyze the possibility of semi-automatically transform a BPEL written process in a Java executable routine, with minimum ad-hoc developer's intervention.
+Our objective is then to show the feasibility of a semi-automated transformation from a small business process orchestrated with BPEL to the well known and wide spread over mobile devices, Java language. 
+
 
 %---Other works, our approach and what we achieve
-\subsection{Other works}
+%\subsection{Other works}
 % - Other similar works: don't know any yet. \nl
 % - Our attempt is to use the M2T techniques to obtain from a BPEL WSs composition a JavaRMI equivalent application \nl
 % - Where the limits of our solution are (BPEL subset? Lack of heavy test case? Doesn't work at all?...) \nl
@@ -31,13 +39,7 @@ business process realized by the interaction of several services supervised by a
 %---Overview of the whole work---
 \subsection{Overview of the thesis}
 FIXME : To expand at the end
-% \begin{itemize}
-%  \item SOC
-%  \item SOA
-%  \item Web Services
-%  \item Orchestration and Choreography
-%  \item BPEL (and its drawbacks)
-%  \item Web Services in a lightweight scenario
+
 %  \item Proposed approach, MDE, MDA
 % \end{itemize}
 

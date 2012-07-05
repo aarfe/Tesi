@@ -1,25 +1,52 @@
-\documentclass[a4paper,11pt]{article}
+\documentclass[a4paper,12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{supertabular}
-\usepackage[draft]{fixme}
+\usepackage[draft]{fixme} % \fxnote  \fxwarning  \fxerror  \fxfatal
 \usepackage{subfigure}
+\usepackage[final]{pdfpages} %To add the pdf page as frontpage
 \usepackage{booktabs} %For tables, horizontal and splittable lines
 \usepackage[format=hang,font=small,labelfont=bf]{caption} %To create bold caption for tables and pictures
 \setcounter{secnumdepth}{3} %Chap,Sec,Sub,Subsub
 \usepackage{fullpage} % to use the whole page 
 \usepackage{url}
-% \fxnote
-% \fxwarning
-% \fxerror 
-% \fxfatal
+\usepackage{setspace}  
+\doublespacing     % Inter lines space
 
+%%%%%%%%%%%%%%% FANCY HDR Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{fancyhdr}
+%\usepackage[head=30pt,foot=10pt]{geometry}
+%\fancypagestyle{plain}
+\pagestyle{fancy}
+\setlength{\headheight}{15pt} %Set the height of the header
+\topmargin=-20pt
+\headsep = 35pt
+\hoffset=+0.335in
+\textwidth = 445pt
+%\footheight = 10pt
+\textheight = 680pt %715
 
-%Commands for showing the most used acronyms
-\newcommand{\jet}{\textsc{Jet}}
-\newcommand{\nl}{\newline} 
-\newcommand{\javarmi}{\textsc{Java RMI}}
-\newcommand{\bpel}{\textsc{BPEL}}
+\fancyheadoffset[L]{35pt} % gap between the header and the left side 
+\fancyheadoffset[R]{10pt} % gap between the header and the left side 
+%\fancyfootoffset[R]{10pt}
+\footskip = 30pt
+%\voffset=-3.5in
+
+\fancyhead{} %Clear all headers
+\fancyhead[R]{\slshape \rightmark} % To write the Subsection on the upper right[R] header side
+%\fancyhead[LO]{\slshape \leftmark} % To write the Section on the upper Left header side
+%\fancyhead[R]{\bfseries Bpel to Java} %To write the Thesis title on the upper Right header
+
+\lhead{\setlength{\unitlength}{1mm}
+\begin{picture}(0,0)
+\put(0,0){\includegraphics[width=65mm]{pictures/Logo.png}}
+\end{picture}}
+
+\fancyfoot{} %Clear the footer
+\fancyfoot[C]{\slshape \thepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%LST listings settings %%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Basic settings of the listings package to "better" show the code 
 \usepackage{listings}
@@ -31,163 +58,158 @@ frame=trBL,			        % adds a frame around the code
 breaklines=true,		      % sets automatic line breaking
 showstringspaces=false,         % underline spaces within strings
 }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% \hypersetup{
-% pdfauthor = {Antonio Arfè},
-% pdftitle = {document},
-% pdfcreator = {LaTeX},
-% pdfproducer = {latex + ps2pdf}}
-
-%Last package to be imported
+% Last package to be imported
 \usepackage[pdftex,linkbordercolor={0 0 1},bookmarks=true,hypertexnames=false,breaklinks=true]{hyperref}
+\hypersetup{
+pdfauthor = {Antonio Arfè},
+pdftitle = {BPEL to Java},
+pdfcreator = {LaTeX},
+pdfproducer = {latex + ps2pdf}}
 
 % Title Page
-\title{BPEL to Java fixme}
+\title{BPEL to Java}
 \author{Antonio Arf\`{e}}
 
-%\usepackage[pdftex,linkbordercolor={0 0 1},bookmarks=true,hypertexnames=false,breaklinks=true]{hyperref}
-%\hypersetup{
-%pdfauthor = {Antonio Arfè, Arnaud Germis, František Kobzík, and Pierre Stephan},
-%pdftitle = {Java RMI Implementation of a BPEL Process},
-%pdfcreator = {LaTeX},
-%pdfproducer = {latex + ps2pdf}}
+% Commands for showing the most used acronyms
+\newcommand{\nl}{\newline} 
+\newcommand{\javarmi}{\textsc{Java RMI}}
+\newcommand{\bpel}{\textsc{BPEL}}
+
+% Make every section start in a new page
+\let\stdsection\section  
+\renewcommand\section{\newpage\stdsection}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% END SETTINGS %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% BEGIN DOCUMENT %%%%%%%%%%%%%%%%
+
 \begin{document}
 
-% Basic settings to "better" show the code
-\lstset{ %
-language=Java,            % choose the language of the code
-basicstyle=\scriptsize,  % the size of the fonts that are used for the code
-basewidth={0.57em,0.57em},
-frame=trBL,			        % adds a frame around the code
-breaklines=true,		      % sets automatic line breaking
-showstringspaces=false,         % underline spaces within strings
-}
-%FIXME these settings are reported twice!!!
+% % % \thispagestyle{empty}
+% % %  \begin{titlepage}
+% % %  % - Begin of frontpage -
+% % %  \fxnote{DRAFT version 1.0}
+% % %  \begin{nopagebreak}
+% % % 
+% % % \begin{raggedleft}\advance\rightskip by-1cm
+% % % \null\vskip 2.5cm
+% % %      {\LARGE Antonio Arfè}
+% % % \vskip 2cm
+% % % {\fontsize{28}{32}\bfseries
+% % % BPEL to Java fixme
+% % % 
+% % %  \par}
+% % % \vskip 3cm
+% % % {\Large Bachelor Thesis Project \ June 2012 - ---- 2012 \par} %fixme
+% % % \vskip 3pt
+% % % To be evaluated on fixme --$^{th}$ 2012  %fixme
+% % % \end{raggedleft}
+% % % \vfill
+% % % \hbox{\vrule\vbox{\hrule
+% % %                 \prevdepth0pt
+% % %                 \vskip2pt
+% % %                 \hbox{ Department of Computer Science }
+% % %                 \hbox{ Federico II University}
+% % %                 \hbox{ Via Claudio,}
+% % %                 \hbox{ 80100 Naples }
+% % %                 \hbox{ ITALY }
+% % %                 \vskip2pt
+% % %                 \vskip.5ex
+% % %                 \vskip2pt
+% % %                 \hrule}\vrule}
+% % % 
+% % %  \end{nopagebreak}
+% % % 
+% % %  \cleardoublepage
+% % %  
+% % % % - End of frontpage - begin of titlepage -
+% % % \begin{nopagebreak}
+% % % {\samepage
+% % % \begin{tabular}{lr}
+% % %         \parbox{14.5cm}{
+% % %           {\LARGE Faculty of Engineering}
+% % % 
+% % %           {\small Federico II University}
+% % %           \vspace{-0.3cm}\\
+% % %         \hrule
+% % %         \vspace{0.2cm}
+% % %           {\bf Department of Computer Science}
+% % %          }   & \hspace{-2.0cm} %\includegraphics[width=1.1cm]{picLogo.jpg} %fixme
+% % % \end{tabular}
+% % % %------------------------ with parbox at 7 cm
+% % % \begin{tabular}{cc}
+% % % \parbox{7cm}{
+% % % \hspace{2cm}
+% % % \begin{description}
+% % % 
+% % % \item {\bf TITLE:}
+% % % 
+% % % BPEL to Java fixme
+% % % 
+% % % \end{description}
+% % % 
+% % % % ---------------------- Description with parbox at 8 cm
+% % % \parbox{8cm}{
+% % % 
+% % % \begin{description}
+% % %          \item {\bf PROJECT PERIOD:}\\
+% % %            Bachelor Thesis, \\
+% % %            %fixme Oct 1$^{st}$ 2012 -\\fixme 99$^{th}$ 2010\\
+% % %             June 2012 -\\---- 2012\\
+% % %            \hspace{4cm}
+% % %          \item {\bf STUDENT:}\\
+% % %            Antonio Arfè\\
+% % %            \hspace{2cm}
+% % %          \item {\bf SUPERVISORS:}\\
+% % %            V. Vittorini, S. Marrone
+% % % \end{description}
+% % % }
+% % % 
+% % % %--------------------------------------------------------
+% % % \begin{description}
+% % %         \item {\bf NUMBER OF COPIES:} 4
+% % %         \item {\bf REPORT PAGES:} \pageref{report_end}
+% % %         \item {\bf APPENDIX PAGES:} 0
+% % %         \item {\bf TOTAL PAGES:} \pageref{LastPage}
+% % % \end{description}
+% % % %--------------------------------------------------------
+% % % \vfill } &
+% % % \parbox{7cm}{
+% % %   \vspace{.15cm}
+% % %   \flushright
+% % %   \fbox{
+% % %     \parbox{6.5cm}{{\bf SYNOPSIS:}\vspace{0.5cm}
+% % %      {\vfill{\small \input{Synopsis.tex}
+% % %      }}\vspace{0.3cm}
+% % %      }
+% % %   }
+% % % }
+% % % \end{tabular}
+% % % }
+% % % 
+% % % %----------------------
+% % % 
+% % % \end{nopagebreak}
+% % % \end{titlepage}
 
-\thispagestyle{empty}
- \begin{titlepage}
- % - Begin of frontpage -
- \fxnote{DRAFT version 1.0}
- \begin{nopagebreak}
-
-\begin{raggedleft}\advance\rightskip by-1cm
-\null\vskip 2.5cm
-     {\LARGE Antonio Arfè}
-\vskip 2cm
-{\fontsize{28}{32}\bfseries
-BPEL to Java fixme
-
- \par}
-\vskip 3cm
-{\Large Bachelor Thesis Project \ June 2012 - ---- 2012 \par} %fixme
-\vskip 3pt
-To be evaluated on fixme --$^{th}$ 2012  %fixme
-\end{raggedleft}
-\vfill
-\hbox{\vrule\vbox{\hrule
-                \prevdepth0pt
-                \vskip2pt
-                \hbox{ Department of Computer Science }
-                \hbox{ Federico II University}
-                \hbox{ Via Claudio,}
-                \hbox{ 80100 Naples }
-                \hbox{ ITALY }
-                \vskip2pt
-                \vskip.5ex
-                \vskip2pt
-                \hrule}\vrule}
-
- \end{nopagebreak}
-
- \cleardoublepage
  
-% - End of frontpage - begin of titlepage -
-\begin{nopagebreak}
-{\samepage
-\begin{tabular}{lr}
-        \parbox{14.5cm}{
-          {\LARGE Faculty of Engineering}
+%\setcounter{page}{3}
 
-          {\small Federico II University}
-          \vspace{-0.3cm}\\
-        \hrule
-        \vspace{0.2cm}
-          {\bf Department of Computer Science}
-         }   & \hspace{-2.0cm} %\includegraphics[width=1.1cm]{picLogo.jpg} %fixme
-\end{tabular}
-%------------------------ with parbox at 7 cm
-\begin{tabular}{cc}
-\parbox{7cm}{
-\hspace{2cm}
-\begin{description}
+\includepdf[pages=1-2]{frontespizio.pdf}
+%pagina vuota se possibile
 
-\item {\bf TITLE:}
-
-BPEL to Java fixme
-
-\end{description}
-
-% ---------------------- Description with parbox at 8 cm
-\parbox{8cm}{
-
-\begin{description}
-         \item {\bf PROJECT PERIOD:}\\
-           Bachelor Thesis, \\
-           %fixme Oct 1$^{st}$ 2012 -\\fixme 99$^{th}$ 2010\\
-            June 2012 -\\---- 2012\\
-           \hspace{4cm}
-         \item {\bf STUDENT:}\\
-           Antonio Arfè\\
-           \hspace{2cm}
-         \item {\bf SUPERVISORS:}\\
-           V. Vittorini, S. Marrone
-\end{description}
-}
-
-%--------------------------------------------------------
-\begin{description}
-        \item {\bf NUMBER OF COPIES:} 4
-        \item {\bf REPORT PAGES:} \pageref{report_end}
-        \item {\bf APPENDIX PAGES:} 0
-        \item {\bf TOTAL PAGES:} \pageref{LastPage}
-\end{description}
-%--------------------------------------------------------
-\vfill } &
-\parbox{7cm}{
-  \vspace{.15cm}
-  \flushright
-  \fbox{
-    \parbox{6.5cm}{{\bf SYNOPSIS:}\vspace{0.5cm}
-     {\vfill{\small \input{Synopsis.tex}
-     }}\vspace{0.3cm}
-     }
-  }
-}
-\end{tabular}
-}
-
-%----------------------
-
-\end{nopagebreak}
-\end{titlepage}
-
-
-
-%%% Local Variables: 
-%%% mode: latex
-%%% TeX-master: "report"
-%%% End:
- 
 % Table of contents
-\pagebreak
-\setcounter{page}{3}
 \tableofcontents
-
 \pagebreak
 
 \input{introduction}
-\input{LiteratureReview}
-\input{skeleton}
+\input{ServiceOrientedComputing}
+\input{ModelDrivenApproaches}
+\input{MethodologicalApproach}
+\input{DetailedArchitecture}
+\input{Discussion}
+\input{Conclusion}
 % 
 % \input{Comparison}
 % 
