@@ -1,12 +1,35 @@
 %---Introduction to the MDA and how it basically works
 \section{Model Driven Engineering}
 \label{ModelDrivenEngineering}
-Model Driven Engineering (MDE) is a software development methodology which focuses on creating models rather than algorithmic concepts which are usually addressed in the classical programming approaches.
-This discipline attempts an abstraction of the benefits and the features provided by the Software Engineering \cite{Marrone}, usually creating a domain specific framework for implementing new systems, based on well known and tested concepts, obtained through a careful and detailed analysis of the domain and its actors.
+Model Driven Engineering (MDE) is a software development methodology which focuses on creating models rather than algorithmic concepts that are usually addressed in the classical programming approaches.
+This discipline attempts an abstraction of the benefits and the features provided by the Software Engineering \cite{Marrone}, usually creating a domain specific framework for implementing new systems, based on well known and tested concepts, obtained through a careful and detailed analysis of the domain and its actors.\\
+%
+MDE essentially shifts the focus from the program code to models, making them the gravitational center of every MDE process \cite{Lukman08}. The model represents the system and the language which describes the model must be characterized by a well defined syntax and semantic. This way, if the model strictly complies with the languages' rules, it is possible to create automatized routines that carry out activities such as debugging, validation, simulation or transformation \cite{Papa11}. 
+The language to describe the model is itself complying with a meta-model, which, recursively, complies with a meta-meta-model. In fact, a typical MDE approach consists of the usage of a pile of models having at the top the system model. \\
+%
+Eventually, the two main principles of MDE are:
+\begin{itemize}
+ \item creation of models: using meta-modelling techniques
+ \item automatized manipulation of models: using transformations to transform an input model (conforming to a source meta-model) to an output model (conforming to a destination meta-model)
+\end{itemize}
 
-MDE essentially shifts the focus from the program code to models, making them the gravitational center of every MDE process \cite{Lukman08}. 
+\subsection{MDE: the manipulation of models}
+\label{MDEModelManipulation}
+Among the automated routines that MDE can perform on models, we focus on the model Transformations, which, starting from an input model create an output model conforming to a destination meta-model. 
+Depending on the kind of source model\footnote{other techniques, not model-based (XML document to XML document, Text-to-Binaries, etc.), can also be abstracted under the generic type of model transformations \cite{M2TandM2M}} , there are two kinds of transformations \cite{Papa11}: \textbf{Model-to-Model} and \textbf{Model-to-Text} (or Model-to-Code, when the output text is a programming language syntax.). Both the transformations can be implemented in two ways \cite{M2TandM2M}:
+\begin{itemize}
+ \item Using a model Domain-Specific Modeling Language (DSML)
+ \item Using a General Purpose Language (GPL), e.g. Java, C\#
+\end{itemize}
+The difference is that a domain specific modeling language focus on a particular application domain thus it can represent concepts that are not possible to describe with a general purpose language.
 
-The model represents the system \cite{Papa11}
+\paragraph{Transformations of models}
+As described in \cite{Papa11}, a transformation is formed by a set of rules, or \textbf{transformation rules}, that describe how an element expressed in the source language should be transformed in one or more elements of the destination language.
+Of course, both the source and destination model must comply with their respective meta-models.
+%FIXME add a picture like the one in http://www.ebpml.org/blog/130.htm
+
+
+   
 
 % The best known MDE initiative is the Object Management Group (OMG) initiative Model-Driven Architecture (MDA), which is a registered trademark of OMG \cite{MDE}.
 % 
