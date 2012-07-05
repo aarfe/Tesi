@@ -4,7 +4,7 @@ img_extIsRegExp=false
 img_extensions=.eps .jpg .jpeg .png .pdf .ps .fig .gif
 kileprversion=2
 kileversion=2.1.0
-lastDocument=LiteratureReview.tex
+lastDocument=references.bib
 masterDocument=
 name=Tesi
 pkg_extIsRegExp=false
@@ -78,10 +78,10 @@ ReadWrite=true
 
 [item:LiteratureReview.tex]
 archive=true
-column=364
+column=0
 encoding=UTF-8
 highlight=LaTeX
-line=89
+line=0
 mode=LaTeX
 open=true
 order=4
@@ -177,8 +177,8 @@ open=false
 order=-1
 
 [view-settings,view=0,item:LiteratureReview.tex]
-CursorColumn=364
-CursorLine=89
+CursorColumn=0
+CursorLine=0
 JumpList=
 ViMarks=
 
