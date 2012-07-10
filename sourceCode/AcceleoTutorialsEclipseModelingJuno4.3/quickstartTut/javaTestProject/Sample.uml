@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<uml:Package xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_zD2ncMXpEeG3-MCzJhU_TQ">
-  <packagedElement xmi:type="uml:Class" xmi:id="_AWC2QMXqEeG3-MCzJhU_TQ" name="MyAcceleoClass">
-    <ownedAttribute xmi:id="_YRIWYMXqEeG3-MCzJhU_TQ" name="myName"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Class" xmi:id="_nVl0EMXqEeG3-MCzJhU_TQ" name="Timer"/>
-</uml:Package>

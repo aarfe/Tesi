@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_qHRusMdBEeG5yYfsN90qTg">
+  <packagedElement xmi:type="uml:Class" xmi:id="_2ThCEMdBEeG5yYfsN90qTg" name="Person">
+    <ownedAttribute xmi:id="_IZbekMdCEeG5yYfsN90qTg" name="personName" type="__OqOwMdaEeG5yYfsN90qTg"/>
+    <ownedAttribute xmi:id="_Mcg5gMdCEeG5yYfsN90qTg" name="personSurname" type="__OqOwMdaEeG5yYfsN90qTg"/>
+    <ownedOperation xmi:id="_eoVgAMdeEeG5yYfsN90qTg" name="getAge"/>
+    <nestedClassifier xmi:type="uml:PrimitiveType" xmi:id="__OqOwMdaEeG5yYfsN90qTg" name="String"/>
+    <nestedClassifier xmi:type="uml:PrimitiveType" xmi:id="_G9IZgMdfEeG5yYfsN90qTg" name="Int"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_Vb_V8MdCEeG5yYfsN90qTg" name="Animal"/>
+</uml:Package>
