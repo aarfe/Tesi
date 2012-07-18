@@ -1,0 +1,29 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from SayHelloService WSDL service -->
+
+  <service name="SayHello" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://uni.bpel2java"/>
+      <parameter name="wsdlServiceElement" value="SayHelloService"/>
+      <parameter name="schemaQualified" value="http://uni.bpel2java"/>
+      <parameter name="wsdlServicePort" value="SayHello"/>
+      <parameter name="className" value="bpel2java.uni.SayHelloSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="SayHello"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="greet" qname="operNS:greet" xmlns:operNS="http://uni.bpel2java" returnQName="retNS:greetReturn" xmlns:retNS="http://uni.bpel2java" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:myInput" xmlns:pns="http://uni.bpel2java" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="greet"/>
+
+  </service>
+</deployment>
