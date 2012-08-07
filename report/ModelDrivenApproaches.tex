@@ -1,11 +1,11 @@
 %---Introduction to the MDA and how it basically works
-\section{Model Driven Engineering}
+\section{Model Driven Engineering (MDE)}
 \label{ModelDrivenEngineering}
-Model Driven Engineering (MDE) is a software development methodology which focuses on creating models rather than algorithmic concepts that are usually addressed in the classical programming approaches.
+Model Driven Engineering (MDE) is a development methodology which focuses on creating models rather than algorithmic concepts that are usually addressed in the classical programming approaches.
 This discipline attempts an abstraction of the benefits and the features provided by the Software Engineering \cite{Marrone}, usually creating a domain specific framework for implementing new systems, based on well known and tested concepts, obtained through a careful and detailed analysis of the domain and its actors.\\
 %
 MDE essentially shifts the focus from the program code to models, making them the gravitational center of every MDE process \cite{Lukman08}. The model represents the system and the language which describes the model must be characterized by a well defined syntax and semantic. This way, if the model strictly complies with the languages' rules, it is possible to create automatized routines that carry out activities such as debugging, validation, simulation or transformation \cite{Papa11}. 
-The language to describe the model is itself complying with a meta-model, which, recursively, complies with a meta-meta-model. In fact, a typical MDE approach consists of the usage of a pile of models having at the top the system model. \\
+The language to describe the model is itself complying with a meta-model which, recursively, complies with a meta-meta-model. In fact, a typical MDE approach consists of the usage of a pile of models having at the top the system model. \\
 %
 Eventually, the two main principles of MDE are:
 \begin{itemize}
@@ -13,9 +13,33 @@ Eventually, the two main principles of MDE are:
  \item automatized manipulation of models: using transformations to transform an input model (conforming to a source meta-model) to an output model (conforming to a destination meta-model)
 \end{itemize}
 
-\subsection{MDE: the manipulation of models}
-\label{MDEModelManipulation}
-Among the automated routines that MDE can perform on models, we focus on the model Transformations, which, starting from an input model create an output model conforming to a destination meta-model. 
+\subsection{Model Driven Architecture (MDA)}
+\label{MDA}
+Actually, the MDE concepts are generic and can be applied to many engineering disciplines where models are used. To narrow our attention down to software development, we should consider the Model Driven Architecture (MDA), which is a standard from the Object Management Group (OMG) that specifies in details the particular modeling languages (e.g. UML) and the related automations to map an input model into an output one.
+A very common MDA pattern consists of the definition of three models \cite{Marrone} representing the input application, the platform information and the output application:
+
+\begin{itemize}
+ \item Platform Independent Model (PIM): it is a model of the application, completely independent from the platform on which it might be implemented
+ \item Platform Description Model (PDM): it describes the architecture on which the output application should be deployed
+ \item Platform Specific Model (PSM)$=f($PIM,PDM$)$: it is the result of an automatic transformation of the PIM using the PDM specific platform directives  
+\end{itemize}
+
+The output models, result of the MDA transformations, are so called: "correct-by-construction" models, in opposition to some traditional transformations that are of a "construct-by-correction" type \cite{Marrone}.   
+
+
+\subsection{MDA: the manipulation of models}
+\label{MDAModelManipulation}
+Among the automated routines that MDA can perform on models, we focus on the model Transformations, that, starting from an input model, create an output model conforming to a destination meta-model. 
+
+\paragraph{Transformations of models}
+As described in \cite{Papa11}, a transformation is formed by a set of rules, or \textbf{transformation rules}, that describe how an element expressed in the source language should be transformed in one or more elements of the destination language.
+Of course, both the source and destination model must comply with their respective meta-models.
+%FIXME add a picture like the one in http://www.ebpml.org/blog/130.htm
+The possible transformation rules that can be applied to a model depend on the approaches being used \footnote{Some approaches come from the scientific literature, some in response to the OMG's requests for proposals and others from open-source or commercial vendors.}. Czarnecki and Helsen \cite{Czarnecki03classificationof} classify and describe the set of rules common to all the approaches.
+They individuate the main rules that compose a model transformation. The rules span from the ones defining how to transform and with which scope to the ones about scheduling and organization of the transformation.
+
+\subsubsection{Model-to-Model and Model-to-Text transformations}
+\label{m2m&m2t}
 Depending on the kind of source model\footnote{other techniques, not model-based (XML document to XML document, Text-to-Binaries, etc.), can also be abstracted under the generic type of model transformations \cite{M2TandM2M}} , there are two kinds of transformations \cite{Papa11}: \textbf{Model-to-Model} and \textbf{Model-to-Text} (or Model-to-Code, when the output text is a programming language syntax.). Both the transformations can be implemented in two ways \cite{M2TandM2M}:
 \begin{itemize}
  \item Using a model Domain-Specific Modeling Language (DSML)
@@ -23,10 +47,17 @@ Depending on the kind of source model\footnote{other techniques, not model-based
 \end{itemize}
 The difference is that a domain specific modeling language focus on a particular application domain thus it can represent concepts that are not possible to describe with a general purpose language.
 
-\paragraph{Transformations of models}
-As described in \cite{Papa11}, a transformation is formed by a set of rules, or \textbf{transformation rules}, that describe how an element expressed in the source language should be transformed in one or more elements of the destination language.
-Of course, both the source and destination model must comply with their respective meta-models.
-%FIXME add a picture like the one in http://www.ebpml.org/blog/130.htm
+\paragraph{Model-to-Text approaches}
+If we have a deper look in the Model-to-Text transformations, we notice that Czarnecki and Helsen \cite{Czarnecki03classificationof} subdivide this category in two: Visitor-based and Template-based transformations.
+\subparagraph{Visitor-Based model-to-text transformation}
+It is a simple method where a visitor mechanism can traverse the model's internal architecture and directly write text as output, deciding what transformation to apply depending on the construct encountered. 
+\subparagraph{Template-Based model-to-text transformation}
+This approach represents the most used M2T technique. It contains code templates in which some portions of code are left blank, waiting to be filled with information coming from the input model. 
+The templates comply to the output meta-model, and resembles the code to be generated. 
+In the template-based transformations, there also are multiple mechanisms to gather the information (from the source model) to insert in the templates. A common way is to describe the source model with a non-ambiguous language and later access it through an API provided by the creators of the modeling language. Declarative queries can also be used, as it happens with the Object Constraint Language (OCL) or XML PAth Language (XPath). 
+More advanced techniques implement a hybrid solution, using a mix templates and more complex queries to get data from different parts of the source model.  
+\fxnote[inline=true]{I templates in Acceleo sono scritti nel linguaggio di destinazione (Java nel nostro caso) + snippets di codice Acceleo. In generale, i templates sono (sempre?) scritti nel linguaggio di destinazione? 
+
 
 \input{Acceleo}
    

@@ -1,0 +1,31 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Built-By: hudsonBuild
+Build-Jdk: 1.6.0_21
+Export-Package: org.eclipse.bpel.model,org.eclipse.bpel.model.adapters
+ ,org.eclipse.bpel.model.extensions,org.eclipse.bpel.model.impl,org.ec
+ lipse.bpel.model.messageproperties,org.eclipse.bpel.model.messageprop
+ erties.util,org.eclipse.bpel.model.partnerlinktype,org.eclipse.bpel.m
+ odel.partnerlinktype.util,org.eclipse.bpel.model.proxy,org.eclipse.bp
+ el.model.reordering,org.eclipse.bpel.model.reordering.extensions,org.
+ eclipse.bpel.model.resource,org.eclipse.bpel.model.terms,org.eclipse.
+ bpel.model.util
+Bundle-ActivationPolicy: lazy
+Bundle-Name: %pluginName
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.4.0,4.0.0)
+ ",org.eclipse.core.resources;bundle-version="[3.4.0,4.0.0)",org.eclip
+ se.emf.ecore.xmi;bundle-version="[2.4.0,3.0.0)",org.eclipse.xsd;bundl
+ e-version="[2.4.0,3.0.0)",org.eclipse.wst.wsdl,javax.wsdl;bundle-vers
+ ion="[1.5.0,1.6.2]",org.eclipse.bpel.common.model;bundle-version="1.0
+ .1",org.eclipse.wst.xml.core,org.eclipse.wst.xml.ui
+Bundle-Vendor: %providerName
+Bundle-Version: 1.0.1.v20120619-1916-H189-CI
+Bundle-ManifestVersion: 2
+Bundle-Activator: org.eclipse.bpel.model.BPELPlugin$Implementation
+Bundle-SymbolicName: org.eclipse.bpel.model; singleton:=true
+Import-Package: org.eclipse.wst.xsd.contentmodel.internal,org.eclipse.
+ wst.xml.ui.internal.wizards
+

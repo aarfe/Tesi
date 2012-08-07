@@ -1,0 +1,23 @@
+Qui ci sono 3 cartelle:
+(1)"Acceleo3.3Code..."  Contiene il codice e gli esempi relativi a trasformazioni Acceleo da BPELtoJAva 
+(2)"AcceleoTutorials..." : sono i tutorials più rilevanti che ho fatto per capire Acceleo, sono tutti UML to Java, non ne ho trovato altri per altri linguaggi
+(3)"WebServand BPELProcess" : Contiene il processo BPEL che invoca il Web Service in Java che restituisce una stringa con l'autografo dell'autore (se presente)
+
+
+Ho usato come piattaforma:
+
+--------------
+Per il codice ACCELEO 3.3 (1) e gli ACCELEO tutorials (2) ho usato:
+--------------
+Eclipse Modeling Tools (BUndle)262MB version Indigo 3.7.2
+Acceleo package from : Help --> Install Modeling components , version 3.3
+NB. Con Juno le trasformazioni Acceleo non funzionano 
+
+
+-------------
+Per creare il processo BPEL e il Java web service da invocare (3):
+-------------
+Eclipse Helios 3.6.2 JEE 
+aggiunto package BPEL Designer 0.5.0
+
+NB. Ho dovuto usare questi perchè il pacchetto BPEL non funziona su Juno

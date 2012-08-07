@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project default="generate" name="org.eclipse.acceleo.module.quickStartTutorial">
-    <property name="ECLIPSE_HOME" value="../../../../../../../Tools/eclipseModelingJuno"/>
+    <property name="ECLIPSE_HOME" value="../../../../../../../Tools/eclipseJuno4.2Modeling"/>
     <property name="ECLIPSE_WORKSPACE" value="../../../../../../../workspace/AEclipseJUNO"/>
 
     <!-- The classpath with only the dependencies used by the project -->

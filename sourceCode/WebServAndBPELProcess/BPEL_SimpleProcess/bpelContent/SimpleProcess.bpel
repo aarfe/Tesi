@@ -71,7 +71,9 @@
             </bpel:copy>
             <bpel:copy>
                 <bpel:from part="payload" variable="input">
-                    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[tns:input]]></bpel:query>
+                    <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">
+                        <![CDATA[tns:input]]>
+                    </bpel:query>
                 </bpel:from>
                 <bpel:to part="parameters" variable="AuthorWSParterLinkRequest">
                     <bpel:query queryLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0"><![CDATA[ns:aCognome]]></bpel:query>
