@@ -1,0 +1,145 @@
+[comment encoding = UTF-8 /]
+[module processJavaFile('http:///org/eclipse/bpel/model/bpel.ecore','http://www.eclipse.org/wsdl/2003/WSDL')]
+[import org::eclipse::acceleo::module::bpel2java::reqRes::common::createSetGet /]
+
+
+[template public genProcessJavaFile(aProcess : Process)
+	{varNumb : Integer = aProcess.eAllContents(Variable)->size(); 
+	serv1VarResType : String = 'GetAutographByCognomeEasy';
+	serv1VarReqType : String = 'GetAutographByCognomeEasyResponse';
+	clientVarReqType : String = aProcess.name.toUpperFirst()+'Request';
+	clientVarResType : String = aProcess.name.toUpperFirst()+'Response';
+	varList : Sequence(String) = Sequence{clientVarReqType, clientVarResType, serv1VarReqType, serv1VarResType}; 
+	activitySequence : Sequence(Activity) = aProcess.eAllContents(Activity);
+	 }]
+[file (aProcess.name+'.java', false, 'UTF-8')]
+[comment]
+[let varSet : Set(String) = Set{clientVarReqType, clientVarResType, serv1VarReqType, serv1VarResType}]
+[let ] [/comment]
+package bpel2java.uni;
+
+public class [aProcess.name/] {
+	[comment] NOT GENERIC
+	Because these values are to be found in the .wsdl descriptor files, not here in the .bpel :-(
+	[/comment]	
+[for (aVariable  : Variable | aProcess.eAllContents(Variable))]  
+protected [varList->at(i)/] [aVariable.name/];
+[/for]
+
+public void runWorkflow() {
+//[activitySequence.eContents(Receive).operation.toString()/]
+//[activitySequence.eContents(Receive).operation.name/]
+//Check for CreateInstance=YES
+}
+
+public [clientVarReqType/] [activitySequence.eContents(Receive).name/]() {
+return null;
+}
+public [clientVarResType/] [activitySequence.eContents(Reply).name/]() {
+return null;
+}
+
+[comment Add setter and getter /]
+[for (aVariable  : Variable | aProcess.eAllContents(Variable))]  
+[createSetGet(varList->at(i), aVariable.name)/]
+[/for]
+
+
+
+
+}
+[/file]
+[/template]
+
+
+
+[template private boh(coll : Bag(String))]
+[/template]
+
+[comment]
+0 [aProcess.eContents(Activity).eContents().toString()/]
+a [activitySequence.eContents(Activity).toString()/]
+b [activitySequence->first().eGet('type')/]
+c [activitySequence->first().eGet('name')/]
+d [activitySequence.eContents(Receive).toString()/]
+e [aProcess.eContents(Activity).eContents().eGet('name')/]
+f [activitySequence.oclAsType(Activity)/]
+g [activitySequence./]
+h [activitySequence.toString()/]
+i [activitySequence->last().oclAsType(Activity).name/]
+l [(activitySequence->followingSiblings())/]
+[if (activitySequence->first().oclAsType(Activity).name.toString()='main')]
+ciao
+[/if] [/comment]
+
+[comment]
+[for (aVar : String | )]
+	protected [varSet->asSequence()->at(i)/] a[aVar/];
+[/for]	
+[/comment]
+[comment]
+BOH
+[var->at(1)/] [i/] pop
+[var->at(2)/] [i/]
+[var->at(3)/] [i/]
+[var->at(4)/] [i/]
+BOOM
+[varSet->asOrderedSet()->at(2)/] [i/]
+[varSet->asOrderedSet()->at(3)/] [i/]
+[varSet->asOrderedSet()->at(4)/] [i/]
+
+[Set{1, 2, 3}->select(k : Integer | k = 5)/]
+[/comment]
+
+
+	
+[comment]	Code to get the variable names from the BPEL, not generic because this code should be gt from the .WSDL
+protected [aProcess.name+'Request'/] a[aProcess.name+'Request'/];
+protected [aProcess.name+'Response'/] a[aProcess.name+'Response'/];
+[for (aVariable  : Variable | aProcess.eAllContents(Variable))]  
+	[let name : String = aVariable.messageType.qName.toString()]
+	    	[let index : Integer = name.index('}')]
+	[if (i=3)]
+protected [name.substring(index+1).toUpperFirst()/] a[name.substring(index+1).toUpperFirst()/];
+	[/if]    
+	[if (i=4)]
+protected [name.substring(index+1, name.size()-7).toUpperFirst()/] a[name.substring(index+1, name.size()-7).toUpperFirst()/];				
+	[/if]    	
+	    	[/let]
+	    [/let]	    		 
+[/for]
+[/comment]
+
+
+[comment]
+[for (aVariable: Variable | aProcess.eAllContents(Variable))]
+  VarName: [aVariable.name/] Index: [i/]
+	
+  [/for]
+[/comment]
+
+[comment] [aProcess.activity.name][/comment]
+ [comment]  
+[for (anAttribute: Activity | aProcess.eAllContents(Receive))]
+  Name: [anAttribute.name/] Index: [i/]
+  [/for] [/comment]
+
+
+[comment] WORKING GOOD
+[for (myReceive: Activity | aProcess.eAllContents(Receive))]
+  Name: [myReceive.name/] Index: [i/]
+  prop:
+  [/for]
+
+[for (myReceive: Receive | aProcess.eAllContents(Receive))]
+  public void [myReceive.operation.name/](aSimpleProcessRequest ) {
+	}
+  [/for]
+[/comment]
+
+[comment]
+  [let aReceive : Activity = aProcess.eAllContents(Receive)]
+  [aReceive.name/]
+  [/let]
+[/comment]
+

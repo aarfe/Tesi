@@ -1,0 +1,22 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Acceleo Sample Module Runtime Plug-in
+Bundle-SymbolicName: org.eclipse.acceleo.module.bpel2java.reqRes
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.eclipse.acceleo.module.bpel2java.reqRes.Activator
+Bundle-Vendor: Eclipse Modeling Project
+Require-Bundle: org.eclipse.core.runtime, 
+ org.eclipse.jst.j2ee.core,
+ org.eclipse.wst.wsdl,
+ org.eclipse.emf.ecore,
+ org.eclipse.emf.ecore.xmi,
+ org.eclipse.ocl,
+ org.eclipse.ocl.ecore,
+ org.eclipse.acceleo.model,
+ org.eclipse.acceleo.engine
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-ActivationPolicy: lazy
+Eclipse-LazyStart: true
+Export-Package: org.eclipse.acceleo.module.bpel2java.reqRes,
+ org.eclipse.acceleo.module.bpel2java.reqRes.main
+Import-Package: javax.xml.bind.annotation

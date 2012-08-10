@@ -1,0 +1,10 @@
+[comment encoding = UTF-8 /]
+[module partnerLinkJavaFile('http:///org/eclipse/bpel/model/bpel.ecore')/]
+
+[template public genPartnerLinkJavaFile(aProcess : Process, aPartnerLink : PartnerLink)]
+	[file ('PL'+aPartnerLink.name.toUpperFirst()+'.java', false, 'UTF-8')]
+	package bpel2java.uni;
+	public class ['PL'+aPartnerLink.name.toUpperFirst()/] {
+	}
+	[/file]
+[/template]

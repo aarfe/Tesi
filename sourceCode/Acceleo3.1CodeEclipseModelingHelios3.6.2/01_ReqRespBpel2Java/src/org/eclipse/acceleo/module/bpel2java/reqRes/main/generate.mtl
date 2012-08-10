@@ -1,0 +1,12 @@
+[comment encoding = UTF-8 /]
+[module generate('http:///org/eclipse/bpel/model/bpel.ecore', 'http://www.eclipse.org/wsdl/2003/WSDL')/]
+[import org::eclipse::acceleo::module::bpel2java::reqRes::files::processJavaFile /]
+[import org::eclipse::acceleo::module::bpel2java::reqRes::files::partnerLinkJavaFile /]
+
+[template public generate(aProcess : Process)]
+	[comment @main /]
+	[aProcess.genProcessJavaFile()/]
+	[for (aPartnerLink : PartnerLink | aProcess.eAllContents(PartnerLink))]
+	[aProcess.genPartnerLinkJavaFile(aPartnerLink)/]	
+	[/for]
+[/template]

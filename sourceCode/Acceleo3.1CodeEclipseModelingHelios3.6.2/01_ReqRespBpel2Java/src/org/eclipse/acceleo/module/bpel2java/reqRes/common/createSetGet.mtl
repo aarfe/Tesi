@@ -1,0 +1,12 @@
+[comment encoding = UTF-8 /]
+[module createSetGet('http:///org/eclipse/bpel/model/bpel.ecore', 'http://www.eclipse.org/wsdl/2003/WSDL')/]
+
+[template public createSetGet(aType : String, aName : String)]
+public [aType/] get[aName.toUpperFirst()/]() {
+	return [aName/];
+}
+
+public void set[aName.toUpperFirst()/]([aType/] value) {
+	this.[aName/] = value;
+}
+[/template]
