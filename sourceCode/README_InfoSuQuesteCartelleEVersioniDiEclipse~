@@ -10,22 +10,23 @@ Ho usato come piattaforme:
 
 -------------------------------------------
 Per il codice ACCELEO 3.1 (1) ho usato:
+Per creare il processo BPEL e il Java web service da invocare (4):
 -------------------------------------------
-Eclipse Modeling Tools (BUndle) Helios 3.6.2
-Acceleo package version 3.1
+Eclipse Helios JEEE 3.6.2	- http://www.eclipse.org/downloads/packages/release/helios/sr2
+Acceleo package version 3.1	- http://www.eclipse.org/acceleo/downloads/
+BPEL designer version 0.5.0	- http://download.eclipse.org/bpel/update-site/
+NB. Ho dovuto usare questo Eclipse Helios perchè il pacchetto BPEL non funziona su Juno                    
 
 -------------------------------------------
-Per il codice ACCELEO 3.3 (2) e gli ACCELEO tutorials (3) ho usato:
+[OLD] Per il codice ACCELEO 3.3 (2) e gli ACCELEO tutorials (3) ho usato:
 -------------------------------------------
-Eclipse Modeling Tools (BUndle)262MB version Indigo 3.7.2
-Acceleo package from : Help --> Install Modeling components , version 3.3
+Eclipse Modeling Tools (BUndle)262MB version Indigo 3.7.2 - http://www.eclipse.org/downloads/packages/release/indigo/sr2
+Acceleo package - from : Help --> Install Modeling components , version 3.3
 NB. Con Juno le trasformazioni Acceleo non funzionano 
 NB2. Acceleo dà degli strani errori di compilazione, qualche volta non compila, se chiudo e riapro Eclipse poi funziona
 
 
 -------------------------------------------
-Per creare il processo BPEL e il Java web service da invocare (3):
+LINKS:
 -------------------------------------------
-Eclipse Helios 3.6.2 JEE 
-aggiunto package BPEL Designer 0.5.0
-NB. Ho dovuto usare questi perchè il pacchetto BPEL non funziona su Juno
+Vecchie versione Eclipse: http://wiki.eclipse.org/Older_Versions_Of_Eclipse

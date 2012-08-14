@@ -1,31 +1,32 @@
 Qui ci sono 4 cartelle:
 
-(1)"Acceleo3.1Code..." Contiene il codice della trasformazione bpel2java
-(2)"Acceleo3.3Code..." [OLD] Questa versione spesso non compila] Contiene il codice e gli esempi relativi a trasformazioni Acceleo da BPELtoJAva 
-(3)"AcceleoTutorials..." : sono i tutorials più rilevanti che ho fatto per capire Acceleo, sono tutti UML to Java, non ne ho trovato altri per altri linguaggi
-(4)"WebServand BPELProcess" : Contiene il processo BPEL che invoca il Web Service in Java che restituisce una stringa con l'autografo dell'autore (se presente)
+(1) Acceleo3.1CodeEclipseModelingHelios3.6.2	: Contiene il codice della trasformazione bpel2java
+(2) Acceleo3.3CodeEclipseModelingIndigo3.7.2	: [OLD] Questa versione spesso non compila] Contiene il codice e gli esempi relativi a trasformazioni Acceleo da BPELtoJAva 
+(3) AcceleoTutorialsEclipseModelingJuno4.3	: sono i tutorials più rilevanti che ho fatto per capire Acceleo, sono tutti UML to Java, non ne ho trovato altri per altri linguaggi
+(4) WebServand BPELProcess	: Contiene il processo BPEL che invoca il Web Service in Java che restituisce una stringa con l'autografo dell'autore (se presente)
 
 
 Ho usato come piattaforme:
 
 -------------------------------------------
 Per il codice ACCELEO 3.1 (1) ho usato:
+Per creare il processo BPEL e il Java web service da invocare (4):
 -------------------------------------------
-Eclipse Modeling Tools (BUndle) Helios 3.6.2
-Acceleo package version 3.1
+Eclipse Helios JEEE 3.6.2	- http://www.eclipse.org/downloads/packages/release/helios/sr2
+Acceleo package version 3.1	- http://www.eclipse.org/acceleo/downloads/
+BPEL designer version 0.5.0	- http://download.eclipse.org/bpel/update-site/
+NB. Ho dovuto usare questo Eclipse Helios perchè il pacchetto BPEL non funziona su Juno                    
 
 -------------------------------------------
 [OLD] Per il codice ACCELEO 3.3 (2) e gli ACCELEO tutorials (3) ho usato:
 -------------------------------------------
-Eclipse Modeling Tools (BUndle)262MB version Indigo 3.7.2
-Acceleo package from : Help --> Install Modeling components , version 3.3
+Eclipse Modeling Tools (BUndle)262MB version Indigo 3.7.2 - http://www.eclipse.org/downloads/packages/release/indigo/sr2
+Acceleo package - from : Help --> Install Modeling components , version 3.3
 NB. Con Juno le trasformazioni Acceleo non funzionano 
 NB2. Acceleo dà degli strani errori di compilazione, qualche volta non compila, se chiudo e riapro Eclipse poi funziona
 
 
 -------------------------------------------
-Per creare il processo BPEL e il Java web service da invocare (3):
+LINKS:
 -------------------------------------------
-Eclipse Helios 3.6.2 JEE 
-aggiunto package BPEL Designer 0.5.0
-NB. Ho dovuto usare questi perchè il pacchetto BPEL non funziona su Juno
+Vecchie versione Eclipse: http://wiki.eclipse.org/Older_Versions_Of_Eclipse

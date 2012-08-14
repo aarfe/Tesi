@@ -1,4 +1,4 @@
-package bpel2java.uni;sssssssssssss
+package bpel2java.uni;
 
 public class SimpleProcess {
 protected SimpleProcessRequest input;
@@ -7,11 +7,21 @@ protected GetAutographByCognomeEasyResponse AuthorWSParterLinkResponse;
 protected GetAutographByCognomeEasy AuthorWSParterLinkRequest;
 
 public void runWorkflow() {
-//org.eclipse.wst.wsdl.internal.impl.OperationImpl@1cd86b5 (documentationElement: null, element: [operation: null]) (style: REQUEST_RESPONSE, name: process, undefined: false)
+//org.eclipse.wst.wsdl.internal.impl.OperationImpl@d25780 (documentationElement: null, element: [operation: null]) (style: REQUEST_RESPONSE, name: process, undefined: false)
 //process
 //Check for CreateInstance=YES
+
+//receiveInput
+
+
+PLClient aPLClient = new PLClient(); 
+
+
 }
 
+	/**
+     * Communication with client    
+     */
 public SimpleProcessRequest receiveInput() {
 return null;
 }
@@ -19,6 +29,9 @@ public SimpleProcessResponse replyOutput() {
 return null;
 }
 
+	/**
+     * Add Setters and Getters    
+     */
 public SimpleProcessRequest getInput() {
 	return input;
 }

@@ -1,6 +1,7 @@
 [comment encoding = UTF-8 /]
 [module processJavaFile('http:///org/eclipse/bpel/model/bpel.ecore','http://www.eclipse.org/wsdl/2003/WSDL')]
 [import org::eclipse::acceleo::module::bpel2java::reqRes::common::createSetGet /]
+[import org::eclipse::acceleo::module::bpel2java::reqRes::files::partnerLinkClientJavaFile /]
 
 
 [template public genProcessJavaFile(aProcess : Process)
@@ -30,8 +31,20 @@ public void runWorkflow() {
 //[activitySequence.eContents(Receive).operation.toString()/]
 //[activitySequence.eContents(Receive).operation.name/]
 //Check for CreateInstance=YES
+
+[comment: call the first receive activity in the process /]
+//[aProcess.eAllContents(Receive)->first().name/]
+
+[comment Create the CLientPartnerLink /]
+
+PL[aProcess.eAllContents(Receive)->first().partnerLink.name.toUpperFirst()/] aPL[aProcess.eAllContents(Receive)->first().partnerLink.name.toUpperFirst()/] = new PL[aProcess.eAllContents(Receive)->first().partnerLink.name.toUpperFirst()/](); 
+
+
 }
 
+	/**
+     * Communication with client    
+     */
 public [clientVarReqType/] [activitySequence.eContents(Receive).name/]() {
 return null;
 }
@@ -40,6 +53,9 @@ return null;
 }
 
 [comment Add setter and getter /]
+	/**
+     * Add Setters and Getters    
+     */
 [for (aVariable  : Variable | aProcess.eAllContents(Variable))]  
 [createSetGet(varList->at(i), aVariable.name)/]
 [/for]

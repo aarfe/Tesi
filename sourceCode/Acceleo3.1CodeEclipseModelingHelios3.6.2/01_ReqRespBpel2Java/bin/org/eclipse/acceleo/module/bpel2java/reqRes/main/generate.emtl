@@ -9,7 +9,9 @@
     </input>
     <imports href="../files/processJavaFile.emtl#/0"/>
     <imports href="../files/partnerLinkJavaFile.emtl#/0"/>
+    <imports href="../files/partnerLinkClientJavaFile.emtl#/0"/>
     <ownedModuleElement xsi:type="mtl:Template" name="generate" visibility="Public" main="true">
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#xA;"/>
       <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;"/>
       <body xsi:type="mtl:TemplateInvocation">
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
@@ -18,20 +20,57 @@
           <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Process"/>
         </argument>
       </body>
-      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;&#x9;&#xA;"/>
       <body xsi:type="mtl:ForBlock">
-        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;"/>
-        <body xsi:type="mtl:TemplateInvocation">
-          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-          <definition href="../files/partnerLinkJavaFile.emtl#/0/genPartnerLinkJavaFile"/>
-          <argument xsi:type="ocl.ecore:VariableExp" name="aProcess" referredVariable="/0/generate/aProcess">
-            <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Process"/>
-          </argument>
-          <argument xsi:type="ocl.ecore:VariableExp" name="aPartnerLink" referredVariable="/0/generate/@body.3/aPartnerLink">
-            <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//PartnerLink"/>
-          </argument>
+        <body xsi:type="mtl:IfBlock">
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;&#x9;"/>
+          <body xsi:type="mtl:TemplateInvocation">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <definition href="../files/partnerLinkClientJavaFile.emtl#/0/genPartnerLinkClientJavaFile"/>
+            <argument xsi:type="ocl.ecore:VariableExp" name="aProcess" referredVariable="/0/generate/aProcess">
+              <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Process"/>
+            </argument>
+            <argument xsi:type="ocl.ecore:VariableExp" name="aPartnerLink" referredVariable="/0/generate/@body.4/aPartnerLink">
+              <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//PartnerLink"/>
+            </argument>
+          </body>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;"/>
+          <ifExpr xsi:type="ocl.ecore:OperationCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="i" referredVariable="/11">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+            </source>
+            <argument xsi:type="ocl.ecore:IntegerLiteralExp" integerSymbol="1">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+            </argument>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer_Class/="/>
+          </ifExpr>
+          <else/>
+          <elseIf>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#x9;&#x9;"/>
+            <body xsi:type="mtl:TemplateInvocation">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <definition href="../files/partnerLinkJavaFile.emtl#/0/genPartnerLinkJavaFile"/>
+              <argument xsi:type="ocl.ecore:VariableExp" name="aProcess" referredVariable="/0/generate/aProcess">
+                <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Process"/>
+              </argument>
+              <argument xsi:type="ocl.ecore:VariableExp" name="aPartnerLink" referredVariable="/0/generate/@body.4/aPartnerLink">
+                <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//PartnerLink"/>
+              </argument>
+            </body>
+            <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#xA;"/>
+            <ifExpr xsi:type="ocl.ecore:OperationCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="i" referredVariable="/11">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+              </source>
+              <argument xsi:type="ocl.ecore:IntegerLiteralExp" integerSymbol="1">
+                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+              </argument>
+              <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer_Class/%3C%3E"/>
+            </ifExpr>
+          </elseIf>
         </body>
-        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#xA;"/>
         <loopVariable name="aPartnerLink">
           <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//PartnerLink"/>
         </loopVariable>
@@ -44,6 +83,7 @@
           </argument>
         </iterSet>
       </body>
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;"/>
       <parameter name="aProcess">
         <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Process"/>
       </parameter>
@@ -369,6 +409,21 @@
           <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//PartnerLink"/>
         </eParameters>
       </eOperations>
+      <eOperations name="genPartnerLinkClientJavaFile">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../files/partnerLinkClientJavaFile.emtl#/0/genPartnerLinkClientJavaFile"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="aProcess">
+          <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Process"/>
+        </eParameters>
+        <eParameters name="aPartnerLink">
+          <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//PartnerLink"/>
+        </eParameters>
+      </eOperations>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="OclAny_Class">
       <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
@@ -536,6 +591,18 @@
           <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//PartnerLink"/>
         </eParameters>
       </eOperations>
+      <eOperations name="genPartnerLinkClientJavaFile">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../files/partnerLinkClientJavaFile.emtl#/0/genPartnerLinkClientJavaFile"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="aPartnerLink">
+          <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//PartnerLink"/>
+        </eParameters>
+      </eOperations>
     </eClassifiers>
   </ecore:EPackage>
   <ocl.ecore:Variable name="self">
@@ -579,6 +646,15 @@
     <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//PartnerLink"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//PartnerLink"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//PartnerLink"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//PartnerLink"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
     <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Process"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
@@ -586,84 +662,164 @@
   </ocl.ecore:Variable>
   <ecore:EAnnotation source="positions">
     <eAnnotations source="positions.0" references="/0/generate">
-      <details key="start" value="307"/>
-      <details key="end" value="550"/>
-      <details key="line" value="6"/>
-    </eAnnotations>
-    <eAnnotations source="positions.1" references="/0/generate/@body.0">
-      <details key="start" value="373"/>
-      <details key="end" value="374"/>
+      <details key="start" value="402"/>
+      <details key="end" value="1011"/>
       <details key="line" value="8"/>
     </eAnnotations>
+    <eAnnotations source="positions.1" references="/0/generate/@body.0">
+      <details key="start" value="468"/>
+      <details key="end" value="470"/>
+      <details key="line" value="10"/>
+    </eAnnotations>
     <eAnnotations source="positions.2" references="/0/generate/@body.1">
-      <details key="start" value="375"/>
-      <details key="end" value="404"/>
+      <details key="start" value="523"/>
+      <details key="end" value="524"/>
+      <details key="line" value="12"/>
+    </eAnnotations>
+    <eAnnotations source="positions.3" references="/0/generate/@body.2">
+      <details key="start" value="525"/>
+      <details key="end" value="554"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.3" references="/0/generate/@body.1/aProcess">
-      <details key="start" value="375"/>
-      <details key="end" value="383"/>
+    <eAnnotations source="positions.4" references="/0/generate/@body.2/aProcess">
+      <details key="start" value="525"/>
+      <details key="end" value="533"/>
       <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.4" references="/0/generate/@body.2">
-      <details key="start" value="406"/>
-      <details key="end" value="407"/>
-      <details key="line" value="9"/>
     </eAnnotations>
     <eAnnotations source="positions.5" references="/0/generate/@body.3">
-      <details key="start" value="408"/>
-      <details key="end" value="538"/>
-      <details key="line" value="9"/>
+      <details key="start" value="556"/>
+      <details key="end" value="559"/>
+      <details key="line" value="13"/>
     </eAnnotations>
-    <eAnnotations source="positions.6" references="/0/generate/@body.3/@body.0">
-      <details key="start" value="480"/>
-      <details key="end" value="481"/>
-      <details key="line" value="10"/>
+    <eAnnotations source="positions.6" references="/0/generate/@body.4">
+      <details key="start" value="651"/>
+      <details key="end" value="997"/>
+      <details key="line" value="15"/>
     </eAnnotations>
-    <eAnnotations source="positions.7" references="/0/generate/@body.3/@body.1">
-      <details key="start" value="482"/>
-      <details key="end" value="527"/>
+    <eAnnotations source="positions.7" references="/0/generate/@body.4/@body.0">
+      <details key="start" value="725"/>
+      <details key="end" value="989"/>
+      <details key="line" value="16"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/generate/@body.4/@body.0/@body.0">
+      <details key="start" value="795"/>
+      <details key="end" value="798"/>
+      <details key="line" value="18"/>
+    </eAnnotations>
+    <eAnnotations source="positions.9" references="/0/generate/@body.4/@body.0/@body.1">
+      <details key="start" value="799"/>
+      <details key="end" value="851"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.8" references="/0/generate/@body.3/@body.1/aProcess">
-      <details key="start" value="482"/>
-      <details key="end" value="490"/>
+    <eAnnotations source="positions.10" references="/0/generate/@body.4/@body.0/@body.1/aProcess">
+      <details key="start" value="828"/>
+      <details key="end" value="836"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.9" references="/0/generate/@body.3/@body.1/aPartnerLink">
-      <details key="start" value="514"/>
-      <details key="end" value="526"/>
+    <eAnnotations source="positions.11" references="/0/generate/@body.4/@body.0/@body.1/aPartnerLink">
+      <details key="start" value="838"/>
+      <details key="end" value="850"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.10" references="/0/generate/@body.3/@body.2">
-      <details key="start" value="529"/>
-      <details key="end" value="531"/>
-      <details key="line" value="10"/>
+    <eAnnotations source="positions.12" references="/0/generate/@body.4/@body.0/@body.2">
+      <details key="start" value="853"/>
+      <details key="end" value="854"/>
+      <details key="line" value="19"/>
     </eAnnotations>
-    <eAnnotations source="positions.11" references="/0/generate/@body.3/aPartnerLink">
-      <details key="start" value="414"/>
-      <details key="end" value="440"/>
-      <details key="line" value="9"/>
-    </eAnnotations>
-    <eAnnotations source="positions.12" references="/0/generate/@body.3/@iterSet">
-      <details key="start" value="443"/>
-      <details key="end" value="477"/>
+    <eAnnotations source="positions.13" references="/0/generate/@body.4/@body.0/@ifExpr">
+      <details key="start" value="729"/>
+      <details key="end" value="734"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.13" references="/0/generate/@body.3/@iterSet/aProcess">
-      <details key="start" value="443"/>
-      <details key="end" value="451"/>
+    <eAnnotations source="positions.14" references="/0/generate/@body.4/@body.0/@ifExpr/i">
+      <details key="start" value="730"/>
+      <details key="end" value="731"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.14" references="/0/generate/@body.3/@iterSet/@argument.0">
-      <details key="start" value="465"/>
-      <details key="end" value="476"/>
+    <eAnnotations source="positions.15" references="/0/generate/@body.4/@body.0/@ifExpr/@argument.0">
+      <details key="start" value="732"/>
+      <details key="end" value="733"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.15" references="/0/generate/aProcess">
-      <details key="start" value="333"/>
-      <details key="end" value="351"/>
-      <details key="line" value="6"/>
+    <eAnnotations source="positions.16" references="/0/generate/@body.4/@body.0/@else">
+      <details key="start" value="975"/>
+      <details key="end" value="984"/>
+      <details key="line" value="22"/>
+    </eAnnotations>
+    <eAnnotations source="positions.17" references="/0/generate/@body.4/@body.0/@elseIf.0">
+      <details key="start" value="856"/>
+      <details key="end" value="975"/>
+      <details key="line" value="19"/>
+    </eAnnotations>
+    <eAnnotations source="positions.18" references="/0/generate/@body.4/@body.0/@elseIf.0/@body.0">
+      <details key="start" value="919"/>
+      <details key="end" value="922"/>
+      <details key="line" value="21"/>
+    </eAnnotations>
+    <eAnnotations source="positions.19" references="/0/generate/@body.4/@body.0/@elseIf.0/@body.1">
+      <details key="start" value="923"/>
+      <details key="end" value="969"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.20" references="/0/generate/@body.4/@body.0/@elseIf.0/@body.1/aProcess">
+      <details key="start" value="946"/>
+      <details key="end" value="954"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.21" references="/0/generate/@body.4/@body.0/@elseIf.0/@body.1/aPartnerLink">
+      <details key="start" value="956"/>
+      <details key="end" value="968"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.22" references="/0/generate/@body.4/@body.0/@elseIf.0/@body.2">
+      <details key="start" value="971"/>
+      <details key="end" value="973"/>
+      <details key="line" value="21"/>
+    </eAnnotations>
+    <eAnnotations source="positions.23" references="/0/generate/@body.4/@body.0/@elseIf.0/@ifExpr">
+      <details key="start" value="864"/>
+      <details key="end" value="870"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.24" references="/0/generate/@body.4/@body.0/@elseIf.0/@ifExpr/i">
+      <details key="start" value="865"/>
+      <details key="end" value="866"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.25" references="/0/generate/@body.4/@body.0/@elseIf.0/@ifExpr/@argument.0">
+      <details key="start" value="868"/>
+      <details key="end" value="869"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.26" references="/0/generate/@body.4/aPartnerLink">
+      <details key="start" value="657"/>
+      <details key="end" value="683"/>
+      <details key="line" value="15"/>
+    </eAnnotations>
+    <eAnnotations source="positions.27" references="/0/generate/@body.4/@iterSet">
+      <details key="start" value="686"/>
+      <details key="end" value="720"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.28" references="/0/generate/@body.4/@iterSet/aProcess">
+      <details key="start" value="686"/>
+      <details key="end" value="694"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.29" references="/0/generate/@body.4/@iterSet/@argument.0">
+      <details key="start" value="708"/>
+      <details key="end" value="719"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.30" references="/0/generate/@body.5">
+      <details key="start" value="998"/>
+      <details key="end" value="999"/>
+      <details key="line" value="25"/>
+    </eAnnotations>
+    <eAnnotations source="positions.31" references="/0/generate/aProcess">
+      <details key="start" value="428"/>
+      <details key="end" value="446"/>
+      <details key="line" value="8"/>
     </eAnnotations>
   </ecore:EAnnotation>
 </xmi:XMI>
