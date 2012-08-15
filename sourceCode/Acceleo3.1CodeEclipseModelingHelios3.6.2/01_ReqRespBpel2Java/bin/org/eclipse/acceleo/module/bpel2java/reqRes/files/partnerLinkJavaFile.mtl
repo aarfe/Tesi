@@ -1,10 +1,20 @@
 [comment encoding = UTF-8 /]
 [module partnerLinkJavaFile('http:///org/eclipse/bpel/model/bpel.ecore')/]
+[import org::eclipse::acceleo::module::bpel2java::reqRes::common::createSetGet /]
+[import org::eclipse::acceleo::module::bpel2java::reqRes::common::genericTemplates /]
 
-[template public genPartnerLinkJavaFile(aProcess : Process, aPartnerLink : PartnerLink)]
+[template public genPartnerLinkJavaFile(aProcess : Process, aPartnerLink : PartnerLink, varTypeList : Sequence(String), varNameList : Sequence(Variable))]
 	[file ('PL'+aPartnerLink.name.toUpperFirst()+'.java', false, 'UTF-8')]
-	package bpel2java.uni;
-	public class ['PL'+aPartnerLink.name.toUpperFirst()/] {
+// Client PartnerLink, Role: [aPartnerLink.partnerRole.name/]
+package bpel2java.uni;
+public class ['PL'+aPartnerLink.name.toUpperFirst()/] {
+
+
+[comment Add the variables needed for the communication /]
+[createPrivateAttributes(varTypeList, varNameList)/]
+
+[comment Add setter and getter /]
+[createSetGet(varTypeList, varNameList)/]	
 	}
 	[/file]
 [/template]

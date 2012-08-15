@@ -1,24 +1,23 @@
 [comment encoding = UTF-8 /]
 [module partnerLinkClientJavaFile('http:///org/eclipse/bpel/model/bpel.ecore')/]
 [import org::eclipse::acceleo::module::bpel2java::reqRes::common::createSetGet /]
+[import org::eclipse::acceleo::module::bpel2java::reqRes::common::genericTemplates /]
 
-
-[template public genPartnerLinkClientJavaFile(aProcess : Process, aPartnerLink : PartnerLink)
-	{varNumb : Integer = aProcess.eAllContents(Variable)->size(); 
-	serv1VarResType : String = 'GetAutographByCognomeEasy';
-	serv1VarReqType : String = 'GetAutographByCognomeEasyResponse';
-	clientVarReqType : String = aProcess.name.toUpperFirst()+'Request';
-	clientVarResType : String = aProcess.name.toUpperFirst()+'Response';
-	varList : Sequence(String) = Sequence{clientVarReqType, clientVarResType, serv1VarReqType, serv1VarResType}; 
-	varNameList : Sequence(String) = Sequence{'input', 'output'};
-	activitySequence : Sequence(Activity) = aProcess.eAllContents(Activity);
-	
-	 }]
+[template public genPartnerLinkClientJavaFile(aProcess : Process, aPartnerLink : PartnerLink, 
+                                               varTypeList : Sequence(String), varNameList : Sequence(Variable))]
 	[file ('PL'+aPartnerLink.name.toUpperFirst()+'.java', false, 'UTF-8')]
-// Client PartnerLink, Role: [aPartnerLink.myRole/]
-	package bpel2java.uni;
-	public class ['PL'+aPartnerLink.name.toUpperFirst()/] {
-		
-	}
+// Client PartnerLink, Role: [aPartnerLink.myRole.name/]
+package bpel2java.uni;
+public class ['PL'+aPartnerLink.name.toUpperFirst()/] {
+	
+[comment Add the variables needed for the communication /]
+[createPrivateAttributes(varTypeList, varNameList)/]
+
+[comment Add setter and getter /]
+[createSetGet(varTypeList, varNameList)/]
+}
+	
+	
+	
 	[/file]
 [/template]

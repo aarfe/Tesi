@@ -5,8 +5,7 @@
 
 
 [template public genProcessJavaFile(aProcess : Process)
-	{varNumb : Integer = aProcess.eAllContents(Variable)->size(); 
-	serv1VarResType : String = 'GetAutographByCognomeEasy';
+	{serv1VarResType : String = 'GetAutographByCognomeEasy';
 	serv1VarReqType : String = 'GetAutographByCognomeEasyResponse';
 	clientVarReqType : String = aProcess.name.toUpperFirst()+'Request';
 	clientVarResType : String = aProcess.name.toUpperFirst()+'Response';
@@ -23,6 +22,9 @@ public class [aProcess.name/] {
 	[comment] NOT GENERIC
 	Because these values are to be found in the .wsdl descriptor files, not here in the .bpel :-(
 	[/comment]	
+
+[comment Add the variables needed for the communication /]
+// Variables needed for the communication
 [for (aVariable  : Variable | aProcess.eAllContents(Variable))]  
 protected [varList->at(i)/] [aVariable.name/];
 [/for]
@@ -37,7 +39,7 @@ public void runWorkflow() {
 
 [comment Create the CLientPartnerLink /]
 
-PL[aProcess.eAllContents(Receive)->first().partnerLink.name.toUpperFirst()/] aPL[aProcess.eAllContents(Receive)->first().partnerLink.name.toUpperFirst()/] = new PL[aProcess.eAllContents(Receive)->first().partnerLink.name.toUpperFirst()/](); 
+PL[aProcess.eAllContents(Receive)->first().partnerLink.name.toUpperFirst()/] myPL[aProcess.eAllContents(Receive)->first().partnerLink.name.toUpperFirst()/] = new PL[aProcess.eAllContents(Receive)->first().partnerLink.name.toUpperFirst()/](); 
 
 
 }
@@ -56,10 +58,12 @@ return null;
 	/**
      * Add Setters and Getters    
      */
+
+[comment]
 [for (aVariable  : Variable | aProcess.eAllContents(Variable))]  
 [createSetGet(varList->at(i), aVariable.name)/]
 [/for]
-
+[/comment]
 
 
 

@@ -182,6 +182,7 @@ public class Generate extends AbstractAcceleoGenerator {
    * @return The generation strategy that is to be used for generations launched through this launcher.
    * @generated
    */
+  @Override
   public IAcceleoGenerationStrategy getGenerationStrategy() {
     return super.getGenerationStrategy();
   }

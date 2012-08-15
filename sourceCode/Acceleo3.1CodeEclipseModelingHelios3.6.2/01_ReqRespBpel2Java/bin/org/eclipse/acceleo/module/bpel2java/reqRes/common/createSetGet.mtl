@@ -1,12 +1,19 @@
 [comment encoding = UTF-8 /]
 [module createSetGet('http:///org/eclipse/bpel/model/bpel.ecore', 'http://www.eclipse.org/wsdl/2003/WSDL')/]
 
-[template public createSetGet(aType : String, aName : String)]
-public [aType/] get[aName.toUpperFirst()/]() {
-	return [aName/];
+[template public createSetGet(varTypeList : Sequence(String), varNameList : Sequence(Variable))]
+
+	/**
+     * Setters and Getters    
+     */
+[for (aVar : Variable | varNameList )]
+public [varTypeList->at(i)/] get[aVar.name.toUpperFirst()/]() {
+	return [aVar.name/];
 }
 
-public void set[aName.toUpperFirst()/]([aType/] value) {
-	this.[aName/] = value;
+public void set[aVar.name.toUpperFirst()/]([varTypeList->at(i)/] value) {
+	this.[aVar.name/] = value;
 }
+
+[/for]
 [/template]

@@ -1,89 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
-  <mtl:Module name="partnerLinkJavaFile" nsURI="org::eclipse::acceleo::module::bpel2java::reqRes::files::partnerLinkJavaFile">
+  <mtl:Module name="genericTemplates" nsURI="org::eclipse::acceleo::module::bpel2java::reqRes::common::genericTemplates">
     <input>
       <takesTypesFrom href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#/"/>
     </input>
-    <imports href="../common/createSetGet.emtl#/0"/>
-    <imports href="../common/genericTemplates.emtl#/0"/>
-    <ownedModuleElement xsi:type="mtl:Template" name="genPartnerLinkJavaFile" visibility="Public">
-      <body xsi:type="mtl:FileBlock" openMode="OverWrite">
-        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="// Client PartnerLink, Role: "/>
+    <input>
+      <takesTypesFrom href="http://www.eclipse.org/wsdl/2003/WSDL#/"/>
+    </input>
+    <ownedModuleElement xsi:type="mtl:Template" name="createPrivateAttributes" visibility="Public">
+      <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;/**&#xA;     * Attributes    &#xA;     */&#xA;"/>
+      <body xsi:type="mtl:ForBlock">
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="private "/>
+        <body xsi:type="ocl.ecore:OperationCallExp">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="varTypeList" eType="/3/Sequence(String)" referredVariable="/0/createPrivateAttributes/varTypeList"/>
+          <argument xsi:type="ocl.ecore:VariableExp" name="i" referredVariable="/9">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
+          </argument>
+          <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)_Class/at"/>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" "/>
         <body xsi:type="ocl.ecore:PropertyCallExp">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-          <source xsi:type="ocl.ecore:PropertyCallExp">
-            <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/plnktype#//Role"/>
-            <source xsi:type="ocl.ecore:VariableExp" name="aPartnerLink" referredVariable="/0/genPartnerLinkJavaFile/aPartnerLink">
-              <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//PartnerLink"/>
-            </source>
-            <referredProperty xsi:type="ecore:EReference" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//PartnerLink/partnerRole"/>
+          <source xsi:type="ocl.ecore:VariableExp" name="aVar" referredVariable="/0/createPrivateAttributes/@body.1/aVar">
+            <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Variable"/>
           </source>
-          <referredProperty xsi:type="ecore:EAttribute" href="http://docs.oasis-open.org/wsbpel/2.0/plnktype#//Role/name"/>
+          <referredProperty xsi:type="ecore:EAttribute" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Variable/name"/>
         </body>
-        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;package bpel2java.uni;&#xA;public class "/>
-        <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/String_Class/+">
-          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-          <source xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="PL">
-            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-          </source>
-          <argument xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/String_Class/toUpperFirst">
-            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-            <source xsi:type="ocl.ecore:PropertyCallExp">
-              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-              <source xsi:type="ocl.ecore:VariableExp" name="aPartnerLink" referredVariable="/0/genPartnerLinkJavaFile/aPartnerLink">
-                <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//PartnerLink"/>
-              </source>
-              <referredProperty xsi:type="ecore:EAttribute" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//PartnerLink/name"/>
-            </source>
-          </argument>
-        </body>
-        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=" {&#xA;&#xA;&#xA;"/>
-        <body xsi:type="mtl:TemplateInvocation">
-          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-          <definition href="../common/genericTemplates.emtl#/0/createPrivateAttributes"/>
-          <argument xsi:type="ocl.ecore:VariableExp" name="varTypeList" eType="/3/Sequence(String)" referredVariable="/0/genPartnerLinkJavaFile/varTypeList"/>
-          <argument xsi:type="ocl.ecore:VariableExp" name="varNameList" eType="/3/Sequence(Variable)" referredVariable="/0/genPartnerLinkJavaFile/varNameList"/>
-        </body>
-        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#xA;&#xA;"/>
-        <body xsi:type="mtl:TemplateInvocation">
-          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-          <definition href="../common/createSetGet.emtl#/0/createSetGet"/>
-          <argument xsi:type="ocl.ecore:VariableExp" name="varTypeList" eType="/3/Sequence(String)" referredVariable="/0/genPartnerLinkJavaFile/varTypeList"/>
-          <argument xsi:type="ocl.ecore:VariableExp" name="varNameList" eType="/3/Sequence(Variable)" referredVariable="/0/genPartnerLinkJavaFile/varNameList"/>
-        </body>
-        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#xA;&#x9;}&#xA;"/>
-        <fileUrl xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/String_Class/+">
-          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-          <source xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/String_Class/+">
-            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-            <source xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="PL">
-              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-            </source>
-            <argument xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/String_Class/toUpperFirst">
-              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-              <source xsi:type="ocl.ecore:PropertyCallExp">
-                <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-                <source xsi:type="ocl.ecore:VariableExp" name="aPartnerLink" referredVariable="/0/genPartnerLinkJavaFile/aPartnerLink">
-                  <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//PartnerLink"/>
-                </source>
-                <referredProperty xsi:type="ecore:EAttribute" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//PartnerLink/name"/>
-              </source>
-            </argument>
-          </source>
-          <argument xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".java">
-            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-          </argument>
-        </fileUrl>
-        <charset xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="UTF-8">
-          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        </charset>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=";&#x9;&#xA;"/>
+        <loopVariable name="aVar">
+          <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Variable"/>
+        </loopVariable>
+        <iterSet xsi:type="ocl.ecore:VariableExp" name="varNameList" eType="/3/Sequence(Variable)" referredVariable="/0/createPrivateAttributes/varNameList"/>
       </body>
-      <parameter name="aProcess">
-        <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Process"/>
-      </parameter>
-      <parameter name="aPartnerLink">
-        <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//PartnerLink"/>
-      </parameter>
       <parameter name="varTypeList" eType="/3/Sequence(String)"/>
       <parameter name="varNameList" eType="/3/Sequence(Variable)"/>
     </ownedModuleElement>
@@ -371,50 +320,14 @@
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         </eParameters>
       </eOperations>
-      <eOperations name="genPartnerLinkJavaFile">
-        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
-          <contents xsi:type="ocl.ecore:Constraint"/>
-        </eAnnotations>
-        <eAnnotations source="MTL" references="/0/genPartnerLinkJavaFile"/>
-        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <eParameters name="aProcess">
-          <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Process"/>
-        </eParameters>
-        <eParameters name="aPartnerLink">
-          <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//PartnerLink"/>
-        </eParameters>
-        <eParameters name="varTypeList" eType="/3/Sequence(String)"/>
-        <eParameters name="varNameList" eType="/3/Sequence(Variable)"/>
-      </eOperations>
-      <eOperations name="createSetGet">
-        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
-          <contents xsi:type="ocl.ecore:Constraint"/>
-        </eAnnotations>
-        <eAnnotations source="MTL">
-          <references href="../common/createSetGet.emtl#/0/createSetGet"/>
-        </eAnnotations>
-        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <eParameters name="varTypeList">
-          <eType xsi:type="ocl.ecore:SequenceType" href="../common/createSetGet.emtl#/3/Sequence(String)"/>
-        </eParameters>
-        <eParameters name="varNameList">
-          <eType xsi:type="ocl.ecore:SequenceType" href="../common/createSetGet.emtl#/3/Sequence(Variable)"/>
-        </eParameters>
-      </eOperations>
       <eOperations name="createPrivateAttributes">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
-        <eAnnotations source="MTL">
-          <references href="../common/genericTemplates.emtl#/0/createPrivateAttributes"/>
-        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/createPrivateAttributes"/>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <eParameters name="varTypeList">
-          <eType xsi:type="ocl.ecore:SequenceType" href="../common/genericTemplates.emtl#/3/Sequence(String)"/>
-        </eParameters>
-        <eParameters name="varNameList">
-          <eType xsi:type="ocl.ecore:SequenceType" href="../common/genericTemplates.emtl#/3/Sequence(Variable)"/>
-        </eParameters>
+        <eParameters name="varTypeList" eType="/3/Sequence(String)"/>
+        <eParameters name="varNameList" eType="/3/Sequence(Variable)"/>
       </eOperations>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="OclAny_Class">
@@ -551,55 +464,15 @@
         </eParameters>
       </eOperations>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Process_Class">
-      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
-        <references href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Process"/>
-      </eAnnotations>
-      <eOperations name="genPartnerLinkJavaFile">
-        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
-          <contents xsi:type="ocl.ecore:Constraint"/>
-        </eAnnotations>
-        <eAnnotations source="MTL" references="/0/genPartnerLinkJavaFile"/>
-        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <eParameters name="aPartnerLink">
-          <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//PartnerLink"/>
-        </eParameters>
-        <eParameters name="varTypeList" eType="/3/Sequence(String)"/>
-        <eParameters name="varNameList" eType="/3/Sequence(Variable)"/>
-      </eOperations>
-    </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Sequence(String)_Class">
-      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
-        <references href="../common/createSetGet.emtl#/3/Sequence(String)"/>
-      </eAnnotations>
-      <eOperations name="createSetGet">
-        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
-          <contents xsi:type="ocl.ecore:Constraint"/>
-        </eAnnotations>
-        <eAnnotations source="MTL">
-          <references href="../common/createSetGet.emtl#/0/createSetGet"/>
-        </eAnnotations>
-        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <eParameters name="varNameList">
-          <eType xsi:type="ocl.ecore:SequenceType" href="../common/createSetGet.emtl#/3/Sequence(Variable)"/>
-        </eParameters>
-      </eOperations>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Sequence(String)_Class">
-      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
-        <references href="../common/genericTemplates.emtl#/3/Sequence(String)"/>
-      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL" references="/3/Sequence(String)"/>
       <eOperations name="createPrivateAttributes">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
-        <eAnnotations source="MTL">
-          <references href="../common/genericTemplates.emtl#/0/createPrivateAttributes"/>
-        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/createPrivateAttributes"/>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <eParameters name="varNameList">
-          <eType xsi:type="ocl.ecore:SequenceType" href="../common/genericTemplates.emtl#/3/Sequence(Variable)"/>
-        </eParameters>
+        <eParameters name="varNameList" eType="/3/Sequence(Variable)"/>
       </eOperations>
     </eClassifiers>
   </ecore:EPackage>
@@ -614,201 +487,103 @@
       <elementType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Variable"/>
     </eClassifiers>
   </ecore:EPackage>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Process"/>
-  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self" eType="/3/Sequence(String)"/>
   <ocl.ecore:Variable name="self">
     <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
   </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self" eType="/3/Sequence(String)"/>
+  <ocl.ecore:Variable name="self" eType="/3/Sequence(String)"/>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Process"/>
+    <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Variable"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="i">
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Process"/>
+    <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Variable"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Process"/>
+    <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Variable"/>
   </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Process"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Process"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Process"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Process"/>
-  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self" eType="/3/Sequence(String)"/>
   <ocl.ecore:Variable name="self">
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
   </ocl.ecore:Variable>
   <ecore:EAnnotation source="positions">
-    <eAnnotations source="positions.0" references="/0/genPartnerLinkJavaFile">
-      <details key="start" value="273"/>
-      <details key="end" value="856"/>
-      <details key="line" value="6"/>
+    <eAnnotations source="positions.0" references="/0/createPrivateAttributes">
+      <details key="start" value="143"/>
+      <details key="end" value="388"/>
+      <details key="line" value="4"/>
     </eAnnotations>
-    <eAnnotations source="positions.1" references="/0/genPartnerLinkJavaFile/@body.0">
-      <details key="start" value="429"/>
-      <details key="end" value="844"/>
-      <details key="line" value="7"/>
+    <eAnnotations source="positions.1" references="/0/createPrivateAttributes/@body.0">
+      <details key="start" value="251"/>
+      <details key="end" value="286"/>
+      <details key="line" value="5"/>
     </eAnnotations>
-    <eAnnotations source="positions.2" references="/0/genPartnerLinkJavaFile/@body.0/@body.0">
-      <details key="start" value="500"/>
-      <details key="end" value="529"/>
+    <eAnnotations source="positions.2" references="/0/createPrivateAttributes/@body.1">
+      <details key="start" value="286"/>
+      <details key="end" value="376"/>
       <details key="line" value="8"/>
     </eAnnotations>
-    <eAnnotations source="positions.3" references="/0/genPartnerLinkJavaFile/@body.0/@body.1">
-      <details key="start" value="530"/>
-      <details key="end" value="559"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.4" references="/0/genPartnerLinkJavaFile/@body.0/@body.1/@source">
-      <details key="start" value="530"/>
-      <details key="end" value="554"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.5" references="/0/genPartnerLinkJavaFile/@body.0/@body.1/@source/aPartnerLink">
-      <details key="start" value="530"/>
-      <details key="end" value="542"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.6" references="/0/genPartnerLinkJavaFile/@body.0/@body.2">
-      <details key="start" value="561"/>
-      <details key="end" value="598"/>
+    <eAnnotations source="positions.3" references="/0/createPrivateAttributes/@body.1/@body.0">
+      <details key="start" value="325"/>
+      <details key="end" value="333"/>
       <details key="line" value="9"/>
     </eAnnotations>
-    <eAnnotations source="positions.7" references="/0/genPartnerLinkJavaFile/@body.0/@body.3">
-      <details key="start" value="599"/>
-      <details key="end" value="636"/>
+    <eAnnotations source="positions.4" references="/0/createPrivateAttributes/@body.1/@body.1">
+      <details key="start" value="334"/>
+      <details key="end" value="352"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.8" references="/0/genPartnerLinkJavaFile/@body.0/@body.3/@source">
-      <details key="start" value="599"/>
-      <details key="end" value="603"/>
+    <eAnnotations source="positions.5" references="/0/createPrivateAttributes/@body.1/@body.1/varTypeList">
+      <details key="start" value="334"/>
+      <details key="end" value="345"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.9" references="/0/genPartnerLinkJavaFile/@body.0/@body.3/@argument.0">
-      <details key="start" value="604"/>
-      <details key="end" value="636"/>
+    <eAnnotations source="positions.6" references="/0/createPrivateAttributes/@body.1/@body.1/i">
+      <details key="start" value="350"/>
+      <details key="end" value="351"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.10" references="/0/genPartnerLinkJavaFile/@body.0/@body.3/@argument.0/@source">
-      <details key="start" value="604"/>
-      <details key="end" value="621"/>
+    <eAnnotations source="positions.7" references="/0/createPrivateAttributes/@body.1/@body.2">
+      <details key="start" value="354"/>
+      <details key="end" value="355"/>
+      <details key="line" value="9"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/createPrivateAttributes/@body.1/@body.3">
+      <details key="start" value="356"/>
+      <details key="end" value="365"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.11" references="/0/genPartnerLinkJavaFile/@body.0/@body.3/@argument.0/@source/aPartnerLink">
-      <details key="start" value="604"/>
-      <details key="end" value="616"/>
+    <eAnnotations source="positions.9" references="/0/createPrivateAttributes/@body.1/@body.3/aVar">
+      <details key="start" value="356"/>
+      <details key="end" value="360"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.12" references="/0/genPartnerLinkJavaFile/@body.0/@body.4">
-      <details key="start" value="638"/>
-      <details key="end" value="643"/>
-      <details key="line" value="10"/>
+    <eAnnotations source="positions.10" references="/0/createPrivateAttributes/@body.1/@body.4">
+      <details key="start" value="367"/>
+      <details key="end" value="370"/>
+      <details key="line" value="9"/>
     </eAnnotations>
-    <eAnnotations source="positions.13" references="/0/genPartnerLinkJavaFile/@body.0/@body.5">
-      <details key="start" value="703"/>
-      <details key="end" value="752"/>
+    <eAnnotations source="positions.11" references="/0/createPrivateAttributes/@body.1/aVar">
+      <details key="start" value="292"/>
+      <details key="end" value="307"/>
+      <details key="line" value="8"/>
+    </eAnnotations>
+    <eAnnotations source="positions.12" references="/0/createPrivateAttributes/@body.1/varNameList">
+      <details key="start" value="310"/>
+      <details key="end" value="321"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.14" references="/0/genPartnerLinkJavaFile/@body.0/@body.5/varTypeList">
-      <details key="start" value="727"/>
-      <details key="end" value="738"/>
-      <details key="line" value="0"/>
+    <eAnnotations source="positions.13" references="/0/createPrivateAttributes/varTypeList">
+      <details key="start" value="184"/>
+      <details key="end" value="214"/>
+      <details key="line" value="4"/>
     </eAnnotations>
-    <eAnnotations source="positions.15" references="/0/genPartnerLinkJavaFile/@body.0/@body.5/varNameList">
-      <details key="start" value="740"/>
-      <details key="end" value="751"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.16" references="/0/genPartnerLinkJavaFile/@body.0/@body.6">
-      <details key="start" value="754"/>
-      <details key="end" value="756"/>
-      <details key="line" value="15"/>
-    </eAnnotations>
-    <eAnnotations source="positions.17" references="/0/genPartnerLinkJavaFile/@body.0/@body.7">
-      <details key="start" value="791"/>
-      <details key="end" value="829"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.18" references="/0/genPartnerLinkJavaFile/@body.0/@body.7/varTypeList">
-      <details key="start" value="804"/>
-      <details key="end" value="815"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.19" references="/0/genPartnerLinkJavaFile/@body.0/@body.7/varNameList">
-      <details key="start" value="817"/>
-      <details key="end" value="828"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.20" references="/0/genPartnerLinkJavaFile/@body.0/@body.8">
-      <details key="start" value="831"/>
-      <details key="end" value="836"/>
-      <details key="line" value="17"/>
-    </eAnnotations>
-    <eAnnotations source="positions.21" references="/0/genPartnerLinkJavaFile/@body.0/@fileUrl">
-      <details key="start" value="436"/>
-      <details key="end" value="481"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.22" references="/0/genPartnerLinkJavaFile/@body.0/@fileUrl/@source">
-      <details key="start" value="436"/>
-      <details key="end" value="473"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.23" references="/0/genPartnerLinkJavaFile/@body.0/@fileUrl/@source/@source">
-      <details key="start" value="436"/>
-      <details key="end" value="440"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.24" references="/0/genPartnerLinkJavaFile/@body.0/@fileUrl/@source/@argument.0">
-      <details key="start" value="441"/>
-      <details key="end" value="473"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.25" references="/0/genPartnerLinkJavaFile/@body.0/@fileUrl/@source/@argument.0/@source">
-      <details key="start" value="441"/>
-      <details key="end" value="458"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.26" references="/0/genPartnerLinkJavaFile/@body.0/@fileUrl/@source/@argument.0/@source/aPartnerLink">
-      <details key="start" value="441"/>
-      <details key="end" value="453"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.27" references="/0/genPartnerLinkJavaFile/@body.0/@fileUrl/@argument.0">
-      <details key="start" value="474"/>
-      <details key="end" value="481"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.28" references="/0/genPartnerLinkJavaFile/@body.0/@charset">
-      <details key="start" value="490"/>
-      <details key="end" value="497"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.29" references="/0/genPartnerLinkJavaFile/aProcess">
-      <details key="start" value="313"/>
-      <details key="end" value="331"/>
-      <details key="line" value="6"/>
-    </eAnnotations>
-    <eAnnotations source="positions.30" references="/0/genPartnerLinkJavaFile/aPartnerLink">
-      <details key="start" value="333"/>
-      <details key="end" value="359"/>
-      <details key="line" value="6"/>
-    </eAnnotations>
-    <eAnnotations source="positions.31" references="/0/genPartnerLinkJavaFile/varTypeList">
-      <details key="start" value="361"/>
-      <details key="end" value="391"/>
-      <details key="line" value="6"/>
-    </eAnnotations>
-    <eAnnotations source="positions.32" references="/0/genPartnerLinkJavaFile/varNameList">
-      <details key="start" value="393"/>
-      <details key="end" value="425"/>
-      <details key="line" value="6"/>
+    <eAnnotations source="positions.14" references="/0/createPrivateAttributes/varNameList">
+      <details key="start" value="216"/>
+      <details key="end" value="248"/>
+      <details key="line" value="4"/>
     </eAnnotations>
   </ecore:EAnnotation>
 </xmi:XMI>

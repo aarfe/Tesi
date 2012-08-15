@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:mtl="http://www.eclipse.org/acceleo/mtl/3.0" xmlns:ocl.ecore="http://www.eclipse.org/ocl/1.1.0/Ecore">
-  <mtl:Module name="quer" nsURI="org::eclipse::acceleo::module::bpel2java::reqRes::queries::quer">
+  <mtl:Module name="queries" nsURI="org::eclipse::acceleo::module::bpel2java::reqRes::queries::queries">
+    <input>
+      <takesTypesFrom href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#/"/>
+    </input>
     <input>
       <takesTypesFrom href="http://www.eclipse.org/wsdl/2003/WSDL#/"/>
     </input>
@@ -16,6 +19,40 @@
         <referredProperty xsi:type="ecore:EAttribute" href="http://www.eclipse.org/wsdl/2003/WSDL#//Definition/location"/>
       </expression>
       <type xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+    </ownedModuleElement>
+    <ownedModuleElement xsi:type="mtl:Query" name="getPLVariablesTypes" type="/3/Sequence(Variable)">
+      <parameter name="aProc">
+        <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Process"/>
+      </parameter>
+      <parameter name="varNames" eType="/3/Sequence(String)"/>
+      <expression xsi:type="ocl.ecore:OperationCallExp" eType="/3/Sequence(Variable)">
+        <source xsi:type="ocl.ecore:IteratorExp" name="select" eType="/3/Sequence(Variable)">
+          <source xsi:type="ocl.ecore:OperationCallExp" eType="/3/Sequence(Variable)" referredOperation="/1/EObject_Class/eAllContents.1">
+            <source xsi:type="ocl.ecore:VariableExp" name="aProc" referredVariable="/0/getPLVariablesTypes/aProc">
+              <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Process"/>
+            </source>
+            <argument xsi:type="ocl.ecore:TypeExp" eType="/8/Variable">
+              <referredType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Variable"/>
+            </argument>
+          </source>
+          <body xsi:type="ocl.ecore:OperationCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Boolean"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="varNames" eType="/3/Sequence(String)" referredVariable="/0/getPLVariablesTypes/varNames"/>
+            <argument xsi:type="ocl.ecore:PropertyCallExp">
+              <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+              <source xsi:type="ocl.ecore:VariableExp" name="aVarab" referredVariable="/0/getPLVariablesTypes/@expression/select/aVarab">
+                <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Variable"/>
+              </source>
+              <referredProperty xsi:type="ecore:EAttribute" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Variable/name"/>
+            </argument>
+            <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)_Class/includes"/>
+          </body>
+          <iterator xsi:type="ocl.ecore:Variable" name="aVarab">
+            <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Variable"/>
+          </iterator>
+        </source>
+        <referredOperation xsi:type="ecore:EOperation" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Sequence(T)_Class/asSequence"/>
+      </expression>
     </ownedModuleElement>
   </mtl:Module>
   <ecore:EPackage name="additions">
@@ -311,6 +348,16 @@
           <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/wsdl/2003/WSDL#//Definition"/>
         </eParameters>
       </eOperations>
+      <eOperations name="getPLVariablesTypes" eType="/3/Sequence(Variable)">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/getPLVariablesTypes"/>
+        <eParameters name="aProc">
+          <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Process"/>
+        </eParameters>
+        <eParameters name="varNames" eType="/3/Sequence(String)"/>
+      </eOperations>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="OclAny_Class">
       <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
@@ -458,38 +505,140 @@
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
     </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Process_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Process"/>
+      </eAnnotations>
+      <eOperations name="getPLVariablesTypes" eType="/3/Sequence(Variable)">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL" references="/0/getPLVariablesTypes"/>
+        <eParameters name="varNames" eType="/3/Sequence(String)"/>
+      </eOperations>
+    </eClassifiers>
   </ecore:EPackage>
   <ocl.ecore:Variable name="self">
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
   </ocl.ecore:Variable>
+  <ecore:EPackage name="collections">
+    <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(Variable)" instanceClassName="java.util.List">
+      <elementType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Variable"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(String)" instanceClassName="java.util.List">
+      <elementType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SequenceType" instanceClassName="java.util.List">
+      <elementType xsi:type="ocl.ecore:AnyType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
+    </eClassifiers>
+  </ecore:EPackage>
   <ocl.ecore:Variable name="self">
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/wsdl/2003/WSDL#//Definition"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/wsdl/2003/WSDL#//Definition"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Process"/>
+  </ocl.ecore:Variable>
+  <ecore:EPackage name="types">
+    <eClassifiers xsi:type="ocl.ecore:TypeType" name="Variable">
+      <referredType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Variable"/>
+    </eClassifiers>
+  </ecore:EPackage>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Process"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
   </ocl.ecore:Variable>
   <ecore:EAnnotation source="positions">
     <eAnnotations source="positions.0" references="/0/quer">
-      <details key="start" value="86"/>
-      <details key="end" value="157"/>
+      <details key="start" value="134"/>
+      <details key="end" value="205"/>
       <details key="line" value="4"/>
     </eAnnotations>
     <eAnnotations source="positions.1" references="/0/quer/aDefinition">
-      <details key="start" value="98"/>
-      <details key="end" value="122"/>
+      <details key="start" value="146"/>
+      <details key="end" value="170"/>
       <details key="line" value="4"/>
     </eAnnotations>
     <eAnnotations source="positions.2" references="/0/quer/@expression">
-      <details key="start" value="135"/>
-      <details key="end" value="155"/>
+      <details key="start" value="183"/>
+      <details key="end" value="203"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.3" references="/0/quer/@expression/aDefinition">
-      <details key="start" value="135"/>
-      <details key="end" value="146"/>
+      <details key="start" value="183"/>
+      <details key="end" value="194"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.4" references="/0/getPLVariablesTypes">
+      <details key="start" value="206"/>
+      <details key="end" value="408"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+    <eAnnotations source="positions.5" references="/0/getPLVariablesTypes/aProc">
+      <details key="start" value="233"/>
+      <details key="end" value="248"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+    <eAnnotations source="positions.6" references="/0/getPLVariablesTypes/varNames">
+      <details key="start" value="250"/>
+      <details key="end" value="277"/>
+      <details key="line" value="5"/>
+    </eAnnotations>
+    <eAnnotations source="positions.7" references="/0/getPLVariablesTypes/@expression">
+      <details key="start" value="302"/>
+      <details key="end" value="405"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.8" references="/0/getPLVariablesTypes/@expression/select">
+      <details key="start" value="302"/>
+      <details key="end" value="391"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.9" references="/0/getPLVariablesTypes/@expression/select/@source">
+      <details key="start" value="302"/>
+      <details key="end" value="330"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.10" references="/0/getPLVariablesTypes/@expression/select/@source/aProc">
+      <details key="start" value="302"/>
+      <details key="end" value="307"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.11" references="/0/getPLVariablesTypes/@expression/select/@source/@argument.0">
+      <details key="start" value="321"/>
+      <details key="end" value="329"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.12" references="/0/getPLVariablesTypes/@expression/select/@body">
+      <details key="start" value="359"/>
+      <details key="end" value="390"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.13" references="/0/getPLVariablesTypes/@expression/select/@body/varNames">
+      <details key="start" value="359"/>
+      <details key="end" value="367"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.14" references="/0/getPLVariablesTypes/@expression/select/@body/@argument.0">
+      <details key="start" value="378"/>
+      <details key="end" value="389"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.15" references="/0/getPLVariablesTypes/@expression/select/@body/@argument.0/aVarab">
+      <details key="start" value="378"/>
+      <details key="end" value="384"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.16" references="/0/getPLVariablesTypes/@expression/select/aVarab">
+      <details key="start" value="339"/>
+      <details key="end" value="356"/>
       <details key="line" value="0"/>
     </eAnnotations>
   </ecore:EAnnotation>

@@ -1,0 +1,11 @@
+[comment encoding = UTF-8 /]
+[module genericTemplates('http:///org/eclipse/bpel/model/bpel.ecore', 'http://www.eclipse.org/wsdl/2003/WSDL')/]
+
+[template public createPrivateAttributes(varTypeList : Sequence(String), varNameList : Sequence(Variable))]
+	/**
+     * Attributes    
+     */
+[for (aVar : Variable | varNameList )]
+private [varTypeList->at(i)/] [aVar.name/];	
+[/for]
+[/template]
