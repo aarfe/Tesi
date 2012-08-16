@@ -29,13 +29,13 @@
 		
 		[if (i=1) and (aPartnerLink.name=clientPLName)]
 			[comment ]
-			Create the "special" client PartnerLink file.
+			Create the client PartnerLink file.
 			Its variables names and Types are passed as a Sequence of String [/comment]
 			[genPartnerLinkClientJavaFile(aProcess, aPartnerLink, varTypesClientList, getPLVariablesTypes(aProcess, varNamesClientList))/]			
 		
 		[elseif (i=2)]
 			[comment ]
-			Create the a PartnerLink file for a generic PL 
+			Create a PartnerLink STUB file for a generic PL 
 			Its variables names and Types are passed as a Sequence of String [/comment]
 			[genPartnerLinkJavaFile(aProcess, aPartnerLink, varTypesPL1List, getPLVariablesTypes(aProcess, varNamesPL1List))/]
 		[else]

@@ -9,7 +9,7 @@ protected GetAutographByCognomeEasyResponse AuthorWSParterLinkResponse;
 protected GetAutographByCognomeEasy AuthorWSParterLinkRequest;
 
 public void runWorkflow() {
-//org.eclipse.wst.wsdl.internal.impl.OperationImpl@147335e (documentationElement: null, element: [operation: null]) (style: REQUEST_RESPONSE, name: process, undefined: false)
+//org.eclipse.wst.wsdl.internal.impl.OperationImpl@15f0801 (documentationElement: null, element: [operation: null]) (style: REQUEST_RESPONSE, name: process, undefined: false)
 //process
 //Check for CreateInstance=YES
 

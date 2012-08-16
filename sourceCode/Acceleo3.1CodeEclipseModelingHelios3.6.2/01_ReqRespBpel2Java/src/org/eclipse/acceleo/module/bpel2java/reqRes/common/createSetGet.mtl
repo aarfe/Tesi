@@ -2,17 +2,16 @@
 [module createSetGet('http:///org/eclipse/bpel/model/bpel.ecore', 'http://www.eclipse.org/wsdl/2003/WSDL')/]
 
 [template public createSetGet(varTypeList : Sequence(String), varNameList : Sequence(Variable))]
-
 	/**
      * Setters and Getters    
      */
 [for (aVar : Variable | varNameList )]
-public [varTypeList->at(i)/] get[aVar.name.toUpperFirst()/]() {
-	return [aVar.name/];
+public [varTypeList->at(i).toUpperFirst()/] get[aVar.name.toUpperFirst()/]() {
+	return [aVar.name.toLowerFirst()/];
 }
 
-public void set[aVar.name.toUpperFirst()/]([varTypeList->at(i)/] value) {
-	this.[aVar.name/] = value;
+public void set[aVar.name.toUpperFirst()/]([varTypeList->at(i).toUpperFirst()/] value) {
+	this.[aVar.name.toLowerFirst()/] = value;
 }
 
 [/for]

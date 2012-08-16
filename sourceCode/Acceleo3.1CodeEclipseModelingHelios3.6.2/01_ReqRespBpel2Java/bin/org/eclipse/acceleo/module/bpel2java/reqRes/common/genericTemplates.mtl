@@ -6,6 +6,6 @@
      * Attributes    
      */
 [for (aVar : Variable | varNameList )]
-private [varTypeList->at(i)/] [aVar.name/];	
+private [varTypeList->at(i).toUpperFirst()/] [aVar.name.toLowerFirst()/];	
 [/for]
 [/template]
