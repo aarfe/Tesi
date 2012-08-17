@@ -110,7 +110,7 @@
     </children>
     <styles xmi:type="notation:ShapeStyle" xmi:id="_HCTegdsVEeGIir4EOPHBbA" fontColor="4210752" fontName="Ubuntu" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
     <element xmi:type="ecore:EClass" href="bpel.ecore#//Activity"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HCTegtsVEeGIir4EOPHBbA" x="7780" y="286"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HCTegtsVEeGIir4EOPHBbA" x="7812" y="168"/>
   </children>
   <children xmi:type="notation:Node" xmi:id="_HCV6wNsVEeGIir4EOPHBbA" type="1001">
     <children xmi:type="notation:Node" xmi:id="_HCWh0NsVEeGIir4EOPHBbA" type="4001"/>
@@ -324,9 +324,9 @@
       <styles xmi:type="notation:SortingStyle" xmi:id="_HC8-wtsVEeGIir4EOPHBbA"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_HC8-w9sVEeGIir4EOPHBbA"/>
     </children>
-    <styles xmi:type="notation:ShapeStyle" xmi:id="_HC7JkdsVEeGIir4EOPHBbA" fontColor="4210752" fontName="Ubuntu" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_HC7JkdsVEeGIir4EOPHBbA" fontColor="4210752" fontName="Ubuntu" fontHeight="10" fillColor="15053796" lineColor="8421504"/>
     <element xmi:type="ecore:EClass" href="bpel.ecore#//Sequence"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HC7JktsVEeGIir4EOPHBbA" x="8336" y="411"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HC7JktsVEeGIir4EOPHBbA" x="8328" y="492"/>
   </children>
   <children xmi:type="notation:Node" xmi:id="_HC9l0NsVEeGIir4EOPHBbA" type="1001">
     <children xmi:type="notation:Node" xmi:id="_HC-M4NsVEeGIir4EOPHBbA" type="4001"/>

@@ -2,40 +2,23 @@ package bpel2java.uni;
 
 public class SimpleProcess {
 
-// Variables needed for the communication
-protected SimpleProcessRequest input;
-protected SimpleProcessResponse output;
-protected GetAutographByCognomeEasyResponse AuthorWSParterLinkResponse;
-protected GetAutographByCognomeEasy AuthorWSParterLinkRequest;
-
 public void runWorkflow() {
-//org.eclipse.wst.wsdl.internal.impl.OperationImpl@15f0801 (documentationElement: null, element: [operation: null]) (style: REQUEST_RESPONSE, name: process, undefined: false)
-//process
-//Check for CreateInstance=YES
+	//Check for CreateInstance=YES
+	
+//Create the PartnerLinks STUBS
+	// STUB service representing the PartnerLink:client with myRole: SimpleProcessProvider 
+	PLClient myPLClient = new PLClient();
+	// STUB service representing the PartnerLink:AuthorWSParterLink with PartnerRole: AuthorWSPartnerLinkRole
+	PLAuthorWSParterLink myPLAuthorWSParterLink = new PLAuthorWSParterLink();
 
-//receiveInput
+// Emulate the Receive activity		
+		myPLClient.receiveInput();			
 
-
-PLClient myPLClient = new PLClient(); 
-
-
-}
-
-	/**
-     * Communication with client    
-     */
-public SimpleProcessRequest receiveInput() {
-return null;
-}
-public SimpleProcessResponse replyOutput() {
-return null;
-}
-
-	/**
-     * Add Setters and Getters    
-     */
+// Emulate the Assign activity		
+		myPLAuthorWSParterLink.getAuthorWSParterLinkRequest().setACognome(myPLClient.getInput().getInput());			
 
 
 
-
+ 
+	}
 }

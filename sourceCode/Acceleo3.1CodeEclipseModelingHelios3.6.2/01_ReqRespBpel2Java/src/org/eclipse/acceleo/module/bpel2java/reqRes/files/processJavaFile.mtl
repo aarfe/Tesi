@@ -1,17 +1,11 @@
 [comment encoding = UTF-8 /]
 [module processJavaFile('http:///org/eclipse/bpel/model/bpel.ecore','http://www.eclipse.org/wsdl/2003/WSDL')]
 [import org::eclipse::acceleo::module::bpel2java::reqRes::common::createSetGet /]
+[import org::eclipse::acceleo::module::bpel2java::reqRes::common::genericTemplates /]
 [import org::eclipse::acceleo::module::bpel2java::reqRes::files::partnerLinkClientJavaFile /]
 
-
-[template public genProcessJavaFile(aProcess : Process)
-	{serv1VarResType : String = 'GetAutographByCognomeEasy';
-	serv1VarReqType : String = 'GetAutographByCognomeEasyResponse';
-	clientVarReqType : String = aProcess.name.toUpperFirst()+'Request';
-	clientVarResType : String = aProcess.name.toUpperFirst()+'Response';
-	varList : Sequence(String) = Sequence{clientVarReqType, clientVarResType, serv1VarReqType, serv1VarResType}; 
-	activitySequence : Sequence(Activity) = aProcess.eAllContents(Activity);
-	 }]
+[comment] [template public genProcessJavaFile(aProcess : Process,varTypeList1 : Sequence(String),varNameList1 : Sequence(Variable),varTypeList2 : Sequence(String),varNameList2 : Sequence(Variable))] [/comment]
+[template public genProcessJavaFile(aProcess : Process)]
 [file (aProcess.name+'.java', false, 'UTF-8')]
 [comment]
 [let varSet : Set(String) = Set{clientVarReqType, clientVarResType, serv1VarReqType, serv1VarResType}]
@@ -23,26 +17,86 @@ public class [aProcess.name/] {
 	Because these values are to be found in the .wsdl descriptor files, not here in the .bpel :-(
 	[/comment]	
 
-[comment Add the variables needed for the communication /]
+[comment] Add the variables needed for the communication
 // Variables needed for the communication
-[for (aVariable  : Variable | aProcess.eAllContents(Variable))]  
-protected [varList->at(i)/] [aVariable.name/];
-[/for]
-
+[createPrivateTempAttributes(varTypeList1, varNameList1)/]
+[createPrivateTempAttributes(varTypeList2, varNameList2)/]
+[/comment]
 public void runWorkflow() {
-//[activitySequence.eContents(Receive).operation.toString()/]
-//[activitySequence.eContents(Receive).operation.name/]
-//Check for CreateInstance=YES
+	//Check for CreateInstance=YES
+	
+[comment Create the PartnerLinks STUBS and write their roles in comments/]
+//Create the PartnerLinks STUBS
+[for (aPL : PartnerLink | aProcess.eAllContents(PartnerLink))]
+	[if (not aPL.myRole.oclIsUndefined())] 
+	// STUB service representing the PartnerLink:[aPL.name/] with myRole: [aPL.myRole.name/] 
+	[/if] 
+	[if (not aPL.partnerRole.oclIsUndefined())]
+	// STUB service representing the PartnerLink:[aPL.name/] with PartnerRole: [aPL.partnerRole.name/]
+	[/if]
+	PL[aPL.name.toUpperFirst()/] myPL[aPL.name.toUpperFirst()/] = new PL[aPL.name.toUpperFirst()/]();
+[/for]
+[comment] Check if the first activity is a SEQUENCE - NOT WORKING
+[aProcess.eAllContents(Activity)->first().oclIsTypeOf(Sequence)/]
+[/comment]
+[comment Get the elements from the sequence and create the corresponding java calls /]
 
-[comment: call the first receive activity in the process /]
-//[aProcess.eAllContents(Receive)->first().name/]
+[let aSeq : Sequence = aProcess.eAllContents(Activity)->first()]
+[comment Control if the first element in the Sequence is a Receive/]
+	[if (aSeq.eAllContents()->at(1).oclIsTypeOf(Receive))]
+		[let aReceive : Receive = aSeq.eAllContents()->at(1)]
+// Emulate the Receive activity		
+		myPL[aReceive.partnerLink.name.toUpperFirst()/].[aReceive.name.toLowerFirst()/]();			
+		[/let]	
+	[else]
+	The first element in the sequence is not a Receive
+	[/if]
 
-[comment Create the CLientPartnerLink /]
+[comment Control if the second element in the Sequence is an Assign/]
+	[if (aSeq.eAllContents()->at(2).oclIsTypeOf(Assign))]
+		[let anAssign : Assign = aSeq.eAllContents()->at(2)]
+// Emulate the Assign activity		
+		myPLAuthorWSParterLink.getAuthorWSParterLinkRequest().setACognome(myPLClient.getInput().getInput());			
+		[/let]	
+	[else]
+	The 2nd element in the sequence is not an Assign
+	[/if]
 
-PL[aProcess.eAllContents(Receive)->first().partnerLink.name.toUpperFirst()/] myPL[aProcess.eAllContents(Receive)->first().partnerLink.name.toUpperFirst()/] = new PL[aProcess.eAllContents(Receive)->first().partnerLink.name.toUpperFirst()/](); 
+[comment]
+[aProcess.eAllContents(Activity)->first().eContents()->first()/]
+[aSeq.oclIsKindOf(Activity).toString()/]
+[aProcess.eAllContents(Activity)->first()/]
+[aSeq.eContents()->first()/]
+[/comment]
+[/let]
 
 
+ 
+	}
 }
+[/file]
+[/template]
+
+
+
+[template private boh(coll : Bag(String))]
+[/template]
+
+[comment]
+
+[Add setter and getter /]
+	/**
+     * Add Setters and Getters    
+     */
+
+
+[comment]
+[for (aVariable  : Variable | aProcess.eAllContents(Variable))]  
+[createSetGet(varList->at(i), aVariable.name)/]
+[/for]
+[/comment]
+
+
 
 	/**
      * Communication with client    
@@ -54,29 +108,7 @@ public [clientVarResType/] [activitySequence.eContents(Reply).name/]() {
 return null;
 }
 
-[comment Add setter and getter /]
-	/**
-     * Add Setters and Getters    
-     */
 
-[comment]
-[for (aVariable  : Variable | aProcess.eAllContents(Variable))]  
-[createSetGet(varList->at(i), aVariable.name)/]
-[/for]
-[/comment]
-
-
-
-}
-[/file]
-[/template]
-
-
-
-[template private boh(coll : Bag(String))]
-[/template]
-
-[comment]
 0 [aProcess.eContents(Activity).eContents().toString()/]
 a [activitySequence.eContents(Activity).toString()/]
 b [activitySequence->first().eGet('type')/]

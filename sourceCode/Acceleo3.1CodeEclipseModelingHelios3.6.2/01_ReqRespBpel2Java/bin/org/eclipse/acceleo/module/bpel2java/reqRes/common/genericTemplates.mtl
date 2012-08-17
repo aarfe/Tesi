@@ -9,3 +9,19 @@
 private [varTypeList->at(i).toUpperFirst()/] [aVar.name.toLowerFirst()/];	
 [/for]
 [/template]
+
+[template public createPrivateTempAttributes(varTypeList : Sequence(String), varNameList : Sequence(Variable))]
+	/**
+     * Attributes to temporarily contain values    
+     */
+[for (aVar : Variable | varNameList )]
+private [varTypeList->at(i).toUpperFirst()/] [aVar.name.toLowerFirst()+'Temp'/];	
+[/for]
+[/template]
+
+[template public transformAssign(anAssign : Assign)]
+	/**
+     * 
+     */
+[/template]
+

@@ -15,7 +15,8 @@ private SimpleProcessResponse output;
 	/**
      * Operations    
      */
-public void receiveInput(SimpleProcessRequest aSimpleProcessRequest) {
+public void receiveInput() {
+	
 	//CUSTOM SPECIFIC CODE
 	System.out.println("Enter the name here : ");
 	   
@@ -26,13 +27,14 @@ public void receiveInput(SimpleProcessRequest aSimpleProcessRequest) {
  
        scanIn.close();
                    
-input.setInput(word);
+		input.setInput(word);
 	//END CUSTOM SPECIFIC CODE   
 }
 	
 public SimpleProcessResponse replyOutput() {
-	//CUSTOM SPECIFIC CODE     
-	return getOutput();	
+	//CUSTOM SPECIFIC CODE     	
+	//END CUSTOM SPECIFIC CODE
+	return getOutput();
 }	
 
 
@@ -55,7 +57,5 @@ public void setOutput(SimpleProcessResponse value) {
 	this.output = value;
 }
 
-
+	
 }
-	
-	

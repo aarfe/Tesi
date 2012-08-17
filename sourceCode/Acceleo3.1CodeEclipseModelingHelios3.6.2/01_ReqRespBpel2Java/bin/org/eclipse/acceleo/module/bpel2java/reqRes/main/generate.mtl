@@ -9,20 +9,19 @@
 	{clientPLName : String = 'client';
 	
 	varTypesClientList : Sequence(String) = Sequence{aProcess.name.toUpperFirst()+'Request', aProcess.name.toUpperFirst()+'Response'};
-	varTypesPL1List : Sequence(String) = Sequence{'GetAutographByCognomeEasyResponse','GetAutographByCognomeEasy'};
 	varNamesClientList : Sequence(String) = Sequence{'input','output'};
+	varTypesPL1List : Sequence(String) = Sequence{'GetAutographByCognomeEasyResponse','GetAutographByCognomeEasy'};
 	varNamesPL1List : Sequence(String) = Sequence{'AuthorWSParterLinkResponse','AuthorWSParterLinkRequest'}
 	}]
 	[comment @main /]
 	
 
 	[comment Generate the file containing the workflow /]
-	[aProcess.genProcessJavaFile()/]
-	
+	[comment] [genProcessJavaFile(aProcess, 
+	varTypesClientList, getPLVariablesTypes(aProcess, varNamesClientList),	varTypesPL1List, getPLVariablesTypes(aProcess, varNamesPL1List))/] [/comment]
+	[genProcessJavaFile(aProcess)/]
 	
 	[file ('test', false, 'UTF-8')]
-		
-	
 	[comment Generate the files containing the partner links (or stub-services) corresponding to the real services
 			 These files are used to contain the java code to call the real WebServices deployed on some servers./]
 	[for (aPartnerLink : PartnerLink | aProcess.eAllContents(PartnerLink))]
@@ -41,6 +40,7 @@
 		[else]
 		[/if]			
 [/for]
+
 [/file]
 [/template]
 

@@ -287,8 +287,12 @@
       <parameter name="aPartnerLink">
         <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//PartnerLink"/>
       </parameter>
-      <parameter name="varTypeList" eType="/3/Sequence(String)"/>
-      <parameter name="varNameList" eType="/3/Sequence(Variable)"/>
+      <parameter name="varTypeList">
+        <eType xsi:type="ocl.ecore:SequenceType" href="../main/generate.emtl#/3/Sequence(String)"/>
+      </parameter>
+      <parameter name="varNameList">
+        <eType xsi:type="ocl.ecore:SequenceType" href="../main/generate.emtl#/3/Sequence(Variable)"/>
+      </parameter>
     </ownedModuleElement>
     <ownedModuleElement xsi:type="mtl:Query" name="getOperationsFromInvoke" type="/3/Sequence(Invoke)">
       <parameter name="aProcess">
@@ -621,8 +625,12 @@
         <eParameters name="aPartnerLink">
           <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//PartnerLink"/>
         </eParameters>
-        <eParameters name="varTypeList" eType="/3/Sequence(String)"/>
-        <eParameters name="varNameList" eType="/3/Sequence(Variable)"/>
+        <eParameters name="varTypeList">
+          <eType xsi:type="ocl.ecore:SequenceType" href="../main/generate.emtl#/3/Sequence(String)"/>
+        </eParameters>
+        <eParameters name="varNameList">
+          <eType xsi:type="ocl.ecore:SequenceType" href="../main/generate.emtl#/3/Sequence(Variable)"/>
+        </eParameters>
       </eOperations>
       <eOperations name="getOperationsFromInvoke" eType="/3/Sequence(Invoke)">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
@@ -644,8 +652,12 @@
           <references href="../common/createSetGet.emtl#/0/createSetGet"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <eParameters name="varTypeList" eType="/3/Sequence(String)"/>
-        <eParameters name="varNameList" eType="/3/Sequence(Variable)"/>
+        <eParameters name="varTypeList">
+          <eType xsi:type="ocl.ecore:SequenceType" href="processJavaFile.emtl#/3/Sequence(String)"/>
+        </eParameters>
+        <eParameters name="varNameList">
+          <eType xsi:type="ocl.ecore:SequenceType" href="processJavaFile.emtl#/3/Sequence(Variable)"/>
+        </eParameters>
       </eOperations>
       <eOperations name="createPrivateAttributes">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
@@ -655,8 +667,39 @@
           <references href="../common/genericTemplates.emtl#/0/createPrivateAttributes"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <eParameters name="varTypeList" eType="/3/Sequence(String)"/>
-        <eParameters name="varNameList" eType="/3/Sequence(Variable)"/>
+        <eParameters name="varTypeList">
+          <eType xsi:type="ocl.ecore:SequenceType" href="processJavaFile.emtl#/3/Sequence(String)"/>
+        </eParameters>
+        <eParameters name="varNameList">
+          <eType xsi:type="ocl.ecore:SequenceType" href="processJavaFile.emtl#/3/Sequence(Variable)"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="createPrivateTempAttributes">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../common/genericTemplates.emtl#/0/createPrivateTempAttributes"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="varTypeList">
+          <eType xsi:type="ocl.ecore:SequenceType" href="processJavaFile.emtl#/3/Sequence(String)"/>
+        </eParameters>
+        <eParameters name="varNameList">
+          <eType xsi:type="ocl.ecore:SequenceType" href="processJavaFile.emtl#/3/Sequence(Variable)"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="transformAssign">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../common/genericTemplates.emtl#/0/transformAssign"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="anAssign">
+          <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Assign"/>
+        </eParameters>
       </eOperations>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="OclAny_Class">
@@ -806,8 +849,12 @@
         <eParameters name="aPartnerLink">
           <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//PartnerLink"/>
         </eParameters>
-        <eParameters name="varTypeList" eType="/3/Sequence(String)"/>
-        <eParameters name="varNameList" eType="/3/Sequence(Variable)"/>
+        <eParameters name="varTypeList">
+          <eType xsi:type="ocl.ecore:SequenceType" href="../main/generate.emtl#/3/Sequence(String)"/>
+        </eParameters>
+        <eParameters name="varNameList">
+          <eType xsi:type="ocl.ecore:SequenceType" href="../main/generate.emtl#/3/Sequence(Variable)"/>
+        </eParameters>
       </eOperations>
       <eOperations name="getOperationsFromInvoke" eType="/3/Sequence(Invoke)">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
@@ -820,7 +867,9 @@
       </eOperations>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Sequence(String)_Class">
-      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL" references="/3/Sequence(String)"/>
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="processJavaFile.emtl#/3/Sequence(String)"/>
+      </eAnnotations>
       <eOperations name="createSetGet">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
@@ -829,7 +878,9 @@
           <references href="../common/createSetGet.emtl#/0/createSetGet"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <eParameters name="varNameList" eType="/3/Sequence(Variable)"/>
+        <eParameters name="varNameList">
+          <eType xsi:type="ocl.ecore:SequenceType" href="processJavaFile.emtl#/3/Sequence(Variable)"/>
+        </eParameters>
       </eOperations>
       <eOperations name="createPrivateAttributes">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
@@ -839,7 +890,35 @@
           <references href="../common/genericTemplates.emtl#/0/createPrivateAttributes"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <eParameters name="varNameList" eType="/3/Sequence(Variable)"/>
+        <eParameters name="varNameList">
+          <eType xsi:type="ocl.ecore:SequenceType" href="processJavaFile.emtl#/3/Sequence(Variable)"/>
+        </eParameters>
+      </eOperations>
+      <eOperations name="createPrivateTempAttributes">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../common/genericTemplates.emtl#/0/createPrivateTempAttributes"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="varNameList">
+          <eType xsi:type="ocl.ecore:SequenceType" href="processJavaFile.emtl#/3/Sequence(Variable)"/>
+        </eParameters>
+      </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Assign_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Assign"/>
+      </eAnnotations>
+      <eOperations name="transformAssign">
+        <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+          <contents xsi:type="ocl.ecore:Constraint"/>
+        </eAnnotations>
+        <eAnnotations source="MTL">
+          <references href="../common/genericTemplates.emtl#/0/transformAssign"/>
+        </eAnnotations>
+        <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
       </eOperations>
     </eClassifiers>
   </ecore:EPackage>
@@ -847,14 +926,14 @@
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
   </ocl.ecore:Variable>
   <ecore:EPackage name="collections">
+    <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(Invoke)" instanceClassName="java.util.List">
+      <elementType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Invoke"/>
+    </eClassifiers>
     <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(String)" instanceClassName="java.util.List">
       <elementType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
     </eClassifiers>
     <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(Variable)" instanceClassName="java.util.List">
       <elementType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Variable"/>
-    </eClassifiers>
-    <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(Invoke)" instanceClassName="java.util.List">
-      <elementType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Invoke"/>
     </eClassifiers>
     <eClassifiers xsi:type="ocl.ecore:SequenceType" instanceClassName="java.util.List">
       <elementType xsi:type="ocl.ecore:AnyType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
@@ -1432,7 +1511,7 @@
     </eAnnotations>
     <eAnnotations source="positions.99" references="/0/getOperationsFromInvoke">
       <details key="start" value="1845"/>
-      <details key="end" value="2026"/>
+      <details key="end" value="2025"/>
       <details key="line" value="40"/>
     </eAnnotations>
     <eAnnotations source="positions.100" references="/0/getOperationsFromInvoke/aProcess">

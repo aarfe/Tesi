@@ -38,5 +38,4 @@ authorWSParterLinkResponse.setGetAutographByCognomeEasyReturn(result);
 
 
 [query getOperationsFromInvoke(aProcess : Process, aPL : PartnerLink) : Sequence(Invoke) =  
-aProcess.eAllContents(Invoke)->select( anInvoke : Invoke | anInvoke.partnerLink=aPL )
-/]
+aProcess.eAllContents(Invoke)->select( anInvoke : Invoke | anInvoke.partnerLink=aPL )/]
