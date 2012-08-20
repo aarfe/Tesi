@@ -12,6 +12,7 @@
 	varNamesClientList : Sequence(String) = Sequence{'input','output'};
 	varTypesPL1List : Sequence(String) = Sequence{'GetAutographByCognomeEasyResponse','GetAutographByCognomeEasy'};
 	varNamesPL1List : Sequence(String) = Sequence{'AuthorWSParterLinkResponse','AuthorWSParterLinkRequest'}
+	
 	}]
 	[comment @main /]
 	

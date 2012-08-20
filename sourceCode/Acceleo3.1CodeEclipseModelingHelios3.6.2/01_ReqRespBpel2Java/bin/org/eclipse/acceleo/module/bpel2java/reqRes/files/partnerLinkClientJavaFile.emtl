@@ -55,7 +55,7 @@
             <referredProperty xsi:type="ecore:EAttribute" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Activity/name"/>
           </body>
           <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="() {&#xA;"/>
-          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#xA;&#x9;//CUSTOM SPECIFIC CODE&#xA;&#x9;System.out.println(&quot;Enter the name here : &quot;);&#xA;&#x9;   &#xA;&#x9;   String word;&#xA; &#xA;       Scanner scanIn = new Scanner(System.in);&#xA;       word = scanIn.nextLine();&#xA; &#xA;       scanIn.close();&#xA;                   &#xA;&#x9;&#x9;"/>
+          <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="&#x9;&#xA;&#x9;//CUSTOM SPECIFIC CODE&#xA;&#x9;System.out.println(&quot;Enter the name here : &quot;);&#xA;&#x9;   &#xA;&#x9;   String word;&#xA; &#xA;       Scanner scanIn = new Scanner(System.in);&#xA;       word = scanIn.nextLine();&#xA;       scanIn.close();&#xA;       System.out.println(&quot;The client inserted &quot; + word + &quot; &quot;); &#xA;                   &#xA;&#x9;&#x9;"/>
           <body xsi:type="ocl.ecore:PropertyCallExp">
             <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
             <source xsi:type="ocl.ecore:PropertyCallExp">
@@ -175,12 +175,8 @@
       <parameter name="aPartnerLink">
         <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//PartnerLink"/>
       </parameter>
-      <parameter name="varTypeList">
-        <eType xsi:type="ocl.ecore:SequenceType" href="../main/generate.emtl#/3/Sequence(String)"/>
-      </parameter>
-      <parameter name="varNameList">
-        <eType xsi:type="ocl.ecore:SequenceType" href="../main/generate.emtl#/3/Sequence(Variable)"/>
-      </parameter>
+      <parameter name="varTypeList" eType="/3/Sequence(String)"/>
+      <parameter name="varNameList" eType="/3/Sequence(Variable)"/>
     </ownedModuleElement>
     <ownedModuleElement xsi:type="mtl:Query" name="getOperationsFromReceive" type="/3/Sequence(Receive)">
       <parameter name="aProcess">
@@ -548,12 +544,8 @@
         <eParameters name="aPartnerLink">
           <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//PartnerLink"/>
         </eParameters>
-        <eParameters name="varTypeList">
-          <eType xsi:type="ocl.ecore:SequenceType" href="../main/generate.emtl#/3/Sequence(String)"/>
-        </eParameters>
-        <eParameters name="varNameList">
-          <eType xsi:type="ocl.ecore:SequenceType" href="../main/generate.emtl#/3/Sequence(Variable)"/>
-        </eParameters>
+        <eParameters name="varTypeList" eType="/3/Sequence(String)"/>
+        <eParameters name="varNameList" eType="/3/Sequence(Variable)"/>
       </eOperations>
       <eOperations name="getOperationsFromReceive" eType="/3/Sequence(Receive)">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
@@ -587,12 +579,8 @@
           <references href="../common/createSetGet.emtl#/0/createSetGet"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <eParameters name="varTypeList">
-          <eType xsi:type="ocl.ecore:SequenceType" href="processJavaFile.emtl#/3/Sequence(String)"/>
-        </eParameters>
-        <eParameters name="varNameList">
-          <eType xsi:type="ocl.ecore:SequenceType" href="processJavaFile.emtl#/3/Sequence(Variable)"/>
-        </eParameters>
+        <eParameters name="varTypeList" eType="/3/Sequence(String)"/>
+        <eParameters name="varNameList" eType="/3/Sequence(Variable)"/>
       </eOperations>
       <eOperations name="createPrivateAttributes">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
@@ -602,12 +590,8 @@
           <references href="../common/genericTemplates.emtl#/0/createPrivateAttributes"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <eParameters name="varTypeList">
-          <eType xsi:type="ocl.ecore:SequenceType" href="processJavaFile.emtl#/3/Sequence(String)"/>
-        </eParameters>
-        <eParameters name="varNameList">
-          <eType xsi:type="ocl.ecore:SequenceType" href="processJavaFile.emtl#/3/Sequence(Variable)"/>
-        </eParameters>
+        <eParameters name="varTypeList" eType="/3/Sequence(String)"/>
+        <eParameters name="varNameList" eType="/3/Sequence(Variable)"/>
       </eOperations>
       <eOperations name="createPrivateTempAttributes">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
@@ -617,12 +601,8 @@
           <references href="../common/genericTemplates.emtl#/0/createPrivateTempAttributes"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <eParameters name="varTypeList">
-          <eType xsi:type="ocl.ecore:SequenceType" href="processJavaFile.emtl#/3/Sequence(String)"/>
-        </eParameters>
-        <eParameters name="varNameList">
-          <eType xsi:type="ocl.ecore:SequenceType" href="processJavaFile.emtl#/3/Sequence(Variable)"/>
-        </eParameters>
+        <eParameters name="varTypeList" eType="/3/Sequence(String)"/>
+        <eParameters name="varNameList" eType="/3/Sequence(Variable)"/>
       </eOperations>
       <eOperations name="transformAssign">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
@@ -784,12 +764,8 @@
         <eParameters name="aPartnerLink">
           <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//PartnerLink"/>
         </eParameters>
-        <eParameters name="varTypeList">
-          <eType xsi:type="ocl.ecore:SequenceType" href="../main/generate.emtl#/3/Sequence(String)"/>
-        </eParameters>
-        <eParameters name="varNameList">
-          <eType xsi:type="ocl.ecore:SequenceType" href="../main/generate.emtl#/3/Sequence(Variable)"/>
-        </eParameters>
+        <eParameters name="varTypeList" eType="/3/Sequence(String)"/>
+        <eParameters name="varNameList" eType="/3/Sequence(Variable)"/>
       </eOperations>
       <eOperations name="getOperationsFromReceive" eType="/3/Sequence(Receive)">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
@@ -811,9 +787,7 @@
       </eOperations>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Sequence(String)_Class">
-      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
-        <references href="processJavaFile.emtl#/3/Sequence(String)"/>
-      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL" references="/3/Sequence(String)"/>
       <eOperations name="createSetGet">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
@@ -822,9 +796,7 @@
           <references href="../common/createSetGet.emtl#/0/createSetGet"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <eParameters name="varNameList">
-          <eType xsi:type="ocl.ecore:SequenceType" href="processJavaFile.emtl#/3/Sequence(Variable)"/>
-        </eParameters>
+        <eParameters name="varNameList" eType="/3/Sequence(Variable)"/>
       </eOperations>
       <eOperations name="createPrivateAttributes">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
@@ -834,9 +806,7 @@
           <references href="../common/genericTemplates.emtl#/0/createPrivateAttributes"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <eParameters name="varNameList">
-          <eType xsi:type="ocl.ecore:SequenceType" href="processJavaFile.emtl#/3/Sequence(Variable)"/>
-        </eParameters>
+        <eParameters name="varNameList" eType="/3/Sequence(Variable)"/>
       </eOperations>
       <eOperations name="createPrivateTempAttributes">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
@@ -846,9 +816,7 @@
           <references href="../common/genericTemplates.emtl#/0/createPrivateTempAttributes"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <eParameters name="varNameList">
-          <eType xsi:type="ocl.ecore:SequenceType" href="processJavaFile.emtl#/3/Sequence(Variable)"/>
-        </eParameters>
+        <eParameters name="varNameList" eType="/3/Sequence(Variable)"/>
       </eOperations>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Assign_Class">
@@ -870,19 +838,19 @@
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
   </ocl.ecore:Variable>
   <ecore:EPackage name="collections">
-    <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(Receive)" instanceClassName="java.util.List">
-      <elementType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Receive"/>
-    </eClassifiers>
-    <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(Reply)" instanceClassName="java.util.List">
-      <elementType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Reply"/>
-    </eClassifiers>
     <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(String)" instanceClassName="java.util.List">
       <elementType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
     </eClassifiers>
     <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(Variable)" instanceClassName="java.util.List">
       <elementType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Variable"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ocl.ecore:SequenceType" instanceClassName="java.util.List">
+    <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(Receive)" instanceClassName="java.util.List">
+      <elementType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Receive"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(Reply)" instanceClassName="java.util.List">
+      <elementType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Reply"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(OclAny)" instanceClassName="java.util.List">
       <elementType xsi:type="ocl.ecore:AnyType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/OclAny"/>
     </eClassifiers>
   </ecore:EPackage>
@@ -981,12 +949,12 @@
   <ecore:EAnnotation source="positions">
     <eAnnotations source="positions.0" references="/0/genPartnerLinkClientJavaFile">
       <details key="start" value="279"/>
-      <details key="end" value="2029"/>
+      <details key="end" value="2092"/>
       <details key="line" value="6"/>
     </eAnnotations>
     <eAnnotations source="positions.1" references="/0/genPartnerLinkClientJavaFile/@body.0">
       <details key="start" value="489"/>
-      <details key="end" value="2017"/>
+      <details key="end" value="2080"/>
       <details key="line" value="8"/>
     </eAnnotations>
     <eAnnotations source="positions.2" references="/0/genPartnerLinkClientJavaFile/@body.0/@body.0">
@@ -1066,7 +1034,7 @@
     </eAnnotations>
     <eAnnotations source="positions.17" references="/0/genPartnerLinkClientJavaFile/@body.0/@body.7">
       <details key="start" value="976"/>
-      <details key="end" value="1550"/>
+      <details key="end" value="1613"/>
       <details key="line" value="23"/>
     </eAnnotations>
     <eAnnotations source="positions.18" references="/0/genPartnerLinkClientJavaFile/@body.0/@body.7/@body.0">
@@ -1091,27 +1059,27 @@
     </eAnnotations>
     <eAnnotations source="positions.22" references="/0/genPartnerLinkClientJavaFile/@body.0/@body.7/@body.3">
       <details key="start" value="1242"/>
-      <details key="end" value="1467"/>
+      <details key="end" value="1530"/>
       <details key="line" value="26"/>
     </eAnnotations>
     <eAnnotations source="positions.23" references="/0/genPartnerLinkClientJavaFile/@body.0/@body.7/@body.4">
-      <details key="start" value="1468"/>
-      <details key="end" value="1490"/>
+      <details key="start" value="1531"/>
+      <details key="end" value="1553"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.24" references="/0/genPartnerLinkClientJavaFile/@body.0/@body.7/@body.4/@source">
-      <details key="start" value="1468"/>
-      <details key="end" value="1485"/>
+      <details key="start" value="1531"/>
+      <details key="end" value="1548"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.25" references="/0/genPartnerLinkClientJavaFile/@body.0/@body.7/@body.4/@source/aReceive">
-      <details key="start" value="1468"/>
-      <details key="end" value="1476"/>
+      <details key="start" value="1531"/>
+      <details key="end" value="1539"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.26" references="/0/genPartnerLinkClientJavaFile/@body.0/@body.7/@body.5">
-      <details key="start" value="1492"/>
-      <details key="end" value="1544"/>
+      <details key="start" value="1555"/>
+      <details key="end" value="1607"/>
       <details key="line" value="37"/>
     </eAnnotations>
     <eAnnotations source="positions.27" references="/0/genPartnerLinkClientJavaFile/@body.0/@body.7/aReceive">
@@ -1135,133 +1103,133 @@
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.31" references="/0/genPartnerLinkClientJavaFile/@body.0/@body.8">
-      <details key="start" value="1651"/>
-      <details key="end" value="1927"/>
+      <details key="start" value="1714"/>
+      <details key="end" value="1990"/>
       <details key="line" value="43"/>
     </eAnnotations>
     <eAnnotations source="positions.32" references="/0/genPartnerLinkClientJavaFile/@body.0/@body.8/@body.0">
-      <details key="start" value="1723"/>
-      <details key="end" value="1730"/>
+      <details key="start" value="1786"/>
+      <details key="end" value="1793"/>
       <details key="line" value="44"/>
     </eAnnotations>
     <eAnnotations source="positions.33" references="/0/genPartnerLinkClientJavaFile/@body.0/@body.8/@body.1">
-      <details key="start" value="1731"/>
-      <details key="end" value="1785"/>
+      <details key="start" value="1794"/>
+      <details key="end" value="1848"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.34" references="/0/genPartnerLinkClientJavaFile/@body.0/@body.8/@body.1/varTypeList">
-      <details key="start" value="1731"/>
-      <details key="end" value="1742"/>
+      <details key="start" value="1794"/>
+      <details key="end" value="1805"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.35" references="/0/genPartnerLinkClientJavaFile/@body.0/@body.8/@body.1/@argument.0">
-      <details key="start" value="1747"/>
-      <details key="end" value="1784"/>
+      <details key="start" value="1810"/>
+      <details key="end" value="1847"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.36" references="/0/genPartnerLinkClientJavaFile/@body.0/@body.8/@body.1/@argument.0/varNameList">
-      <details key="start" value="1747"/>
-      <details key="end" value="1758"/>
+      <details key="start" value="1810"/>
+      <details key="end" value="1821"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.37" references="/0/genPartnerLinkClientJavaFile/@body.0/@body.8/@body.1/@argument.0/@argument.0">
-      <details key="start" value="1768"/>
-      <details key="end" value="1783"/>
+      <details key="start" value="1831"/>
+      <details key="end" value="1846"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.38" references="/0/genPartnerLinkClientJavaFile/@body.0/@body.8/@body.1/@argument.0/@argument.0/aReply">
-      <details key="start" value="1768"/>
-      <details key="end" value="1774"/>
+      <details key="start" value="1831"/>
+      <details key="end" value="1837"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.39" references="/0/genPartnerLinkClientJavaFile/@body.0/@body.8/@body.2">
-      <details key="start" value="1787"/>
-      <details key="end" value="1788"/>
+      <details key="start" value="1850"/>
+      <details key="end" value="1851"/>
       <details key="line" value="44"/>
     </eAnnotations>
     <eAnnotations source="positions.40" references="/0/genPartnerLinkClientJavaFile/@body.0/@body.8/@body.3">
-      <details key="start" value="1789"/>
-      <details key="end" value="1800"/>
+      <details key="start" value="1852"/>
+      <details key="end" value="1863"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.41" references="/0/genPartnerLinkClientJavaFile/@body.0/@body.8/@body.3/aReply">
-      <details key="start" value="1789"/>
-      <details key="end" value="1795"/>
+      <details key="start" value="1852"/>
+      <details key="end" value="1858"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.42" references="/0/genPartnerLinkClientJavaFile/@body.0/@body.8/@body.4">
-      <details key="start" value="1802"/>
-      <details key="end" value="1876"/>
+      <details key="start" value="1865"/>
+      <details key="end" value="1939"/>
       <details key="line" value="44"/>
     </eAnnotations>
     <eAnnotations source="positions.43" references="/0/genPartnerLinkClientJavaFile/@body.0/@body.8/@body.5">
-      <details key="start" value="1877"/>
-      <details key="end" value="1912"/>
+      <details key="start" value="1940"/>
+      <details key="end" value="1975"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.44" references="/0/genPartnerLinkClientJavaFile/@body.0/@body.8/@body.5/@source">
-      <details key="start" value="1877"/>
-      <details key="end" value="1897"/>
+      <details key="start" value="1940"/>
+      <details key="end" value="1960"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.45" references="/0/genPartnerLinkClientJavaFile/@body.0/@body.8/@body.5/@source/@source">
-      <details key="start" value="1877"/>
-      <details key="end" value="1892"/>
+      <details key="start" value="1940"/>
+      <details key="end" value="1955"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.46" references="/0/genPartnerLinkClientJavaFile/@body.0/@body.8/@body.5/@source/@source/aReply">
-      <details key="start" value="1877"/>
-      <details key="end" value="1883"/>
+      <details key="start" value="1940"/>
+      <details key="end" value="1946"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.47" references="/0/genPartnerLinkClientJavaFile/@body.0/@body.8/@body.6">
-      <details key="start" value="1914"/>
-      <details key="end" value="1921"/>
+      <details key="start" value="1977"/>
+      <details key="end" value="1984"/>
       <details key="line" value="47"/>
     </eAnnotations>
     <eAnnotations source="positions.48" references="/0/genPartnerLinkClientJavaFile/@body.0/@body.8/aReply">
-      <details key="start" value="1657"/>
-      <details key="end" value="1671"/>
+      <details key="start" value="1720"/>
+      <details key="end" value="1734"/>
       <details key="line" value="43"/>
     </eAnnotations>
     <eAnnotations source="positions.49" references="/0/genPartnerLinkClientJavaFile/@body.0/@body.8/@iterSet">
-      <details key="start" value="1674"/>
-      <details key="end" value="1719"/>
+      <details key="start" value="1737"/>
+      <details key="end" value="1782"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.50" references="/0/genPartnerLinkClientJavaFile/@body.0/@body.8/@iterSet/aProcess">
-      <details key="start" value="1697"/>
-      <details key="end" value="1705"/>
+      <details key="start" value="1760"/>
+      <details key="end" value="1768"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.51" references="/0/genPartnerLinkClientJavaFile/@body.0/@body.8/@iterSet/aPartnerLink">
-      <details key="start" value="1706"/>
-      <details key="end" value="1718"/>
+      <details key="start" value="1769"/>
+      <details key="end" value="1781"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.52" references="/0/genPartnerLinkClientJavaFile/@body.0/@body.9">
-      <details key="start" value="1928"/>
-      <details key="end" value="1930"/>
+      <details key="start" value="1991"/>
+      <details key="end" value="1993"/>
       <details key="line" value="50"/>
     </eAnnotations>
     <eAnnotations source="positions.53" references="/0/genPartnerLinkClientJavaFile/@body.0/@body.10">
-      <details key="start" value="1965"/>
-      <details key="end" value="2003"/>
+      <details key="start" value="2028"/>
+      <details key="end" value="2066"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.54" references="/0/genPartnerLinkClientJavaFile/@body.0/@body.10/varTypeList">
-      <details key="start" value="1978"/>
-      <details key="end" value="1989"/>
+      <details key="start" value="2041"/>
+      <details key="end" value="2052"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.55" references="/0/genPartnerLinkClientJavaFile/@body.0/@body.10/varNameList">
-      <details key="start" value="1991"/>
-      <details key="end" value="2002"/>
+      <details key="start" value="2054"/>
+      <details key="end" value="2065"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.56" references="/0/genPartnerLinkClientJavaFile/@body.0/@body.11">
-      <details key="start" value="2005"/>
-      <details key="end" value="2009"/>
+      <details key="start" value="2068"/>
+      <details key="end" value="2072"/>
       <details key="line" value="53"/>
     </eAnnotations>
     <eAnnotations source="positions.57" references="/0/genPartnerLinkClientJavaFile/@body.0/@fileUrl">
@@ -1325,123 +1293,123 @@
       <details key="line" value="7"/>
     </eAnnotations>
     <eAnnotations source="positions.69" references="/0/getOperationsFromReceive">
-      <details key="start" value="2031"/>
-      <details key="end" value="2215"/>
+      <details key="start" value="2094"/>
+      <details key="end" value="2278"/>
       <details key="line" value="58"/>
     </eAnnotations>
     <eAnnotations source="positions.70" references="/0/getOperationsFromReceive/aProcess">
-      <details key="start" value="2063"/>
-      <details key="end" value="2081"/>
+      <details key="start" value="2126"/>
+      <details key="end" value="2144"/>
       <details key="line" value="58"/>
     </eAnnotations>
     <eAnnotations source="positions.71" references="/0/getOperationsFromReceive/aPL">
-      <details key="start" value="2083"/>
-      <details key="end" value="2100"/>
+      <details key="start" value="2146"/>
+      <details key="end" value="2163"/>
       <details key="line" value="58"/>
     </eAnnotations>
     <eAnnotations source="positions.72" references="/0/getOperationsFromReceive/select">
-      <details key="start" value="2126"/>
-      <details key="end" value="2213"/>
+      <details key="start" value="2189"/>
+      <details key="end" value="2276"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.73" references="/0/getOperationsFromReceive/select/@source">
-      <details key="start" value="2126"/>
-      <details key="end" value="2156"/>
+      <details key="start" value="2189"/>
+      <details key="end" value="2219"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.74" references="/0/getOperationsFromReceive/select/@source/aProcess">
-      <details key="start" value="2126"/>
-      <details key="end" value="2134"/>
+      <details key="start" value="2189"/>
+      <details key="end" value="2197"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.75" references="/0/getOperationsFromReceive/select/@source/@argument.0">
-      <details key="start" value="2148"/>
-      <details key="end" value="2155"/>
+      <details key="start" value="2211"/>
+      <details key="end" value="2218"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.76" references="/0/getOperationsFromReceive/select/@body">
-      <details key="start" value="2187"/>
-      <details key="end" value="2211"/>
+      <details key="start" value="2250"/>
+      <details key="end" value="2274"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.77" references="/0/getOperationsFromReceive/select/@body/@source">
-      <details key="start" value="2187"/>
-      <details key="end" value="2207"/>
+      <details key="start" value="2250"/>
+      <details key="end" value="2270"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.78" references="/0/getOperationsFromReceive/select/@body/@source/aReceive">
-      <details key="start" value="2187"/>
-      <details key="end" value="2195"/>
+      <details key="start" value="2250"/>
+      <details key="end" value="2258"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.79" references="/0/getOperationsFromReceive/select/@body/aPL">
-      <details key="start" value="2208"/>
-      <details key="end" value="2211"/>
+      <details key="start" value="2271"/>
+      <details key="end" value="2274"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.80" references="/0/getOperationsFromReceive/select/aReceive">
-      <details key="start" value="2166"/>
-      <details key="end" value="2184"/>
+      <details key="start" value="2229"/>
+      <details key="end" value="2247"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.81" references="/0/getOperationsFromReply">
-      <details key="start" value="2216"/>
-      <details key="end" value="2388"/>
+      <details key="start" value="2279"/>
+      <details key="end" value="2451"/>
       <details key="line" value="60"/>
     </eAnnotations>
     <eAnnotations source="positions.82" references="/0/getOperationsFromReply/aProcess">
-      <details key="start" value="2246"/>
-      <details key="end" value="2264"/>
+      <details key="start" value="2309"/>
+      <details key="end" value="2327"/>
       <details key="line" value="60"/>
     </eAnnotations>
     <eAnnotations source="positions.83" references="/0/getOperationsFromReply/aPL">
-      <details key="start" value="2266"/>
-      <details key="end" value="2283"/>
+      <details key="start" value="2329"/>
+      <details key="end" value="2346"/>
       <details key="line" value="60"/>
     </eAnnotations>
     <eAnnotations source="positions.84" references="/0/getOperationsFromReply/select">
-      <details key="start" value="2307"/>
-      <details key="end" value="2386"/>
+      <details key="start" value="2370"/>
+      <details key="end" value="2449"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.85" references="/0/getOperationsFromReply/select/@source">
-      <details key="start" value="2307"/>
-      <details key="end" value="2335"/>
+      <details key="start" value="2370"/>
+      <details key="end" value="2398"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.86" references="/0/getOperationsFromReply/select/@source/aProcess">
-      <details key="start" value="2307"/>
-      <details key="end" value="2315"/>
+      <details key="start" value="2370"/>
+      <details key="end" value="2378"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.87" references="/0/getOperationsFromReply/select/@source/@argument.0">
-      <details key="start" value="2329"/>
-      <details key="end" value="2334"/>
+      <details key="start" value="2392"/>
+      <details key="end" value="2397"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.88" references="/0/getOperationsFromReply/select/@body">
-      <details key="start" value="2362"/>
-      <details key="end" value="2384"/>
+      <details key="start" value="2425"/>
+      <details key="end" value="2447"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.89" references="/0/getOperationsFromReply/select/@body/@source">
-      <details key="start" value="2362"/>
-      <details key="end" value="2380"/>
+      <details key="start" value="2425"/>
+      <details key="end" value="2443"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.90" references="/0/getOperationsFromReply/select/@body/@source/aReply">
-      <details key="start" value="2362"/>
-      <details key="end" value="2368"/>
+      <details key="start" value="2425"/>
+      <details key="end" value="2431"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.91" references="/0/getOperationsFromReply/select/@body/aPL">
-      <details key="start" value="2381"/>
-      <details key="end" value="2384"/>
+      <details key="start" value="2444"/>
+      <details key="end" value="2447"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.92" references="/0/getOperationsFromReply/select/aReply">
-      <details key="start" value="2345"/>
-      <details key="end" value="2359"/>
+      <details key="start" value="2408"/>
+      <details key="end" value="2422"/>
       <details key="line" value="0"/>
     </eAnnotations>
   </ecore:EAnnotation>

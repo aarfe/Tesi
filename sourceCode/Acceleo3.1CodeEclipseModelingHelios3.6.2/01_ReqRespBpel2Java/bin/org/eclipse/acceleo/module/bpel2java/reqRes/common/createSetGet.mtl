@@ -11,7 +11,9 @@ public [varTypeList->at(i).toUpperFirst()/] get[aVar.name.toUpperFirst()/]() {
 }
 
 public void set[aVar.name.toUpperFirst()/]([varTypeList->at(i).toUpperFirst()/] value) {
+	System.out.println(" Entered the set operation for [aVar.name.toUpperFirst().toUpper()/]  " );  
 	this.[aVar.name.toLowerFirst()/] = value;
+	System.out.println("The "+ value + " has been set on the" + [aVar.name.toLowerFirst()/].toString()  );
 }
 
 [/for]

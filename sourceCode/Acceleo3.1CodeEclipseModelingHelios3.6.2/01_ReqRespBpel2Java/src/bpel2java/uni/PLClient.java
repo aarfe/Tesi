@@ -24,8 +24,8 @@ public void receiveInput() {
  
        Scanner scanIn = new Scanner(System.in);
        word = scanIn.nextLine();
- 
        scanIn.close();
+       System.out.println("The client inserted " + word + " "); 
                    
 		input.setInput(word);
 	//END CUSTOM SPECIFIC CODE   
@@ -46,7 +46,9 @@ public SimpleProcessRequest getInput() {
 }
 
 public void setInput(SimpleProcessRequest value) {
+	System.out.println(" Entered the set operation for INPUT  " );  
 	this.input = value;
+	System.out.println("The "+ value + " has been set on the" + input.toString()  );
 }
 
 public SimpleProcessResponse getOutput() {
@@ -54,7 +56,9 @@ public SimpleProcessResponse getOutput() {
 }
 
 public void setOutput(SimpleProcessResponse value) {
+	System.out.println(" Entered the set operation for OUTPUT  " );  
 	this.output = value;
+	System.out.println("The "+ value + " has been set on the" + output.toString()  );
 }
 
 	

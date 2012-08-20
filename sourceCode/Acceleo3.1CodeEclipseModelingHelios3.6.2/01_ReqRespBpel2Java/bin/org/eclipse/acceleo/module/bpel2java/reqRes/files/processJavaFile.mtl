@@ -27,24 +27,29 @@ public void runWorkflow() {
 	
 [comment Create the PartnerLinks STUBS and write their roles in comments/]
 //Create the PartnerLinks STUBS
+
+System.out.println("In the Process.java");
 [for (aPL : PartnerLink | aProcess.eAllContents(PartnerLink))]
 	[if (not aPL.myRole.oclIsUndefined())] 
-	// STUB service representing the PartnerLink:[aPL.name/] with myRole: [aPL.myRole.name/] 
+	// STUB service representing the PartnerLink:[aPL.name/] with myRole: [aPL.myRole.name/] 	
 	[/if] 
 	[if (not aPL.partnerRole.oclIsUndefined())]
 	// STUB service representing the PartnerLink:[aPL.name/] with PartnerRole: [aPL.partnerRole.name/]
 	[/if]
 	PL[aPL.name.toUpperFirst()/] myPL[aPL.name.toUpperFirst()/] = new PL[aPL.name.toUpperFirst()/]();
+	// DEBUG
+	if(myPL[aPL.name.toUpperFirst()/].equals(null)) System.out.println("Object not created");
 [/for]
-[comment] Check if the first activity is a SEQUENCE - NOT WORKING
+[comment] Check if the 1st activity is a SEQUENCE - NOT WORKING
 [aProcess.eAllContents(Activity)->first().oclIsTypeOf(Sequence)/]
 [/comment]
 [comment Get the elements from the sequence and create the corresponding java calls /]
 
 [let aSeq : Sequence = aProcess.eAllContents(Activity)->first()]
+
 [comment Control if the first element in the Sequence is a Receive/]
-	[if (aSeq.eAllContents()->at(1).oclIsTypeOf(Receive))]
-		[let aReceive : Receive = aSeq.eAllContents()->at(1)]
+	[if (aSeq.eAllContents(Activity)->at(1).oclIsTypeOf(Receive))]
+		[let aReceive : Receive = aSeq.eAllContents(Activity)->at(1)]
 // Emulate the Receive activity		
 		myPL[aReceive.partnerLink.name.toUpperFirst()/].[aReceive.name.toLowerFirst()/]();			
 		[/let]	
@@ -52,16 +57,79 @@ public void runWorkflow() {
 	The first element in the sequence is not a Receive
 	[/if]
 
-[comment Control if the second element in the Sequence is an Assign/]
-	[if (aSeq.eAllContents()->at(2).oclIsTypeOf(Assign))]
-		[let anAssign : Assign = aSeq.eAllContents()->at(2)]
-// Emulate the Assign activity		
-		myPLAuthorWSParterLink.getAuthorWSParterLinkRequest().setACognome(myPLClient.getInput().getInput());			
+[comment Control if the 2nd element in the Sequence is an Assign/]
+	[if (aSeq.eAllContents(Activity)->at(2).oclIsTypeOf(Assign))]
+		[let aCopy : Copy = aSeq.eAllContents(Activity)->at(2).eAllContents(Copy)->last()]
+		[comment NOT GENERIC , cant relate the name of the variables to its PL, so I take it from the invoke, which is not a generic strategy/]	
+// Emulate the Assign activity 
+		[for (anInvoke : Invoke | aProcess.eAllContents(Invoke))]
+			[if (anInvoke.inputVariable = aCopy.to.variable)]
+				myPL[anInvoke.partnerLink.name.toUpperFirst()/]
+			[elseif (i>=2)]
+				There are more than one "invoke" construct in the software, the "Assign" might not work properly	
+			[/if]	
+		[/for]
+		.get[aCopy.to.variable.name.toUpperFirst()/]().set[aCopy.to.query.value.substring(aCopy.to.query.value.index(':')+1).toUpperFirst()/]( 
+		[for (aReceive : Receive | aProcess.eAllContents(Receive))]
+			[if (aReceive.variable = aCopy.from.variable)]
+				myPL[aReceive.partnerLink.name.toUpperFirst()/]
+			[elseif (i>=2)]
+				There are more than one "receive" construct in the software, the "Assign" might not work properly	
+			[/if]	
+		[/for]	
+		.get[aCopy.from.variable.name.toUpperFirst()/]().get[aCopy.from.query.value.substring(aCopy.from.query.value.index(':')+1).toUpperFirst()/]() );		
 		[/let]	
 	[else]
-	The 2nd element in the sequence is not an Assign
+		The 2nd element in the sequence is not an Assign
 	[/if]
 
+[comment Control if the 3rd element in the Sequence is an Invoke/]
+	[if (aSeq.eAllContents(Activity)->at(3).oclIsTypeOf(Invoke))]
+		[let anInvoke : Invoke = aSeq.eAllContents(Activity)->at(3)]
+// Emulate the Invoke activity
+		myPL[anInvoke.partnerLink.name.toUpperFirst()/].[anInvoke.operation.name/]Stub();		
+        [/let]
+	[else]	
+	The 3rd element in the sequence is not an Invoke
+	[/if]
+	
+[comment Control if the 4th element in the Sequence is an Invoke/]
+	[if (aSeq.eAllContents(Activity)->at(4).oclIsTypeOf(Assign))]
+		[let aCopy : Copy = aSeq.eAllContents(Activity)->at(4).eAllContents(Copy)->last()]
+[comment NOT GENERIC , cant relate the name of the variables to its PL, so I take it from the invoke, which is not a generic strategy/]	
+// Emulate the Assign activity 
+		[for (aReply : Reply | aProcess.eAllContents(Reply))]
+			[if (aReply.variable = aCopy.to.variable)]
+				myPL[aReply.partnerLink.name.toUpperFirst()/]
+			[elseif (i>=2)]
+				There are more than one "reply" construct in the software, the "Assign" might not work properly	
+			[/if]	
+		[/for]
+		.get[aCopy.to.variable.name.toUpperFirst()/]().set[aCopy.to.query.value.substring(aCopy.to.query.value.index(':')+1).toUpperFirst()/]( 
+		[for (anInvoke : Invoke | aProcess.eAllContents(Invoke))]
+			[if (anInvoke.outputVariable = aCopy.from.variable)]
+				myPL[anInvoke.partnerLink.name.toUpperFirst()/]
+			[elseif (i>=2)]
+				There are more than one "invoke" construct in the software, the "Assign" might not work properly	
+			[/if]	
+		[/for]	
+		.get[aCopy.from.variable.name.toUpperFirst()/]().get[aCopy.from.query.value.substring(aCopy.from.query.value.index(':')+1).toUpperFirst()/]() );		
+		[/let]	
+	[else]	
+		The 4th element in the sequence is not an Invoke
+	[/if]	
+//		myPLClient.getOutput().setResult( myPLAuthorWSParterLink.getAuthorWSParterLinkResponse().getAutographByCognomeEasyReturn );	
+	
+[comment Control if the 35th element in the Sequence is an Reply/]
+	[if (aSeq.eAllContents(Activity)->at(5).oclIsTypeOf(Reply))]
+		[let aReply : Reply = aSeq.eAllContents(Activity)->at(5)]
+// Emulate the Reply activity
+		myPL[aReply.partnerLink.name.toUpperFirst()/].[aReply.name/]();		
+        [/let]
+	[else]	
+	The 5th element in the sequence is not an Invoke
+	[/if]
+	
 [comment]
 [aProcess.eAllContents(Activity)->first().eContents()->first()/]
 [aSeq.oclIsKindOf(Activity).toString()/]
@@ -74,13 +142,12 @@ public void runWorkflow() {
  
 	}
 }
+
 [/file]
 [/template]
 
 
 
-[template private boh(coll : Bag(String))]
-[/template]
 
 [comment]
 

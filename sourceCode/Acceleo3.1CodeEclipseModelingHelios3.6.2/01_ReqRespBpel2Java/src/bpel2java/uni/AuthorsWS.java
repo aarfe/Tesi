@@ -42,7 +42,7 @@ public class AuthorsWS {
 		if (aCognome=="Di Carlo")
 			return "Andrea Di Carlo";
 		else { 
-			return "The author is not in the list";
+			return "The author " + aCognome + " is not in the list";
 		}		
 	}
 }

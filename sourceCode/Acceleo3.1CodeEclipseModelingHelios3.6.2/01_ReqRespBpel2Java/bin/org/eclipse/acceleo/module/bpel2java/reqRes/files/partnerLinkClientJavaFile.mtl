@@ -31,8 +31,8 @@ public void [aReceive.name/]() {
  
        Scanner scanIn = new Scanner(System.in);
        word = scanIn.nextLine();
- 
        scanIn.close();
+       System.out.println("The client inserted " + word + " "); 
                    
 		[aReceive.variable.name/].setInput(word);
 	//END CUSTOM SPECIFIC CODE   

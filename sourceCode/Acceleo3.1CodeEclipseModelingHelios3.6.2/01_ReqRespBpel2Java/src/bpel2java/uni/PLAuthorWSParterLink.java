@@ -32,7 +32,9 @@ public GetAutographByCognomeEasyResponse getAuthorWSParterLinkResponse() {
 }
 
 public void setAuthorWSParterLinkResponse(GetAutographByCognomeEasyResponse value) {
+	System.out.println(" Entered the set operation for AUTHORWSPARTERLINKRESPONSE  " );  
 	this.authorWSParterLinkResponse = value;
+	System.out.println("The "+ value + " has been set on the" + authorWSParterLinkResponse.toString()  );
 }
 
 public GetAutographByCognomeEasy getAuthorWSParterLinkRequest() {
@@ -40,7 +42,9 @@ public GetAutographByCognomeEasy getAuthorWSParterLinkRequest() {
 }
 
 public void setAuthorWSParterLinkRequest(GetAutographByCognomeEasy value) {
+	System.out.println(" Entered the set operation for AUTHORWSPARTERLINKREQUEST  " );  
 	this.authorWSParterLinkRequest = value;
+	System.out.println("The "+ value + " has been set on the" + authorWSParterLinkRequest.toString()  );
 }
 
 	

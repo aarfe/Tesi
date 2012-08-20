@@ -653,10 +653,10 @@
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="varTypeList">
-          <eType xsi:type="ocl.ecore:SequenceType" href="processJavaFile.emtl#/3/Sequence(String)"/>
+          <eType xsi:type="ocl.ecore:SequenceType" href="partnerLinkClientJavaFile.emtl#/3/Sequence(String)"/>
         </eParameters>
         <eParameters name="varNameList">
-          <eType xsi:type="ocl.ecore:SequenceType" href="processJavaFile.emtl#/3/Sequence(Variable)"/>
+          <eType xsi:type="ocl.ecore:SequenceType" href="partnerLinkClientJavaFile.emtl#/3/Sequence(Variable)"/>
         </eParameters>
       </eOperations>
       <eOperations name="createPrivateAttributes">
@@ -668,10 +668,10 @@
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="varTypeList">
-          <eType xsi:type="ocl.ecore:SequenceType" href="processJavaFile.emtl#/3/Sequence(String)"/>
+          <eType xsi:type="ocl.ecore:SequenceType" href="partnerLinkClientJavaFile.emtl#/3/Sequence(String)"/>
         </eParameters>
         <eParameters name="varNameList">
-          <eType xsi:type="ocl.ecore:SequenceType" href="processJavaFile.emtl#/3/Sequence(Variable)"/>
+          <eType xsi:type="ocl.ecore:SequenceType" href="partnerLinkClientJavaFile.emtl#/3/Sequence(Variable)"/>
         </eParameters>
       </eOperations>
       <eOperations name="createPrivateTempAttributes">
@@ -683,10 +683,10 @@
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="varTypeList">
-          <eType xsi:type="ocl.ecore:SequenceType" href="processJavaFile.emtl#/3/Sequence(String)"/>
+          <eType xsi:type="ocl.ecore:SequenceType" href="partnerLinkClientJavaFile.emtl#/3/Sequence(String)"/>
         </eParameters>
         <eParameters name="varNameList">
-          <eType xsi:type="ocl.ecore:SequenceType" href="processJavaFile.emtl#/3/Sequence(Variable)"/>
+          <eType xsi:type="ocl.ecore:SequenceType" href="partnerLinkClientJavaFile.emtl#/3/Sequence(Variable)"/>
         </eParameters>
       </eOperations>
       <eOperations name="transformAssign">
@@ -868,7 +868,7 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Sequence(String)_Class">
       <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
-        <references href="processJavaFile.emtl#/3/Sequence(String)"/>
+        <references href="partnerLinkClientJavaFile.emtl#/3/Sequence(String)"/>
       </eAnnotations>
       <eOperations name="createSetGet">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
@@ -879,7 +879,7 @@
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="varNameList">
-          <eType xsi:type="ocl.ecore:SequenceType" href="processJavaFile.emtl#/3/Sequence(Variable)"/>
+          <eType xsi:type="ocl.ecore:SequenceType" href="partnerLinkClientJavaFile.emtl#/3/Sequence(Variable)"/>
         </eParameters>
       </eOperations>
       <eOperations name="createPrivateAttributes">
@@ -891,7 +891,7 @@
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="varNameList">
-          <eType xsi:type="ocl.ecore:SequenceType" href="processJavaFile.emtl#/3/Sequence(Variable)"/>
+          <eType xsi:type="ocl.ecore:SequenceType" href="partnerLinkClientJavaFile.emtl#/3/Sequence(Variable)"/>
         </eParameters>
       </eOperations>
       <eOperations name="createPrivateTempAttributes">
@@ -903,7 +903,7 @@
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="varNameList">
-          <eType xsi:type="ocl.ecore:SequenceType" href="processJavaFile.emtl#/3/Sequence(Variable)"/>
+          <eType xsi:type="ocl.ecore:SequenceType" href="partnerLinkClientJavaFile.emtl#/3/Sequence(Variable)"/>
         </eParameters>
       </eOperations>
     </eClassifiers>
