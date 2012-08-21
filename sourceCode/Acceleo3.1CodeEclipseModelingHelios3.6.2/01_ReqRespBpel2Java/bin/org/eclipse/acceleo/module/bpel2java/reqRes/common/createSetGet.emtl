@@ -15,7 +15,7 @@
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
           <source xsi:type="ocl.ecore:OperationCallExp">
             <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-            <source xsi:type="ocl.ecore:VariableExp" name="varTypeList" eType="/6/Sequence(String)" referredVariable="/0/createSetGet/varTypeList"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="varTypeList" eType="/3/Sequence(String)" referredVariable="/0/createSetGet/varTypeList"/>
             <argument xsi:type="ocl.ecore:VariableExp" name="i" referredVariable="/9">
               <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
             </argument>
@@ -33,7 +33,29 @@
             <referredProperty xsi:type="ecore:EAttribute" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Variable/name"/>
           </source>
         </body>
-        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="() {&#xA;&#x9;return "/>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol="() {&#xA;&#x9;System.out.println(&quot;Getting the variable &quot; + "/>
+        <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/String_Class/toLowerFirst">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="aVar" referredVariable="/0/createSetGet/@body.1/aVar">
+              <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Variable"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Variable/name"/>
+          </source>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".toString() + &quot; &quot; + "/>
+        <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/String_Class/toLowerFirst">
+          <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+          <source xsi:type="ocl.ecore:PropertyCallExp">
+            <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="aVar" referredVariable="/0/createSetGet/@body.1/aVar">
+              <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Variable"/>
+            </source>
+            <referredProperty xsi:type="ecore:EAttribute" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Variable/name"/>
+          </source>
+        </body>
+        <body xsi:type="ocl.ecore:StringLiteralExp" stringSymbol=".getClass() );&#xA;&#x9;return "/>
         <body xsi:type="ocl.ecore:OperationCallExp" referredOperation="/1/String_Class/toLowerFirst">
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
           <source xsi:type="ocl.ecore:PropertyCallExp">
@@ -60,7 +82,7 @@
           <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
           <source xsi:type="ocl.ecore:OperationCallExp">
             <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-            <source xsi:type="ocl.ecore:VariableExp" name="varTypeList" eType="/6/Sequence(String)" referredVariable="/0/createSetGet/varTypeList"/>
+            <source xsi:type="ocl.ecore:VariableExp" name="varTypeList" eType="/3/Sequence(String)" referredVariable="/0/createSetGet/varTypeList"/>
             <argument xsi:type="ocl.ecore:VariableExp" name="i" referredVariable="/9">
               <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/Integer"/>
             </argument>
@@ -108,14 +130,10 @@
         <loopVariable name="aVar">
           <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Variable"/>
         </loopVariable>
-        <iterSet xsi:type="ocl.ecore:VariableExp" name="varNameList" eType="/6/Sequence(Variable)" referredVariable="/0/createSetGet/varNameList"/>
+        <iterSet xsi:type="ocl.ecore:VariableExp" name="varNameList" eType="/3/Sequence(Variable)" referredVariable="/0/createSetGet/varNameList"/>
       </body>
-      <parameter name="varTypeList">
-        <eType xsi:type="ocl.ecore:SequenceType" href="../files/partnerLinkClientJavaFile.emtl#/3/Sequence(String)"/>
-      </parameter>
-      <parameter name="varNameList">
-        <eType xsi:type="ocl.ecore:SequenceType" href="../files/partnerLinkClientJavaFile.emtl#/3/Sequence(Variable)"/>
-      </parameter>
+      <parameter name="varTypeList" eType="/3/Sequence(String)"/>
+      <parameter name="varNameList" eType="/3/Sequence(Variable)"/>
     </ownedModuleElement>
   </mtl:Module>
   <ecore:EPackage name="additions">
@@ -407,12 +425,8 @@
         </eAnnotations>
         <eAnnotations source="MTL" references="/0/createSetGet"/>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <eParameters name="varTypeList">
-          <eType xsi:type="ocl.ecore:SequenceType" href="../files/partnerLinkClientJavaFile.emtl#/3/Sequence(String)"/>
-        </eParameters>
-        <eParameters name="varNameList">
-          <eType xsi:type="ocl.ecore:SequenceType" href="../files/partnerLinkClientJavaFile.emtl#/3/Sequence(Variable)"/>
-        </eParameters>
+        <eParameters name="varTypeList" eType="/3/Sequence(String)"/>
+        <eParameters name="varNameList" eType="/3/Sequence(Variable)"/>
       </eOperations>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="OclAny_Class">
@@ -550,44 +564,34 @@
       </eOperations>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Sequence(String)_Class">
-      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
-        <references href="../files/partnerLinkClientJavaFile.emtl#/3/Sequence(String)"/>
-      </eAnnotations>
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL" references="/3/Sequence(String)"/>
       <eOperations name="createSetGet">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL" references="/0/createSetGet"/>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <eParameters name="varNameList">
-          <eType xsi:type="ocl.ecore:SequenceType" href="../files/partnerLinkClientJavaFile.emtl#/3/Sequence(Variable)"/>
-        </eParameters>
+        <eParameters name="varNameList" eType="/3/Sequence(Variable)"/>
       </eOperations>
     </eClassifiers>
   </ecore:EPackage>
   <ocl.ecore:Variable name="self">
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
   </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ocl.ecore:SequenceType" href="../files/partnerLinkClientJavaFile.emtl#/3/Sequence(String)"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-  </ocl.ecore:Variable>
-  <ocl.ecore:Variable name="self">
-    <eType xsi:type="ocl.ecore:SequenceType" href="../files/partnerLinkClientJavaFile.emtl#/3/Sequence(String)"/>
-  </ocl.ecore:Variable>
   <ecore:EPackage name="collections">
-    <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(Variable)" instanceClassName="java.util.List">
-      <elementType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Variable"/>
-    </eClassifiers>
     <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(String)" instanceClassName="java.util.List">
       <elementType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
     </eClassifiers>
+    <eClassifiers xsi:type="ocl.ecore:SequenceType" name="Sequence(Variable)" instanceClassName="java.util.List">
+      <elementType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Variable"/>
+    </eClassifiers>
   </ecore:EPackage>
+  <ocl.ecore:Variable name="self" eType="/3/Sequence(String)"/>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ocl.ecore:SequenceType" href="../files/partnerLinkClientJavaFile.emtl#/3/Sequence(String)"/>
+    <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
   </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self" eType="/3/Sequence(String)"/>
+  <ocl.ecore:Variable name="self" eType="/3/Sequence(String)"/>
   <ocl.ecore:Variable name="self">
     <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Variable"/>
   </ocl.ecore:Variable>
@@ -619,15 +623,19 @@
     <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Variable"/>
   </ocl.ecore:Variable>
   <ocl.ecore:Variable name="self">
-    <eType xsi:type="ocl.ecore:SequenceType" href="../files/partnerLinkClientJavaFile.emtl#/3/Sequence(String)"/>
+    <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Variable"/>
   </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self">
+    <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Variable"/>
+  </ocl.ecore:Variable>
+  <ocl.ecore:Variable name="self" eType="/3/Sequence(String)"/>
   <ocl.ecore:Variable name="self">
     <eType xsi:type="ecore:EClass" href="http://www.eclipse.org/emf/2002/Ecore#//EObject"/>
   </ocl.ecore:Variable>
   <ecore:EAnnotation source="positions">
     <eAnnotations source="positions.0" references="/0/createSetGet">
       <details key="start" value="139"/>
-      <details key="end" value="793"/>
+      <details key="end" value="928"/>
       <details key="line" value="4"/>
     </eAnnotations>
     <eAnnotations source="positions.1" references="/0/createSetGet/@body.0">
@@ -637,7 +645,7 @@
     </eAnnotations>
     <eAnnotations source="positions.2" references="/0/createSetGet/@body.1">
       <details key="start" value="280"/>
-      <details key="end" value="781"/>
+      <details key="end" value="916"/>
       <details key="line" value="8"/>
     </eAnnotations>
     <eAnnotations source="positions.3" references="/0/createSetGet/@body.1/@body.0">
@@ -687,155 +695,195 @@
     </eAnnotations>
     <eAnnotations source="positions.12" references="/0/createSetGet/@body.1/@body.4">
       <details key="start" value="393"/>
-      <details key="end" value="406"/>
+      <details key="end" value="444"/>
       <details key="line" value="9"/>
     </eAnnotations>
     <eAnnotations source="positions.13" references="/0/createSetGet/@body.1/@body.5">
-      <details key="start" value="407"/>
-      <details key="end" value="431"/>
+      <details key="start" value="445"/>
+      <details key="end" value="469"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.14" references="/0/createSetGet/@body.1/@body.5/@source">
-      <details key="start" value="407"/>
-      <details key="end" value="416"/>
+      <details key="start" value="445"/>
+      <details key="end" value="454"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.15" references="/0/createSetGet/@body.1/@body.5/@source/aVar">
-      <details key="start" value="407"/>
-      <details key="end" value="411"/>
+      <details key="start" value="445"/>
+      <details key="end" value="449"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.16" references="/0/createSetGet/@body.1/@body.6">
-      <details key="start" value="433"/>
-      <details key="end" value="453"/>
+      <details key="start" value="471"/>
+      <details key="end" value="491"/>
       <details key="line" value="10"/>
     </eAnnotations>
     <eAnnotations source="positions.17" references="/0/createSetGet/@body.1/@body.7">
-      <details key="start" value="454"/>
-      <details key="end" value="478"/>
+      <details key="start" value="492"/>
+      <details key="end" value="516"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.18" references="/0/createSetGet/@body.1/@body.7/@source">
-      <details key="start" value="454"/>
-      <details key="end" value="463"/>
+      <details key="start" value="492"/>
+      <details key="end" value="501"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.19" references="/0/createSetGet/@body.1/@body.7/@source/aVar">
-      <details key="start" value="454"/>
-      <details key="end" value="458"/>
+      <details key="start" value="492"/>
+      <details key="end" value="496"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.20" references="/0/createSetGet/@body.1/@body.8">
-      <details key="start" value="480"/>
-      <details key="end" value="481"/>
-      <details key="line" value="13"/>
+      <details key="start" value="518"/>
+      <details key="end" value="541"/>
+      <details key="line" value="10"/>
     </eAnnotations>
     <eAnnotations source="positions.21" references="/0/createSetGet/@body.1/@body.9">
-      <details key="start" value="482"/>
-      <details key="end" value="515"/>
+      <details key="start" value="542"/>
+      <details key="end" value="566"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.22" references="/0/createSetGet/@body.1/@body.9/@source">
-      <details key="start" value="482"/>
-      <details key="end" value="500"/>
+      <details key="start" value="542"/>
+      <details key="end" value="551"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.23" references="/0/createSetGet/@body.1/@body.9/@source/varTypeList">
-      <details key="start" value="482"/>
-      <details key="end" value="493"/>
+    <eAnnotations source="positions.23" references="/0/createSetGet/@body.1/@body.9/@source/aVar">
+      <details key="start" value="542"/>
+      <details key="end" value="546"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.24" references="/0/createSetGet/@body.1/@body.9/@source/i">
-      <details key="start" value="498"/>
-      <details key="end" value="499"/>
+    <eAnnotations source="positions.24" references="/0/createSetGet/@body.1/@body.10">
+      <details key="start" value="568"/>
+      <details key="end" value="588"/>
+      <details key="line" value="11"/>
+    </eAnnotations>
+    <eAnnotations source="positions.25" references="/0/createSetGet/@body.1/@body.11">
+      <details key="start" value="589"/>
+      <details key="end" value="613"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.25" references="/0/createSetGet/@body.1/@body.10">
-      <details key="start" value="517"/>
-      <details key="end" value="579"/>
-      <details key="line" value="13"/>
-    </eAnnotations>
-    <eAnnotations source="positions.26" references="/0/createSetGet/@body.1/@body.11">
-      <details key="start" value="580"/>
-      <details key="end" value="614"/>
+    <eAnnotations source="positions.26" references="/0/createSetGet/@body.1/@body.11/@source">
+      <details key="start" value="589"/>
+      <details key="end" value="598"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.27" references="/0/createSetGet/@body.1/@body.11/@source">
-      <details key="start" value="580"/>
-      <details key="end" value="604"/>
+    <eAnnotations source="positions.27" references="/0/createSetGet/@body.1/@body.11/@source/aVar">
+      <details key="start" value="589"/>
+      <details key="end" value="593"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.28" references="/0/createSetGet/@body.1/@body.11/@source/@source">
-      <details key="start" value="580"/>
-      <details key="end" value="589"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.29" references="/0/createSetGet/@body.1/@body.11/@source/@source/aVar">
-      <details key="start" value="580"/>
-      <details key="end" value="584"/>
-      <details key="line" value="0"/>
-    </eAnnotations>
-    <eAnnotations source="positions.30" references="/0/createSetGet/@body.1/@body.12">
-      <details key="start" value="616"/>
-      <details key="end" value="631"/>
+    <eAnnotations source="positions.28" references="/0/createSetGet/@body.1/@body.12">
+      <details key="start" value="615"/>
+      <details key="end" value="616"/>
       <details key="line" value="14"/>
     </eAnnotations>
-    <eAnnotations source="positions.31" references="/0/createSetGet/@body.1/@body.13">
-      <details key="start" value="632"/>
-      <details key="end" value="656"/>
+    <eAnnotations source="positions.29" references="/0/createSetGet/@body.1/@body.13">
+      <details key="start" value="617"/>
+      <details key="end" value="650"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.32" references="/0/createSetGet/@body.1/@body.13/@source">
-      <details key="start" value="632"/>
-      <details key="end" value="641"/>
+    <eAnnotations source="positions.30" references="/0/createSetGet/@body.1/@body.13/@source">
+      <details key="start" value="617"/>
+      <details key="end" value="635"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.33" references="/0/createSetGet/@body.1/@body.13/@source/aVar">
-      <details key="start" value="632"/>
-      <details key="end" value="636"/>
+    <eAnnotations source="positions.31" references="/0/createSetGet/@body.1/@body.13/@source/varTypeList">
+      <details key="start" value="617"/>
+      <details key="end" value="628"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.34" references="/0/createSetGet/@body.1/@body.14">
-      <details key="start" value="658"/>
-      <details key="end" value="729"/>
-      <details key="line" value="15"/>
-    </eAnnotations>
-    <eAnnotations source="positions.35" references="/0/createSetGet/@body.1/@body.15">
-      <details key="start" value="730"/>
-      <details key="end" value="754"/>
+    <eAnnotations source="positions.32" references="/0/createSetGet/@body.1/@body.13/@source/i">
+      <details key="start" value="633"/>
+      <details key="end" value="634"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.36" references="/0/createSetGet/@body.1/@body.15/@source">
-      <details key="start" value="730"/>
+    <eAnnotations source="positions.33" references="/0/createSetGet/@body.1/@body.14">
+      <details key="start" value="652"/>
+      <details key="end" value="714"/>
+      <details key="line" value="14"/>
+    </eAnnotations>
+    <eAnnotations source="positions.34" references="/0/createSetGet/@body.1/@body.15">
+      <details key="start" value="715"/>
+      <details key="end" value="749"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.35" references="/0/createSetGet/@body.1/@body.15/@source">
+      <details key="start" value="715"/>
       <details key="end" value="739"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.37" references="/0/createSetGet/@body.1/@body.15/@source/aVar">
-      <details key="start" value="730"/>
-      <details key="end" value="734"/>
+    <eAnnotations source="positions.36" references="/0/createSetGet/@body.1/@body.15/@source/@source">
+      <details key="start" value="715"/>
+      <details key="end" value="724"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.37" references="/0/createSetGet/@body.1/@body.15/@source/@source/aVar">
+      <details key="start" value="715"/>
+      <details key="end" value="719"/>
       <details key="line" value="0"/>
     </eAnnotations>
     <eAnnotations source="positions.38" references="/0/createSetGet/@body.1/@body.16">
-      <details key="start" value="756"/>
-      <details key="end" value="775"/>
+      <details key="start" value="751"/>
+      <details key="end" value="766"/>
+      <details key="line" value="15"/>
+    </eAnnotations>
+    <eAnnotations source="positions.39" references="/0/createSetGet/@body.1/@body.17">
+      <details key="start" value="767"/>
+      <details key="end" value="791"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.40" references="/0/createSetGet/@body.1/@body.17/@source">
+      <details key="start" value="767"/>
+      <details key="end" value="776"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.41" references="/0/createSetGet/@body.1/@body.17/@source/aVar">
+      <details key="start" value="767"/>
+      <details key="end" value="771"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.42" references="/0/createSetGet/@body.1/@body.18">
+      <details key="start" value="793"/>
+      <details key="end" value="864"/>
       <details key="line" value="16"/>
     </eAnnotations>
-    <eAnnotations source="positions.39" references="/0/createSetGet/@body.1/aVar">
+    <eAnnotations source="positions.43" references="/0/createSetGet/@body.1/@body.19">
+      <details key="start" value="865"/>
+      <details key="end" value="889"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.44" references="/0/createSetGet/@body.1/@body.19/@source">
+      <details key="start" value="865"/>
+      <details key="end" value="874"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.45" references="/0/createSetGet/@body.1/@body.19/@source/aVar">
+      <details key="start" value="865"/>
+      <details key="end" value="869"/>
+      <details key="line" value="0"/>
+    </eAnnotations>
+    <eAnnotations source="positions.46" references="/0/createSetGet/@body.1/@body.20">
+      <details key="start" value="891"/>
+      <details key="end" value="910"/>
+      <details key="line" value="17"/>
+    </eAnnotations>
+    <eAnnotations source="positions.47" references="/0/createSetGet/@body.1/aVar">
       <details key="start" value="286"/>
       <details key="end" value="301"/>
       <details key="line" value="8"/>
     </eAnnotations>
-    <eAnnotations source="positions.40" references="/0/createSetGet/@body.1/varNameList">
+    <eAnnotations source="positions.48" references="/0/createSetGet/@body.1/varNameList">
       <details key="start" value="304"/>
       <details key="end" value="315"/>
       <details key="line" value="0"/>
     </eAnnotations>
-    <eAnnotations source="positions.41" references="/0/createSetGet/varTypeList">
+    <eAnnotations source="positions.49" references="/0/createSetGet/varTypeList">
       <details key="start" value="169"/>
       <details key="end" value="199"/>
       <details key="line" value="4"/>
     </eAnnotations>
-    <eAnnotations source="positions.42" references="/0/createSetGet/varNameList">
+    <eAnnotations source="positions.50" references="/0/createSetGet/varNameList">
       <details key="start" value="201"/>
       <details key="end" value="233"/>
       <details key="line" value="4"/>

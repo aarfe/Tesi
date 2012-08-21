@@ -7,6 +7,7 @@
      */
 [for (aVar : Variable | varNameList )]
 public [varTypeList->at(i).toUpperFirst()/] get[aVar.name.toUpperFirst()/]() {
+	System.out.println("Getting the variable " + [aVar.name.toLowerFirst()/].toString() + " " + [aVar.name.toLowerFirst()/].getClass() );
 	return [aVar.name.toLowerFirst()/];
 }
 

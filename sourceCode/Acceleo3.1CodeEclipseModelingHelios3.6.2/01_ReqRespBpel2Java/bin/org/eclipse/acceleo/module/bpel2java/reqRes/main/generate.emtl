@@ -591,8 +591,12 @@
         <eParameters name="aPartnerLink">
           <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//PartnerLink"/>
         </eParameters>
-        <eParameters name="varTypeList" eType="/3/Sequence(String)"/>
-        <eParameters name="varNameList" eType="/3/Sequence(Variable)"/>
+        <eParameters name="varTypeList">
+          <eType xsi:type="ocl.ecore:SequenceType" href="../files/partnerLinkJavaFile.emtl#/3/Sequence(String)"/>
+        </eParameters>
+        <eParameters name="varNameList">
+          <eType xsi:type="ocl.ecore:SequenceType" href="../files/partnerLinkJavaFile.emtl#/3/Sequence(Variable)"/>
+        </eParameters>
       </eOperations>
       <eOperations name="genPartnerLinkClientJavaFile">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
@@ -788,8 +792,12 @@
         <eParameters name="aPartnerLink">
           <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//PartnerLink"/>
         </eParameters>
-        <eParameters name="varTypeList" eType="/3/Sequence(String)"/>
-        <eParameters name="varNameList" eType="/3/Sequence(Variable)"/>
+        <eParameters name="varTypeList">
+          <eType xsi:type="ocl.ecore:SequenceType" href="../files/partnerLinkJavaFile.emtl#/3/Sequence(String)"/>
+        </eParameters>
+        <eParameters name="varNameList">
+          <eType xsi:type="ocl.ecore:SequenceType" href="../files/partnerLinkJavaFile.emtl#/3/Sequence(Variable)"/>
+        </eParameters>
       </eOperations>
       <eOperations name="genPartnerLinkClientJavaFile">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">

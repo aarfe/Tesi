@@ -19,9 +19,16 @@ private [varTypeList->at(i).toUpperFirst()/] [aVar.name.toLowerFirst()+'Temp'/];
 [/for]
 [/template]
 
-[template public transformAssign(anAssign : Assign)]
+[template public createConstructor(aPartnerLink : PartnerLink, varTypeList : Sequence(String), varNameList : Sequence(Variable))]
 	/**
-     * 
+     * Create constructor
      */
+public ['PL'+aPartnerLink.name.toUpperFirst()/]() { 
+	System.out.println("Constructor called for " + this.toString() + " " + this.getClass());    
+	[for (aVar : Variable | varNameList )]
+	[aVar.name.toLowerFirst()/] = new [varTypeList->at(i).toUpperFirst()/]() ;	
+	[/for]
+}
 [/template]
+
 

@@ -1,7 +1,5 @@
 package bpel2java.uni;
 
-import java.util.Scanner;
-
 public class TestClient {
 
 	/**

@@ -16,6 +16,9 @@ public class ['PL'+aPartnerLink.name.toUpperFirst()/] {
 [comment Add the variables needed for the communication /]
 [createPrivateAttributes(varTypeList, varNameList)/]
 
+[comment Add the Constructor /]
+[createConstructor(aPartnerLink, varTypeList, varNameList)/]
+
 	/**
      * Operations    
      */

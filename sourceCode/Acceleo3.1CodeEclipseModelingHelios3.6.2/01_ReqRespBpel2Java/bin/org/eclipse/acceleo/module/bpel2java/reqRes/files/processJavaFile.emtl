@@ -1385,10 +1385,10 @@
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="varTypeList">
-          <eType xsi:type="ocl.ecore:SequenceType" href="partnerLinkClientJavaFile.emtl#/3/Sequence(String)"/>
+          <eType xsi:type="ocl.ecore:SequenceType" href="../common/createSetGet.emtl#/3/Sequence(String)"/>
         </eParameters>
         <eParameters name="varNameList">
-          <eType xsi:type="ocl.ecore:SequenceType" href="partnerLinkClientJavaFile.emtl#/3/Sequence(Variable)"/>
+          <eType xsi:type="ocl.ecore:SequenceType" href="../common/createSetGet.emtl#/3/Sequence(Variable)"/>
         </eParameters>
       </eOperations>
       <eOperations name="createPrivateAttributes">
@@ -1400,10 +1400,10 @@
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="varTypeList">
-          <eType xsi:type="ocl.ecore:SequenceType" href="partnerLinkClientJavaFile.emtl#/3/Sequence(String)"/>
+          <eType xsi:type="ocl.ecore:SequenceType" href="../common/genericTemplates.emtl#/3/Sequence(String)"/>
         </eParameters>
         <eParameters name="varNameList">
-          <eType xsi:type="ocl.ecore:SequenceType" href="partnerLinkClientJavaFile.emtl#/3/Sequence(Variable)"/>
+          <eType xsi:type="ocl.ecore:SequenceType" href="../common/genericTemplates.emtl#/3/Sequence(Variable)"/>
         </eParameters>
       </eOperations>
       <eOperations name="createPrivateTempAttributes">
@@ -1415,22 +1415,28 @@
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="varTypeList">
-          <eType xsi:type="ocl.ecore:SequenceType" href="partnerLinkClientJavaFile.emtl#/3/Sequence(String)"/>
+          <eType xsi:type="ocl.ecore:SequenceType" href="../common/genericTemplates.emtl#/3/Sequence(String)"/>
         </eParameters>
         <eParameters name="varNameList">
-          <eType xsi:type="ocl.ecore:SequenceType" href="partnerLinkClientJavaFile.emtl#/3/Sequence(Variable)"/>
+          <eType xsi:type="ocl.ecore:SequenceType" href="../common/genericTemplates.emtl#/3/Sequence(Variable)"/>
         </eParameters>
       </eOperations>
-      <eOperations name="transformAssign">
+      <eOperations name="createConstructor">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../common/genericTemplates.emtl#/0/transformAssign"/>
+          <references href="../common/genericTemplates.emtl#/0/createConstructor"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
-        <eParameters name="anAssign">
-          <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Assign"/>
+        <eParameters name="aPartnerLink">
+          <eType xsi:type="ecore:EClass" href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//PartnerLink"/>
+        </eParameters>
+        <eParameters name="varTypeList">
+          <eType xsi:type="ocl.ecore:SequenceType" href="../common/genericTemplates.emtl#/3/Sequence(String)"/>
+        </eParameters>
+        <eParameters name="varNameList">
+          <eType xsi:type="ocl.ecore:SequenceType" href="../common/genericTemplates.emtl#/3/Sequence(Variable)"/>
         </eParameters>
       </eOperations>
       <eOperations name="genPartnerLinkClientJavaFile">
@@ -1621,7 +1627,7 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="Sequence(String)_Class">
       <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
-        <references href="partnerLinkClientJavaFile.emtl#/3/Sequence(String)"/>
+        <references href="../common/createSetGet.emtl#/3/Sequence(String)"/>
       </eAnnotations>
       <eOperations name="createSetGet">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
@@ -1632,9 +1638,14 @@
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="varNameList">
-          <eType xsi:type="ocl.ecore:SequenceType" href="partnerLinkClientJavaFile.emtl#/3/Sequence(Variable)"/>
+          <eType xsi:type="ocl.ecore:SequenceType" href="../common/createSetGet.emtl#/3/Sequence(Variable)"/>
         </eParameters>
       </eOperations>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Sequence(String)_Class">
+      <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
+        <references href="../common/genericTemplates.emtl#/3/Sequence(String)"/>
+      </eAnnotations>
       <eOperations name="createPrivateAttributes">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
@@ -1644,7 +1655,7 @@
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="varNameList">
-          <eType xsi:type="ocl.ecore:SequenceType" href="partnerLinkClientJavaFile.emtl#/3/Sequence(Variable)"/>
+          <eType xsi:type="ocl.ecore:SequenceType" href="../common/genericTemplates.emtl#/3/Sequence(Variable)"/>
         </eParameters>
       </eOperations>
       <eOperations name="createPrivateTempAttributes">
@@ -1656,22 +1667,28 @@
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
         <eParameters name="varNameList">
-          <eType xsi:type="ocl.ecore:SequenceType" href="partnerLinkClientJavaFile.emtl#/3/Sequence(Variable)"/>
+          <eType xsi:type="ocl.ecore:SequenceType" href="../common/genericTemplates.emtl#/3/Sequence(Variable)"/>
         </eParameters>
       </eOperations>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Assign_Class">
+    <eClassifiers xsi:type="ecore:EClass" name="PartnerLink_Class">
       <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
-        <references href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//Assign"/>
+        <references href="http://docs.oasis-open.org/wsbpel/2.0/process/executable#//PartnerLink"/>
       </eAnnotations>
-      <eOperations name="transformAssign">
+      <eOperations name="createConstructor">
         <eAnnotations source="http://www.eclipse.org/ocl/1.1.0/OCL">
           <contents xsi:type="ocl.ecore:Constraint"/>
         </eAnnotations>
         <eAnnotations source="MTL">
-          <references href="../common/genericTemplates.emtl#/0/transformAssign"/>
+          <references href="../common/genericTemplates.emtl#/0/createConstructor"/>
         </eAnnotations>
         <eType xsi:type="ocl.ecore:PrimitiveType" href="http://www.eclipse.org/ocl/1.1.0/oclstdlib.ecore#/0/String"/>
+        <eParameters name="varTypeList">
+          <eType xsi:type="ocl.ecore:SequenceType" href="../common/genericTemplates.emtl#/3/Sequence(String)"/>
+        </eParameters>
+        <eParameters name="varNameList">
+          <eType xsi:type="ocl.ecore:SequenceType" href="../common/genericTemplates.emtl#/3/Sequence(Variable)"/>
+        </eParameters>
       </eOperations>
     </eClassifiers>
   </ecore:EPackage>

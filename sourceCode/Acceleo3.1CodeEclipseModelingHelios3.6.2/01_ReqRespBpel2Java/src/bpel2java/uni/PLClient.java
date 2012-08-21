@@ -13,6 +13,15 @@ private SimpleProcessResponse output;
 
 
 	/**
+     * Create constructor
+     */
+public PLClient() { 
+	System.out.println("Constructor called for " + this.toString() + " " + this.getClass());    
+	input = new SimpleProcessRequest() ;	
+	output = new SimpleProcessResponse() ;	
+}
+
+	/**
      * Operations    
      */
 public void receiveInput() {
@@ -42,6 +51,7 @@ public SimpleProcessResponse replyOutput() {
      * Setters and Getters    
      */
 public SimpleProcessRequest getInput() {
+	System.out.println("Getting the variable " + input.toString() + " " + input.getClass() );
 	return input;
 }
 
@@ -52,6 +62,7 @@ public void setInput(SimpleProcessRequest value) {
 }
 
 public SimpleProcessResponse getOutput() {
+	System.out.println("Getting the variable " + output.toString() + " " + output.getClass() );
 	return output;
 }
 

@@ -9,6 +9,15 @@ private GetAutographByCognomeEasyResponse authorWSParterLinkResponse;
 private GetAutographByCognomeEasy authorWSParterLinkRequest;	
 
 
+	/**
+     * Create constructor
+     */
+public PLAuthorWSParterLink() { 
+	System.out.println("Constructor called for " + this.toString() + " " + this.getClass());    
+	authorWSParterLinkResponse = new GetAutographByCognomeEasyResponse() ;	
+	authorWSParterLinkRequest = new GetAutographByCognomeEasy() ;	
+}
+
      /**
      * Operations    
      */
@@ -28,6 +37,7 @@ authorWSParterLinkResponse.setGetAutographByCognomeEasyReturn(result);
      * Setters and Getters    
      */
 public GetAutographByCognomeEasyResponse getAuthorWSParterLinkResponse() {
+	System.out.println("Getting the variable " + authorWSParterLinkResponse.toString() + " " + authorWSParterLinkResponse.getClass() );
 	return authorWSParterLinkResponse;
 }
 
@@ -38,6 +48,7 @@ public void setAuthorWSParterLinkResponse(GetAutographByCognomeEasyResponse valu
 }
 
 public GetAutographByCognomeEasy getAuthorWSParterLinkRequest() {
+	System.out.println("Getting the variable " + authorWSParterLinkRequest.toString() + " " + authorWSParterLinkRequest.getClass() );
 	return authorWSParterLinkRequest;
 }
 
