@@ -1,15 +1,24 @@
 % Acceleo M2T
-\subsection{Acceleo FIXME: to move and complete}
+\subsection{Acceleo}
 \label{acceleo}
+Acceleo is an open source Code generator that allows the creation of code starting from any kind of text which structure is described by a meta-model. Acceleo was released in its first GNU public license in 2006 and later joined the Eclipse Foundation universe going through several major modifications to comply with the MOFM2T specifications. As today, Acceleo version 3.3 is available as a free plugin for the Eclipse development environment.
 
-General Info about meta-modelling   :Pag7 \cite{AcceleoUserGuide}
+\paragraph{An Acceleo example}
+Acceleo is a template-based model-to-text transformation (see Section \ref{m2m&m2t}), where the user manually writes the static part of his code and fills the (dynamic) code that changes with Acceleo parameterized snippets.
+For example, let's imagine a transformation from a file written in the BPEL language to a Java file. As shown in Figure \ref{AcceleoGettersExample}, we can see how Acceleo creates a generic template to generate Java variables getters. Passing to the Acceleo function a list of Variables (varNameList), it goes through it and for each variable it creates a public method named \textit{get} + \textit{name} of the variable with first letter capitalized with return-type the type of the variable. This proves very useful when the list of variables is huge and dynamic, making a manual procedure a too cumbersome and error-prone task.
 
-- MEtamodelling is a vast domain
---- MetaModelling has been formalizaed by OMG, known as MOF Meta-Modeling Facilities
------ MOF is itself a model, represented as a tree. It is considered a meta-meta-model as it can be used to describe many other meta-models. This is possible thanks to the fact that its components are basic, and form the atomic pieces used to create other models. 
-For example, if a map represents a model of a region, existing in the real world, its meta-model would contain the basic elements to represent such a map, namely, a legend. This meta-model would contain elements such as roads, highways, rivers, cities, villages etc. In this context, a meta-meta-model would go further deep in the description, containing the structure of the atomic elements to represent the elements of the meta-model (the legend); for example, of a river, it would present a model containing name, depth, length, etc.  
+\begin{figure}
+\caption{Example of Acceleo template-based transformation approach. It creates the Java getters for a list (varNameList) of variables. Note that all the code out of square brackets is static code that will be written "as it is" in an output file.}
+\label{AcceleoGettersExample}
+\begin{lstlisting}
+[for (aVar : Variable | varNameList )]
+public [aVar.Type.toUpperFirst()/] get[aVar.name.toUpperFirst()/]() {
+	return [aVar.name.toLowerFirst()/];
+}
+\end{lstlisting}
+\end{figure}
 
-Basically, a model is an instance of a meta-model \cite{UnderstandMetamodelling}. 
+\subsection{How the parameterization works in Acceleo}
+The snippets of code included in square brackets in Figure \ref{AcceleoGettersExample} are Acceleo code parameterized using the BPEL meta-model, where a BPEL file is used as input. 
+---------------------
 
-
-%---- XMI is the standard from OMG to transform, interchange, and express any model realized with the MOF.   

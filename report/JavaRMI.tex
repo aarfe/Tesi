@@ -2,7 +2,7 @@
 
 \subsection{Java RMI} 
 \label{JavaRMI}   
-\textit{Java RMI}, as the name suggests, is an extension of the Java object model, that provides support for distributed objects in the Java language. The remote method calls are done using the same syntax as for local calls, the only difference is that the object making the invocation is aware that its target is remote, as it must handle \textit{RemoteExceptions}. On the other hand, the implementer of a remote object is aware that it is remote because it must implement the \textit{Remote} interface. In order to fill this section we used the Java RMI technology overview \cite{RMI-sun} and the tutorial from the SUN website \cite{RMI-client-sun} and \cite{RMI-overview-sun}.
+\textit{Java RMI}, as the name suggests, is an extension of the Java object model, that provides support for distributed objects in the Java language. The remote method calls are done using the same syntax as for local calls, the only difference is that the object making the invocation is aware that its target is remote, as it must handle \textit{RemoteExceptions}. On the other hand, the implementer of a remote object is aware that it is remote because it must implement the \textit{Remote} interface. In order to fill this Section we used the Java RMI technology overview \cite{RMI-sun} and the tutorial from the SUN website \cite{RMI-client-sun} and \cite{RMI-overview-sun}.
 
 \paragraph{Remote Interfaces in Java RMI}
 Remote interfaces are defined by extending an interface called \textit{Remote}, provided in the \textit{java.rmi} package. The remote methods must throw a \textit{RemoteException} in addition to any application specific extension. A remote interface can receive both ordinary and remote objects as arguments, which is also true for its results.
@@ -80,7 +80,7 @@ The transport layer makes the connection between JVMs and it uses the TCP/IP pro
 \subsubsection{Java RMI: The Internal Mechanism}
 \label{JavaRMIinternalMechanism}
 
-This section concretely explains how Java RMI works and how it can help programmers in writing the network related code in their programs.
+This Section concretely explains how Java RMI works and how it can help programmers in writing the network related code in their programs.
 
 A typical scenario could be: a client wants to execute a method on the server which is on another machine. We will explain why the programmer does not have to write the network and sockets code with Java RMI.
 

@@ -36,7 +36,7 @@ As described in \cite{Papa11}, a transformation is formed by a set of rules, or 
 Of course, both the source and destination model must comply with their respective meta-models.
 %FIXME add a picture like the one in http://www.ebpml.org/blog/130.htm
 The possible transformation rules that can be applied to a model depend on the approaches being used \footnote{Some approaches come from the scientific literature, some in response to the OMG's requests for proposals and others from open-source or commercial vendors.}. Czarnecki and Helsen \cite{Czarnecki03classificationof} classify and describe the set of rules common to all the approaches.
-They individuate the main rules that compose a model transformation. The rules span from the ones defining how to transform and with which scope to the ones about scheduling and organization of the transformation.
+They individuate the main rules that compose a model transformation; these rules span from defining how to transform and with which scope to scheduling and organizing the transformation.
 
 \subsubsection{Model-to-Model and Model-to-Text transformations}
 \label{m2m&m2t}
@@ -46,9 +46,10 @@ Depending on the kind of source model\footnote{other techniques, not model-based
  \item Using a General Purpose Language (GPL), e.g. Java, C\#
 \end{itemize}
 The difference is that a domain specific modeling language focus on a particular application domain thus it can represent concepts that are not possible to describe with a general purpose language.
+For both these transformations, the OMG created standard specifications: the QVT (Query/View/Transformation) specification for the model-to-model and the MOFM2T (MOF Model to Text Transformation language) specification for the model-to-text. These specifications belong to the OMG's Model-Driven Architecture
 
 \paragraph{Model-to-Text approaches}
-If we have a deper look in the Model-to-Text transformations, we notice that Czarnecki and Helsen \cite{Czarnecki03classificationof} subdivide this category in two: Visitor-based and Template-based transformations.
+If we have a deeper look in the Model-to-Text transformations, we notice that Czarnecki and Helsen \cite{Czarnecki03classificationof} subdivide this category in two: Visitor-based and Template-based transformations.
 \subparagraph{Visitor-Based model-to-text transformation}
 It is a simple method where a visitor mechanism can traverse the model's internal architecture and directly write text as output, deciding what transformation to apply depending on the construct encountered. 
 \subparagraph{Template-Based model-to-text transformation}
@@ -56,8 +57,30 @@ This approach represents the most used M2T technique. It contains code templates
 The templates comply to the output meta-model, and resembles the code to be generated. 
 In the template-based transformations, there also are multiple mechanisms to gather the information (from the source model) to insert in the templates. A common way is to describe the source model with a non-ambiguous language and later access it through an API provided by the creators of the modeling language. Declarative queries can also be used, as it happens with the Object Constraint Language (OCL) or XML PAth Language (XPath). 
 More advanced techniques implement a hybrid solution, using a mix templates and more complex queries to get data from different parts of the source model.  
-\fxnote[inline=true]{I templates in Acceleo sono scritti nel linguaggio di destinazione (Java nel nostro caso) + snippets di codice Acceleo. In generale, i templates sono (sempre?) scritti nel linguaggio di destinazione? 
+%{I templates in Acceleo sono scritti nel linguaggio di destinazione (Java nel nostro caso) + snippets di codice Acceleo. In generale, i templates sono (sempre?) scritti nel linguaggio di destinazione? }
 
+\subsubsection{The role of a meta-model in a transformation: Meta-modeling FIXME}
+
+General Info about meta-modeling   :Pag7 \cite{AcceleoUserGuide}.
+Metamodelling is a vast domain and has been formalized by OMG, known as MOF Meta-Modeling Facilities
+----- MOF is itself a model, represented as a tree. It is considered a meta-meta-model as it can be used to describe many other meta-models. This is possible thanks to the fact that its components are basic, and form the atomic pieces used to create other models. 
+For example, if a map represents a model of a region, existing in the real world, its meta-model would contain the basic elements to represent such a map, namely, a legend. This meta-model would contain elements such as roads, highways, rivers, cities, villages etc. In this context, a meta-meta-model would go further deep in the description, containing the structure of the atomic elements to represent the elements of the meta-model (the legend); for example, of a river, it would present a model containing name, depth, length, etc.  
+Basically, a model is an instance of a meta-model \cite{UnderstandMetamodelling}. 
+
+\paragraph{An example of a real meta-model}
+\label{metamodelExample}
+In a transformation a meta-model defines the structure of the input language, or better, what are the elements we can expect to work with. As a practical example of a meta-model, we could think of a UML-like model, where there are defined the main classes of elements, the attributes, the inheritances, the relations of inclusion etc. Meta-models are usually provided by the proprietaries of a technology or, as in the case of the Eclipse Modeling Framework, they are all written using a standard meta-meta-model called Ecore (which is a dialect of UML \cite{EcoreAPI}). In fact, there are available ecore meta-model of almost any programming language one could think of. What is more, if one invents his own language to describe a custom process or his company positions' tree, with a well defined set of elements and hierarchy, he can easily create his own ecore meta-model \cite{EcoreExample}.
+To give a real example of meta-model, Figure \ref{BPELEcoreExample} represents a very small (and not complete) part of the entire BPEL meta-model. It shows some of the elements of the BPEL language and how they relate to each other. The \textit{Assign} element is composed by \textit{Copy} elements, which always contains a \textit{From} and a \textit{To}. The power of a meta-model relies in the fact that it makes it possible to access, directly, any of the elements, sub-elements and attributes  composing an input file. To conclude the example, if our purpose would be to transform a BPEL input file to a Java file, we could easily imagine how to translate a BPEL variable \textit{Assign} element in a Java "\textit{=}" operation: the value of the \textit{To} element should be equal to the value of the \textit{From}. 
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[scale=0.5]{pictures/BPELMetaModelExample.png}
+    \caption{A small part of the BPEL.ecore meta-model, representing the inheritance relations of an Assign Activity, its component elements: Copy and the Copy's component elements: From and To}
+    \label{BPELEcoreExample}
+  \end{center}
+\end{figure}
+
+%---- XMI is the standard from OMG to transform, interchange, and express any model realized with the MOF.   
 
 \input{Acceleo}
    

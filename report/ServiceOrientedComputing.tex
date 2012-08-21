@@ -48,7 +48,7 @@ With \verb|portType|, there are given the specifics of any \verb|operation| that
 The elements to define the messages and the types used by the service are \verb|message| and \verb|types|. The first specifies the structure of a message to be exchanged. The second, is used to define the atomic types (integer, string, etc.) or new custom types. 
 The most important elements in a WSDL service description are summarized in Table \ref{tab:WSDLElements}.
 
-Eventually, we can see that WSDL proposes a static picture of the service. It defines the address and the way to access the service, the operations and, for each of them, the input/output elements to be provided, but it has no notion of the order in which the operations should be called. For example, to access an online shop service, there might be the need to first perform a login operation, check the item availability and last, buy the item. Such a order or workflow, though, it is not addressed in a WSDL description. This workflow represents the dynamic behavior of a service and it is addressed by the \textit{WorkFlow Management Systems} (WfMS), discussed in the following section.
+Eventually, we can see that WSDL proposes a static picture of the service. It defines the address and the way to access the service, the operations and, for each of them, the input/output elements to be provided, but it has no notion of the order in which the operations should be called. For example, to access an online shop service, there might be the need to first perform a login operation, check the item availability and last, buy the item. Such a order or workflow, though, it is not addressed in a WSDL description. This workflow represents the dynamic behavior of a service and it is addressed by the \textit{WorkFlow Management Systems} (WfMS), discussed in the following Section.
 
 
 % - Who is going to deal with the logic and flow of the composition? \nl 
@@ -57,6 +57,8 @@ Eventually, we can see that WSDL proposes a static picture of the service. It de
 % 
 %%%%%%%%%%%%% WSDL TABLE of characteristics %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table}
+\caption{Basic WSDL elements and their description}
+\label{tab:WSDLElements}
 \begin{center}
 \begin{tabular}{l p{11cm}}
 
@@ -75,14 +77,12 @@ Eventually, we can see that WSDL proposes a static picture of the service. It de
 						\bottomrule
 \end{tabular}
 \end{center}
-\caption{Basic WSDL elements and their description}
-\label{tab:WSDLElements}
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Wf management: Orchestration vs Choreography}
 \label{WFManagement}
-%This workflow is the dynamic behavior of a service and it is addressed by the \textit{WorkFlow Management Systems} (WfMS), discussed in the following section.
+%This workflow is the dynamic behavior of a service and it is addressed by the \textit{WorkFlow Management Systems} (WfMS), discussed in the following Section.
 The workflow description, needed to address the behavior of a web-service is controlled by the \textit{WorkFlow Management Systems} (WfMS). The activities are performed following an execution flow based on four main patterns \cite{Pernici04}: \verb|sequence|, \verb|AND_split|, \verb|OR_split|, \verb|join|. These patterns permit to create generic workflows which are scheduled depending on the availability of the resources.
 Two approaches for the workflow management exist: Orchestration and Choreography \cite{Peltz03}. Although the two approaches might overlap, their aims differ (see Fig. \ref{fig:OrchAndChor}). 
 
@@ -93,7 +93,7 @@ These three services can be separated modules, belonging to different companies 
 Choreography also describes the realization of an executable business process, but there is no party having overall control. Here each party collaborates and provides its part and role for the final result. Using the previous example (see Fig. \ref{fig:choreography}), we can notice that the stand alone services have no coordinator. They collaborate exchanging messages among each other. Eventually, choreography, takes care of the interactions among the services more than executing a process from one party's perspective.
 
 \subsubsection{Workflow Management for Web Services}
-Among the workflow management systems, there are: FIXME Introduce BPEL and describe it in the next subsection.
+Among the workflow management systems, there are: FIXME Introduce BPEL and describe it in the next Subsection.
 
 
 %%%%%%%%%%%%%%%%%FIGURE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55 
