@@ -59,26 +59,35 @@ In the template-based transformations, there also are multiple mechanisms to gat
 More advanced techniques implement a hybrid solution, using a mix templates and more complex queries to get data from different parts of the source model.  
 %{I templates in Acceleo sono scritti nel linguaggio di destinazione (Java nel nostro caso) + snippets di codice Acceleo. In generale, i templates sono (sempre?) scritti nel linguaggio di destinazione? }
 
-\subsubsection{The role of a meta-model in a transformation: Meta-modeling FIXME}
-
-General Info about meta-modeling   :Pag7 \cite{AcceleoUserGuide}.
-Metamodelling is a vast domain and has been formalized by OMG, known as MOF Meta-Modeling Facilities
------ MOF is itself a model, represented as a tree. It is considered a meta-meta-model as it can be used to describe many other meta-models. This is possible thanks to the fact that its components are basic, and form the atomic pieces used to create other models. 
+\subsubsection{The role of a meta-model in a transformation: Meta-modeling}
+\label{Meta-modeling}
+If a model is a schematic representation of reality, a meta-model can be thought of as a model of a model \cite{AcceleoUserGuide}.
+Metamodelling is a vast domain and has been formalized by OMG with the creation of the Meta-Modeling Facilities (MOF).
+MOF is itself a model, represented as a tree. It is considered a meta-meta-model as it can be used to describe many other meta-models. This is possible thanks to the fact that its components are basic, and form the atomic pieces used to create other models. 
 For example, if a map represents a model of a region, existing in the real world, its meta-model would contain the basic elements to represent such a map, namely, a legend. This meta-model would contain elements such as roads, highways, rivers, cities, villages etc. In this context, a meta-meta-model would go further deep in the description, containing the structure of the atomic elements to represent the elements of the meta-model (the legend); for example, of a river, it would present a model containing name, depth, length, etc.  
 Basically, a model is an instance of a meta-model \cite{UnderstandMetamodelling}. 
 
 \paragraph{An example of a real meta-model}
 \label{metamodelExample}
-In a transformation a meta-model defines the structure of the input language, or better, what are the elements we can expect to work with. As a practical example of a meta-model, we could think of a UML-like model, where there are defined the main classes of elements, the attributes, the inheritances, the relations of inclusion etc. Meta-models are usually provided by the proprietaries of a technology or, as in the case of the Eclipse Modeling Framework, they are all written using a standard meta-meta-model called Ecore (which is a dialect of UML \cite{EcoreAPI}). In fact, there are available ecore meta-model of almost any programming language one could think of. What is more, if one invents his own language to describe a custom process or his company positions' tree, with a well defined set of elements and hierarchy, he can easily create his own ecore meta-model \cite{EcoreExample}.
-To give a real example of meta-model, Figure \ref{BPELEcoreExample} represents a very small (and not complete) part of the entire BPEL meta-model. It shows some of the elements of the BPEL language and how they relate to each other. The \textit{Assign} element is composed by \textit{Copy} elements, which always contains a \textit{From} and a \textit{To}. The power of a meta-model relies in the fact that it makes it possible to access, directly, any of the elements, sub-elements and attributes  composing an input file. To conclude the example, if our purpose would be to transform a BPEL input file to a Java file, we could easily imagine how to translate a BPEL variable \textit{Assign} element in a Java "\textit{=}" operation: the value of the \textit{To} element should be equal to the value of the \textit{From}. 
+In a transformation a meta-model defines the structure of the input language, or better, what the elements we can expect to work with are. As a practical example of a meta-model, we could think of a UML-like model, where there are defined the main classes of elements, the attributes, the inheritances, the relations of inclusion etc. Meta-models are usually provided by the proprietaries of a technology or, as in the case of the Eclipse Modeling Framework (read Section \ref{EMF} for more details), they are all written using a standard meta-meta-model called Ecore (which is a dialect of UML \cite{EcoreAPI}). In fact, there are available ecore meta-model for almost any programming language. What is more, if one invents his own language to describe a custom process or his company positions' tree, with a well defined set of elements and hierarchy, he can easily create his own ecore meta-model \cite{EcoreExample}.
+
+To give a real example of meta-model, Figure \ref{BPELEcoreExample} represents a very small (yet not complete) part of the entire BPEL meta-model. It shows some of the elements of the BPEL language and how they relate to each other. The \textit{Assign} element is composed by \textit{Copy} elements, which always contains a \textit{From} and a \textit{To}. The power of a meta-model relies in the fact that it makes it possible to access, directly, any of the elements, sub-elements and attributes composing an input file. To conclude the example, if our purpose would be to transform a BPEL input file to a Java file, we could easily imagine how to translate a BPEL \textit{Assign} element (which assigns a value to a variable) in a Java "\textit{=}" operation: the value of the \textit{To} element should be equal to the value of the \textit{From}. 
 
 \begin{figure}
   \begin{center}
     \includegraphics[scale=0.5]{pictures/BPELMetaModelExample.png}
-    \caption{A small part of the BPEL.ecore meta-model, representing the inheritance relations of an Assign Activity, its component elements: Copy and the Copy's component elements: From and To}
+    \caption{A small part of the BPEL.ecore meta-model, representing the inheritance relations of an Assign Activity, its composing elements: Copy and the Copy's composing elements: From and To}
     \label{BPELEcoreExample}
   \end{center}
 \end{figure}
+
+\subsubsection{The Eclipse Modeling Framework (EMF)}
+\label{EMF}
+Among the languages and frameworks that provide tools and techniques to manage models, the Eclipse Modeling Framework is surely one of the most widespread. 
+EMF is a modeling framework and code generator created by the Eclipse Foundation. It provides facilities to define models (written in any modeling language such as XML, UML, etc.), transform these models in other type of models and, last but not least, generate code from the models. The final aim of EMF would be that "modeling and programming can be considered the same thing" \cite{Steinberg2009EMF}. The meta-model used by EMF to describe any model is called Ecore and has itself, recursively, a meta-meta-model defining its parts. 
+
+One of the most important characteristic of EMF is that it fully supports XML Metadata Interchange (XMI) serialization. XMI can be thought as a way to save models in XML, yet it is much more powerful than that: it shows how to save any MOF-based meta-model in XML \cite{XMIandMOF}. The of XMI serialization's success is that it takes advantage of the dominance in the software design world of UML (which has a MOF meta-model) and the widespread usage of XML. It practically permits to export models and make them usable on several modeling frameworks and languages; it also act like a bridge between transformations from an input model to a different output model.
+
 
 %---- XMI is the standard from OMG to transform, interchange, and express any model realized with the MOF.   
 
