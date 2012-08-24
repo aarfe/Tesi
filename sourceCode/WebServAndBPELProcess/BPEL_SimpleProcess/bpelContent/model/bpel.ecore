@@ -27,9 +27,17 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="partnerLinks" eType="#//PartnerLinks"
-        containment="true"/>
+        containment="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value="variable"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="variables" eType="#//Variables"
-        containment="true"/>
+        containment="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value="variable"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="activity" lowerBound="1"
         eType="#//Activity" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="faultHandlers" eType="#//FaultHandler"
@@ -100,7 +108,11 @@
       <details key="documentation" value="Allows the business process to invoke a one-way asynchronous, or request-response synchronous operation on a portType offered by a partner playing a role in the business process as specified in a ServiceLinkType. Asyncrhosous invocations specify only an input container while synchronous invocations specify both an input and output container. Correlation sets are used to correlate the business process with a stateful service provided by the partner.&#xD;&#xA;"/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outputVariable" eType="#//Variable"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="inputVariable" eType="#//Variable"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inputVariable" eType="#//Variable">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value="outputVariable"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="compensationHandler" eType="#//CompensationHandler"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="faultHandler" eType="#//FaultHandler"
@@ -114,14 +126,12 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="Specifies the synchronization dependencies between activities in a flow. Each activity can be the source and/or target of any number of links. Links establish a predecessor/successor relationship between activities. Activities that are the source of a link are predecessors of activities that are targets of the same link. Parallel execution of activities in a flow is synchronized by requiring that all the source activities of an activity must complete before corresponding target activities of the same link can run. When an activity completes, all activities that are targets of links for which this activity is a source are now candidates for execution (assuming all their predecessor activities have completed)."/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sources" upperBound="-1"
         eType="#//Source" eOpposite="#//Source/Link"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="targets" upperBound="-1"
         eType="#//Target" eOpposite="#//Target/Link"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Catch" eSuperTypes="#//BPELExtensibleElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="faultName" eType="ecore:EDataType platform:/plugin/org.eclipse.wst.wsdl/model/WSDL.ecore#//QName"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="faultVariable" eType="#//Variable"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="activity" lowerBound="1"
@@ -134,11 +144,19 @@
       <details key="documentation" value="Allows a business process to send a message in reply to a message that was received through a Receive. The combination of a Receive and Reply forms a synchronous request-response operation on the WSDL portType for the process. The container for the replay activity provides the output message for the partner process invoke activity that invoked the corresponding receive activity.&#xD;&#xA;&#xD;&#xA;FaultName specifies the name of a fault and must match some Catch fault name in the Scope or Process's FaultHandler.&#xD;&#xA;&#xD;&#xA;A receive can have more than one corresponding reply, at most one without a faultName, and any mumber with different faults."/>
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="faultName" eType="ecore:EDataType platform:/plugin/org.eclipse.wst.wsdl/model/WSDL.ecore#//QName"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="variable" eType="#//Variable"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variable" eType="#//Variable">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value="outputVariable"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="toParts" eType="#//ToParts"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="messageExchange" lowerBound="1"
-        eType="#//MessageExchange"/>
+        eType="#//MessageExchange">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value="variable"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PartnerActivity" eSuperTypes="#//Activity">
     <eStructuralFeatures xsi:type="ecore:EReference" name="partnerLink" lowerBound="1"
@@ -251,7 +269,11 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Copy" eSuperTypes="#//BPELExtensibleElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="to" lowerBound="1" eType="#//To"
-        containment="true"/>
+        containment="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value="variable"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="from" lowerBound="1" eType="#//From"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="keepSrcElementName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBooleanObject"
@@ -315,6 +337,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="expression" eType="#//Expression"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="query" eType="#//Query"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="To" eSuperTypes="#//BPELExtensibleElement #//AbstractAssignBound">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -336,6 +360,9 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="serviceRef" eType="#//ServiceRef"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass platform:/plugin/org.eclipse.xsd/model/XSD.ecore#//XSDTypeDefinition"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="EReference0" eType="#//AbstractAssignBound">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData"/>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OnMessage" eSuperTypes="#//BPELExtensibleElement">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -415,7 +442,11 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Variables" eSuperTypes="#//BPELExtensibleElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
-        eType="#//Variable" containment="true"/>
+        eType="#//Variable" containment="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value="variable"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CorrelationSets" eSuperTypes="#//BPELExtensibleElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="children" upperBound="-1"
@@ -438,7 +469,11 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="messageType" eType="ecore:EClass platform:/plugin/org.eclipse.wst.wsdl/model/WSDL.ecore#//Message"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="XSDElement" eType="ecore:EClass platform:/plugin/org.eclipse.xsd/model/XSD.ecore#//XSDElementDeclaration"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass platform:/plugin/org.eclipse.xsd/model/XSD.ecore#//XSDTypeDefinition"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="from" eType="#//From" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="from" eType="#//From" containment="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="name" value="variable"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="EReference0" eType="#//Reply"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="UnknownExtensibilityAttribute" eSuperTypes="platform:/plugin/org.eclipse.wst.wsdl/model/WSDL.ecore#//UnknownExtensibilityElement"/>

@@ -27,10 +27,41 @@ Once these steps have been accomplished, we focus on providing more details on h
  To mention later: \\
  StubPartnerLinks, code to be input by the user, static code, the problem with the WSDL file
 
+\subsection{The BPEL subset of instructions}
+\label{Sec:BPELsubset}
+The BPEL standard (see Section \ref{BPEL} for more details) has a wide variety of elements and instructions aimed at managing the possible workflow patterns obtainable during a services orchestration. Moreover, BPEL does not restrict the number of services that can participate to the orchestration neither the type and the quantity of interactions among them.
+For these reason, we focus our attention on a subset of the whole BPEL language, both to restrain the complexity and to fit the time frame of the project.
+\subsubsection{The activities subset}
+We decided to restrict the BPEL activities to a subset containing:
+
+
+%----------------------------------------------------------------------------------------------------------------
+\begin{figure}
+  \begin{center}
+    \includegraphics[scale=0.67,angle=90]{pictures/SubSetBpel2.png}
+    \caption{The BPEL subset in its ecore model representation}
+    \label{fig:SubSetBPEL}
+  \end{center}
+\end{figure} 
+
+% %\lipsum[2]
+% \hvFloat[
+%  floatPos=!htb,
+%  capWidth=h,
+%  capPos=r,
+%  capAngle=90,
+%  objectAngle=90,
+%  capVPos=c,
+%  objectPos=c]{figure}{\includegraphics[scale=0.7]{pictures/SubSetBpel2.png}}%
+% {Caption vertically centered right beside the float with a caption
+% width of figure width and 
+% \texttt{floatcapsep=5pt} (the default)}{fig:label}
+
+
 \begin{figure}[h!]
   \begin{center}
     \includegraphics[scale=0.9]{pictures/TransformationApproach.png}
-    \caption{Our methodological approach}
+    \caption{The methodological transformation approach}
     \label{fig:TransformationApproach}
   \end{center}
 \end{figure}
