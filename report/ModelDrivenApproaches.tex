@@ -40,7 +40,7 @@ They individuate the main rules that compose a model transformation; these rules
 
 \subsubsection{Model-to-Model and Model-to-Text transformations}
 \label{m2m&m2t}
-Depending on the kind of source model\footnote{other techniques, not model-based (XML document to XML document, Text-to-Binaries, etc.), can also be abstracted under the generic type of model transformations \cite{M2TandM2M}} , there are two kinds of transformations \cite{Papa11}: \textbf{Model-to-Model} and \textbf{Model-to-Text} (or Model-to-Code, when the output text is a programming language syntax.). Both the transformations can be implemented in two ways \cite{M2TandM2M}:
+Depending on the kind of source model\footnote{other techniques, not model-based (XML document to XML document, Text-to-Binaries, etc.), can also be abstracted under the generic type of model transformations \cite{M2TandM2M}}, there are two kinds of transformations \cite{Papa11}: \textbf{Model-to-Model} and \textbf{Model-to-Text} (or Model-to-Code, when the output text is a programming language syntax.). Both the transformations can be implemented in two ways \cite{M2TandM2M}:
 \begin{itemize}
  \item Using a model Domain-Specific Modeling Language (DSML)
  \item Using a General Purpose Language (GPL), e.g. Java, C\#
@@ -49,7 +49,7 @@ The difference is that a domain specific modeling language focus on a particular
 For both these transformations, the OMG created standard specifications: the QVT (Query/View/Transformation) specification for the model-to-model and the MOFM2T (MOF Model to Text Transformation language) specification for the model-to-text. These specifications belong to the OMG's Model-Driven Architecture
 
 \paragraph{Model-to-Text approaches}
-If we have a deeper look in the Model-to-Text transformations, we notice that Czarnecki and Helsen \cite{Czarnecki03classificationof} subdivide this category in two: Visitor-based and Template-based transformations.
+If we have a deeper look in the Model-to-Text transformations, we notice that Czarnecki and Helsen \cite{Czarnecki03classificationof} subdivide this category in two sets: Visitor-based and Template-based transformations.
 \subparagraph{Visitor-Based model-to-text transformation}
 It is a simple method where a visitor mechanism can traverse the model's internal architecture and directly write text as output, deciding what transformation to apply depending on the construct encountered. 
 \subparagraph{Template-Based model-to-text transformation}
