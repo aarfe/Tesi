@@ -5,7 +5,8 @@ Later in this Section, we introduce the design ideas of our transformation and t
 
 FIXME: TO REMOVE LATER
 \begin{itemize}
- \item *The M2T tool
+ \item *The M2T tool we use (Acceleo)
+ %\item The additional components (A WebService)
 \end{itemize}
 
 The main points and some more decision we have to take over:
@@ -117,6 +118,46 @@ and on a simple workflow pattern that concerns the activities shown in Figure: \
 
 %///////////////////////////////////////////////////////////////
 \subsection{Transformation Strategy}
-As a direct transformation from BPEL constructs in Java concepts is neither feasible nor advisable, we have to provide a general strategy tackling single or groups of BPEL activities and creating Java counterparts. The following section describe the single components of this strategy.
+\label{sec:TransformationStrategy}
+As a direct transformation from BPEL constructs in Java concepts is neither feasible nor advisable, we have to provide a general strategy tackling single or groups of BPEL activities and creating Java counterparts. The following sections describe the single components of this strategy.
 
-\subsubsection{}
+\subsubsection{The input files we work on}
+\label{sec:inputFiles}
+In a simple BPEL process there are two kind of files containing data valuable for our transformation: the BPEL process description files and the WSDL files to describe the services the process is orchestrating.
+The BPEL process files contain: 
+\begin{itemize}
+ \item the definition of the partner links
+ \item the variables used by the process to store or forward information
+ \item the orchestration logic.
+\end{itemize}
+The WSDL files contain, in each file: 
+\begin{itemize}
+ \item the definition of a service
+ \item the basic types used by the service's operations (\verb|<portType>|)
+ \item the messages that contain elements of the basic types
+ \item the service's definition including its name, server IP and port address. 
+ \item the binding definition, which tells how a client could access the service (e.g. using the SOAP protocol)
+\end{itemize}
+
+\subsubsection{Translating the WSDL messages structure}
+\label{sec:WSDLMEssagesStructure}
+A very important feature of our transformation is to be able to generate a data definition specular to the one contained in the WSDL messages definition. WSDL messages can contain, for example, many elements of other types, and these types are, recursively, defined in the WSDL file (Think of a class "office" which contains elements such as "Person", which is a basic type formed by two Strings: "name" and "surname"). 
+Instead of taking over the whole task of recreating the messages in Java, we reuse one of the already existing routines to generate the messages structure contained in a WSDL file in Java classes. From the many available, we picked the \textit{wsimport} routine \cite{wsimport}, freely available from the Oracle website. Of the wsimport features, we are interested in the one that translates the xml-written messages types described in the WSDL file in ready to use (and documented) Java classes. The classes and the attributes keep the names used in the WSDL file, making them aligned with the names found in the BPEL process description.
+This tool proved very useful as we could make use of a reliable and tested solution, and at the same time concentrate the extra time gained on the transformation's logic. 
+
+\subsubsection{Mimic the BPEL logic}
+\label{mimicBPELLogic}
+The BPEL orchestration logic is contained in a well defined section of a BPEL file. In the case of our BPEL subset, the logic workflow is all included in the \textit{sequence} activity.
+When generating the Java code, we make sure that the instructions included in the \textit{sequence} all end up in a Java class called after the process' name (we refer to it as the \textbf{Process class}). This allows us to decouple the logic from the data storage and management. Moreover, this separation makes room for future development regarding, among others, the enlargement of the BPEL activities subset. For example, if the \textit{pick} activity will, one day, be incorporated, the process class is the only class where changes will take place.
+
+\subsubsection{The External Resources: Partner Links}
+\label{sec:extrenalResources}
+For what it concerns the external resources, namely, the web service orchestrated by the BPEL process, they are all defined in the BPEL \textit{partnerLink} (we will often refer to it as PL) construct. For each of the partnerLinks we create a class containing the \textit{variables} (Java attributes) and the \textit{portTypes} (Java methods) which are specular to the operations offered by the real service. 
+One thing to note is that we make a difference between the Client PL and the other PLs defining the rest of the services. The client PL is the one that usually initiates a BPEL workflow with a request message, while the other PLs are representing services that will be called from inside the BPEL workflow. For testing purposes, we create the client partnerLink class in order to have some more freedom-of-intervention in the generated code.
+
+\subsubsection{Decoupling generated code from resources access}
+\label{sec:decouplingPL}
+The \textit{partnerLinks} (PL) represent a model of real world services, deployed on some servers. These services might have very different binding characteristics, or example, some might be accessible through SOAP messages, while others might respond to 
+
+\subsubsection{Summary of the transformation strategies}
+\label{transfStrategySummary}
