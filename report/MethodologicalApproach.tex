@@ -4,30 +4,19 @@
 %---What methodology we used---
 
 We analyze the possibility of automatically transform a BPEL written process in a Java executable routine, with minimum ad-hoc developer’s intervention. Our final objective is to show the feasibility of a semi-automated transformation from a small business process orchestrated with BPEL to the Java language.
-This section describes the methodological approach we undertaken to realize our objective. The following list summarizes the steps we undertake to make our final choice:
+\fxnote{FIXME, commenti Stefano sulla struttura}
+This section describes the methodological approach we undertaken to realize our objective. The following list summarizes the steps we undertake to make our final choice: (* = testo già scritto)
 
 \begin{itemize}
- \item The domain of our transformation
- \item  The methodological approach: Programming vs Code Generation vs Model Driven Architecture 
- \item Choose a model driven architecture that allows us to manipulate  the BPEL input model (M2M, M2T) and that is compatible with a ready to run code output.
- \item We identify the subset of BPEL instructions suitable for a proof of concept of the transformation.
- \item Select a BPEL meta-model that covers the chosen subset of instructions.
- \item Individuate a BPEL workflow pattern to work on 
-\end{itemize} 
+ \item * Describe the domain of our transformation
+ \item * Briefly describe the possible methodological approaches we could use (Programming vs Code Generation vs Model Driven Architecture) and our choice (MDA). 
+ \item * Choose a MDA technique that allows us to manipulate the BPEL input model (M2M, M2T) and that is compatible with a ready to run code output.
+ \item FINAL OVERVIEW OF THE METHODOLOGICAL APPROACH (with overview picture)
+\end{itemize}  
 
-Once these steps have been accomplished, we focus on providing more details on how we carry out the transformation. The main points are:
-\textbf{DA SCRIVERE NELLA SEZIONE DETAILED ARCHITECTURE ? }
-\begin{itemize}
- \item Provide a correspondence from BPEL constructs to Java concepts
- \item Design the structure of the output application.
- \item Define the essential skeleton of Java classes necessary to create a runnable BPEL process
- \item In the templates, describe how to use and where the dynamic information taken from the BPEL input model has to be placed.
- \item Plan where and how, in the architecture, the developer intervention has to take place.
- \item \textbf{Issues encountered and proposed solutions  ? }
-\end{itemize} 
- 
- To mention later: \\
- StubPartnerLinks, code to be input by the user, static code, the problem with the WSDL file
+Once these steps have been accomplished, we focus on providing more details on how we carry out the transformation in THE NEXT SECTION.
+\textbf{ALTRI DETTAGLI SONO NELLA SEZIONE DETAILED ARCHITECTURE ? }
+
 
 \subsection{The domain of the transformation} 
 In our transformation we are dealing with BPEL, which is a DSL (Domain Specific Language), and Java, which is a multipurpose language. 
@@ -36,94 +25,38 @@ Having to deal with a model produced with a DSL means that   we don't have to ta
 \subsection{The methodological approach}
 \label{sec:ProgrammingVsMDE}
 To realize the transformation, many possibilities arise; from a very specific, custom solution to a more broad and abstract approach. The possibilities could be generalized in three main families: a manual ad-hoc programming solution, a code generation automation or a model driven architecture abstraction
-\subsubsection{Ad-hoc Programming solution}
+  \subsubsection{Ad-hoc Programming solution}
 The programming solution would create an ad-hoc solution for our purpose.  At the same time, as our purpose is to provide a proof of concept for our approach more than a runnable application, programming a one time, ready to deploy solution, does not fid our needs.
-\subsubsection{Code Generation}
+  \subsubsection{Code Generation}
 This solution is aimed at automatizing the generation of code that would otherwise have to be written by hand. It concerns the creation of models/templates that will be later transformed in working code by an additional application. Although this solution might partially fit our need of an automated generation, we might have to create models/templates for many components, and we have to take into account a possible large amount of similar portions of code needed in different parts of the final application.  Thus, we need a solution that will rise of one more step the abstraction.
-\subsubsection{Model Driven Architecture (MDA) Abstraction}
+  
+ \subsubsection{Model Driven Architecture (MDA) Abstraction}
 The MDA aims, as well as the Code Generation automation, at the creation of models to be later transformed in runnable code (see Section \ref{MDA}). The difference lies in the fact that MDA permits to create an architecture where we could actually specify generic transformations strategies. For example, instead of creating a template for any BPEL construct, with MDA we could create a hierarchy of templates where similar BPEL constructs are sharing part of the code minimizing the quantity of hand written code at the price of a longer design phase.
 \subsubsection{The proposed methodological approach}
 Given the fact that our transformation has the purpose of showing the feasibility of such a transformation form BPEL to Java, we have to take into account that only a small part of the BPEL language can be taken into account. Moreover, we want to propose a possibly expandable design for such a transformation. Last but not least, we have to keep an eye on possible future developments. For these reasons, we decided to use a Model Driven Architecture methodology.
 
-\subsection{Tailoring the MDA approach to our case}
-Once the MDA approach has been chosen, we have to choose which kind of model transformation we want to apply.
+\subsection{Specific MDA approach: Template based Model-to-Text}
+Once the MDA approach has been chosen, we have to choose which kind of model transformation we want to apply. As discussed in Section \ref{m2m&m2t}, there are two kinds of transformations: Model-to-Model and Model-to-Text. As we need a Java code output, the choice falls on the Model-to-Text type.
+Moreover, Model-to-Text also has two variants: visitor or template based. As discussed in Section \ref{m2m&m2t}, the visitor-based technique focus on traversing the input model's code and directly write text as output. While this technique would prove useful in case the translation could be carried out just as a sequence of steps, this is not true in the case of a BPEL to Java transformation. The structures of the BPEL model, which acts as an orchestrator of components, opposed to the Java object oriented application we wish to have as output, suggests us we have to able to get values and parameters from several places of the input model. Thus, the template-based transformation fits our needs at best.
 
-\subsection{The BPEL subset of instructions}
-\label{Sec:BPELsubset}
-The BPEL standard (see Section \ref{BPEL} for more details) has a wide variety of elements and instructions aimed at managing the possible workflow patterns obtainable during a services orchestration. Moreover, BPEL does not restrict the number of services that can participate to the orchestration neither the type and the quantity of interactions among them.
-For these reason, we focus our attention on a subset of the whole BPEL language, both to restrain the complexity and to fit the time frame of the project.
-\subsubsection{The activities subset}
-We decided to restrict the BPEL activities to a subset containing the following constructs divided in four groups:
-\begin{center}
-\begin{supertabular}{p{0.4\textwidth}p{0.4\textwidth}}
-
-1. Basic activities: 			& 2. Structured activities:		\\
-\begin{itemize}
-	\item \verb|<invoke>|
-	\item \verb|<receive>|
-	\item \verb|<reply>|
-	\item \verb|<assign>|
-	\end{itemize} 			&
-
-					    \begin{itemize}
-					      \item \verb|<sequence>|
-					     \end{itemize}			\\
-					     
-3. Elementary operations: 		& 4. Static descriptive elements:	\\					
-\begin{itemize}
-	\item \verb|<copy>|
-	\item \verb|<from>|
-	\item \verb|<to>|
-  \end{itemize} &
-
-					    \begin{itemize}
-					      \item \verb|<process>|
-					      \item \verb|<partnerLink>|
-					      \item \verb|<variable>|
-					      \item \verb|<expression>|
-					    \end{itemize}\\
-\end{supertabular}
-\end{center}
-
-The Basic and Structured activities define the BPEL process logic (see Section \ref{BPELActivities}). The elementary operations are present inside the activities, while the static descriptive elements are meant to statically describe some of the parameters needed by BPEL process.
-These elements allow the creation of simple BPEL processes, where the activities such as: invoking a service or waiting for a reply, happen as a sequence, one after the other. Although this limits the expressive potentiality of BPEL, it fits our need of focusing on proving the feasibility of an automated transformation from BPEL to Java without having to deal with the complexity of the whole language.
-In Figure \ref{fig:SubSetBPEL} the BPEL subset of elements used for this project is depicted.
-
-\begin{figure}
+\subsection{Overview of the methodological approach}
+\label{MethodologyOverview}
+Once defined the methodology to be applied, we can sketch, as represented in Figure \ref{fig:TransformationApproach}, how the M2T technique is applied on our transformation.
+\begin{figure}[h]
   \begin{center}
-    \includegraphics[scale=0.67,angle=90]{pictures/SubSetBpel2.png}
-    \caption{The BPEL subset in its ecore model representation}
-    \label{fig:SubSetBPEL}
+    \includegraphics[scale=0.9]{pictures/TransformationApproach.png}
+    \caption{The methodological transformation approach}
+    \label{fig:TransformationApproach}
   \end{center}
-\end{figure} 
-
-\subsubsection{The meta-model for the BPEL subset}
-\label{Sec:DesignBpelSubset}
-To permit the parameterization of the BPEL process input model, we need a meta-model describing our subset. The Eclipse Modeling Framework (see Section \ref{EMF}) provides a meta-model written in ecore for the whole BPEL language; we use only the subset elements of this ecore meta-model.
-\subsubsection{The BPEL workflow pattern to focus on}
-\label{sec:DesignBPELPattern}
-The BPEL language with its wide range of activities and operation, gives the possibility to orchestrate many kind of workflow patterns among the participant services. We concentrate our attention on a process having the following participants:
-\begin{itemize}
- \item one partner link representing a client
- \item one partner link describing a web-service
-\end{itemize}
-and on a simple workflow pattern that concerns the activities shown in Figure: \ref{fig:BPELWorkflowPattern}\footnote{This Figure has been realized using the BPEL designer facilities of Eclipse. Yet not a standard, as the Oasis consortium has not released a graphical standard, many vendors provide very similar graphical notations}. The pattern shown in the Figure includes the following steps:
-\begin{enumerate}
- \item the process waits for a client to connect and provide an input
-\item reception of the input and its assignation to a variable to forward to the web-service.
-\item web-service invocation
-\item reception of the web-service's reply and assignation to a variable to be forwarded back to the client
-\item final response sent back to the client
-\end{enumerate}
+\end{figure}
+On the upper part of the picture there are represented the inputs we have to provide in order to start the transformation. Namely, on the upper left there are represented the BPEL model of the process we want to transform in a Java application and the BPEL meta-model that will allow the parameterization of the elements. 
+On the upper right there are the Java templates which define the structure of the final application. It is here that we define the hierarchy of objects and the inheritance strategies. It these templates we also determine where the dynamic elements taken from the BPEL model should be placed.  
+In the center, we have the Model-to-text generator. This component will mash the information from the parameterized input model with the Java templates to finally output a runnable Java application. This output application, written in Java code, should be able to mimic the orchestration logic played by the BPEL process given as input.  
 
 
-\begin{figure}
-  \begin{center}
-    \includegraphics[scale=0.8]{pictures/BPELSimpleProcess.png}
-    \caption{The BPEL workflow pattern we focus on}
-    \label{fig:BPELWorkflowPattern}
-  \end{center}
-\end{figure} 
+
+
+
 % %\lipsum[2]
 % \hvFloat[
 %  floatPos=!htb,
@@ -137,14 +70,6 @@ and on a simple workflow pattern that concerns the activities shown in Figure: \
 % width of figure width and 
 % \texttt{floatcapsep=5pt} (the default)}{fig:label}
 
-
-\begin{figure}
-  \begin{center}
-    \includegraphics[scale=0.9]{pictures/TransformationApproach.png}
-    \caption{The methodological transformation approach}
-    \label{fig:TransformationApproach}
-  \end{center}
-\end{figure}
 
 %----------------------------------------------------
 
