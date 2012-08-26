@@ -15,10 +15,11 @@ The main points and some more decision we have to take over:
   \subitem * Select a BPEL meta-model that covers the chosen subset of instructions.
   \subitem * Individuate a BPEL workflow pattern to work on 
  
- \item Provide a transformation strategy from the BPEL constructs to Java concepts
- \item Design the structure of the output application.
+ \item * Provide a transformation strategy from the BPEL constructs to Java concepts
+    \subitem * the usage of the wsdl-to-java routine to create the tree of messages types
+    \subitem * all written
+ \item Design the architectural structure of the output Java application.
  \item Define the essential skeleton of Java classes necessary to create a runnable BPEL process
- \item the usage of the wsdl-to-java routine to create the tree of messages types
  \item In the templates, describe how to use and where the dynamic information taken from the BPEL input model has to be placed.
  \item Plan where and how, in the architecture, the developer intervention has to take place.
  \item \textbf{Issues encountered and proposed solutions  ?}
@@ -27,11 +28,11 @@ The main points and some more decision we have to take over:
  To mention later: \\
  StubPartnerLinks, code to be input by the user, static code, the problem with the WSDL file
 
-\begin{itemize}
- \item Metamodel 
- \item Skeleton 
- \item Generator 
-\end{itemize}
+% \begin{itemize}
+%  \item Metamodel 
+%  \item Skeleton 
+%  \item Generator 
+% \end{itemize}
 
 %//////////////////////////////////////////////////////////
 \subsection{The M2T Generator}
@@ -141,14 +142,22 @@ The WSDL files contain, in each file:
 
 \subsubsection{Translating the WSDL messages structure}
 \label{sec:WSDLMEssagesStructure}
-A very important feature of our transformation is to be able to generate a data definition specular to the one contained in the WSDL messages definition. WSDL messages can contain, for example, many elements of other types, and these types are, recursively, defined in the WSDL file (Think of a class "office" which contains elements such as "Person", which is a basic type formed by two Strings: "name" and "surname"). 
+A very important feature of our transformation is to be able to generate a data definition specular to the one contained in the WSDL messages definition. WSDL messages can contain, for example, many elements of other types, and these types are, recursively, defined in the WSDL file. An example of the usage of the wsimport routine is shown in Figure \ref{fig:wsimport} where a BPEL message (SimpleProcessRequestMessage) definition is translated in the correspondent Java data structure (SimpleProcessRequest.java).
 Instead of taking over the whole task of recreating the messages in Java, we reuse one of the already existing routines to generate the messages structure contained in a WSDL file in Java classes. From the many available, we picked the \textit{wsimport} routine \cite{wsimport}, freely available from the Oracle website. Of the wsimport features, we are interested in the one that translates the xml-written messages types described in the WSDL file in ready to use (and documented) Java classes. The classes and the attributes keep the names used in the WSDL file, making them aligned with the names found in the BPEL process description.
 This tool proved very useful as we could make use of a reliable and tested solution, and at the same time concentrate the extra time gained on the transformation's logic. 
 
-\subsubsection{Mimic the BPEL logic}
+\begin{figure}
+  \begin{center}
+    \includegraphics[scale=0.57]{pictures/wsImport.png}
+    \caption{An example of how the wsimport routine works on translating a WSDL message (SimpleProcessRequestMessage) type information in the correspondent Java data structure (SimpleProcessRequest.java)}
+    \label{fig:wsimport}
+  \end{center}
+\end{figure} 
+
+\subsubsection{Mimic the BPEL workflow logic}
 \label{mimicBPELLogic}
-The BPEL orchestration logic is contained in a well defined section of a BPEL file. In the case of our BPEL subset, the logic workflow is all included in the \textit{sequence} activity.
-When generating the Java code, we make sure that the instructions included in the \textit{sequence} all end up in a Java class called after the process' name (we refer to it as the \textbf{Process class}). This allows us to decouple the logic from the data storage and management. Moreover, this separation makes room for future development regarding, among others, the enlargement of the BPEL activities subset. For example, if the \textit{pick} activity will, one day, be incorporated, the process class is the only class where changes will take place.
+The BPEL orchestration logic is contained in a well defined section of a BPEL file. In the case of our BPEL subset, the logic workflow is all included in the \textit{sequence} activity. When generating the Java code, we make sure that the instructions included in the \textit{sequence} all end up in a Java class called after the process' name (we refer to it as the \textbf{Process class}). This class has a method \textit{runWorkflow()} that takes care of creating the instances of the PartnerLinks involved in the process and mimics the BPEL workflow activities.  
+This allows us to decouple the logic from the data storage and management. Moreover, this separation makes room for future development regarding, among others, the enlargement of the BPEL activities subset. For example, if the \textit{pick} activity will, one day, be incorporated, the process class is the only class where changes will take place.
 
 \subsubsection{The External Resources: Partner Links}
 \label{sec:extrenalResources}
@@ -157,7 +166,30 @@ One thing to note is that we make a difference between the Client PL and the oth
 
 \subsubsection{Decoupling generated code from resources access}
 \label{sec:decouplingPL}
-The \textit{partnerLinks} (PL) represent a model of real world services, deployed on some servers. These services might have very different binding characteristics, or example, some might be accessible through SOAP messages, while others might respond to 
+The \textit{partnerLinks} (PL) represent a model of real world services, deployed on some servers. These services might present different binding characteristics, described in the WSDL file. Our strategy is to avoid to generate directly in the Java application the calls to these services. From the Partner links classes we create stub methods, mimicing the services' operation names (the names end with a "stub" suffix), that have the only task of forwarding the calls to the real service. 
+This is also done in order to leave room to the developer in case the service calls have to be made in a special way, or the WSDL files are not accessible. The developer can just intervene in the body of the stub methods and write the calls to the specific service's operation.
 
 \subsubsection{Summary of the transformation strategies}
 \label{transfStrategySummary}
+Table \ref{tab:transStrategies} briefly summarizes, for an easier consultation, the transformation strategies we have selected. 
+%%%%%%%    Table %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}
+\caption{The main BPEL-to-Java transformation strategies we adopt}
+\label{tab:transStrategies}
+\begin{center}
+\begin{tabular}{p{5cm} p{9,8cm}}
+						\toprule
+						\addlinespace[0.2cm]
+\textbf{Concept} 	& \textbf{Transformation strategy} 	\\ 
+						\cmidrule(l){1-2}
+The input files to work on 	& taken into consideration the BPEL process descriptor file and WSDL web-service descriptor 			 			\\[0,5cm]
+WSDL messages structure 			&  usage of the wsimport ORACLE routine to create, from the WSDL messages, the Java equivalent data structure  			\\[0,5cm]
+Mimic the BPEL workflow logic 			& the \textit{process} class contains the logic of the BPEL process. The \textit{runWorkflow()} method creates the PL instances and mimics the BPEL workflow activities  					\\[0,5cm]
+The External Resources: Partner Links 		&  there are created a class representing each of the partner links involved. A special client PL is also created with extra freedom-of-intervention, in order to better test the application		\\[0,5cm]
+Decoupling generated code from resources access & to represent the real service's operations, stub methods are created in the partnerLinks classes. They allow the developer to directly write the code to invoke the specific service's operation		 	\\[0,5cm]
+\addlinespace[0.2cm]
+						\bottomrule
+\end{tabular}
+\end{center}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
