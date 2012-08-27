@@ -18,7 +18,7 @@ The main points and some more decision we have to take over:
  \item * Provide a transformation strategy from the BPEL constructs to Java concepts
     \subitem * the usage of the wsdl-to-java routine to create the tree of messages types
     \subitem * all written
- \item Design the architectural structure of the output Java application.
+ \item * Design the architectural structure of the output Java application.
  \item Define the essential skeleton of Java classes necessary to create a runnable BPEL process
  \item In the templates, describe how to use and where the dynamic information taken from the BPEL input model has to be placed.
  \item Plan where and how, in the architecture, the developer intervention has to take place.
@@ -161,8 +161,17 @@ This allows us to decouple the logic from the data storage and management. Moreo
 
 \subsubsection{The External Resources: Partner Links}
 \label{sec:extrenalResources}
-For what it concerns the external resources, namely, the web service orchestrated by the BPEL process, they are all defined in the BPEL \textit{partnerLink} (we will often refer to it as PL) construct. For each of the partnerLinks we create a class containing the \textit{variables} (Java attributes) and the \textit{portTypes} (Java methods) which are specular to the operations offered by the real service. 
+For what it concerns the external resources, namely, the web service orchestrated by the BPEL process, they are all defined in the BPEL \textit{partnerLink} (we will often refer to it as PL) construct. For each of the partnerLinks we create a class containing the \textit{variables} (Java attributes) and the \textit{portTypes} (Java methods) which are specular to the operations offered by the real service.
 One thing to note is that we make a difference between the Client PL and the other PLs defining the rest of the services. The client PL is the one that usually initiates a BPEL workflow with a request message, while the other PLs are representing services that will be called from inside the BPEL workflow. For testing purposes, we create the client partnerLink class in order to have some more freedom-of-intervention in the generated code.
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[scale=0.9]{pictures/PLTranslation.png}
+    \caption{From the PartnerLinks listed in the BPEL process, our strategy is to create specular Java classes containing the code to call the web-services}
+    \label{fig:PLTranslation}
+  \end{center}
+\end{figure} 
+
 
 \subsubsection{Decoupling generated code from resources access}
 \label{sec:decouplingPL}
@@ -180,16 +189,28 @@ Table \ref{tab:transStrategies} briefly summarizes, for an easier consultation, 
 \begin{tabular}{p{5cm} p{9,8cm}}
 						\toprule
 						\addlinespace[0.2cm]
-\textbf{Concept} 	& \textbf{Transformation strategy} 	\\ 
+\textbf{Concept} 		& \textbf{Transformation strategy} 	\\ 
 						\cmidrule(l){1-2}
-The input files to work on 	& taken into consideration the BPEL process descriptor file and WSDL web-service descriptor 			 			\\[0,5cm]
-WSDL messages structure 			&  usage of the wsimport ORACLE routine to create, from the WSDL messages, the Java equivalent data structure  			\\[0,5cm]
-Mimic the BPEL workflow logic 			& the \textit{process} class contains the logic of the BPEL process. The \textit{runWorkflow()} method creates the PL instances and mimics the BPEL workflow activities  					\\[0,5cm]
-The External Resources: Partner Links 		&  there are created a class representing each of the partner links involved. A special client PL is also created with extra freedom-of-intervention, in order to better test the application		\\[0,5cm]
-Decoupling generated code from resources access & to represent the real service's operations, stub methods are created in the partnerLinks classes. They allow the developer to directly write the code to invoke the specific service's operation		 	\\[0,5cm]
+The input files to work on 	
+				& taken into consideration the BPEL process descriptor file and WSDL web-service descriptor 			 			\\[0,5cm]
+WSDL messages structure 	
+				&  usage of the wsimport ORACLE routine to create, from the WSDL messages, the Java equivalent data structure  			\\[0,5cm]
+Mimic the BPEL workflow logic 	
+				& the \textit{process} class contains the logic of the BPEL process. The \textit{runWorkflow()} method creates the PL instances and mimics the BPEL workflow activities  			\\[0,5cm]
+The External Resources: Partner Links 		
+				&  there are created a class representing each of the partner links involved. A special client PL is also created with extra freedom-of-intervention, in order to better test the application	\\[0,5cm]
+Decoupling generated code from resources access 
+				& to represent the real service's operations, stub methods are created in the partnerLinks classes. They allow the developer to directly write the code to invoke the specific service's operation
+				\\[0,5cm]
 \addlinespace[0.2cm]
 						\bottomrule
 \end{tabular}
 \end{center}
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Java application Architectural Structure}
+\label{sec:JavaArchitecStruct}
+Before starting the transformation, we should have a rough idea of the architecture that the Java generated application should comply with.
+As our transformation deals with a small subset of the whole BPEL language, the correspondent Java application architecture does not seem to need, yet now, a strictly defined model. This happens because we do not want to force an architectural style that might restrict future expansions of the BPEL elements' subset.
+Eventually, both for the reasons said above and a time wise concern, our strategy in this case is to keep the Java application's design as simple as possible, without creating inheritances or particular abstraction layers; the focus will then be on the transformation and on the generation of a runnable Java process.
+
