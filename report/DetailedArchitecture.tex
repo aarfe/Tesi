@@ -19,7 +19,7 @@ The main points and some more decision we have to take over:
     \subitem * the usage of the wsdl-to-java routine to create the tree of messages types
     \subitem * all written
  \item * Design the architectural structure of the output Java application.
- \item Define the essential skeleton of Java classes necessary to create a runnable BPEL process
+ \item * Define the essential skeleton of Java classes necessary to create a runnable BPEL process
  \item In the templates, describe how to use and where the dynamic information taken from the BPEL input model has to be placed.
  \item Plan where and how, in the architecture, the developer intervention has to take place.
  \item \textbf{Issues encountered and proposed solutions  ?}
@@ -213,4 +213,31 @@ Decoupling generated code from resources access
 Before starting the transformation, we should have a rough idea of the architecture that the Java generated application should comply with.
 As our transformation deals with a small subset of the whole BPEL language, the correspondent Java application architecture does not seem to need, yet now, a strictly defined model. This happens because we do not want to force an architectural style that might restrict future expansions of the BPEL elements' subset.
 Eventually, both for the reasons said above and a time wise concern, our strategy in this case is to keep the Java application's design as simple as possible, without creating inheritances or particular abstraction layers; the focus will then be on the transformation and on the generation of a runnable Java process.
+
+\subsection{Instances of the generated Java application}
+\label{sec:JavaAppRunnable}
+In BPEL, to create an instance of a workflow, there is at least one special attribute called \textit{createInstance = yes/no} that has to be set to "yes" inside a \textit{receive} or \textit{pick} activity \cite{BPEL-oasis}. In the Java generated Java application, to obtain a similar behaviour, one should create an instance of the process class (the one containing the workflow logic). Once an instance is created, the method \textit{runWorkflow()} has to be invoked. This method takes care of creating all the instances of the partnerLink classes, and make the needed calls to carry out the workflow.
+Having the whole BPEL process' sequence of steps in one method might be quite cumbersome, especially in the case where the workflow pattern has several activities and conditions. In our case, though, the workflow complexity problem does not arise because of two reasons: the usage of a subset of BPEL instruction and, most importantly, the workflow pattern has been fixed a-priori (see Section \ref{sec:DesignBPELPattern}). 
+
+\subsection{Combine Java templates with the dynamic BPEL information}
+\label{TemplatesDynamicInfos}
+The parameterized information taken from the BPEL and WSDL models are in many parts of the Java templates. The names of attributes, operations, variables and messages all correspond to the original names form the input model. 
+We also tried to keep the names of the files synchronized with the names of the BPEL elements. For example, while creating the partnerLink stub classes, the classes keep the same name as the partnerLink, adding only a "PL" prefix. 
+The generator also have to be able to deal with a dynamic number of BPEL elements. Messages, variables, types and  partnerLinks can be present in any number in the input model; the generator detects them and create the correspondent Java concepts/classes.
+
+Concerning the workflow logic, as we have fixed the BPEL pattern we work on, we actually know how many and which BPEL activities to expect. From any of these activities the generator selects the information needed to translate each of them in Java method calls. 
+For example a \textit{receive} activity which in BPEL looks like:
+
+\begin{workflow-code}{caption}{label}
+<assign name ="LogActivity">
+        <trace>
+                <log level="info" location="onComplete">
+                        <from variable="logMessage"/>
+                </log>
+        </trace>
+        <!--copy a meaningful message to variable logMessage-->
+</assign>
+\end{workflow-code}
+
+What the workflow template contain (actually the \textit{runWorkflow() method} is   
 

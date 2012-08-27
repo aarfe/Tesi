@@ -14,6 +14,7 @@
 \usepackage{setspace}  
 \usepackage{hvfloat}
 \usepackage{multicol}
+\usepackage{color}
 \doublespacing     % Inter lines space
 
 %%%%%%%%%%%%%%% FANCY HDR Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -53,14 +54,66 @@
 
 % Basic settings of the listings package to "better" show the code 
 \usepackage{listings}
-\lstset{ %
-language=Java,            % choose the language of the code
-basicstyle=\small,  % the size of the fonts that are used for the code
-basewidth={0.57em,0.57em},
-frame=trBL,			        % adds a frame around the code
-breaklines=true,		      % sets automatic line breaking
-showstringspaces=false,         % underline spaces within strings
+% \lstset{ %
+% language=Java,            % choose the language of the code
+% basicstyle=\small,  % the size of the fonts that are used for the code
+% basewidth={0.57em,0.57em},
+% frame=trBL,			        % adds a frame around the code
+% breaklines=true,		      % sets automatic line breaking
+% showstringspaces=false,         % underline spaces within strings
+% }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{lightgray}{rgb}{.9,.9,.9}
+\definecolor{darkgray}{rgb}{.4,.4,.4}
+\definecolor{forestGreen}{RGB}{34,139,34}
+\definecolor{orangeRed}{RGB}{255,69,0}
+%%%%
+\lstdefinelanguage{bpel}{
+morekeywords=
+{name,linkName,isolated,parallel,partnerLink,operation,portType,inputVariable,createInstance,variable,element,location,importType,partnerLinkType,myRole,messageType,properties,level,outputVariable,xmlns,version,encoding}
 }
+
+\lstdefinelanguage{xaml}{
+morekeywords=
+{TypeArguments,Name,Default,DisplayName,OperationName,ServiceContractName,Key,AddressUri,CanCreateInstance, LogName, Message, MessageNumber, Expression,CorrelationHandle,Request}
+}
+
+\lstdefinelanguage{xml}{
+        basicstyle=\small,
+        sensitive=false,
+}
+%%%
+\lstdefinestyle{workflowStyle}{
+language=XML,
+alsolanguage=bpel,
+alsolanguage=xaml,
+%Formatting
+basicstyle=\scriptsize,
+sensitive=true,
+showstringspaces=false,
+numbers=left,
+numberstyle=\tiny,
+tabsize=4,
+numbersep=3pt,
+extendedchars=true,
+xleftmargin=2em,
+lineskip=1pt,
+breaklines,
+captionpos=t,
+%Coloring
+backgroundcolor=\color{lightgray},
+morekeywords={BooleanExpression},
+alsoletter={:,<,>,/,?},
+morestring=[b]{"},
+morecomment=[s]{<!--}{-->},keywordstyle=\color{forestGreen},
+identifierstyle=\color{blue}\ttfamily,
+stringstyle=\color{orangeRed}\ttfamily,
+commentstyle=\color{forestGreen}\ttfamily
+}
+%%
+\lstnewenvironment{workflow-code}[2]{
+\lstset{caption=#1,label=#2,style=workflowStyle}
+}{}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Last package to be imported
