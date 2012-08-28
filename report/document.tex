@@ -14,7 +14,8 @@
 \usepackage{setspace}  
 \usepackage{hvfloat}
 \usepackage{multicol}
-\usepackage{color}
+\usepackage{xcolor}
+\usepackage{listings}
 \doublespacing     % Inter lines space
 
 %%%%%%%%%%%%%%% FANCY HDR Settings %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -53,46 +54,47 @@
 %%%%%%%%%%%%LST listings settings %%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Basic settings of the listings package to "better" show the code 
-\usepackage{listings}
+
 % \lstset{ %
 % language=Java,            % choose the language of the code
 % basicstyle=\small,  % the size of the fonts that are used for the code
 % basewidth={0.57em,0.57em},
-% frame=trBL,			        % adds a frame around the code
+% %frame=trBL,			        % adds a frame around the code
 % breaklines=true,		      % sets automatic line breaking
 % showstringspaces=false,         % underline spaces within strings
 % }
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\definecolor{lightgray}{rgb}{.9,.9,.9}
+%%%%%%%%%%%%%% LSTLISTINGS SETTINGS, creation of schema colors for BPEL/XML/ACCELEO and JAVA %%%%%%%%%%%%%%%%%%%%%
+%%%%%%% BPEL - XML - ACCELEO
+\definecolor{lightgray}{RGB}{10,40,40}
 \definecolor{darkgray}{rgb}{.4,.4,.4}
 \definecolor{forestGreen}{RGB}{34,139,34}
 \definecolor{orangeRed}{RGB}{255,69,0}
-%%%%
+
 \lstdefinelanguage{bpel}{
 morekeywords=
 {name,linkName,isolated,parallel,partnerLink,operation,portType,inputVariable,createInstance,variable,element,location,importType,partnerLinkType,myRole,messageType,properties,level,outputVariable,xmlns,version,encoding}
 }
 
-\lstdefinelanguage{xaml}{
+\lstdefinelanguage{acceleo}{
 morekeywords=
-{TypeArguments,Name,Default,DisplayName,OperationName,ServiceContractName,Key,AddressUri,CanCreateInstance, LogName, Message, MessageNumber, Expression,CorrelationHandle,Request}
+{template,query,comment,for,if,file,let,protected,super,module}
 }
 
 \lstdefinelanguage{xml}{
-        basicstyle=\small,
+        basicstyle=\footnotesize,
         sensitive=false,
-}
-%%%
+}        
+
 \lstdefinestyle{workflowStyle}{
 language=XML,
 alsolanguage=bpel,
-alsolanguage=xaml,
+alsolanguage=acceleo,
 %Formatting
-basicstyle=\scriptsize,
+basicstyle=\footnotesize,
 sensitive=true,
 showstringspaces=false,
 numbers=left,
-numberstyle=\tiny,
+numberstyle=\scriptsize,
 tabsize=4,
 numbersep=3pt,
 extendedchars=true,
@@ -101,7 +103,7 @@ lineskip=1pt,
 breaklines,
 captionpos=t,
 %Coloring
-backgroundcolor=\color{lightgray},
+backgroundcolor=\color{blue!8!white},
 morekeywords={BooleanExpression},
 alsoletter={:,<,>,/,?},
 morestring=[b]{"},
@@ -110,9 +112,41 @@ identifierstyle=\color{blue}\ttfamily,
 stringstyle=\color{orangeRed}\ttfamily,
 commentstyle=\color{forestGreen}\ttfamily
 }
-%%
+% new environment for xml/BPEL/Acceleo
 \lstnewenvironment{workflow-code}[2]{
 \lstset{caption=#1,label=#2,style=workflowStyle}
+}{}
+%%%%%%%% Java lstlisting settings
+\definecolor{javared}{rgb}{0.6,0,0} % for strings
+\definecolor{javagreen}{rgb}{0.25,0.5,0.35} % comments
+\definecolor{javapurple}{rgb}{0.5,0,0.35} % keywords
+\definecolor{javadocblue}{rgb}{0.25,0.35,0.75} % javadoc
+% no need to redefine the constructs list, they are already defined in lstListing
+\lstdefinestyle{javaStyle}{
+language=Java,
+%Formatting
+basicstyle=\footnotesize,
+sensitive=true,
+showstringspaces=false,
+numbers=left,
+numberstyle=\scriptsize,
+tabsize=4,
+numbersep=3pt,
+extendedchars=true,
+xleftmargin=2em,
+lineskip=1pt,
+breaklines,
+captionpos=t,
+%Coloring
+backgroundcolor=\color{blue!8!white},
+keywordstyle=\color{javapurple}\bfseries,
+stringstyle=\color{javared},
+commentstyle=\color{javagreen},
+morecomment=[l][\color{javadocblue}]{//},%,
+}
+% new environment for Java
+\lstnewenvironment{java-code}[2]{
+\lstset{caption=#1,label=#2,style=javaStyle}
 }{}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

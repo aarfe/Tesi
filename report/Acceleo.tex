@@ -15,12 +15,12 @@ Acceleo is an open source Code generator that allows the creation of code starti
 Acceleo is a template-based model-to-text transformation (see Section \ref{m2m&m2t}), where the user manually writes the static part of his code and fills the (dynamic) code that changes with Acceleo parameterized snippets.
 For example, let's imagine a transformation from an input file written in the BPEL language to a Java file. As shown in Listing \ref{lst:AcceleoGettersExample}, we can see how Acceleo creates a generic template to generate Java getters methods for the private attributes of a class. Passing to the Acceleo function a list of Variables (varNameList), it goes through it and for each variable it creates a public method named \textit{get} + \textit{name} of the variable with first letter capitalized with return-type the type of the variable. This proves very useful when the list of variables is huge and dynamic, making a manual procedure a too cumbersome and error-prone task.
 
-\begin{lstlisting}[caption={Acceleo creating the Java getters for a list of variables. The code out of square brackets is static code},label={lst:AcceleoGettersExample},mathescape]
+\begin{workflow-code}{Acceleo creating the Java getters for a list of variables. The code out of square brackets is static code}{lst:AcceleoGettersExample}
 [for (aVar : Variable | varNameList )]
 public [aVar.Type.toUpperFirst()/] get[aVar.name.toUpperFirst()/]() {
 	return [aVar.name.toLowerFirst()/];
 }
-\end{lstlisting}
+\end{workflow-code}
 
 \subsection{How the parameterization in Acceleo works}
 The snippets of code included in square brackets in Figure \ref{lst:AcceleoGettersExample} are Acceleo code parameterized using the BPEL meta-model, where a BPEL file is used as input. As the structure of the BPEL language is well defined in an ecore schema published by the Eclipse Foundation (see Section \ref{metamodelExample}), we always know that once we encounter a \textit{Variable} element, it must have a BPEL \textit{name}, a BPEL \textit{type}, etc. 

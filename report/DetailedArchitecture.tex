@@ -20,7 +20,7 @@ The main points and some more decision we have to take over:
     \subitem * all written
  \item * Design the architectural structure of the output Java application.
  \item * Define the essential skeleton of Java classes necessary to create a runnable BPEL process
- \item In the templates, describe how to use and where the dynamic information taken from the BPEL input model has to be placed.
+ \item * In the templates, describe how to use and where the dynamic information taken from the BPEL input model has to be placed.
  \item Plan where and how, in the architecture, the developer intervention has to take place.
  \item \textbf{Issues encountered and proposed solutions  ?}
 \end{itemize} 
@@ -219,25 +219,30 @@ Eventually, both for the reasons said above and a time wise concern, our strateg
 In BPEL, to create an instance of a workflow, there is at least one special attribute called \textit{createInstance = yes/no} that has to be set to "yes" inside a \textit{receive} or \textit{pick} activity \cite{BPEL-oasis}. In the Java generated Java application, to obtain a similar behaviour, one should create an instance of the process class (the one containing the workflow logic). Once an instance is created, the method \textit{runWorkflow()} has to be invoked. This method takes care of creating all the instances of the partnerLink classes, and make the needed calls to carry out the workflow.
 Having the whole BPEL process' sequence of steps in one method might be quite cumbersome, especially in the case where the workflow pattern has several activities and conditions. In our case, though, the workflow complexity problem does not arise because of two reasons: the usage of a subset of BPEL instruction and, most importantly, the workflow pattern has been fixed a-priori (see Section \ref{sec:DesignBPELPattern}). 
 
-\subsection{Combine Java templates with the dynamic BPEL information}
+\subsection{Java templates and the dynamic BPEL information}
 \label{TemplatesDynamicInfos}
-The parameterized information taken from the BPEL and WSDL models are in many parts of the Java templates. The names of attributes, operations, variables and messages all correspond to the original names form the input model. 
+The parameterized information taken from the BPEL and WSDL models are present in many parts of the Java templates. The names of attributes, operations, variables and messages all correspond to the original names from the input model. 
 We also tried to keep the names of the files synchronized with the names of the BPEL elements. For example, while creating the partnerLink stub classes, the classes keep the same name as the partnerLink, adding only a "PL" prefix. 
 The generator also have to be able to deal with a dynamic number of BPEL elements. Messages, variables, types and  partnerLinks can be present in any number in the input model; the generator detects them and create the correspondent Java concepts/classes.
 
 Concerning the workflow logic, as we have fixed the BPEL pattern we work on, we actually know how many and which BPEL activities to expect. From any of these activities the generator selects the information needed to translate each of them in Java method calls. 
-For example a \textit{receive} activity which in BPEL looks like:
+For example a \textit{receive} activity that in BPEL is coded as:
 
-\begin{workflow-code}{caption}{label}
-<assign name ="LogActivity">
-        <trace>
-                <log level="info" location="onComplete">
-                        <from variable="logMessage"/>
-                </log>
-        </trace>
-        <!--copy a meaningful message to variable logMessage-->
-</assign>
+\begin{workflow-code}{A receive activity in BPEL}{lis:receiveBPEL}
+<bpel:receive name="receiveInput" partnerLink="client"
+                 portType="tns:SimpleProcess"
+                 operation="process" variable="input"
+                 createInstance="yes"/>
 \end{workflow-code}
 
-What the workflow template contain (actually the \textit{runWorkflow() method} is   
+In Java we transform the \textit{receive} activity (as shown in Listing \ref{lis:receiveInJava}) extracting the following parts: the name of the partnerLink owner of the operation ("client") from which we understand the partnerLink instance class we have to use ("myPLClient"), the name of the partnerLink instance class' method ("receiveInput()") and the name of the variable ("input") that is used in the body of the receiveInput() method to set the correspondent private variable. 
 
+\begin{java-code}{A receive activity translated in Java}{lis:receiveInJava}
+// Emulate the Receive activity		
+		myPLClient.receiveInput();	
+\end{java-code}
+
+Eventually, the translation of the BPEL workflow in Java will all be contained in the \textit{runWorkflow()} method of the process class. The body of the runWorkflow method contains the code to control that the input pattern complies with our pattern. In addition, it contains the Java calls resulting from the translation of the single parts of the patter (receive, assign, invoke, assign and reply).
+
+\subsection{The developer intervention}
+\label{sec:developerIntervention}
