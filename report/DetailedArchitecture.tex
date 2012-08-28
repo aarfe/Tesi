@@ -246,3 +246,14 @@ Eventually, the translation of the BPEL workflow in Java will all be contained i
 
 \subsection{The developer intervention}
 \label{sec:developerIntervention}
+As already described in the introduction, we attempt a t carry out a transformation with the least developer's intervention as possible.
+Theoretically, having at complete disposal the BPEL input model and the WSDL descriptors files, there should be almost no developer's intervention at all. Though, as described in Section \ref{sec:issues}, some problems arisen with the technology we decided to use made the manual intervention necessary in some cases:
+\begin{itemize}
+ \item insertion of the types of the BPEL variables
+ \item association between partnerLink-to-variable during an assign
+\end{itemize}
+We will describe these cases in detail later in the report.
+
+\subsubsection{How to Control the type of Workflow Pattern}
+Concerning the control of the type for the BPEL pattern input by the user, in our  case we develop the control structure directly inside the generator. That means we check at the beginning that the given BPEL input model complies with our previously specified pattern.
+If other BPEL workflow patterns will be include in the future, it will be easy to create a pattern control module, which recognizes the input pattern and applies the right transformation on it.
