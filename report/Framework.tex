@@ -1,6 +1,6 @@
-\section{Implementation}
-\label{sec:implementation}
-FIXME forse rimuover la sezione e mettere queste info da qualche altra parte \\
+\section{FIXME The Framework ? }
+\label{sec:TheFramework}
+\textbf{FIXME forse rimuovere la sezione e mettere queste info da qualche altra parte, tipo alla fine della Detailed Architecture Section?} \\
 This section briefly presents the technologies and the tools we use for our transformation. Moreover, it describes some specific solutions we applied to overcome some of the arisen during the implementation.
 
 \subsection{The Framework}
@@ -10,3 +10,21 @@ Many reasons made us inclined to this choice.
 First of all, Acceleo is an open source technology, available for free and with a lively community over the Internet. Another reason is that Acceleo is available as an Eclipse plugin. Eclipse is itself a very popular Integrated Development Environment (IDE). The fact that Acceleo is an Eclipse plugin automatically adds to it the many features normally present in Eclipse, like code completion, code highlight, project wizards, running configurations and many more. 
 Last but not least, Acceleo has been integrated in Eclipse inside the broad Eclipse Modeling Framework (EMF, see Section \ref{EMF}) family. EMF already contains many tools for modeling and generating code, all complying with the specifics from the Object Management Group (OMG).
 We can conclude that both Eclipse and Acceleo are consolidated realities respectively in the Software Modeling and in the Text-generation sectors. 
+
+
+FIXME
+\begin{center}
+\begin{minipage}{.5\textwidth}
+  \begin{java-code}{A snippet of code FIXME to show how Acceleo templates transform in Java code}{lis:receiveInJava}
+// Emulate the Receive activity		
+		myPLClient.receiveInput();	
+\end{java-code}
+\end{minipage}
+\hfill
+\begin{minipage}{.49\textwidth}
+  \begin{java-code}{A receive activity translated in Java}{lis:receiveInJava}
+// Emulate the Receive activity		
+		myPLClient.receiveInput();	
+\end{java-code}
+\end{minipage}
+\end{center}

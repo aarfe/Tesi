@@ -22,12 +22,13 @@ public [aVar.Type.toUpperFirst()/] get[aVar.name.toUpperFirst()/]() {
 }
 \end{workflow-code}
 
-\subsection{How the parameterization in Acceleo works}
+\subsubsection{How the parameterization in Acceleo works}
+\label{AcceleoParametirazion}
 The snippets of code included in square brackets in Figure \ref{lst:AcceleoGettersExample} are Acceleo code parameterized using the BPEL meta-model, where a BPEL file is used as input. As the structure of the BPEL language is well defined in an ecore schema published by the Eclipse Foundation (see Section \ref{metamodelExample}), we always know that once we encounter a \textit{Variable} element, it must have a BPEL \textit{name}, a BPEL \textit{type}, etc. 
 Thus, Acceleo permits us to search into the file for the elements (parameters) we need, take out the attributes and generate the corresponding output code.
 The mechanism to look for specific elements in a file used by Acceleo is a superset of the Object Constraint Language (OCL) \cite{UML20OCL}. OCL is a declarative language that describes rules applying to UML (and its dialects) models. With OCL it is possible to apply constraints as well as query a model; it is mainly used to specify expressions that cannot be represented on a model by visual or diagrammatic notations.
 
-\subsection{Acceleo Architecture}
+\subsubsection{Acceleo Architecture}
 \label{AcceleoArchitecture}
 Figure \ref{AcceleoArchitecture} depicts the overall 3-part architecture of the Acceleo generator, described in the next three paragraphs.
 \paragraph{Modeler}
