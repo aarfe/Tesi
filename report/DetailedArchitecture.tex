@@ -244,7 +244,7 @@ In Java we transform the \textit{receive} activity (as shown in Listing \ref{lis
 
 Eventually, the translation of the BPEL workflow in Java will all be contained in the \textit{runWorkflow()} method of the process class. The body of the runWorkflow method contains the code to control that the input pattern complies with our pattern. In addition, it contains the Java calls resulting from the translation of the single parts of the patter (receive, assign, invoke, assign and reply).
 
-\subsection{The developer intervention}
+\subsection{The developer's intervention}
 \label{sec:developerIntervention}
 As already described in the introduction, we attempt a t carry out a transformation with the least developer's intervention as possible.
 Theoretically, having at complete disposal the BPEL input model and the WSDL descriptors files, there should be almost no developer's intervention at all. Though, as described in Section \ref{sec:issues}, some problems arisen with the technology we decided to use made the manual intervention necessary in some cases:

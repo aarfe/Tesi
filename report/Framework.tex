@@ -15,16 +15,27 @@ We can conclude that both Eclipse and Acceleo are consolidated realities respect
 FIXME
 \begin{center}
 \begin{minipage}{.5\textwidth}
-  \begin{java-code}{A snippet of code FIXME to show how Acceleo templates transform in Java code}{lis:receiveInJava}
+  \begin{java-code}{A snippet of code FIXME to show code}{lis:1}
 // Emulate the Receive activity		
 		myPLClient.receiveInput();	
 \end{java-code}
 \end{minipage}
 \hfill
 \begin{minipage}{.49\textwidth}
-  \begin{java-code}{A receive activity translated in Java}{lis:receiveInJava}
+  \begin{java-code}{A receive activity translated in Java}{lis:2}
 // Emulate the Receive activity		
 		myPLClient.receiveInput();	
 \end{java-code}
 \end{minipage}
 \end{center}
+
+\subsection{How to run a transformation}
+\begin{itemize}
+ \item Create a Java Process complying with out Workflow pattern (Receive-Assign-Invoke-Assign-Reply)
+ \item Choice of the web service to use 
+  \subitem use of a local version of the webService or add the WebService info (IP, port, etc ) manually
+ \item Fulfill the manual intervention where needed
+ \item Run the transformation
+ \item Create an instance of the Java application process' class and run the runWorkflow() method.
+ \item Check that the behavior is the same
+\end{itemize}

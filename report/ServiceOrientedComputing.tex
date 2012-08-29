@@ -24,8 +24,14 @@ To apply the SOC paradigm, there is a need of an architecture infrastructure sty
 The architectural infrastructure of the SOC is called \textit{Service Oriented Architecture} (SOA). 
 The idea behind the SOA is to describe, publish and make available services (generally speaking, a combination of services) obtained from a preexistent set of applications. 
 To achieve the results of making non-homogeneous applications, using different technologies and running on different platforms, work together, SOA makes use of standard interfaces and messaging protocols. This way each of the applications become an atomic, well defined and ready to be connected component. 
-The SOA presents an architecture devised in three main components \cite{Pernici04} as shown in Fig. FIXME: toCreate\ref{fig:The Service Oriented Architecture (SOA)}:
-a \textit{service provider}, which makes the service available. The service provider registers its service to the \textit{service registry}, which contains the list of available services and their descriptions. After the registration, the service provider waits for a client to request a service. The service registry can also apply custom access control policies or be entirely public. 
+The SOA presents an architecture devised in three main components \cite{Pernici04}:
+\begin{itemize}
+ \item Service provider
+ \item Service registry
+ \item Service client
+\end{itemize}
+%as shown in Fig. FIXME: toCreate\ref{fig:The Service Oriented Architecture (SOA)}:
+A \textit{service provider}, which makes the service available. The service provider registers its service to the \textit{service registry}, which contains the list of available services and their descriptions. After the registration, the service provider waits for a client to request a service. The service registry can also apply custom access control policies or be entirely public. 
 The \textit{service client} contacts the service registry to \textit{find} a service, it gets a contract and the address of the service, making a so called \textit{bind} with the provider. Then it \textit{uses} the service.
 
 
@@ -36,7 +42,9 @@ To conclude, from the SOA point of view, services are like black boxes, they can
 \label{WebServices}
 We have seen that SOA is an architecture style aimed at the creation of services but it does not address the communication medium. \textit{Web Services} (WS) are an instance of a SOA where the communication channel is the web \cite{Pernici04}.
 Web services implement the SOA through the application of three main technologies: \textit{SOAP}(Simple Object Access Protocol), \textit{WSDL}(Web Services Description Language) and \textit{UDDI}(Universal Description, Discovery and Integration).
-On the picture of the SOA showed above, we can add these three components, as shown in Fig: (FIXME: to create)\ref{fig:SOA with webServ implement.}. The SOAP is the web protocol used to exchange messages among the parties. WSDL is the language used by the service provider to fully describe the offered service. At last, UDDI is used by the service registry to make a service easy to find, abstract its technology and make it accessible to the clients.
+On the picture of the SOA showed above, we can add these three components.
+%, as shown in Fig: (FIXME: to create)\ref{fig:SOA with webServ implement.}.
+The SOAP is the web protocol used to exchange messages among the parties. WSDL is the language used by the service provider to fully describe the offered service. At last, UDDI is used by the service registry to make a service easy to find, abstract its technology and make it accessible to the clients.
 In the next paragraphs we have a brief look into these three technologies.
 
 \subsubsection{WSDL (Web Services Description Language) }
