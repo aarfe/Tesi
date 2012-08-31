@@ -1,4 +1,4 @@
-\section{FIXME The Framework ? }
+\section{FIXME The Framework OR Implementation? }
 \label{sec:TheFramework}
 \textbf{FIXME forse rimuovere la sezione e mettere queste info da qualche altra parte, tipo alla fine della Detailed Architecture Section?} \\
 This section briefly presents the technologies and the tools we use for our transformation. Moreover, it describes some specific solutions we applied to overcome some of the arisen during the implementation.
@@ -38,22 +38,77 @@ BPEL Designer Plugin 		& 1.0						&  	\\[0,1cm]
 
 \subsection{Transformation samples}
 \label{sec:codeSamples}
-FIXME
+In this Section we provide some samples of Acceleo transformations to give an idea of how a template works and where the Acceleo code interacts with it. 
+Concerning the terminology we use, to have a rough idea of the meaning of the Acceleo concepts, we list them in Table \ref{tab:terminology} with their (not exact!) Java counterpart concept.
+%%%%%%%    Table %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[h!]
+\caption{The Acceleo terminology and its Java counterpart idea}
+\label{tab:terminology}
+\begin{center}
+\begin{tabular}{p{6cm} l} %p{7cm}
+						\toprule
+						\addlinespace[0.2cm]
+\textbf{Acceleo terminology} 	& \textbf{Java (coarse) equivalent} 	\\ 
+						\cmidrule(l){1-2}
+Module 				& File				 	\\[0,1cm]		
+Main Module			& Class with Main method		\\[0,1cm]
+Template			& Method			  	\\[0,1cm]
+Import(Module)			& Import(Class)			    	\\[0,1cm]
+Access Control (e.g Public)	& Same 					\\[0,1cm]
+Folder File Structure		& Package				\\[0,1cm]
+
+						\addlinespace[0.2cm]
+						\bottomrule
+\end{tabular}
+\end{center}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Creation of a class file}
+The first example we propose is the creation of a file, in the specific case, the main process Java file.
+In Listing \ref{lis:createFile} there is shown the Acceleo template in charge of the file creation. In line 2, we can see the name of the module (processJavaFile, it is the name of the .mtl Acceleo file) and the declaration of the meta-model (bpel.ecore) we use to parameterize the input model that will provided to the template.
+In line 3 there are, much like in the Java language, the extra module imported (createSetGet), to favor templates reuse. Line 5 declares a public template (like a Java public method) which gets a BPEL \textit{process} as argument.
+This process will be the entry point for the parameterization of the input model tree of elements\footnote{For example, from the main process we could decide to get all the variables, or maybe acquire only the \textit{receive} activities}. Line 6 contains the \textit{file} construct, which declares the name of the file and its extension (\textit{aProcess.name+'.java'}). Later in the file there is the rest of the class' implementation, represented with TODO.
 
 \begin{center}
   \begin{minipage}{1\textwidth}
-    \begin{java-code}{Acceleo Template: from inside the template to create a PartnerLink STUB here there is shown the call to the template createSetGet(), which takes care of creating in the output Java file the setter and getter methods of the private attributes.}{lis:callCreateSetGet}
+    \begin{java-code}{Acceleo template to generate a new file}{lis:createFile}
+[comment encoding = UTF-8 /]
+[module processJavaFile('http:///org/eclipse/bpel/model/bpel.ecore')]
+[import org::eclipse::acceleo::module::bpel2java::reqRes::common::createSetGet /]
+
+[template public genProcessJavaFile(aProcess : Process)]
+[file (aProcess.name+'.java', false, 'UTF-8')]
+
+public class [aProcess.name/] {
+    \\ TODO 
+}
+    \end{java-code}
+  \end{minipage}
+\end{center}
+
+Once the generation will be executed, a file called \textit{SimpleProcess.java} is created.
+
+\subsubsection{Setter/Getter generation}
+\label{sec:setterGetter}
+This example shows how our transformation creates the getter and setters for the private variables in the generated Java classes.
+The first code snippet in Listing \ref{lis:callCreateSetGet}, shows how in the Acceleo Template that takes care of the creation of a Java class (in this case it is the PartnerLink STUB class), we can forward a call to another template \textit{createGetSet()} that will create the setter and getters methods in the Java output class. 
+\begin{center}
+  \begin{minipage}{1\textwidth}
+    \begin{java-code}{From inside the template to create a PartnerLink STUB class; there is shown the call to the template createSetGet(), which takes care of creating in the output Java file the setter and getter methods of the private attributes.}{lis:callCreateSetGet}
 [comment Add setter and getter /]
 [createSetGet(varTypeList, varNameList)/]	
     \end{java-code}
   \end{minipage}
 \end{center}
 
+Then, Listing \ref{lis:createAttributesTemplates} shows the body of the template \textit{createGetSet()}. We can see that anytime this template is called in the Java output file there will be printed a small documentation; it will be the same in every generated class. What the method does is to cycle (for) through all the BPEL variables we provide as argument (varNameList) and for each of them it creates two public methods: get+\textit{VariableName} and set+\textit{VariableName} and their correspondent simple implementations that retrieves or sets the private class' private attributes.
+
 \begin{center}
 \begin{minipage}{1\textwidth}
   \begin{java-code}{The body of the createSetGet() template}{lis:createAttributesTemplates}
 [template public createSetGet(varTypeList : Sequence(String), varNameList : Sequence(Variable))]
-	/**
+    /**
      * Setters and Getters    
      */
 [for (aVar : Variable | varNameList )]
@@ -71,10 +126,12 @@ public void set[aVar.name.toUpperFirst()/]([varTypeList->at(i).toUpperFirst()/] 
   \end{minipage}
 \end{center}
 
+Eventually the last snippet of this example in Listing \ref{lis:javaSetterGetter}, shows the correspondent Java code generated once the transformation has been run.
+
 \begin{center}
   \begin{minipage}{1\textwidth}
     \begin{java-code}{The end result of the call to the createSetGet() template: the Java setter and getter methods in the output file}{lis:javaSetterGetter}
-     /**
+    /**
      * Setters and Getters    
      */
 public SimpleProcessRequest getInput() {
