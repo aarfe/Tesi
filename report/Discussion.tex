@@ -3,8 +3,6 @@
 \textbf{FIXME: La conclusione la incorporo come subsection della discussion o la tengo separata? }\\
 In this section we discuss the issues, the results and the possible future development of our generator. We also present a use case to show how the generator works on a simple transformation.
 
-\subsection{Issues encountered and proposed solutions}
-\label{sec:issues}
 FIXME: Modify the list of topics here:
 \begin{itemize}
  \item Acceleo cannot get more than one input file, that means we cannot read the information from the WSDL file(s).
@@ -19,13 +17,23 @@ FIXME: Modify the list of topics here:
 
 \subsection{Use Case}
 \label{sec:UseCase}
-FIXME, to complete with some pictures
+FIXME, to complete with some pictures. \ref{fig:GeneratorUseCase}
 \begin{itemize}
  \item The input model complying with our workflow pattern
  \item Run the Acceleo generation
  \item Create an instance of the Java application process' class and run the runWorkflow() method.
  \item The behaviour is the same as when we run an instance of the BPEL's process 
 \end{itemize}
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[scale=1.5]{pictures/GeneratorUseCase.png}
+    \caption{Use Case}
+    \label{fig:GeneratorUseCase}
+  \end{center}
+\end{figure}
+
+
 
 \subsection{Future Development}
 \label{sec:FutureDevelopment}

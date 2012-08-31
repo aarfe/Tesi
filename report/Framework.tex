@@ -9,33 +9,204 @@ For the implementation of the transformation, once the methodology has been dete
 Many reasons made us inclined to this choice. 
 First of all, Acceleo is an open source technology, available for free and with a lively community over the Internet. Another reason is that Acceleo is available as an Eclipse plugin. Eclipse is itself a very popular Integrated Development Environment (IDE). The fact that Acceleo is an Eclipse plugin automatically adds to it the many features normally present in Eclipse, like code completion, code highlight, project wizards, running configurations and many more. 
 Last but not least, Acceleo has been integrated in Eclipse inside the broad Eclipse Modeling Framework (EMF, see Section \ref{EMF}) family. EMF already contains many tools for modeling and generating code, all complying with the specifics from the Object Management Group (OMG).
-We can conclude that both Eclipse and Acceleo are consolidated realities respectively in the Software Modeling and in the Text-generation sectors. 
+We can conclude that both Eclipse and Acceleo are consolidated realities respectively in the Software Modeling and in the Text-generation domains. 
+\subsubsection{Specific tools versions}
+\label{sec:specificTools}
+The versions of the Eclipse IDE (including the Modeling Framework components), and the Ecore, Acceleo and BPEL plugins releases we used, are summarized in Table \ref{tab:softwareVersions}.
 
-
-FIXME
+%%%%%%%    Table %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}
+\caption{The versions of the software we used}
+\label{tab:softwareVersions}
 \begin{center}
-\begin{minipage}{.5\textwidth}
-  \begin{java-code}{A snippet of code FIXME to show code}{lis:1}
-// Emulate the Receive activity		
-		myPLClient.receiveInput();	
-\end{java-code}
-\end{minipage}
-\hfill
-\begin{minipage}{.49\textwidth}
-  \begin{java-code}{A receive activity translated in Java}{lis:2}
-// Emulate the Receive activity		
-		myPLClient.receiveInput();	
-\end{java-code}
-\end{minipage}
+\begin{tabular}{l l p{7cm}}
+						\toprule
+						\addlinespace[0.2cm]
+\textbf{Software} 	& \textbf{Version} 	& \textbf{Note} 	\\ 
+						\cmidrule(l){1-3}
+Eclipse IDE 			& Helios JEE 3.6.2				& 	\\[0,1cm]		
+Ecore tools SDK			& 0.10						&  	\\[0,1cm]
+Acceleo Plugin			& 3.1						& Version 3.3 has some compiling issues combined with the BPEL plugin    	\\[0,1cm]
+BPEL Designer Plugin 		& 1.0						&  	\\[0,1cm]
+
+						\addlinespace[0.2cm]
+						\bottomrule
+\end{tabular}
+\end{center}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Transformation samples}
+\label{sec:codeSamples}
+FIXME
+
+\begin{center}
+  \begin{minipage}{1\textwidth}
+    \begin{java-code}{Acceleo Template: from inside the template to create a PartnerLink STUB here there is shown the call to the template createSetGet(), which takes care of creating in the output Java file the setter and getter methods of the private attributes.}{lis:callCreateSetGet}
+[comment Add setter and getter /]
+[createSetGet(varTypeList, varNameList)/]	
+    \end{java-code}
+  \end{minipage}
 \end{center}
 
+\begin{center}
+\begin{minipage}{1\textwidth}
+  \begin{java-code}{The body of the createSetGet() template}{lis:createAttributesTemplates}
+[template public createSetGet(varTypeList : Sequence(String), varNameList : Sequence(Variable))]
+	/**
+     * Setters and Getters    
+     */
+[for (aVar : Variable | varNameList )]
+public [varTypeList->at(i).toUpperFirst()/] get[aVar.name.toUpperFirst()/]() {
+	return [aVar.name.toLowerFirst()/];
+}
+
+public void set[aVar.name.toUpperFirst()/]([varTypeList->at(i).toUpperFirst()/] value) {  
+	this.[aVar.name.toLowerFirst()/] = value;
+}
+
+[/for]
+[/template]	
+    \end{java-code}
+  \end{minipage}
+\end{center}
+
+\begin{center}
+  \begin{minipage}{1\textwidth}
+    \begin{java-code}{The end result of the call to the createSetGet() template: the Java setter and getter methods in the output file}{lis:javaSetterGetter}
+     /**
+     * Setters and Getters    
+     */
+public SimpleProcessRequest getInput() {
+	return input;
+}
+
+public void setInput(SimpleProcessRequest value) { 
+	this.input = value;
+}
+
+public SimpleProcessResponse getOutput() {
+	return output;
+}
+
+public void setOutput(SimpleProcessResponse value) {
+	this.output = value;
+}	
+    \end{java-code}
+  \end{minipage}
+\end{center}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\subsection{Issues encountered and proposed solutions}
+\label{sec:issues}
+Here we list the issues we encountered during the implementation of our BPEL to Java transformation using the Acceleo generator.
+% FIXME: Modify the list of topics here:
+% \begin{itemize}
+%  \item Acceleo cannot get more than one input file, that means we cannot read the information from the WSDL file(s).
+%   \subitem The variables types have to be input manually
+%   \subitem The "assign" activities cannot be translated automatically
+%   \subitem The infos to invoke a real web service are inside the WSDL file
+%  \item solutions:
+%   \subitem Modify Acceleo API, or wait for Acceleo to support this thing.
+%   \subsubitem We tried to talk with the Acceleo developers but it was not time wise feasible task
+%   \subitem Un'idea per sormontarli sarebbe di andare a creare un'altra trasformazione Acceleo, che dato in input un file WSDL, scrive le informazioni necessarie in un file Java-properties che verrà poi usato dall'applicazione Java. Se i file WSDL sono più di uno, la trasformazione viene eseguita più volte (a seconda del numero dei file WSDL) andando ad aggiungere altre linee nel file Java-properties
+% \end{itemize}
+\subsubsection{Acceleo and the input files}
+\label{sec:IssueInputFiles}
+During the developing of the first prototype of the generator, we soon noticed that some of the information needed to emulate the BPEL process workflow are stored in the service's WSDL descriptors files. 
+The first idea we came up with had been to input to the Acceleo generator two files, a .BPEL model and a .WSDL descriptor. Unfortunately we discovered that this is not possible. As the features provided by Acceleo are highly configurable, we contacted the Acceleo official forum \cite{acceleoForum} to know how to add this possibility. The answer has been that, although possible, it would concern modifying most of the Acceleo API and rewrite the implementation of many methods. So, it would have been not a trivial task.
+
+The main problems we face in the moment we cannot access the WSDL file are the following: 
+\begin{enumerate}
+  \item \label{itm:item1}The BPEL \textit{variable}s' names and types have to be input manually. 
+    \subitem The BPEL \textit{variables} are expressed in terms of WSDL \textit{message} types.  
+  \item \label{itm:item2}The \textit{assign} activities cannot be translated automatically
+    \subitem Inside an \textit{assign} BPEL defines \textit{from} construct containing the variable from which a value has to be taken, and the \textit{to} construct, meaning on which variable the assignment has to be performed. As the \textit{message}s types are contained in the WSDL, the Java generated code has no information on the types, falling into runtime type errors.
+  \item \label{itm:item3}The information to invoke a real web service are inside the WSDL file
+    \subitem To invoke a web service we need to know at least its address and port where it is running. These information are, again, stored in the WSDL file. 
+\end{enumerate}
+
+\paragraph{Proposed solution issues number \ref{itm:item1} and \ref{itm:item2}}
+As we are dealing at the moment just with a simple BPEL workflow pattern, we decided it would be easier to manually input the necessary data from the WSDL files into the Java templates.
+Concerning the variables types and the problem with the \textit{assign} (issues number \ref{itm:item1} and \ref{itm:item2}), the snippets of code below show that the BPEL variables reference the WSDL messages. Thus, we need the same set of data from the WSDL, namely, the names and types contained in the WSDL \textit{message} construct. 
+
+\begin{center}
+  \begin{minipage}{1\textwidth}
+    \begin{workflow-code}{The BPEL variables referencing the below listed WSDL messages}{lis:BPELVariables}
+<bpel:variables>
+     <!-- Reference to the message passed as input during initiation -->
+        <bpel:variable name="input"
+                  messageType="tns:SimpleProcessRequestMessage"/>
+                  
+     <!-- Reference to the message that will be returned to the requester -->
+        <bpel:variable name="output"
+                  messageType="tns:SimpleProcessResponseMessage"/>
+    \end{workflow-code}
+  \end{minipage}
+  \hfill
+\begin{minipage}{1\textwidth}
+    \begin{workflow-code}{The WSDL messages' names and types}{lis:WSDLMessages}
+    <message name="SimpleProcessRequestMessage">
+        <part element="tns:SimpleProcessRequest" name="payload"/>
+    </message>
+    <message name="SimpleProcessResponseMessage">
+        <part element="tns:SimpleProcessResponse" name="payload"/>
+    </message>	
+    \end{workflow-code}
+  \end{minipage}
+\end{center}
+
+The proposed solution is to manually insert only in one place of the Acceleo transformation (the main file) the data from the WSDL files. For every \textit{PartnerLink} we create two Sequences of Strings, containing the names and the types. These set will then be passed as input to the others Acceleo templates, in order that if a better way to insert these parameters will be found in the future, there will be no need to modify the whole transformation's API. Below is shown an example regarding a BPEL process where the variables of two partner links, Client and PL1, are defined.
+
+\begin{center}
+  \begin{minipage}{1\textwidth}
+    \begin{java-code}{Manually inserted variables' names and types in the main Acceleo template}{lis:AcceleoManualCode}
+[template public generate(aProcess : Process) {	
+	varTypesClientList : Sequence(String) = Sequence{aProcess.name.toUpperFirst()+'Request', aProcess.name.toUpperFirst()+'Response'};
+	varNamesClientList : Sequence(String) = Sequence{'input','output'};
+	varTypesPL1List : Sequence(String) = Sequence{'GetAutographByCognomeEasyResponse','GetAutographByCognomeEasy'};
+	varNamesPL1List : Sequence(String) = Sequence{'AuthorWSParterLinkResponse','AuthorWSParterLinkRequest'}
+	}]	
+    \end{java-code}
+  \end{minipage}
+\end{center}
+
+\paragraph{Proposed solution issue number \ref{itm:item3}}
+Concerning the problem number \ref{itm:item3} where the information to invoke a real web service are stored in the WSDL file, we adopted the same solution: to manually input the code. The following snippet shows where the web service access data are stored in the WSDL file:
+  
+\begin{workflow-code}{A web service's access data stored in a WSDL descriptor file}{lis:WebServAccessData}
+ </wsdl:binding>
+   <wsdl:service name="AuthorsWSService">
+      <wsdl:port binding="impl:AuthorsWSSoapBinding" name="AuthorsWS">
+         <wsdlsoap:address location="http://localhost:8080/JavaWebServer/services/AuthorsWS"/>
+      </wsdl:port>
+   </wsdl:service>	
+\end{workflow-code}
+  
+The only difference here is that these information about address, port and access protocol where the service is running, are to be used directly in the final Java application, to call the services. Thus, as explained in Section \ref{sec:decouplingPL}, we thought of a more general strategy where in the final Java application code (precisely in the partner link STUB classes), we leave blank implementation in the methods that forward the calls to the real web services. A user of the Java application must fulfill these methods retrieving the address and ports information from the WSDL file. Once obtained these information, he can (also depending on the binding used, e.g. SOAP) write the Java code to forward the call to the web service' operation.
+
+  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{How to run a transformation}
-\begin{itemize}
- \item Create a Java Process complying with out Workflow pattern (Receive-Assign-Invoke-Assign-Reply)
- \item Choice of the web service to use 
-  \subitem use of a local version of the webService or add the WebService info (IP, port, etc ) manually
- \item Fulfill the manual intervention where needed
- \item Run the transformation
- \item Create an instance of the Java application process' class and run the runWorkflow() method.
- \item Check that the behavior is the same
-\end{itemize}
+\label{sec:HowToRun}
+This Section explains how to run a BPEL to Java transformation with our generator, from the model creation to the creation of an instance of the workflow and control the final behavior.
+The steps are here summarized:
+\begin{enumerate}
+ \item Create a BPEL process complying with the workflow pattern \textit{Receive - Assign - Invoke - Assign - Reply}
+ \item Choose a web service to invoke
+ \item Run the \textit{wsimport} routine on the WSDL descriptor files and make sure the generated files are in the same folder as the generator's output.
+ \item Manual intervention: create the list of types and variables' names for the client and the web server (these information are to be taken from the WSDL file, see Section \ref{sec:issues})
+ \item Run the transformation from inside Eclipse Framework
+ \item Manual intervention: fulfill the predefined method in the partnerLink Java class to be able to call the real service (these information are found in the service's WSDL file, see Section \ref{sec:issues})
+ \item Create an instance of the Java application process' class and run the \textit{runWorkflow()} method.
+ \item The resulting behavior of running the BPEL process is the same as the one obtained running the Java application.
+\end{enumerate}
+
+
+
+
+
+
+
