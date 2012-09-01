@@ -29,7 +29,7 @@ RMI registry is the middleware in charge of the binding tasks in \textit{Java RM
 \item[static void 	unbind(String name)]
     Destroys the binding for the specified name that is associated with a remote object.
 \end{description}
-These methods take a string formatted in the following way as an argument:
+These methods take a string formatted in the following way as an argument:\\
 \verb|//computerName:port/objectName|
 where \textit{computerName} and \textit{port} refer to the location of the RMI registry.
 \cite{DS-book}
@@ -81,7 +81,6 @@ The transport layer makes the connection between JVMs and it uses the TCP/IP pro
 \label{JavaRMIinternalMechanism}
 
 This Section concretely explains how Java RMI works and how it can help programmers in writing the network related code in their programs.
-
 A typical scenario could be: a client wants to execute a method on the server which is on another machine. We will explain why the programmer does not have to write the network and sockets code with Java RMI.
 
 We know that for the service interface on the server, there are two implementations with the same methods: the Stub on the client side and the real object implementing the behavior on the server side. In particular the client uses the stub to call all the methods the same way it would call them on the server. The only difference with a local call is that the stub does not contain the concrete implementation of the required function, it just contains the network-related code to create the communication channel with the server's real implementation \cite{RMI-art4}.

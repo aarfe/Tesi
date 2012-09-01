@@ -1,44 +1,48 @@
 \section{Detailed Architecture}
 \label{DetailedArchitecture}
-In this Section we introduce the tool we use to realize the chosen methodological approach. In addition, we describe the constraints under which we carry out the transformation, such as the use of a BPEL subset and the specification of a workflow pattern.
+In this Section we introduce the kind of generator we use to realize the chosen methodological approach. In addition, we describe the constraints under which we carry out the transformation, such as the use of a BPEL subset and the specification of a workflow pattern.
 Later in this Section, we introduce the design ideas of our transformation and the general architecture we adopted.\\
+The main topics we take over in this Section can be summarized as follows:
+\begin{enumerate}
+ \item The choice of the text generator tool 
+ \item The analysis of the BPEL language to focus on
+ \item The Transformation Strategy
+ \item The Java application architecture and execution
+ \item The Java templates
+ \item The developer's intervention
+\end{enumerate}
 
-FIXME: TO REMOVE LATER
-\begin{itemize}
- \item *The M2T tool we use (Acceleo)
- %\item The additional components (A WebService)
-\end{itemize}
-
-The main points and some more decision we have to take over:
-\begin{itemize}
-  \item * We identify the subset of BPEL instructions suitable for a proof of concept of the transformation. 
-  \subitem * Select a BPEL meta-model that covers the chosen subset of instructions.
-  \subitem * Individuate a BPEL workflow pattern to work on 
- 
- \item * Provide a transformation strategy from the BPEL constructs to Java concepts
-    \subitem * the usage of the wsdl-to-java routine to create the tree of messages types
-    \subitem * all written
- \item * Design the architectural structure of the output Java application.
- \item * Define the essential skeleton of Java classes necessary to create a runnable BPEL process
- \item * In the templates, describe how to use and where the dynamic information taken from the BPEL input model has to be placed.
- \item Plan where and how, in the architecture, the developer intervention has to take place.
- \item \textbf{Issues encountered and proposed solutions  ?}
-\end{itemize} 
- 
- To mention later: \\
- StubPartnerLinks, code to be input by the user, static code, the problem with the WSDL file
-
+% FIXME: TO REMOVE LATER
 % \begin{itemize}
-%  \item Metamodel 
-%  \item Skeleton 
-%  \item Generator 
+%  \item *The M2T tool we use (Acceleo)
+%  %\item The additional components (A WebService)
 % \end{itemize}
+% 
+% The main points and some more decision we have to take over:
+% \begin{itemize}
+%   \item * We identify the subset of BPEL instructions suitable for a proof of concept of the transformation. 
+%   \subitem * Select a BPEL meta-model that covers the chosen subset of instructions.
+%   \subitem * Individuate a BPEL workflow pattern to work on 
+%  
+%  \item * Provide a transformation strategy from the BPEL constructs to Java concepts
+%     \subitem * the usage of the wsdl-to-java routine to create the tree of messages types
+%     \subitem * all written
+%  \item * Design the architectural structure of the output Java application.
+%  \item * Define the essential skeleton of Java classes necessary to create a runnable BPEL process
+%  \item * In the templates, describe how to use and where the dynamic information taken from the BPEL input model has to be placed.
+%  \item Plan where and how, in the architecture, the developer intervention has to take place.
+%  \item \textbf{Issues encountered and proposed solutions  ?}
+% \end{itemize} 
+%  
+%  To mention later: \\
+%  StubPartnerLinks, code to be input by the user, static code, the problem with the WSDL file
 
 %//////////////////////////////////////////////////////////
 \subsection{The M2T Generator}
+\label{Sec:M2TGenerator}
 To implement our model-to-text methodology we make use of the Acceleo generator. As described in Section \ref{acceleo}, Acceleo takes as input a model in any kind of modeling language followed by its meta-model descriptor, and a series of templates defining the structure of the output text to create.
-With a well defined Acceleo transformations, we can obtain runnable 
-Acceleo provides us the opportunity to both navigate the parameterized input model and to plan the design of the Java templates in order not to have redundant code.
+With a well defined Acceleo transformations, we can obtain a ready-to-run Java application as output.
+Acceleo provides us the opportunity to both navigate the parameterized input model and to plan the design of the Java templates in order not to have redundant code. More details and examples on how the Acceleo generator works are provided in the next Section.
 %//////////////////////////////////////////////////////////
 \subsection{The BPEL subset of instructions}
 \label{Sec:BPELsubset}
@@ -208,7 +212,7 @@ Decoupling generated code from resources access
 \end{center}
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{The Architectural of the Java Application}
+\subsection{The Architecture of the Java Application}
 \label{sec:JavaArchitecStruct}
 Before starting the transformation, we should have a rough idea of the architecture that the Java generated application should comply with.
 As our transformation deals with a small subset of the whole BPEL language, the correspondent Java application architecture does not seem to need, yet now, a strictly defined model. This happens because we do not want to force an architectural style that might restrict future expansions of the BPEL elements' subset.

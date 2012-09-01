@@ -173,7 +173,7 @@ Here we list the issues we encountered during the implementation of our BPEL to 
 \subsubsection{Acceleo and the input files}
 \label{sec:IssueInputFiles}
 During the developing of the first prototype of the generator, we soon noticed that some of the information needed to emulate the BPEL process workflow are stored in the service's WSDL descriptors files. 
-The first idea we came up with had been to input to the Acceleo generator two files, a .BPEL model and a .WSDL descriptor. Unfortunately we discovered that this is not possible. As the features provided by Acceleo are highly configurable, we contacted the Acceleo official forum \cite{acceleoForum} to know how to add this possibility. The answer has been that, although possible, it would concern modifying most of the Acceleo API and rewrite the implementation of many methods. So, it would have been not a trivial task.
+The first idea we came up with had been to input to the Acceleo generator two files, a .BPEL model and a .WSDL descriptor. Unfortunately we discovered that this is not possible. As the features provided by Acceleo are highly configurable, we contacted the official Acceleo forum \cite{acceleoForum} to know how to add this possibility. The answer has been that, although possible, it would concern modifying most of the Acceleo API and rewrite the implementation of many methods. So, it would have been not a trivial task.
 
 The main problems we face in the moment we cannot access the WSDL file are the following: 
 \begin{enumerate}
