@@ -4,9 +4,9 @@
 In this section we discuss the results of the transformation, its feasibility and the possible future developments. We also present a use case to show how the generator works on a simple transformation.
 \subsection{Emulate a BPEL Orchestration in Java}
 \label{sec:OrchestrEmulation}
-Our purpose was to show the feasibility of an automatic transformation from a BPEL orchestrated process to a Java application. With the use of a model-to-text methodology we met the intent and we provide a simple implementation of a proof of concept showing.
-On the functionality of the transformation, obvious constraints have been set. First, not to overcome the complexity due to the wide structure of the BPEL language, we use a subset of the language. Second, we limit the focus to only one workflow pattern. 
-These constraints have been set not to overcome the project time-frame.
+% Our purpose was to show the feasibility of an automatic transformation from a BPEL orchestrated process to a Java application. With the use of a model-to-text methodology we met the intent and we provide a simple implementation to endorse our proof of concept.
+% On the functionality of the transformation, obvious constraints have been set. First, not to overcome the complexity due to the wide structure of the BPEL language, we use a subset of the language. Second, we limit the focus to only one workflow pattern. 
+% These constraints have been set not to overcome the project time-frame.
 
 
 \subsection{Use Case}
@@ -68,7 +68,7 @@ user=process
 \end{center}
 
 Once we would have written the information from the WSDL file in the Java properties file, we could use the Acceleo facility that permits to input a Java properties file with the command:\\
-\begin{verbatim}[getProperty('myroperty')/]\end{verbatim} 
+\begin{verbatim}[getProperty('myProperty')/]\end{verbatim} 
 The usage of properties file in Acceleo is described in the documentation \cite{acceleoDoc}. If the WSDL files are more than one (e.g. presence of more than one PartnerLink), the transformations could be run more times attaching the new information at the end of the properties file.
 This improvement would basically overcome both the issues presented in Section \ref{sec:issues}.
 

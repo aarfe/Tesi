@@ -1,3 +1,24 @@
 \section{Conclusion}
 \label{Conclusion}
-Conclusions.
+Our purpose is to show the feasibility of enabling BPEL service orchestration on Java devices. As by composing and orchestrating existent applications, the web is highly increasing the number of available services, these services need to be run on portable devices. Though, orchestration engines with their needs of powerful machines and large memory footprints, are yet to be convenient on such an environment.\\
+We provide a proof of concept of the feasibility of a on-the-fly transformation from a BPEL Orchestrated business process to a Java application. 
+With the use of a Model Driven Architecture methodology aimed at code generation (model-to-text), we meet the intent and we provide a simple implementation using the Acceleo model-to-text generator to endorse our proof of concept.
+On the functionality of the transformation, obvious constraints have been set. First, not to overcome the complexity due to the wide structure of the BPEL language, we use a subset of the language. Second, we limit the focus to only one workflow pattern.\\
+
+
+The transformation strategy has covered some main points described as following. First of all we need to access data from both the BPEL process file and from the WSDL descriptors of the invoked web services. 
+Concerning the data structure and the static components, we reuse an existent routine that translates a WSDL file variables content in the equivalent Java classes. 
+The logic of the BPEL workflow is mimiced in a Java process class, where a runnable method contains the sequence of operation to reproduce the BPEL workflow.
+Moreover, we translate the external resources (partnerLinks) as Java STUB classes, in order to decouple the Java workflow code from the resources access.\\
+
+
+As an issue concerning the impossibility of input more than one model file to the Acceleo generator arose, developer's intervention is required in some cases in the Java templates: to set the BPEL variables' names and types and to explicit the association partnerLinks-variables during the translation of the BPEL \textit{assign} activity. One more intervention is required to froward the call to the real web services to invoke; this happens because the information concerning where the web service physically resides are stored in the WSDL file.
+
+Eventually we provide examples of how the transformation has been carried out and a use case implementation that shows how our generator could be run and where the developer has to intervene to create a runnable Java application. \\
+
+
+Many improvements could be carried out on the transformation strategy and design. As for the transformation itself, providing a method to access the WSDL files' information would be a great feature: once the information from the WSDL elements would be made available, developer's intervention could be curtailed down to basic control operations, letting out any error-prone manual information gatherings.
+Another improvement would concern the extension of the BPEL subset used and the inclusion of more workflow patterns.
+To conclude, the architectural design could be improved as well. Additional abstraction levels could be added to favor code reuse in both the Acceleo module and in the output Java application. 
+
+
