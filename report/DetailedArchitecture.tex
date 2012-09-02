@@ -49,6 +49,7 @@ Acceleo provides us the opportunity to both navigate the parameterized input mod
 The BPEL standard (see Section \ref{BPEL} for more details) has a wide variety of elements and instructions aimed at managing the possible workflow patterns obtainable during a services orchestration. Moreover, BPEL does not restrict the number of services that can participate to the orchestration neither the type and the quantity of interactions among them.
 For these reason, we focus our attention on a subset of the whole BPEL language, both to restrain the complexity and to fit the time frame of the project.
 \subsubsection{The activities subset}
+\label{sec:actvitiesSubset}
 We decided to restrict the BPEL activities to a subset containing the following constructs divided in four groups:
 \begin{center}
 \begin{supertabular}{p{0.4\textwidth}p{0.4\textwidth}}
@@ -115,7 +116,7 @@ and on a simple workflow pattern that concerns the activities shown in Figure: \
 
 \begin{figure}
   \begin{center}
-    \includegraphics[scale=0.8]{pictures/BPELSimpleProcess.png}
+    \includegraphics[scale=0.8]{pictures/SimpleProcessBPEL.png}
     \caption{The BPEL workflow pattern we focus on}
     \label{fig:BPELWorkflowPattern}
   \end{center}
@@ -159,7 +160,7 @@ This tool proved very useful as we could make use of a reliable and tested solut
 \end{figure} 
 
 \subsubsection{Mimic the BPEL workflow logic}
-\label{mimicBPELLogic}
+\label{sec:mimicBPELLogic}
 The BPEL orchestration logic is contained in a well defined section of a BPEL file. In the case of our BPEL subset, the logic workflow is all included in the \textit{sequence} activity. When generating the Java code, we make sure that the instructions included in the \textit{sequence} all end up in a Java class called after the process' name (we refer to it as the \textbf{Process class}). This class has a method \textit{runWorkflow()} that takes care of creating the instances of the PartnerLinks involved in the process and mimics the BPEL workflow activities.  
 This allows us to decouple the logic from the data storage and management. Moreover, this separation makes room for future development regarding, among others, the enlargement of the BPEL activities subset. For example, if the \textit{pick} activity will, one day, be incorporated, the process class is the only class where changes will take place.
 

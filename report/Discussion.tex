@@ -4,6 +4,10 @@
 In this section we discuss the results of the transformation, its feasibility and the possible future developments. We also present a use case to show how the generator works on a simple transformation.
 \subsection{Emulate a BPEL Orchestration in Java}
 \label{sec:OrchestrEmulation}
+Emulating simple BPEL workflows in Java is possible, and we show that this is feasible in a automatized manner. Apart of the obvious constraints we have set in terms of the use of a subset of BPEL and the focus on only one pattern (see Section \ref{sec:actvitiesSubset} and \ref{sec:DesignBPELPattern}), and the difficulties to gather data from the WSDL files (see Section \ref{sec:IssueInputFiles}), the automatic transformation shows some promising features and there seems to be much ground from improvements.
+A good feature is the possibility of recreating in Java the static structure of variables (messages) and participants (partnerLinks, client). The reuse of the \textit{wsimport} (Section \ref{sec:WSDLMEssagesStructure}) tool and the generic template to create partnerLink STUBs (Section \ref{sec:extrenalResources}), permits to create the representation of the static structure of elements used by the BPEL process. This eventually allows to concentrate only in the translation of the behaviour: the BPEL logic contained in the \textit{sequence} activity \ref{sec:mimicBPELLogic}. Moreover, this also abstracts our generator from the kind of web services used: it does not matter which kind of input or output the web service is able to deal with; the variables are seen as \textit{messages}, and the types do not need to be specified until it comes to Java assignation.
+
+At the same time, once the structure has been decoupled from the behaviour, it becomes easy to think of including other BPEL patterns, because everything seems to boil done at reproducing the sequence of BPEL activities with Java method calls. 
 % Our purpose was to show the feasibility of an automatic transformation from a BPEL orchestrated process to a Java application. With the use of a model-to-text methodology we met the intent and we provide a simple implementation to endorse our proof of concept.
 % On the functionality of the transformation, obvious constraints have been set. First, not to overcome the complexity due to the wide structure of the BPEL language, we use a subset of the language. Second, we limit the focus to only one workflow pattern. 
 % These constraints have been set not to overcome the project time-frame.
@@ -32,6 +36,25 @@ Once the generation has completed, the user of the Java application can finally:
     \label{fig:GeneratorUseCase}
   \end{center}
 \end{figure}
+
+\subsubsection{A use case example}
+As an example of how to use our transformation, we discuss in this Subsection how the behavior of a simple BPEL process is translated in Java. Figure \ref{fig:BPELOrchestr} shows the simple BPEL orchestration we provide as input to the generator. A user wants to retrieve the signature of a famous person given his surname. The BPEL process, receives the surname from the user and invokes a web server that shows an operation (\textit{getAutograph(String)}). The web server checks its database and sends the complete autograph of the person (or an error if the autograph is not present) to the BPEL process. At the end, the BPEL process replies to the client providing the autograph.   
+\begin{figure}
+  \begin{center}
+    \includegraphics[scale=1.2]{pictures/UseCaseExampleBPELOrchestr.png}
+    \caption{The example of a BPEL orchestration model we input to our generator. A client uses a very simple service that, given a surname of a famous person, gives back the autograph.}
+    \label{fig:BPELOrchestr}
+  \end{center}
+\end{figure}
+
+\begin{figure}
+  \begin{center}
+    \includegraphics[scale=1]{pictures/GeneratorSequenceDiagram.png}
+    \caption{fixme}
+    \label{fig:GeneratorSequenceDiagram}
+  \end{center}
+\end{figure}
+
 
 \subsection{Future Development}
 \label{sec:FutureDevelopment}

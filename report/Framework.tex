@@ -158,7 +158,7 @@ public void setOutput(SimpleProcessResponse value) {
 
 \subsection{Issues encountered and proposed solutions}
 \label{sec:issues}
-Here we list the issues we encountered during the implementation of our BPEL to Java transformation using the Acceleo generator.
+Here we list the issues, we encountered, during the implementation of our BPEL to Java transformation using the Acceleo generator. We also provide the proposed strategies to solve the issues.
 % FIXME: Modify the list of topics here:
 % \begin{itemize}
 %  \item Acceleo cannot get more than one input file, that means we cannot read the information from the WSDL file(s).
@@ -231,7 +231,7 @@ The proposed solution is to manually insert only in one place of the Acceleo tra
 \end{center}
 
 \paragraph{Proposed solution issue number \ref{itm:item3}}
-Concerning the problem number \ref{itm:item3} where the information to invoke a real web service are stored in the WSDL file, we adopted the same solution: to manually input the code. The following snippet shows where the web service access data are stored in the WSDL file:
+Concerning the problem number \ref{itm:item3} where the information to invoke a real web service are stored in the WSDL file, we adopted the same solution: to manually input the data. The following snippet shows where the web service access data are stored in the WSDL file:
   
 \begin{workflow-code}{A web service's access data stored in a WSDL descriptor file}{lis:WebServAccessData}
  </wsdl:binding>
