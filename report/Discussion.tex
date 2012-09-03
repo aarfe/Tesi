@@ -38,7 +38,7 @@ Once the generation has completed, the user of the Java application can finally:
 \end{figure}
 
 \subsubsection{A use case example}
-As an example of how to use our transformation, we discuss in this Subsection how the behavior of a simple BPEL process is translated in Java. Figure \ref{fig:BPELOrchestr} shows the simple BPEL orchestration we provide as input to the generator. A user wants to retrieve the signature of a famous person given his surname. The BPEL process, receives the surname from the user and invokes a web server that shows an operation (\textit{getAutograph(String)}). The web server checks its database and sends the complete autograph of the person (or an error if the autograph is not present) to the BPEL process. At the end, the BPEL process replies to the client providing the autograph.   
+As an example of how to use our transformation, we discuss in this Subsection how the behavior of a simple BPEL process is translated in Java. Figure \ref{fig:BPELOrchestr} shows the simple BPEL orchestration we provide as input to the generator. A user wants to retrieve the signature of a famous person given his surname. The BPEL process, receives the surname from the user and invokes a web server that shows an operation (\textit{getAutograph(String)}). The web server checks its database and sends the complete autograph of the person (or an error if the autograph is not present) to the BPEL process. At the end, the BPEL process replies to the client providing the autograph.
 \begin{figure}
   \begin{center}
     \includegraphics[scale=1.2]{pictures/UseCaseExampleBPELOrchestr.png}
@@ -47,10 +47,27 @@ As an example of how to use our transformation, we discuss in this Subsection ho
   \end{center}
 \end{figure}
 
+Once we have the BPEL process model, its components' WSDL descriptions (one for the client and one for the web service), we can start a generation. Following Figure \ref{fig:GeneratorUseCase}, the use case shows that to run the generator we are required three things: a) provide the BPEL input model, b) manually set the variables information taken from the WSDL file, c) run the \textit{wsimport} routine on the WSDL descriptors to get the correspondent Java structure.
+Once the generator has run, we obtain a Java application that mimics the given BPEL workflow. The sequence diagram depicted in Figure \ref{fig:GeneratorSequenceDiagram} shows how the behaviour of the BPEL process of Figure \ref{fig:BPELOrchestr} is emulated. This sequence diagram only shows the most important interactions among the main participants, namely, the Process class, the Client partnerLink, the Web Service partnerLink and the real Web Service running on some servers. 
+We observe that the Process class (with its \textit{runWorkflow()} method, as explained in Section \ref{sec:mimicBPELLogic}) takes care of simulating the actions performed by the BPEL process. At first it creates the partnerLinks STUBS instances: PLClient and PLWebService (which inside contain the variables related their correspondent partnerLinks). Later, the Process class, with synchronous calls, starts a sequence including the following steps:
+\begin{itemize}
+ \item receives the input from the PLClient class (to stick to the previous example, we can imagine the user has inserted the surname "Spielberg")
+ \item sets the private variables containing the input for the web service in the PLWebService class
+ \item calls the \textit{getAutographBySurnameEasyStub()} method.
+ \item the PLWebService class is in charge to forward the call to the real Web Service. It calls its operation to retrieve the autograph: \textit{getAutograph("Spielberg")}
+ \item the Web Service response ("Steven Spielberg") is intercepted and forwarded back to the Process class
+ \item the process class sets the result variable in the PLClient class
+ \item the process class calls the \textit{replyOutput()} method on the PLCLient STUB class, to give back the result ("Steven Spielberg") to the user.
+ \item the STUB objects are destroyed and the process has finished.
+\end{itemize}
+
+We could easily see the similarities between the BPEL process behaviour (in Figure \ref{fig:BPELOrchestr}) and the Java application logic (in Figure \ref{fig:GeneratorSequenceDiagram}). They both end up providing a response to a user willing to use the \textit{getAutograph()} web service, using though, very different approaches and frameworks to be run on.
+
+
 \begin{figure}
   \begin{center}
     \includegraphics[scale=1]{pictures/GeneratorSequenceDiagram.png}
-    \caption{fixme}
+    \caption{Sequence diagram representing the generated Java application behaviour correspondent to the BPEL process model provided as input to the generator.}
     \label{fig:GeneratorSequenceDiagram}
   \end{center}
 \end{figure}
