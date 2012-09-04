@@ -12,8 +12,8 @@ Acceleo is an open source Code generator that allows the creation of code starti
 \end{figure}
 
 \paragraph{An Acceleo example}
-Acceleo is a template-based model-to-text transformation (see Section \ref{m2m&m2t}), where the user manually writes the static part of his code and fills the (dynamic) code that changes with Acceleo parameterized snippets.
-For example, let's imagine a transformation from an input file written in the BPEL language to a Java file. As shown in Listing \ref{lst:AcceleoGettersExample}, we can see how Acceleo creates a generic template to generate Java getters methods for the private attributes of a class. Passing to the Acceleo function a list of Variables (varNameList), it goes through it and for each variable it creates a public method named \textit{get} + \textit{name} of the variable with first letter capitalized with return-type the type of the variable. This proves very useful when the list of variables is huge and dynamic, making a manual procedure a too cumbersome and error-prone task.
+Acceleo is a template-based model-to-text transformation (see Section \ref{m2m&m2t}), where the user manually writes the static part of his code and fills the dynamic parts of it with Acceleo parameterized snippets.
+For example, let's imagine a transformation from an input file written in the BPEL language to a Java file. As shown in Listing \ref{lst:AcceleoGettersExample}, we can see how Acceleo creates a generic template to generate Java getters methods for the private attributes of a class. Passing to the Acceleo function a list of Variables (varNameList), it goes through it and for each variable it creates a public method named \textit{get} + \textit{name of the variable with first letter capitalized}, with return-type the type of the variable. This proves very useful when the list of variables is huge and dynamic, making a manual procedure a too cumbersome and error-prone task.
 
 \begin{workflow-code}{Acceleo creating the Java getters for a list of variables. The code out of square brackets is static code}{lst:AcceleoGettersExample}
 [for (aVar : Variable | varNameList )]
@@ -32,8 +32,8 @@ The mechanism to look for specific elements in a file used by Acceleo is a super
 \label{AcceleoArchitecture}
 Figure \ref{AcceleoArchitecture} depicts the overall 3-part architecture of the Acceleo generator, described in the next three paragraphs.
 \paragraph{Modeler}
-On the left, there is represented the modeling side, where models are created and given as inputs to the generator. As far as the model is well defined and has a meta-model descriptor, any kind of model can be used: UML, XMI, XML, some other programming languages or a custom created model. One thing to note is that models are created outside of the Acceleo framework. Generally, one would want to use preexistent models (e.g. the UML model of an existent application) that will generate through Acceleo code written in a target language (e.g. Java). 
-An example of Modeling tools completely compatible in terms of standards with Acceleo, is the Eclipse Modeling Framework (see Section \ref{EMF}).   
+On the left, there is represented the modeling side, where models are created and given as inputs to the generator. As far as the model is well defined and has a meta-model descriptor, any kind of model can be used: UML, XMI, XML, some other programming languages or a custom created model. One thing to note is that models are created outside of the Acceleo framework. Generally, one would want to use preexistent models (e.g. the UML model of an existent application) that will generate, once passed through Acceleo, code written in a target language (e.g. Java). 
+An example of Modeling tools completely compatible in terms of standards with Acceleo is the Eclipse Modeling Framework (see Section \ref{EMF}).   
 \paragraph{Eclipse Acceleo Plugin}
 In the middle there stands the Acceleo generator. Acceleo reuses the native Eclipse components regarding model transformations and code generation. For example, Acceleo reuses the Java Emitter Templates (JET) technology, which is a Model-to-Text generator aimed at Java output.
 \paragraph{Generation}
@@ -42,7 +42,7 @@ On the right, there are represented the output modules one can obtain through an
 \begin{figure}
   \begin{center}
     \includegraphics[scale=0.7]{pictures/acceleo-archi-en.png}
-    \caption{Architecture of the Acceleo Generator \cite{AcceleoArchitectureWeb}. Models are created and given as input to the generator which reusing the Eclipse text generation technologies outputs the target module}
+    \caption{Architecture of the Acceleo Generator \cite{AcceleoArchitectureWeb}. Models are created and given as input to the generator which, reusing the Eclipse text generation technologies, outputs the target module}
     \label{fig:AcceleoArchitecture}
   \end{center}
 \end{figure}

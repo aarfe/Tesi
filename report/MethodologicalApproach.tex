@@ -4,24 +4,25 @@
 %---What methodology we used---
 
 We analyze the possibility of automatically transform a BPEL written process in a Java executable routine, with minimum ad-hoc developer’s intervention. Our final objective is to show the feasibility of a semi-automated transformation from a small business process orchestrated with BPEL to the Java language.
-\fxnote{FIXME, commenti Stefano sulla struttura}
-This section describes the methodological approach we undertaken to realize our objective. The following list summarizes the steps we undertake to make our final choice: (* = testo già scritto)
+%\fxnote{FIXME, commenti Stefano sulla struttura}
+This section describes the methodological approach we undertaken to realize our objective. The following list summarizes the contents described in this Section, used to make our final choice.% (* = testo già scritto)
 
 \begin{itemize}
- \item * Describe the domain of our transformation
- \item * Briefly describe the possible methodological approaches we could use (Programming vs Code Generation vs Model Driven Architecture) and our choice (MDA). 
- \item * Choose a MDA technique that allows us to manipulate the BPEL input model (M2M, M2T) and that is compatible with a ready to run code output.
- \item FINAL OVERVIEW OF THE METHODOLOGICAL APPROACH (with overview picture)
+ \item Describe the domain of our transformation
+ \item Briefly describe the possible methodological approaches we could use (Programming vs Code Generation vs Model Driven Architecture) and which is our choice (MDA). 
+ \item Choose a MDA technique (M2M, M2T) that allows us to manipulate the BPEL input model and that is compatible with a ready to run code output.
+ \item Final overview of the methodological approach presented with an overview diagram.
 \end{itemize}  
 
-Once these steps have been accomplished, we focus on providing more details on how we carry out the transformation in THE NEXT SECTION.
-\textbf{ALTRI DETTAGLI SONO NELLA SEZIONE DETAILED ARCHITECTURE ? }
+Once these steps have been accomplished, we focus on providing more details on how we carry out the transformation in the next section concerning the detailed architecture.
+%\textbf{ALTRI DETTAGLI SONO NELLA SEZIONE DETAILED ARCHITECTURE ? }
 
 
 \subsection{The domain of the transformation} 
 \label{sec:TransfDomain}
 In our transformation we are dealing with BPEL, which is a DSL (Domain Specific Language), and Java, which is a multipurpose language. 
-Having to deal with a model produced with a DSL means that   we don't have to take care of the general constructs and ideas that are present in a generic language. The language is already skimmed to what is necessary to orchestrate business processes, nothing more.  %Most importantly, the fact the input model is produced in a DSL  
+Having to work with a model produced with a DSL means that we don't have to take care of the general constructs and ideas that are present in a generic language. The language is already skimmed to contain what is necessary to orchestrate business processes.
+Concerning the output language, Java, it is not a DSL but a multipurpose language. Thus, it has no constraints on which kind of process or solution we could implement with it. %Most importantly, the fact the input model is produced in a DSL  
  
 \subsection{The methodological approach}
 \label{sec:ProgrammingVsMDE}

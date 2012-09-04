@@ -8,8 +8,8 @@ Later in Section \ref{WFManagement} we talk about Workflow management, introduci
 \label{SOC&SOA}
 During the years preceding the large spread of the Internet, companies used to create their own software systems, in order to obtain highly customized and specific services, rarely focused on the accessibility by external partners.
 Today, with the necessity of exchanging information among different companies and businesses, and the push made by the large growth of the Internet, the focus has moved to the integration and the coordination of the existing softwares, namely, the integration of these systems over larger networks.
-Defining a \textit{service} as a distributed application that exports a view of its functionalities  \cite{DiLorenzo08}, what is needed is the possibility to compose different services together.
-For example, it might be useful to integrate a service (already available on a net), providing maps of a city's streets, with a web-based service listings telephone numbers of a given city zone, resulting in a new service showing telephone numbers on the map. %\fxnote{I might add a picture to better show the example here} FIXME
+Defining a \textit{service} as a \textit{"distributed application that exports a view of its functionalities"} \cite{DiLorenzo08}, what is needed is the possibility to compose different services together.
+For example, it might be useful to integrate a service (already available on a net), providing maps of a city's streets, with a web-based service listings telephone numbers of a given city zone, resulting in a new service showing telephone numbers directly on a map. %\fxnote{I might add a picture to better show the example here} FIXME
   
 The \textit{Service Oriented Computing} (SOC) is the paradigm that attempts to wrap and adapt existing applications into new services, which should comply to three main requirements \cite{DiLorenzo08,Papazoglou03}:
 \begin{itemize}
@@ -17,13 +17,13 @@ The \textit{Service Oriented Computing} (SOC) is the paradigm that attempts to w
  \item loosely coupled: the client and the provider of the service should not know each other's internal details.
  \item location transparent: clients should be able to get information and access to a service, irrespectively of their location. 
 \end{itemize}
-Eventually the SOC paradigm makes use of services as the atomic components for developing new applications (which, in turn, can be services too \cite{Papazoglou03}.
+Eventually the SOC paradigm makes use of services as the atomic components for developing new applications (which, in turn, can be services too \cite{Papazoglou03}).
 
 
 To apply the SOC paradigm, there is a need of an architecture infrastructure style, which gives the directives and guidelines to build such a service.  
 The architectural infrastructure of the SOC is called \textit{Service Oriented Architecture} (SOA). 
 The idea behind the SOA is to describe, publish and make available services (generally speaking, a combination of services) obtained from a preexistent set of applications. 
-To achieve the results of making non-homogeneous applications, using different technologies and running on different platforms, work together, SOA makes use of standard interfaces and messaging protocols. This way each of the applications become an atomic, well defined and ready to be connected component. 
+To achieve the results of making non-homogeneous applications (that use different technologies and run on different platforms) work together, SOA proposes standard interfaces and messaging protocols. This way each of the applications become an atomic, well defined, ready to be connected component. 
 The SOA presents an architecture devised in three main components \cite{Pernici04}:
 \begin{itemize}
  \item Service provider
@@ -35,29 +35,29 @@ A \textit{service provider}, which makes the service available. The service prov
 The \textit{service client} contacts the service registry to \textit{find} a service, it gets a contract and the address of the service, making a so called \textit{bind} with the provider. Then it \textit{uses} the service.
 
 
-Being the realization of services usually based on the reuse of previously existent software, there are many ways to realize it and they can also be combined. For a company, the realization can go from the complete in-house realization to the outsourcing, to buy/leasing just parts of the needed services or to using wrappers/adapters to reuse the legacy software.
-To conclude, from the SOA point of view, services are like black boxes, they can be invoked by service clients independently, without the need of knowing internal details. This makes clients and providers logically decoupled, the client only needs to know the name, the interface and the version of the service. Of course, provider, client and register must be able to use a common communication channel. 
+Being the realization of services usually based on the reuse of previously existent software, there are many ways to realize it and they can also be combined. For a company, the realization can go from the complete in-house realization to the outsourcing; other options can be to buy/leasing parts of the needed services or to use wrappers/adapters to keep working with the legacy software.
+To conclude, from the SOA point of view, services are like black boxes, they can be independently invoked by service clients, without the need of knowing internal details. This makes clients and providers logically decoupled, the client only needs to know the name, the interface and the version of the service. Of course, provider, client and register must be able to use a common communication channel. 
 
 \subsection{Web Services}
 \label{WebServices}
-We have seen that SOA is an architecture style aimed at the creation of services but it does not address the communication medium. \textit{Web Services} (WS) are an instance of a SOA where the communication channel is the web \cite{Pernici04}.
-Web services implement the SOA through the application of three main technologies: \textit{SOAP}(Simple Object Access Protocol), \textit{WSDL}(Web Services Description Language) and \textit{UDDI}(Universal Description, Discovery and Integration).
-On the picture of the SOA showed above, we can add these three components.
+We have seen that SOA is an architecture style aimed at the creation of services, though, it does not address the communication channel. \textit{Web Services} (WS) are an instance of a SOA where the communication channel is the web \cite{Pernici04}.
+Web services implement the SOA through the application of three main technologies: \textit{SOAP} (Simple Object Access Protocol), \textit{WSDL} (Web Services Description Language) and \textit{UDDI} (Universal Description, Discovery and Integration).
+%On the picture of the SOA showed above, we can add these three components.
 %, as shown in Fig: (FIXME: to create)\ref{fig:SOA with webServ implement.}.
 The SOAP is the web protocol used to exchange messages among the parties. WSDL is the language used by the service provider to fully describe the offered service. At last, UDDI is used by the service registry to make a service easy to find, abstract its technology and make it accessible to the clients.
-In the next paragraphs we have a brief look into these three technologies.
+In the next Subsection we have a brief look into the WSDL technology.
 
 \subsubsection{WSDL (Web Services Description Language) }
 \label{Wsdl}
-WSDL is a language based on \textit{XML}(eXtensible Markup Language) and it permits to unambiguously describe a web service. For example, it can describe the input parameters a client must provide to use the service and the type of the result the client should expect. 
+WSDL is a language based on \textit{XML} (eXtensible Markup Language) and it permits to unambiguously describe a web service. For example, it can describe the input parameters a client must provide to use the service and the type of the result the client should expect. 
 A WSDL description starts with a \textit{service} tag that identifies a group of related services. Each of the services is then described as following.
-The first element is the \verb|port| which identifies the address and the protocol to access the service (e.g. from the IBM online examples,\cite{IBMWSDL} \\
+The first element is the \verb|port| which identifies the address and the protocol to access the service (e.g. from the IBM online examples \cite{IBMWSDL}: \\
 \verb|<soap:address location="http://www.snowbo.../EndorsementSearch"/>|). \\
 With \verb|portType|, there are given the specifics of any \verb|operation| that can be used by the client, for example, the input/output parameters or the error messages. The \verb|operation|s comply to one of 4 main patterns: the \verb|One_way| (client sending a message to the provider), the \verb|Request_response| (client sending a message and waiting for an answer form the provider), the \verb|Solicit_response| (Provider sending a message to the client and waiting for a response) and the \verb|Notification| (provider sending a message to the client).
 The elements to define the messages and the types used by the service are \verb|message| and \verb|types|. The first specifies the structure of a message to be exchanged. The second, is used to define the atomic types (integer, string, etc.) or new custom types. 
 The most important elements in a WSDL service description are summarized in Table \ref{tab:WSDLElements}.
 
-Eventually, we can see that WSDL proposes a static picture of the service. It defines the address and the way to access the service, the operations and, for each of them, the input/output elements to be provided, but it has no notion of the order in which the operations should be called. For example, to access an online shop service, there might be the need to first perform a login operation, check the item availability and last, buy the item. Such a order or workflow, though, it is not addressed in a WSDL description. This workflow represents the dynamic behavior of a service and it is addressed by the \textit{WorkFlow Management Systems} (WfMS), discussed in the following Section.
+Eventually, we can see that WSDL proposes a static picture of the service. It defines the address and the way to access the service, the operations and, for each of them, the input/output elements to be provided, but it has no notion of the order in which the operations should be called. For example, to access an online shop service, there might be the need to first perform a login operation, check the item availability and last, buy the item. Such an order, or workflow, though, it is not addressed in a WSDL description. This workflow represents the dynamic behavior of a service and it is addressed by the \textit{WorkFlow Management Systems} (WfMS), discussed in the following Section.
 
 
 % - Who is going to deal with the logic and flow of the composition? \nl 
@@ -75,12 +75,12 @@ Eventually, we can see that WSDL proposes a static picture of the service. It de
 						\addlinespace[0.2cm]
 \textbf{WSDL element} 	& \textbf{Description}	\\ 
 						\cmidrule(l){1-2}
-\verb|port| 		& It identifies the address where the service is found and the protocol to access it 				\\[0,1cm]
-\verb|portType| 	& It provides the description of the service, using the \textit{operation} element 				\\[0,1cm]
-\verb|operation| 	& It is a basic functionality provided by the service. It lists the input and output messages that are exchanged, in one of the four communication patterns 														\\[0,1cm]
-\verb|message| 		& It specifies the format of messages to be exchanged, e.g. the name and type of the variables they contain 	\\[0,1cm]
-\verb|types|		& The atomic or user-defined data types in use  								\\[0,1cm]
-\verb|binding|		& Given a portType, it describes how this is implemented in the specific protocol 				\\[0,1cm]
+\verb|port| 		& it identifies the address where the service is found and the protocol to access it 				\\[0,1cm]
+\verb|portType| 	& it provides the description of the service, using the \textit{operation} element 				\\[0,1cm]
+\verb|operation| 	& it is a basic functionality provided by the service. It lists the input and output messages that are exchanged, in one of the four communication patterns 														\\[0,1cm]
+\verb|message| 		& it specifies the format of messages to be exchanged, e.g. the name and type of the variables they contain 	\\[0,1cm]
+\verb|types|		& the atomic or user-defined data types in use  								\\[0,1cm]
+\verb|binding|		& given a portType, it describes how this is implemented in the specific protocol 				\\[0,1cm]
 	 
 						\addlinespace[0.2cm]
 						\bottomrule
@@ -93,16 +93,16 @@ Eventually, we can see that WSDL proposes a static picture of the service. It de
 \label{WFManagement}
 %This workflow is the dynamic behavior of a service and it is addressed by the \textit{WorkFlow Management Systems} (WfMS), discussed in the following Section.
 The workflow description, needed to address the behavior of a web-service is controlled by the \textit{WorkFlow Management Systems} (WfMS). The activities are performed following an execution flow based on four main patterns \cite{Pernici04}: \verb|sequence|, \verb|AND_split|, \verb|OR_split|, \verb|join|. These patterns permit to create generic workflows which are scheduled depending on the availability of the resources.
-Two approaches for the workflow management exist: Orchestration and Choreography \cite{Peltz03}. Although the two approaches might overlap, their aims differ (see Fig. \ref{fig:OrchAndChor}). 
+Two approaches for the workflow management exist: Orchestration and Choreography \cite{Peltz03} explained in the next two paragraphs. Although the two approaches might overlap, their aims differ (see Figure \ref{fig:OrchAndChor}). 
 
 \paragraph{Orchestration}
-Orchestration describes the realization of an executable business where the overall control is given to one party. For example, we can show how a travel planner web service works (see Fig. \ref{fig:orchestration}). Once a client sets the dates and destination of his travel, the travel planner service (coordinator) contacts other three services to book a flight, a hotel and a car. The requests and responses to and from the orchestrated services, are dealt by the coordinator, which takes care of reporting the found travel information back to the client. These three services can be separated modules, belonging to different companies and implemented with different technologies.
+Orchestration describes the realization of an executable business where the overall control is given to one party. For example, we can show how a travel planner web services orchestrator works (see Figure \ref{fig:orchestration}). Once a client sets the dates and destination of his travel, the travel planner service (coordinator) contacts other three services to book, respectively, a flight, a hotel and a car. The requests and responses to and from the orchestrated services are dealt by the coordinator, which takes care of reporting the found travel information back to the client. These three services can be separated software modules, implemented with different technologies and belonging to different companies.
 \paragraph{Choreography}
-Choreography also describes the realization of an executable business process, but there is no party having overall control. Here each party collaborates and provides its part and role for the final result. Using the previous example (see Fig. \ref{fig:choreography}), we can notice that the stand alone services have no coordinator. They collaborate exchanging messages among each other. Eventually, choreography, takes care of the interactions among the services more than executing a process from one party's perspective.
+Choreography also describes the realization of an executable business process, but there is no party having overall control. Here each party collaborates and provides its part and role for the final result. Using the previous example (see Fig. \ref{fig:choreography}), we can notice that the stand alone services have no coordinator. They collaborate exchanging messages among each other. Eventually, choreography takes care of the interactions among the services more than executing a process from one party's perspective.
 
 \subsubsection{Workflow Management for Web Services}
-Among the workflow management systems, there are: FIXME Introduce BPEL and describe it in the next Subsection.
-
+%Among the workflow management systems, there are: FIXME Introduce BPEL and describe it in the next Subsection.
+Workflow management systems (WfMS) are computer software dedicated to describe and manage almost any kind of process or job one might think of. For example, WfMS are able to manage a flow of instructions and activities to perform an item manufacturing. When it comes to web services, BPEL (Business Process Execution Language) is surely one of the major characters. BPEL draws its roots in the research made by IBM and Microsoft respectively on WSFL (Web Services Flow Language) and XLANG \cite{Havey2005}. The next Subsection has a deep look into BPEL and its characteristics.
 
 %%%%%%%%%%%%%%%%%FIGURE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55 
  \begin{figure}
