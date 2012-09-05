@@ -1,18 +1,21 @@
-\section{Implementation o ALTRO NOME? FIXME }
+\section{Implementation} %o ALTRO NOME? FIXME 
 \label{sec:TheFramework}
-\textbf{FIXME forse rimuovere la sezione e mettere queste info da qualche altra parte, tipo alla fine della Detailed Architecture Section?} \\
-This section briefly presents the technologies and the tools we use for our transformation. Moreover, it describes some specific solutions we applied to overcome some of the arisen during the implementation.
+%\textbf{FIXME forse rimuovere la sezione e mettere queste info da qualche altra parte, tipo alla fine della Detailed Architecture Section?} \\
+This section briefly presents the technologies and the tools we use for our transformation. Later we provide some small examples of how we use the Acceleo technology in the transformation.
+Moreover, the section describes some specific solutions we applied to overcome the issues arisen during the implementation.
+At last, we explain how to step-by-step run a transformation with our generator.
 
 \subsection{The Framework}
 \label{framework}
 For the implementation of the transformation, once the methodology has been detected (see \ref{sec:M2TApproach}), we had to choose which kind of Model-to-text technology to use. Among the several alternatives, we chose the Acceleo M2T generator introduced in Section \ref{acceleo}.
 Many reasons made us inclined to this choice. 
-First of all, Acceleo is an open source technology, available for free and with a lively community over the Internet. Another reason is that Acceleo is available as an Eclipse plugin. Eclipse is itself a very popular Integrated Development Environment (IDE). The fact that Acceleo is an Eclipse plugin automatically adds to it the many features normally present in Eclipse, like code completion, code highlight, project wizards, running configurations and many more. 
+First of all, Acceleo is an open source technology, available for free and with a lively Internet community. Another reason is that Acceleo is available as an Eclipse plugin. Eclipse is itself a very popular Integrated Development Environment (IDE). The fact that Acceleo is an Eclipse plugin automatically adds to it the many features normally present in Eclipse, like code completion, code highlight, project wizards, create custom running configurations and many more. 
 Last but not least, Acceleo has been integrated in Eclipse inside the broad Eclipse Modeling Framework (EMF, see Section \ref{EMF}) family. EMF already contains many tools for modeling and generating code, all complying with the specifics from the Object Management Group (OMG).
 We can conclude that both Eclipse and Acceleo are consolidated realities respectively in the Software Modeling and in the Text-generation domains. 
+
 \subsubsection{Specific tools versions}
 \label{sec:specificTools}
-The versions of the Eclipse IDE (including the Modeling Framework components), and the Ecore, Acceleo and BPEL plugins releases we used, are summarized in Table \ref{tab:softwareVersions}.
+The versions of the Eclipse IDE (including the Modeling Framework components), the Ecore, Acceleo and BPEL plugins we used, are summarized in Table \ref{tab:softwareVersions}.
 
 %%%%%%%    Table %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table}
@@ -39,7 +42,7 @@ BPEL Designer Plugin 		& 1.0						&  	\\[0,1cm]
 \subsection{Transformation samples}
 \label{sec:codeSamples}
 In this Section we provide some samples of Acceleo transformations to give an idea of how a template works and where the Acceleo code interacts with it. 
-Concerning the terminology we use, to have a rough idea of the meaning of the Acceleo concepts, we list them in Table \ref{tab:terminology} with their (not exact!) Java counterpart concept.
+Concerning the terminology we use, to have a rough idea of the meaning of the Acceleo concepts, we list them in Table \ref{tab:terminology} with their Java counterpart concept (note that the idea we give cannot be thought as an exact correspondence).
 %%%%%%%    Table %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table}[h!]
 \caption{The Acceleo terminology and its Java counterpart idea}
