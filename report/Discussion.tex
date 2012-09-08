@@ -4,10 +4,10 @@
 In this section we discuss the results of the transformation, its feasibility and the possible future developments. We also present a use case to show how the generator works on a simple transformation.
 \subsection{Emulate a BPEL Orchestration in Java}
 \label{sec:OrchestrEmulation}
-Emulating simple BPEL workflows in Java is possible, and we show that this is feasible in a automatized manner. Apart of the obvious constraints we have set in terms of the use of a subset of BPEL and the focus on only one pattern (see Section \ref{sec:actvitiesSubset} and \ref{sec:DesignBPELPattern}), and the difficulties to gather data from the WSDL files (see Section \ref{sec:IssueInputFiles}), the automatic transformation shows some promising features and there seems to be much ground from improvements.
-A good feature is the possibility of recreating in Java the static structure of variables (messages) and participants (partnerLinks, client). The reuse of the \textit{wsimport} (Section \ref{sec:WSDLMEssagesStructure}) tool and the generic template to create partnerLink STUBs (Section \ref{sec:extrenalResources}), permits to create the representation of the static structure of elements used by the BPEL process. This eventually allows to concentrate only in the translation of the behaviour: the BPEL logic contained in the \textit{sequence} activity \ref{sec:mimicBPELLogic}. Moreover, this also abstracts our generator from the kind of web services used: it does not matter which kind of input or output the web service is able to deal with; the variables are seen as \textit{messages}, and the types do not need to be specified until it comes to Java assignation.
+Emulating simple BPEL workflows in Java is possible, and we show that this is feasible in a automatized manner. Apart of the obvious constraints we have set in terms of the use of a subset of BPEL and the focus on only one pattern (see Section \ref{sec:actvitiesSubset} and \ref{sec:DesignBPELPattern}) and the difficulties to gather data from the WSDL files (see Section \ref{sec:IssueInputFiles}), the automatic transformation shows some promising features and there seems to be much ground from improvements.
+An important feature is the possibility of recreating, starting from a BPEL process, the Java classes' structure of variables (messages) and participants (partnerLinks, client). The reuse of the \textit{wsimport} (Section \ref{sec:WSDLMEssagesStructure}) tool and the generic template to create partnerLink STUBs (Section \ref{sec:extrenalResources}), permits to create the representation of the static structure of elements used by the BPEL process. This eventually allows to concentrate only in the translation of the behaviour: the BPEL logic contained in the \textit{sequence} activity \ref{sec:mimicBPELLogic}. Moreover, this also abstracts our generator from the kind of web services used: it does not matter which kind of input or output the web service is able to deal with; the variables are seen as \textit{messages}, and the types do not need to be specified until it comes to Java assignation.
 
-At the same time, once the structure has been decoupled from the behaviour, it becomes easy to think of including other BPEL patterns, because everything seems to boil done at reproducing the sequence of BPEL activities with Java method calls. 
+At the same time, once the structure has been decoupled from the behaviour, it becomes easy to think of including other BPEL patterns, because everything seems to curtail down at reproducing the sequence of BPEL activities with Java method calls. 
 % Our purpose was to show the feasibility of an automatic transformation from a BPEL orchestrated process to a Java application. With the use of a model-to-text methodology we met the intent and we provide a simple implementation to endorse our proof of concept.
 % On the functionality of the transformation, obvious constraints have been set. First, not to overcome the complexity due to the wide structure of the BPEL language, we use a subset of the language. Second, we limit the focus to only one workflow pattern. 
 % These constraints have been set not to overcome the project time-frame.
@@ -15,17 +15,17 @@ At the same time, once the structure has been decoupled from the behaviour, it b
 
 \subsection{Use Case}
 \label{sec:UseCase}
-Here we provide a simple use case to show how the generator works. Figure \ref{fig:GeneratorUseCase} represents a scenario where a user inputs a BPEL model and receives in output the Java application mimicing the BPEL orchestration.
-The use case can be described as follows:
+We provide a simple use case to show how the generator works. Figure \ref{fig:GeneratorUseCase} represents a scenario where a user inputs a BPEL model and receives in output the Java application mimicing the BPEL orchestration.
+The use case options can be described as follows:
 \begin{itemize}
- \item The runs the generator, which includes:
+ \item \textit{Run the generator}, which includes:
   \subitem Insert a BPEL input (complying with out pattern) 
   \subitem Manually set the Variables' names and types
-  \subitem Run the wsimport() routine on the WSDL files.
+  \subitem Run the \textit{wsimport()} routine on the WSDL files.
 \end{itemize}
 Once the generation has completed, the user of the Java application can finally:
 \begin{itemize} 
- \item Run the Java application (creating an instance of it and run the \textit{runWorkflow()} method), which includes:
+ \item \textit{Run the Java application} (creating an instance of it and run the \textit{runWorkflow()} method), which includes:
   \subitem Manually set the web service invocation.
 \end{itemize}
 
@@ -38,7 +38,7 @@ Once the generation has completed, the user of the Java application can finally:
 \end{figure}
 
 \subsubsection{A use case example}
-As an example of how to use our transformation, we discuss in this Subsection how the behavior of a simple BPEL process is translated in Java. Figure \ref{fig:BPELOrchestr} shows the simple BPEL orchestration we provide as input to the generator. A user wants to retrieve the signature of a famous person given his surname. The BPEL process, receives the surname from the user and invokes a web server that shows an operation (\textit{getAutograph(String)}). The web server checks its database and sends the complete autograph of the person (or an error if the autograph is not present) to the BPEL process. At the end, the BPEL process replies to the client providing the autograph.
+As an example of how to use our transformation, we discuss in this Subsection how the behavior of a simple BPEL process is translated in Java. Figure \ref{fig:BPELOrchestr} shows the simple BPEL orchestration we provide as input to the generator. A user wants to retrieve the signature of a famous person given his surname. The BPEL process, receives the surname from the user and invokes a web server that publicly shows an operation (\textit{getAutograph(String)}). The web server checks its database and sends the complete autograph of the person (or an error if the autograph is not present) to the BPEL process. At the end, the BPEL process replies to the client providing the autograph.
 \begin{figure}
   \begin{center}
     \includegraphics[scale=1.2]{pictures/UseCaseExampleBPELOrchestr.png}
@@ -47,9 +47,9 @@ As an example of how to use our transformation, we discuss in this Subsection ho
   \end{center}
 \end{figure}
 
-Once we have the BPEL process model, its components' WSDL descriptions (one for the client and one for the web service), we can start a generation. Following Figure \ref{fig:GeneratorUseCase}, the use case shows that to run the generator we are required three things: a) provide the BPEL input model, b) manually set the variables information taken from the WSDL file, c) run the \textit{wsimport} routine on the WSDL descriptors to get the correspondent Java structure.
-Once the generator has run, we obtain a Java application that mimics the given BPEL workflow. The sequence diagram depicted in Figure \ref{fig:GeneratorSequenceDiagram} shows how the behaviour of the BPEL process of Figure \ref{fig:BPELOrchestr} is emulated. This sequence diagram only shows the most important interactions among the main participants, namely, the Process class, the Client partnerLink, the Web Service partnerLink and the real Web Service running on some servers. 
-We observe that the Process class (with its \textit{runWorkflow()} method, as explained in Section \ref{sec:mimicBPELLogic}) takes care of simulating the actions performed by the BPEL process. At first it creates the partnerLinks STUBS instances: PLClient and PLWebService (which inside contain the variables related their correspondent partnerLinks). Later, the Process class, with synchronous calls, starts a sequence including the following steps:
+Once we have the BPEL process model and its components' WSDL descriptions (one for the client and one for the web service), we can start a generation. Following Figure \ref{fig:GeneratorUseCase}, the use case shows that to run the generator we are required three things: a) provide the BPEL input model, b) manually set the variables information taken from the WSDL file, c) run the \textit{wsimport} routine on the WSDL descriptors to get the correspondent Java data structure.
+Once the generator has run, we obtain a Java application that mimics the given BPEL workflow. The sequence diagram depicted in Figure \ref{fig:GeneratorSequenceDiagram} shows how the behaviour of the BPEL process of Figure \ref{fig:BPELOrchestr} is emulated. This sequence diagram only shows the most important interactions among the main participants, namely, the Process class, the Client partnerLink, the Web Service partnerLink STUB and the real Web Service running on some servers. 
+We observe that the Process class (with its \textit{runWorkflow()} method, as explained in Section \ref{sec:mimicBPELLogic}) takes care of simulating the actions performed by the BPEL process. At first it creates the partnerLinks STUBS instances: PLClient and PLWebService (which inside contain the variables of their correspondent partnerLinks). Later, the Process class, with synchronous calls, starts a sequence of method calls including the following steps:
 \begin{itemize}
  \item receives the input from the PLClient class (to stick to the previous example, we can imagine the user has inserted the surname "Spielberg")
  \item sets the private variables containing the input for the web service in the PLWebService class
@@ -79,7 +79,7 @@ This Section briefly shows the possible improvements and future development that
 
 \subsubsection{Retrieve information from WSDL files}
 \label{sec:FutRetrieveWSDLInfo}
-As previously described in Section \ref{sec:issues}, some technical issues mainly due to the impossibility of providing more than one input models to the Acceleo generator, made us redefine the design and contemplate a developer's intervention 
+As previously described in Section \ref{sec:issues}, some technical issues mainly due to the impossibility of providing more than one input model to the Acceleo generator, made us redefine the design and contemplate a developer's intervention 
 for anything that concern the WSDL files.
 We think that if the information from the WSDL file would be available, the developer's intervention would be much less needed, and error-prone manual operations (like rewriting or copy-pasting the, often long, WSDL elements fields) would be avoided. 
 We forecast a possible future development undertaking two ways:
@@ -89,8 +89,8 @@ We forecast a possible future development undertaking two ways:
 \end{enumerate}
 
 \paragraph{Modify the Acceleo tool}
-Concerning the point number \ref{itm:num1}, modifications to the Acceleo API and its implementation could be made, though at a high cost in terms of time and knowledge to acquire concerning the Acceleo's internal mechanisms. As the Acceleo developers responded us on the official forum: the modifications would not be a trivial task.
-Moreover, we don't know if the developers would take into considerations the option of rising the number of possible input files. This because the majority of Acceleo users tend to run the same transformation over several input models of the same kind (e.g. batch transformation of UML diagrams in Java) while a case like ours, where coordination among input models is required (BPEL and WSDL files), it is not common.
+Concerning the point number \ref{itm:num1}, modifications to the Acceleo API and its implementation could be made, though at a high cost in terms of time and knowledge on the Acceleo's internal mechanisms to acquire . As the Acceleo developers responded us on the official forum \cite{acceleoForum}: the modifications would not be a trivial task.
+Moreover, we don't know if the Acceleo developers would one day take into considerations the option of rising the number of possible input files. This because the majority of Acceleo users tend to run the same transformation over several input models of the same kind (e.g. batch transformation of UML diagrams in Java). Differently, our case, where coordination among input models is required (BPEL and WSDL files), it is not common.
 
 \paragraph{Java properties file}
 A simpler idea to overcome the problem of accessing the WSDL file would be to create another Acceleo transformation (parameterized by the WSDL meta-model) taking as input a WSDL file. From here we could get the needed information and write them out in a Java Properties file. A Java properties file, as shown in the Listing \ref{lis:JavaPropertyFile}, is a very simple text file containing some variables and their values. It is usually provided to a Java application when some parameters have to be set manually, like, for example, the absolute path to some local resources.
@@ -110,11 +110,11 @@ user=process
 Once we would have written the information from the WSDL file in the Java properties file, we could use the Acceleo facility that permits to input a Java properties file with the command:\\
 \begin{verbatim}[getProperty('myProperty')/]\end{verbatim} 
 The usage of properties file in Acceleo is described in the documentation \cite{acceleoDoc}. If the WSDL files are more than one (e.g. presence of more than one PartnerLink), the transformations could be run more times attaching the new information at the end of the properties file.
-This improvement would basically overcome both the issues presented in Section \ref{sec:issues}.
+This improvement would basically overcome both the issues number \ref{itm:item1} and \ref{itm:item2} presented in Section \ref{sec:issues}.
 
 \subsubsection{Include more BPEL patterns}
 \label{sec:FutMorePatterns}
-Our transformation focuses on only one kind of BPEL workflow patten, namely, a sequence of "receive - assign - invoke - assign - reply". More patterns could be added, especially working on simple variants of some basic ones. A good source of information on workflow patterns, is the Article from W.M.P. Vand Der Aalst et. al. \cite{AalstHKB03}; here the workflow patterns are abstracted from the modeling tools, so that they can be generalized, spotting commonalities and differences among them.
+Our transformation focuses on only one kind of BPEL workflow pattern, namely, a sequence of "receive - assign - invoke - assign - reply". More patterns could be added, especially working on variants of some basic ones. A good source of information on workflow patterns, is the Article from W.M.P. Vand Der Aalst et. al. \cite{AalstHKB03}; here the workflow patterns are abstracted from the modeling tools, so that they can be generalized, spotting commonalities and differences among them.
 Eventually, transformations addressing different workflow patterns could be, either contained in their own generator, or be a specialization of another pattern. For example, a pattern where a final reply must be sent to two PartnerLinks (two BPEL \textit{reply}s), could be a special case of the one where there is only one reply to one PartnerLink.    
 
 \subsubsection{Improve architectural design for additional Patterns}
