@@ -9,7 +9,7 @@ Later in Section \ref{WFManagement} we talk about Workflow management, introduci
 During the years preceding the large spread of the Internet, companies used to create their own software systems, in order to obtain highly customized and specific services, rarely focused on the accessibility by external partners.
 Today, with the necessity of exchanging information among different companies and businesses, and the push made by the large growth of the Internet, the focus has moved to the integration and the coordination of the existing softwares, namely, the integration of these systems over larger networks.
 Defining a \textit{service} as a \textit{"distributed application that exports a view of its functionalities"} \cite{DiLorenzo08}, what is needed is the possibility to compose different services together.
-For example, it might be useful to integrate a service (already available on a net), providing maps of a city's streets, with a web-based service listings telephone numbers of a given city zone, resulting in a new service showing telephone numbers directly on a map. %\fxnote{I might add a picture to better show the example here} FIXME
+For example, it might be useful to integrate a service (already available on a net), providing maps of a city's streets, with a web-based service listings telephone numbers of a given city zone, resulting in a new service showing telephone numbers directly on a map. %\fxnote{I might add a picture to better show the example here}
   
 The \textit{Service Oriented Computing} (SOC) is the paradigm that attempts to wrap and adapt existing applications into new services, which should comply to three main requirements \cite{DiLorenzo08,Papazoglou03}:
 \begin{itemize}
@@ -30,7 +30,7 @@ The SOA presents an architecture devised in three main components \cite{Pernici0
  \item Service registry
  \item Service client
 \end{itemize}
-%as shown in Fig. FIXME: toCreate\ref{fig:The Service Oriented Architecture (SOA)}:
+%as shown in Fig. toCreate\ref{fig:The Service Oriented Architecture (SOA)}:
 A \textit{service provider}, which makes the service available. The service provider registers its service to the \textit{service registry}, which contains the list of available services and their descriptions. After the registration, the service provider waits for a client to request a service. The service registry can also apply custom access control policies or be entirely public. 
 The \textit{service client} contacts the service registry to \textit{find} a service, it gets a contract and the address of the service, making a so called \textit{bind} with the provider. Then it \textit{uses} the service.
 
@@ -43,7 +43,7 @@ To conclude, from the SOA point of view, services are like black boxes, they can
 We have seen that SOA is an architecture style aimed at the creation of services, though, it does not address the communication channel. \textit{Web Services} (WS) are an instance of a SOA where the communication channel is the web \cite{Pernici04}.
 Web services implement the SOA through the application of three main technologies: \textit{SOAP} (Simple Object Access Protocol), \textit{WSDL} (Web Services Description Language) and \textit{UDDI} (Universal Description, Discovery and Integration).
 %On the picture of the SOA showed above, we can add these three components.
-%, as shown in Fig: (FIXME: to create)\ref{fig:SOA with webServ implement.}.
+%, as shown in Fig: ( to create)\ref{fig:SOA with webServ implement.}.
 The SOAP is the web protocol used to exchange messages among the parties. WSDL is the language used by the service provider to fully describe the offered service. At last, UDDI is used by the service registry to make a service easy to find, abstract its technology and make it accessible to the clients.
 In the next Subsection we have a brief look into the WSDL technology.
 
@@ -101,7 +101,6 @@ Orchestration describes the realization of an executable business where the over
 Choreography also describes the realization of an executable business process, but there is no party having overall control. Here each party collaborates and provides its part and role for the final result. Using the previous example (see Fig. \ref{fig:choreography}), we can notice that the stand alone services have no coordinator. They collaborate exchanging messages among each other. Eventually, choreography takes care of the interactions among the services more than executing a process from one party's perspective.
 
 \subsubsection{Workflow Management for Web Services}
-%Among the workflow management systems, there are: FIXME Introduce BPEL and describe it in the next Subsection.
 Workflow management systems (WfMS) are computer software dedicated to describe and manage almost any kind of process or job one might think of. For example, WfMS are able to manage a flow of instructions and activities to perform an item manufacturing. When it comes to web services, BPEL (Business Process Execution Language) is surely one of the major characters. BPEL draws its roots in the research made by IBM and Microsoft respectively on WSFL (Web Services Flow Language) and XLANG \cite{Havey2005}. The next Subsection has a deep look into BPEL and its characteristics.
 
 %%%%%%%%%%%%%%%%%FIGURE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%55 
@@ -121,29 +120,7 @@ Workflow management systems (WfMS) are computer software dedicated to describe a
 \end{figure} 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\subsection{BPEL} FIXME: review!
 \input{BPEL}
-%\subsection{Java RMI} FIXME: review!
 \input{JavaRMI}
-%- Overview, features. - Why? it can run everywhere, lightweight scenarios.
-%\subsection{Jet}
-%\subsection{EMF and Open Architecture Ware (Eclipse)}
-%\subsection{other...} 
-
-
-% %---Where the problem is---
-% \subsection{BPEL, its drawbacks and the use of WSs in a lightweight scenario}
-% %\subsection{The drawbacks of using BPEL (BPEL and its possible drawbacks)}
-% - BPEL, the de-facto standard concerning web services composition. \nl
-% - Overview and brief review\nl
-% - What do we use of it, the whole language or just a part? \nl %Questo dove andrà??
-% - Problems: It works over Distributed Systems, engine powerful but heavy, DS not always available. \nl %i problemi che ha in generale e quelli specifici al nostro caso
-% 
-% %---Why we face the problem and which is the possible solution (and aim of the work)---
-% %\subsection{Web Services Composition in lightweight scenario}
-% - That's our question \nl
-% - Sometimes we might need services composition working in less powerful environments than distributed systems. Examples? \nl
-% - But we don't want to create a new application from scratch neither...(change hardware?).  \nl
-
 
 

@@ -12,7 +12,7 @@ The logic of the BPEL workflow is mimiced in a Java process class, where a runna
 Moreover, we translate the external resources (partnerLinks) as Java STUB classes, in order to decouple the Java workflow code from the resources access.
 
 \paragraph{}
-As an issue concerning the impossibility of input more than one model file to the Acceleo generator arose, developer's intervention is required in some cases in the Java templates: to set the BPEL variables' names and types and to explicit the association partnerLinks-variables during the translation of the BPEL \textit{assign} activity. One more intervention is required to froward the call to the real web services to invoke; this happens because the information concerning where the web service physically resides are stored in the WSDL file.
+As an issue concerning the impossibility of input more than one model file to the Acceleo generator arose, developer's intervention is required in some cases in the Java templates: to set the BPEL variables' names and types and to explicit the association partnerLinks-variables during the translation of the BPEL \textit{assign} activity. One more intervention is required to forward the call to the real web services to invoke; this happens because the information concerning where the web service physically resides are stored in the WSDL file.
 Eventually we provide examples of how the transformation has been carried out and a use case implementation that shows how our generator could be run and where the developer has to intervene to create a runnable Java application. 
 
 \paragraph{}
