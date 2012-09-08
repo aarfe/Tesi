@@ -1,10 +1,10 @@
 %---Introduction to the MDA and how it basically works
 \section{Model Driven Engineering (MDE)}
 \label{ModelDrivenEngineering}
-Model Driven Engineering (MDE) is a development methodology which focuses on creating models rather than algorithmic concepts (usually addressed in the classical programming approaches).
+Model Driven Engineering (MDE) is a development methodology that focuses on creating models rather than algorithmic concepts (usually addressed in the classical programming approaches).
 This discipline attempts an abstraction of the benefits and the features provided by the Software Engineering \cite{Marrone}. It usually creates a domain specific framework for implementing new systems, based on well known and tested concepts, obtained through a careful and detailed analysis of the domain and its actors.\\
 %
-MDE essentially shifts the focus from the program code to models, making them the gravitational center of every MDE process \cite{Lukman08}. The model represents the system and the language which describes the model must be characterized by a well defined syntax and semantic. This way, if the model strictly complies with the languages' rules, it is possible to create automatized routines that carry out activities such as debugging, validation, simulation or transformation \cite{Papa11}. 
+MDE essentially shifts the focus from the program code to models, making them the gravitational center of every MDE process \cite{Lukman08}. The model represents the system, while the language that describes the model must be characterized by a well defined syntax and semantic. This way, if the model strictly complies with the languages' rules, it is possible to create automatized routines that carry out activities such as debugging, validation, simulation or transformation \cite{Papa11}. 
 The language to describe the model is itself complying with a meta-model which, recursively, complies with a meta-meta-model. In fact, a typical MDE approach consists of the usage of a pile of models having at the top the model of the system we want work on. \\
 %
 Eventually, the two main principles of MDE are:
@@ -24,7 +24,7 @@ A very common MDA pattern consists of the definition of three models \cite{Marro
  \item Platform Specific Model (PSM)$=f($PIM,PDM$)$: it is the result of an automatic transformation of the PIM using the PDM specific platform directives  
 \end{itemize}
 
-The output models, result of the MDA transformations, are so called: "correct-by-construction" models, in opposition to some traditional transformations that are of a "construct-by-correction" type \cite{Marrone}.   
+The output models, result of the MDA transformations, are called: "correct-by-construction" models, in opposition to some traditional transformations that are of a "construct-by-correction" type \cite{Marrone}.   
 
 
 \subsection{MDA: the manipulation of models}
@@ -58,14 +58,14 @@ More advanced techniques implement a hybrid solution, using a mix of templates a
 \label{Meta-modeling}
 If a model is a schematic representation of reality, a meta-model can be thought of as a model of a model \cite{AcceleoUserGuide}.
 Metamodelling is a vast domain and has been formalized by OMG with the creation of the Meta-Modeling Facilities (MOF).
-MOF is itself a model, represented as a tree. It is considered a meta-meta-model as it can be used to describe many other meta-models. This is possible thanks to the fact that its components are basic, and form the atomic pieces used to create other models. 
+MOF is itself a model, represented as a tree. It is considered a meta-meta-model as it can be used to describe many other meta-models. This is possible thanks to the fact that the MOF components are basic, and form the atomic pieces used to create any other model. 
 
 For example, if a map represents a model of a region, existing in the real world, its meta-model would contain the basic elements to represent such a map, namely, a legend. This meta-model (the legend) would contain elements such as roads, highways, rivers, cities, villages etc. In this context, a meta-meta-model would go further deep in the description, containing the structure of the atomic elements to represent the elements of the meta-model (the legend); for example, of a river, it would present a model containing name, depth, length, etc.  
 Basically, a model is an instance of a meta-model \cite{UnderstandMetamodelling}. 
 
 \paragraph{An example of a meta-model}
 \label{metamodelExample}
-In a transformation a meta-model defines the structure of the input language, or better, what the elements we can expect to work with are. As a practical example of a meta-model, we could think of a UML-like model, where there are defined the main classes of elements, the attributes, the inheritances, the relations of inclusion, etc. Meta-models are usually provided by the proprietaries of a technology or, as in the case of the Eclipse Modeling Framework (read Section \ref{EMF} for more details), they are all written using a standard meta-meta-model called Ecore (which is a dialect of UML \cite{EcoreAPI}). In fact, there are available ecore meta-model for almost any programming language. What is more, if one invents his own language to describe a custom process or his company positions' tree (with a well defined set of elements and hierarchy), he can easily create his own ecore meta-model \cite{EcoreExample}.
+In a transformation a meta-model defines the structure of the input language, or better, what the elements we can expect to work with are. As a practical example of a meta-model, we could think of a UML-like model, where there are defined the elements' classes, the attributes, the inheritances, the relations of inclusion, etc. Meta-models are usually provided by the proprietaries of a technology or, as in the case of the Eclipse Modeling Framework (read Section \ref{EMF} for more details), they are all written using a standard meta-meta-model called Ecore (which is a dialect of UML \cite{EcoreAPI}). In fact, there are available ecore meta-model for almost any programming language. What is more, if one invents his own language to describe a custom process or his company positions' tree (with a well defined set of elements and hierarchy), he can easily create his own ecore meta-model \cite{EcoreExample}.
 
 To give a real example of meta-model, Figure \ref{BPELEcoreExample} represents a very small (yet not complete) part of the entire BPEL meta-model. It shows some of the elements of the BPEL language and how they relate to each other. The \textit{Assign} element is composed by \textit{Copy} elements, which always contains a \textit{From} and a \textit{To}. The power of a meta-model relies in the fact that it makes it possible to access, directly, any of the elements, sub-elements and attributes composing an input file. To conclude the example, if our purpose would be to transform a BPEL input file to a Java file, we could easily imagine how to translate a BPEL \textit{Assign} element (which assigns a value to a variable) in a Java "\textit{=}" operation: the value of the \textit{To} element should be equal to the value of the \textit{From}. 
 

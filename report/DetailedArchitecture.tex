@@ -99,16 +99,16 @@ In Figure \ref{fig:SubSetBPEL} the BPEL subset of elements used for this project
 To permit the parameterization of the BPEL process input model, we need a meta-model describing our subset. The Eclipse Modeling Framework (see Section \ref{EMF}) provides a meta-model written in ecore for the whole BPEL language; from it, we use only the elements of our subset.
 \subsubsection{The BPEL workflow pattern to focus on}
 \label{sec:DesignBPELPattern}
-The BPEL language with its wide range of activities and operations, gives the possibility to orchestrate many kind of workflow patterns among the participant services. We concentrate our attention on a process having the following participants:
+The BPEL language, with its wide range of activities and operations, gives the possibility to orchestrate many kind of workflow patterns among the participant services. We focus our attention on a process having the following participants:
 \begin{itemize}
  \item one partner link representing a client
  \item one partner link describing a web-service
 \end{itemize}
-and on a simple workflow pattern that concerns the activities shown in Figure: \ref{fig:BPELWorkflowPattern}\footnote{This Figure has been realized using the BPEL designer facilities of Eclipse. Yet not a standard, as the Oasis consortium has not released a graphical standard, many vendors provide very similar graphical notations}. The pattern shown in the Figure includes the following steps:
+Plus, the process has to comply with a simple workflow pattern that concerns the activities shown in Figure: \ref{fig:BPELWorkflowPattern}\footnote{This Figure has been realized using the BPEL designer facilities of Eclipse. Yet not a standard, as the Oasis consortium has not released a graphical standard, many vendors provide very similar graphical notations}. The pattern shown in the Figure includes the following steps that the process performs:
 \begin{enumerate}
- \item the process waits for a client to connect and provide an input
+ \item waiting for a client to connect and provide an input
 \item reception of the input and its assignation to a variable to be forwarded to the web-service.
-\item web-service invocation
+\item invocation of the web-service 
 \item reception of the web-service's reply and assignation to a variable to be forwarded back to the client
 \item final response sent back to the client
 \end{enumerate}
@@ -152,7 +152,7 @@ In a simple BPEL process there are two kind of files containing data valuable fo
 A very important feature of our transformation is to be able to generate a data definition specular to the one contained in the WSDL messages definition. WSDL messages can contain, for example, many elements of other types, and these types are, recursively, defined in the WSDL file. 
 Instead of taking over the whole task of recreating the messages in Java, we reuse one of the already existing routines to generate the messages structure contained in a WSDL file in Java classes. From the possible alternatives, we picked the \textit{wsimport} routine \cite{wsimport}, freely available from the Oracle website. Of the wsimport features, we are interested in the one that translates the xml-written messages types described in the WSDL file in ready to use (and documented) Java classes. The classes and the attributes keep the names used in the WSDL file, making them aligned with the names found in the BPEL process description. 
 An example of the usage of the wsimport routine is shown in Figure \ref{fig:wsimport} where a BPEL message (SimpleProcessRequestMessage) definition is translated in the correspondent Java data structure (SimpleProcessRequest.java).
-This tool proved very useful as we could profit of a reliable and tested solution, and at the same time concentrate the extra time gained on the transformation's logic. 
+This tool proved useful as we could profit of a reliable and tested solution, and at the same time concentrate the extra time gained on the transformation's logic. 
 
 \begin{figure}
   \begin{center}
@@ -165,7 +165,7 @@ This tool proved very useful as we could profit of a reliable and tested solutio
 \subsubsection{Mimic the BPEL workflow logic}
 \label{sec:mimicBPELLogic}
 The BPEL orchestration logic is contained in a specific section of a BPEL file. In the case of our BPEL subset, this logic is all included in the \textit{sequence} activity. When generating the Java code, we make sure that the instructions included in the \textit{sequence} all end up in a Java class called after the process' name (we refer to it as the \textbf{Process class}). This class has a method \textit{runWorkflow()} that takes care of creating the instances of the PartnerLinks involved in the process and mimics the BPEL workflow activities.  
-This allows us to decouple the logic from the data storage and management. Moreover, this separation makes room for future development regarding, among others, the enlargement of the BPEL activities subset. For example, if the \textit{pick} activity will, one day, be incorporated, the process class is the only class where changes will take place.
+This allows us to decouple the logic from the data storage and management. Moreover, this separation makes room for future development regarding, among others, the enlargement of the BPEL activities subset. For example, if the \textit{pick} activity will be incorporated, the process class is the only class where changes will take place.
 
 \subsubsection{The External Resources: Partner Links}
 \label{sec:extrenalResources}
